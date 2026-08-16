@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Matrix Engineering | Precision Creasing Matrix & Die-Cutting Systems</title>
   <meta name="description" content="State-of-the-art creasing matrix, ejection rubber, and makeready tooling manufactured in the Isle of Man, British Isles.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,6 +15,8 @@
       --matrix-navy-light: #253a8a;
       --matrix-red: #FF2E17;
       --matrix-red-dark: #d6200c;
+      --matrix-green: #10b981;
+      --matrix-green-dark: #059669;
       --matrix-grey-dark: #4A4A4A;
       --matrix-grey-mid: #7B818A;
       --matrix-grey-light: #A5ABB5;
@@ -38,12 +40,7 @@
       --shadow-hover: 0 20px 40px -10px rgba(24, 43, 107, 0.12);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: var(--font-main);
       background-color: var(--bg-white);
@@ -53,14 +50,17 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      overflow-x: hidden;
     }
 
     .container {
       width: 100%;
       max-width: var(--container-max);
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 0 1.5rem;
     }
+
+    @media (max-width: 640px) { .container { padding: 0 1.15rem; } }
 
     /* Top Utility Bar */
     .top-bar {
@@ -70,50 +70,35 @@
       padding: 0.5rem 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
-
     .top-bar-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
-
-    .heritage-badges {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-    }
-
+    .heritage-badges { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
     .heritage-tag {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
       color: #ffffff;
       font-weight: 600;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
+    }
+    .heritage-tag span.flag { color: var(--matrix-red); }
+    .contact-fast-links { display: flex; gap: 1.25rem; font-size: 0.75rem; }
+    .contact-fast-links a { color: #94a3b8; text-decoration: none; transition: color 0.2s; }
+    .contact-fast-links a:hover { color: #ffffff; }
+
+    @media (max-width: 768px) {
+      .contact-fast-links { display: none; }
+      .top-bar { padding: 0.4rem 0; }
     }
 
-    .heritage-tag span.flag {
-      color: var(--matrix-red);
-    }
-
-    .contact-fast-links {
-      display: flex;
-      gap: 1.75rem;
-    }
-
-    .contact-fast-links a {
-      color: #94a3b8;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .contact-fast-links a:hover {
-      color: #ffffff;
-    }
-
-    /* Main Navigation Header */
+    /* Main Sticky Navigation */
     header.site-header {
       background: #ffffff;
       border-bottom: 1px solid var(--border-subtle);
@@ -122,190 +107,162 @@
       z-index: 1000;
       box-shadow: var(--shadow-sm);
     }
-
     .nav-wrapper {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 90px;
+      height: 80px;
+    }
+    .brand-logo-link { display: flex; align-items: center; text-decoration: none; cursor: pointer; }
+    .svg-matrix-logo { height: 48px; width: auto; }
+
+    @media (max-width: 640px) {
+      .svg-matrix-logo { height: 38px; }
+      .nav-wrapper { height: 68px; }
     }
 
-    .brand-logo-link {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .svg-matrix-logo {
-      height: 56px;
-      width: auto;
-    }
-
-    nav.site-nav {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
+    nav.site-nav { display: flex; align-items: center; gap: 0.2rem; }
     .nav-btn {
-      padding: 0.7rem 1.1rem;
+      padding: 0.6rem 0.85rem;
       color: var(--matrix-navy);
       text-decoration: none;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 700;
       border-radius: var(--radius-sm);
       transition: all 0.2s ease;
       cursor: pointer;
       border: none;
       background: transparent;
+      white-space: nowrap;
     }
-
-    .nav-btn:hover {
-      color: var(--matrix-red);
-      background-color: var(--bg-light);
+    .nav-btn:hover { color: var(--matrix-red); background-color: var(--bg-light); }
+    .nav-btn.active { color: var(--matrix-red); background-color: rgba(255, 46, 23, 0.06); }
+    
+    .nav-btn-portal {
+      color: var(--matrix-navy);
+      border: 1.5px solid var(--matrix-navy);
+      background: transparent;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
     }
-
-    .nav-btn.active {
-      color: var(--matrix-red);
-      background-color: rgba(255, 46, 23, 0.06);
+    .nav-btn-portal:hover {
+      background: var(--matrix-navy);
+      color: #fff !important;
+    }
+    .nav-btn-portal.active {
+      background: var(--matrix-navy);
+      color: #fff;
     }
 
     .btn-header-cta {
       background: var(--matrix-red);
       color: #ffffff;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 700;
-      padding: 0.65rem 1.3rem;
+      padding: 0.6rem 1.15rem;
       border-radius: var(--radius-sm);
       text-decoration: none;
       transition: all 0.2s ease;
       box-shadow: 0 2px 8px rgba(255, 46, 23, 0.25);
       cursor: pointer;
+      border: none;
+      white-space: nowrap;
+    }
+    .btn-header-cta:hover { background: var(--matrix-red-dark); box-shadow: 0 4px 14px rgba(255, 46, 23, 0.35); }
+
+    /* Mobile Hamburger Menu */
+    .mobile-menu-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      flex-direction: column;
+      gap: 5px;
+      z-index: 1100;
+    }
+    .mobile-menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2.5px;
+      background-color: var(--matrix-navy);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .mobile-menu-toggle.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+    .mobile-menu-toggle.open span:nth-child(2) { opacity: 0; }
+    .mobile-menu-toggle.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+    @media (max-width: 1040px) {
+      .mobile-menu-toggle { display: flex; }
+      nav.site-nav {
+        position: fixed;
+        top: 68px;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        border-bottom: 1px solid var(--border-subtle);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1.25rem 1.5rem;
+        gap: 0.5rem;
+        transform: translateY(-120%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 999;
+      }
+      nav.site-nav.mobile-active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      .nav-btn { text-align: left; padding: 0.85rem 1rem; font-size: 1.05rem; width: 100%; }
+      .btn-header-cta { display: none; }
     }
 
-    .btn-header-cta:hover {
-      background: var(--matrix-red-dark);
-      box-shadow: 0 4px 14px rgba(255, 46, 23, 0.35);
-    }
-
-    /* Page View Router Mechanics */
+    /* Page View Router */
     .page-view {
       display: none;
       animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       flex-grow: 1;
     }
-
-    .page-view.active-view {
-      display: block;
-    }
-
+    .page-view.active-view { display: block; }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Global Typography & Shared Layouts */
-    .section-head {
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto 3.5rem;
-    }
-
+    /* Common Typography & Headings */
+    .section-head { text-align: center; max-width: 800px; margin: 0 auto 3rem; }
     .section-eyebrow {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 800;
       color: var(--matrix-red);
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
       display: block;
     }
-
     .section-title {
-      font-size: 2.35rem;
+      font-size: clamp(1.8rem, 3.5vw, 2.35rem);
       font-weight: 900;
       color: var(--matrix-navy-dark);
       letter-spacing: -0.03em;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.65rem;
+      line-height: 1.2;
     }
-
-    .section-desc {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-    }
-
+    .section-desc { font-size: clamp(0.95rem, 2vw, 1.08rem); color: var(--text-muted); line-height: 1.55; }
     .page-hero {
       background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-      padding: 4.5rem 0 3.5rem;
+      padding: clamp(2.5rem, 5vw, 4.5rem) 0 clamp(2rem, 4vw, 3.5rem);
       border-bottom: 1px solid var(--border-subtle);
     }
 
-    /* HOME PAGE SPECIFIC */
-    .hero-main {
-      padding: 5.5rem 0;
-      background: radial-gradient(circle at 80% 20%, rgba(24, 43, 107, 0.04) 0%, transparent 50%), linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-      border-bottom: 1px solid var(--border-subtle);
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    @media (max-width: 992px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-    }
-
-    .hero-badge-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: #ffffff;
-      border: 1px solid var(--border-medium);
-      padding: 0.35rem 0.85rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--matrix-navy);
-      margin-bottom: 1.5rem;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .hero-badge-pill .dot {
-      width: 7px;
-      height: 7px;
-      background: var(--matrix-red);
-      border-radius: 50%;
-    }
-
-    .hero-h1 {
-      font-size: clamp(2.4rem, 4.2vw, 3.5rem);
-      font-weight: 900;
-      color: var(--matrix-navy-dark);
-      line-height: 1.12;
-      letter-spacing: -0.04em;
-      margin-bottom: 1.25rem;
-    }
-
-    .hero-p {
-      font-size: 1.18rem;
-      color: var(--text-muted);
-      margin-bottom: 2.25rem;
-      line-height: 1.6;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
+    /* Buttons */
     .btn-solid-navy {
       background: var(--matrix-navy);
       color: #ffffff;
@@ -320,12 +277,9 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      min-height: 48px;
     }
-
-    .btn-solid-navy:hover {
-      background: var(--matrix-navy-light);
-      box-shadow: 0 4px 14px rgba(24, 43, 107, 0.25);
-    }
+    .btn-solid-navy:hover { background: var(--matrix-navy-light); box-shadow: 0 4px 14px rgba(24, 43, 107, 0.25); }
 
     .btn-outline-navy {
       background: #ffffff;
@@ -341,183 +295,146 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      min-height: 48px;
+    }
+    .btn-outline-navy:hover { border-color: var(--matrix-navy); background: var(--bg-light); }
+
+    .btn-green-pay {
+      background: var(--matrix-green);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.95rem;
+      padding: 0.85rem 1.6rem;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+    }
+    .btn-green-pay:hover { background: var(--matrix-green-dark); box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3); }
+
+    @media (max-width: 640px) {
+      .btn-solid-navy, .btn-outline-navy, .btn-green-pay { width: 100%; }
     }
 
-    .btn-outline-navy:hover {
-      border-color: var(--matrix-navy);
-      background: var(--bg-light);
+    /* HOME HERO */
+    .hero-main {
+      padding: clamp(3rem, 6vw, 5.5rem) 0;
+      background: radial-gradient(circle at 80% 20%, rgba(24, 43, 107, 0.04) 0%, transparent 50%), linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+      border-bottom: 1px solid var(--border-subtle);
     }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+    @media (max-width: 992px) { .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
 
-    /* Hero Visual Panel featuring CITO-beating image presentation */
+    .hero-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #ffffff;
+      border: 1px solid var(--border-medium);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--matrix-navy);
+      margin-bottom: 1.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-badge-pill .dot { width: 7px; height: 7px; background: var(--matrix-red); border-radius: 50%; }
+    .hero-h1 {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 900;
+      color: var(--matrix-navy-dark);
+      line-height: 1.12;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.15rem;
+    }
+    .hero-p { font-size: clamp(1rem, 2vw, 1.15rem); color: var(--text-muted); margin-bottom: 2rem; line-height: 1.6; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
     .hero-media-frame {
       background: #ffffff;
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      padding: 1.25rem;
+      padding: 0.85rem;
       box-shadow: var(--shadow-card);
       position: relative;
     }
-
-    .hero-media-frame img {
-      width: 100%;
-      height: 380px;
-      object-fit: cover;
-      border-radius: var(--radius-md);
-      display: block;
-    }
+    .hero-media-frame img { width: 100%; height: 360px; object-fit: cover; border-radius: var(--radius-md); display: block; }
+    @media (max-width: 640px) { .hero-media-frame img { height: 240px; } }
 
     .floating-caption-card {
       position: absolute;
-      bottom: 2rem;
-      left: 2rem;
-      right: 2rem;
-      background: rgba(13, 23, 59, 0.92);
+      bottom: 1.5rem;
+      left: 1.5rem;
+      right: 1.5rem;
+      background: rgba(13, 23, 59, 0.94);
       backdrop-filter: blur(12px);
       color: #ffffff;
-      padding: 1.25rem;
+      padding: 1rem 1.25rem;
       border-radius: var(--radius-md);
       border: 1px solid rgba(255, 255, 255, 0.1);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 0.5rem;
+    }
+    .floating-caption-card h4 { font-size: 0.92rem; font-weight: 800; }
+    .floating-caption-card p { font-size: 0.75rem; color: #cbd5e1; }
+    @media (max-width: 480px) {
+      .floating-caption-card { position: static; margin-top: 0.75rem; background: var(--matrix-navy-dark); }
     }
 
-    .floating-caption-card h4 {
-      font-size: 1rem;
-      font-weight: 800;
-    }
+    .key-pillars-bar { padding: clamp(3rem, 5vw, 4.5rem) 0; border-bottom: 1px solid var(--border-subtle); }
+    .pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.75rem; }
+    .pillar-card { background: var(--bg-light); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.75rem; }
+    .pillar-card h3 { font-size: 1.2rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.65rem; }
+    .pillar-card p { color: var(--text-muted); font-size: 0.92rem; }
 
-    .floating-caption-card p {
-      font-size: 0.78rem;
-      color: #cbd5e1;
-    }
-
-    .key-pillars-bar {
-      padding: 4.5rem 0;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .pillar-card {
-      background: var(--bg-light);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 2rem;
-    }
-
-    .pillar-card h3 {
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: var(--matrix-navy);
-      margin-bottom: 0.75rem;
-    }
-
-    .pillar-card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    /* ABOUT US PAGE SPECIFIC */
+    /* ABOUT US VIEW */
     .about-lead-card {
       background: var(--bg-light);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      padding: 3rem;
-      margin-bottom: 4.5rem;
+      padding: clamp(1.75rem, 4vw, 3rem);
+      margin-bottom: 3.5rem;
     }
-
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.5rem;
-    }
-
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
     .team-card {
       background: #ffffff;
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      padding: 2.25rem;
+      padding: 1.85rem;
       box-shadow: var(--shadow-card);
       display: flex;
       flex-direction: column;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
-
-    .team-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-hover);
-      border-color: var(--matrix-navy);
+    .team-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--matrix-navy); }
+    .team-header { display: flex; align-items: center; gap: 1.15rem; margin-bottom: 1.25rem; }
+    .team-avatar, .team-avatar-placeholder {
+      width: 70px; height: 70px; border-radius: 50%; object-fit: cover;
+      border: 2.5px solid var(--matrix-navy); background: var(--bg-slate); flex-shrink: 0;
     }
-
-    .team-header {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .team-avatar {
-      width: 76px;
-      height: 76px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2.5px solid var(--matrix-navy);
-      background: var(--bg-slate);
-      flex-shrink: 0;
-    }
-
     .team-avatar-placeholder {
-      width: 76px;
-      height: 76px;
-      border-radius: 50%;
-      border: 2.5px solid var(--matrix-navy);
-      background: var(--bg-slate);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--matrix-navy);
-      font-family: var(--font-mono);
-      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.35rem; font-weight: 800; color: var(--matrix-navy); font-family: var(--font-mono);
     }
+    .team-titles h4 { font-size: 1.15rem; font-weight: 800; color: var(--matrix-navy-dark); }
+    .team-titles .role { font-size: 0.8rem; font-weight: 700; color: var(--matrix-red); text-transform: uppercase; letter-spacing: 0.04em; }
+    .team-bio { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; }
 
-    .team-titles h4 {
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--matrix-navy-dark);
-    }
-
-    .team-titles .role {
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--matrix-red);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .team-bio {
-      font-size: 0.92rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-    }
-
-    /* PRODUCTS PAGE SPECIFIC */
-    .products-layout {
-      padding: 4.5rem 0;
-    }
-
-    .prod-grid-large {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 2.5rem;
-    }
-
+    /* PRODUCTS VIEW */
+    .products-layout { padding: clamp(2.5rem, 5vw, 4.5rem) 0; }
+    .prod-grid-large { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+    @media (max-width: 480px) { .prod-grid-large { grid-template-columns: 1fr; } }
     .prod-item-card {
       background: #ffffff;
       border: 1px solid var(--border-subtle);
@@ -528,432 +445,292 @@
       flex-direction: column;
       transition: all 0.25s ease;
     }
-
-    .prod-item-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-hover);
-      border-color: var(--matrix-navy);
-    }
-
-    .prod-img-box {
-      height: 220px;
-      background: var(--bg-light);
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-
-    .prod-img-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    .prod-item-card:hover .prod-img-box img {
-      transform: scale(1.03);
-    }
-
+    .prod-item-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--matrix-navy); }
+    .prod-img-box { height: 200px; background: var(--bg-light); position: relative; overflow: hidden; border-bottom: 1px solid var(--border-subtle); }
+    .prod-img-box img { width: 100%; height: 100%; object-fit: cover; }
     .prod-tag-float {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: rgba(13, 23, 59, 0.85);
-      color: #ffffff;
-      font-size: 0.72rem;
-      font-weight: 800;
-      padding: 3px 8px;
-      border-radius: var(--radius-sm);
-      text-transform: uppercase;
-      font-family: var(--font-mono);
+      position: absolute; top: 0.85rem; right: 0.85rem;
+      background: rgba(13, 23, 59, 0.85); color: #ffffff; font-size: 0.7rem; font-weight: 800;
+      padding: 3px 8px; border-radius: var(--radius-sm); text-transform: uppercase; font-family: var(--font-mono);
     }
+    .prod-content-box { padding: 1.75rem; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+    .prod-content-box h3 { font-size: 1.35rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.4rem; }
+    .prod-content-box p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.25rem; }
+    .spec-table-compact { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-bottom: 1.5rem; }
+    .spec-table-compact tr { border-bottom: 1px solid var(--border-subtle); }
+    .spec-table-compact td { padding: 0.4rem 0; }
+    .spec-table-compact td.k { color: var(--text-dim); font-weight: 600; }
+    .spec-table-compact td.v { text-align: right; font-weight: 700; color: var(--matrix-navy-dark); font-family: var(--font-mono); }
 
-    .prod-content-box {
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      justify-content: space-between;
-    }
-
-    .prod-content-box h3 {
-      font-size: 1.45rem;
-      font-weight: 900;
-      color: var(--matrix-navy);
-      margin-bottom: 0.5rem;
-    }
-
-    .prod-content-box p {
-      color: var(--text-muted);
-      font-size: 0.92rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .spec-table-compact {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.85rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .spec-table-compact tr {
-      border-bottom: 1px solid var(--border-subtle);
-    }
-
-    .spec-table-compact td {
-      padding: 0.4rem 0;
-    }
-
-    .spec-table-compact td.k {
-      color: var(--text-dim);
-      font-weight: 600;
-    }
-
-    .spec-table-compact td.v {
-      text-align: right;
-      font-weight: 700;
-      color: var(--matrix-navy-dark);
-      font-family: var(--font-mono);
-    }
-
-    /* TECHNICAL & CALCULATOR PAGE */
-    .technical-layout {
-      padding: 4.5rem 0;
-    }
-
+    /* TECHNICAL VIEW */
+    .technical-layout { padding: clamp(2.5rem, 5vw, 4.5rem) 0; }
     .calc-box-wrap {
       background: #ffffff;
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-card);
-      padding: 3rem;
+      padding: clamp(1.5rem, 4vw, 3rem);
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 3.5rem;
-      margin-bottom: 4.5rem;
+      gap: 2.5rem;
+      margin-bottom: 3.5rem;
     }
-
-    @media (max-width: 900px) {
-      .calc-box-wrap {
-        grid-template-columns: 1fr;
-        padding: 2rem;
-      }
+    @media (max-width: 900px) { .calc-box-wrap { grid-template-columns: 1fr; } }
+    .calc-input-group { margin-bottom: 1.35rem; }
+    .calc-input-group label { display: flex; justify-content: space-between; font-size: 0.88rem; font-weight: 700; color: var(--matrix-navy); margin-bottom: 0.45rem; }
+    .calc-input-group input, .calc-input-group select {
+      width: 100%; padding: 0.8rem 1rem; border: 1.5px solid var(--border-medium); border-radius: var(--radius-sm);
+      font-family: var(--font-mono); font-size: 1rem; color: var(--text-main); background: #ffffff; outline: none; min-height: 48px;
     }
-
-    .calc-input-group {
-      margin-bottom: 1.5rem;
-    }
-
-    .calc-input-group label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--matrix-navy);
-      margin-bottom: 0.45rem;
-    }
-
-    .calc-input-group input,
-    .calc-input-group select {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border: 1.5px solid var(--border-medium);
-      border-radius: var(--radius-sm);
-      font-family: var(--font-mono);
-      font-size: 1rem;
-      color: var(--text-main);
-      background: #ffffff;
-      outline: none;
-    }
-
     .calc-output-panel {
-      background: var(--matrix-navy-dark);
-      color: #ffffff;
-      border-radius: var(--radius-md);
-      padding: 2.25rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      background: var(--matrix-navy-dark); color: #ffffff; border-radius: var(--radius-md);
+      padding: 1.85rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem;
     }
+    .calc-output-panel h4 { font-size: 0.82rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.25rem; }
+    .res-metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .res-metric-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--radius-sm); padding: 1.15rem 0.75rem; text-align: center; }
+    .res-metric-card .num { font-size: clamp(1.8rem, 4vw, 2.2rem); font-weight: 900; color: #ffffff; font-family: var(--font-mono); }
+    .res-metric-card .lbl { font-size: 0.72rem; color: #94a3b8; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; margin-top: 0.25rem; }
 
-    .calc-output-panel h4 {
-      font-size: 0.85rem;
-      font-weight: 800;
-      color: #94a3b8;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 1.5rem;
-    }
+    .guide-step-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .guide-card { background: var(--bg-light); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.65rem; }
+    .guide-card .step-badge { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 800; color: var(--matrix-red); margin-bottom: 0.4rem; }
+    .guide-card h4 { font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.4rem; }
+    .guide-card p { font-size: 0.88rem; color: var(--text-muted); }
 
-    .res-metric-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-      margin-bottom: 1.5rem;
-    }
+    /* ACCESSORIES VIEW */
+    .acc-layout { padding: clamp(2.5rem, 5vw, 4.5rem) 0; }
+    .acc-cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.75rem; }
+    .acc-item-card { background: #ffffff; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.75rem; box-shadow: var(--shadow-card); display: flex; flex-direction: column; justify-content: space-between; }
+    .acc-item-card .cat-tag { font-size: 0.72rem; font-weight: 700; color: var(--matrix-red); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem; display: block; }
+    .acc-item-card h3 { font-size: 1.25rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.65rem; }
+    .acc-item-card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; }
 
-    .res-metric-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: var(--radius-sm);
-      padding: 1.25rem;
-      text-align: center;
-    }
-
-    .res-metric-card .num {
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: #ffffff;
-      font-family: var(--font-mono);
-    }
-
-    .res-metric-card .lbl {
-      font-size: 0.75rem;
-      color: #94a3b8;
-      text-transform: uppercase;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      margin-top: 0.25rem;
-    }
-
-    .guide-step-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .guide-card {
-      background: var(--bg-light);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 1.75rem;
-    }
-
-    .guide-card .step-badge {
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      font-weight: 800;
-      color: var(--matrix-red);
-      margin-bottom: 0.5rem;
-    }
-
-    .guide-card h4 {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: var(--matrix-navy);
-      margin-bottom: 0.5rem;
-    }
-
-    .guide-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    /* ACCESSORIES PAGE */
-    .acc-layout {
-      padding: 4.5rem 0;
-    }
-
-    .acc-cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-    }
-
-    .acc-item-card {
+    /* ==================== NEW: LATEST NEWS VIEW ==================== */
+    .news-layout { padding: clamp(2.5rem, 5vw, 4.5rem) 0; }
+    .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem; }
+    @media (max-width: 480px) { .news-grid { grid-template-columns: 1fr; } }
+    
+    .news-card {
       background: #ffffff;
       border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 2rem;
-      box-shadow: var(--shadow-card);
-    }
-
-    .acc-item-card .cat-tag {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--matrix-red);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-
-    .acc-item-card h3 {
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: var(--matrix-navy);
-      margin-bottom: 0.75rem;
-    }
-
-    .acc-item-card p {
-      font-size: 0.92rem;
-      color: var(--text-muted);
-      margin-bottom: 1.25rem;
-    }
-
-    /* CONTACT PAGE */
-    .contact-layout {
-      padding: 4.5rem 0;
-    }
-
-    .contact-grid-wrap {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 3.5rem;
-    }
-
-    @media (max-width: 900px) {
-      .contact-grid-wrap {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .contact-info-panel {
-      background: var(--matrix-navy-dark);
-      color: #ffffff;
       border-radius: var(--radius-lg);
-      padding: 3rem;
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      transition: all 0.25s ease;
     }
-
-    .contact-info-panel h3 {
-      font-size: 1.85rem;
-      font-weight: 900;
-      margin-bottom: 1rem;
+    .news-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--matrix-navy); }
+    .news-card-img {
+      height: 210px;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg-slate);
     }
-
-    .contact-info-panel p {
-      color: #94a3b8;
-      margin-bottom: 2rem;
+    .news-card-img img { width: 100%; height: 100%; object-fit: cover; }
+    .news-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: var(--matrix-green);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: var(--radius-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
+    .news-card-content { padding: 1.85rem; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+    .news-date { font-size: 0.75rem; color: var(--text-dim); font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; }
+    .news-card-content h3 { font-size: 1.25rem; font-weight: 800; color: var(--matrix-navy-dark); line-height: 1.35; margin-bottom: 0.75rem; }
+    .news-card-content p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem; }
 
-    .contact-data-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
+    /* ==================== NEW: CUSTOMER PORTAL VIEW ==================== */
+    .portal-layout { padding: clamp(2.5rem, 5vw, 4.5rem) 0; }
+    .portal-dashboard-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      padding: clamp(1.5rem, 4vw, 2.5rem);
       margin-bottom: 2.5rem;
     }
-
-    .contact-data-item .lbl {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #64748b;
-      font-weight: 700;
-    }
-
-    .contact-data-item .val {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #ffffff;
-      margin-top: 0.2rem;
-    }
-
-    .contact-data-item .val a {
-      color: #ffffff;
-      text-decoration: none;
-    }
-
-    .contact-form-shell {
-      background: #ffffff;
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 3rem;
-      box-shadow: var(--shadow-card);
-    }
-
-    .form-field {
-      margin-bottom: 1.25rem;
-    }
-
-    .form-field label {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--matrix-navy);
-      margin-bottom: 0.35rem;
-    }
-
-    .form-field input,
-    .form-field select,
-    .form-field textarea {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border: 1.5px solid var(--border-medium);
-      border-radius: var(--radius-sm);
-      font-family: var(--font-main);
-      font-size: 0.95rem;
-      outline: none;
-    }
-
-    /* Footer */
-    footer.site-footer {
-      background: var(--matrix-navy-dark);
-      color: #ffffff;
-      padding-top: 4.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      font-size: 0.9rem;
-      margin-top: auto;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
-      gap: 3rem;
-      padding-bottom: 3.5rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    @media (max-width: 900px) {
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 550px) {
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .footer-col h5 {
-      font-size: 0.9rem;
-      font-weight: 800;
-      color: #ffffff;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 1.25rem;
-    }
-
-    .footer-col ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem;
-    }
-
-    .footer-col ul a {
-      color: #94a3b8;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .footer-col ul a:hover {
-      color: #ffffff;
-    }
-
-    .footer-bottom {
-      padding: 2rem 0;
+    .portal-header-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
       flex-wrap: wrap;
       gap: 1rem;
-      font-size: 0.8rem;
-      color: #64748b;
     }
+    .client-profile-info h3 { font-size: 1.4rem; font-weight: 900; color: var(--matrix-navy-dark); }
+    .client-profile-info p { font-size: 0.85rem; color: var(--text-muted); }
+    .order-id-badge {
+      background: var(--bg-light);
+      border: 1.5px solid var(--border-medium);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--matrix-navy);
+    }
+
+    /* Stepper Progress Bar */
+    .stepper-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    @media (max-width: 768px) {
+      .stepper-container { grid-template-columns: 1fr; gap: 1rem; }
+    }
+    .step-node {
+      background: var(--bg-light);
+      border: 1.5px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.15rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .step-node.completed {
+      border-color: var(--matrix-green);
+      background: rgba(16, 185, 129, 0.05);
+    }
+    .step-node.active-step {
+      border-color: var(--matrix-navy);
+      background: rgba(24, 43, 107, 0.06);
+    }
+    .step-node-num {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--matrix-grey-mid);
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+      font-family: var(--font-mono);
+    }
+    .step-node.completed .step-node-num { color: var(--matrix-green); }
+    .step-node.active-step .step-node-num { color: var(--matrix-navy); }
+    .step-node-title { font-size: 0.92rem; font-weight: 800; color: var(--matrix-navy-dark); }
+    .step-node-sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+
+    /* Portal Split Grid */
+    .portal-grid-split {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 2.5rem;
+    }
+    @media (max-width: 900px) { .portal-grid-split { grid-template-columns: 1fr; } }
+
+    .portal-table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+    }
+    .portal-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    .portal-table th {
+      text-align: left;
+      padding: 0.75rem;
+      background: var(--bg-light);
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--matrix-navy);
+      font-weight: 800;
+    }
+    .portal-table td {
+      padding: 0.85rem 0.75rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .amendment-box-panel {
+      background: var(--bg-light);
+      border: 1px dashed var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin-top: 1rem;
+    }
+    .amendment-box-panel h4 { font-size: 0.95rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.5rem; }
+    .amendment-box-panel p { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem; }
+    .amend-input-row { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+    .amend-input-row input {
+      padding: 0.6rem 0.85rem;
+      border: 1.5px solid var(--border-medium);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-weight: 700;
+      width: 130px;
+    }
+
+    .portal-sidebar-card {
+      background: var(--bg-light);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .sidebar-section-title { font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.75rem; }
+    .status-alert-box {
+      background: #fff;
+      border: 1.5px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+    }
+
+    /* CONTACT VIEW */
+    .contact-layout { padding: clamp(2.5rem, 5vw, 4.5rem) 0; }
+    .contact-grid-wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; }
+    @media (max-width: 900px) { .contact-grid-wrap { grid-template-columns: 1fr; } }
+    .contact-info-panel {
+      background: var(--matrix-navy-dark); color: #ffffff; border-radius: var(--radius-lg);
+      padding: clamp(1.85rem, 4vw, 3rem); display: flex; flex-direction: column; justify-content: space-between; gap: 2rem;
+    }
+    .contact-info-panel h3 { font-size: 1.75rem; font-weight: 900; margin-bottom: 0.75rem; }
+    .contact-info-panel p { color: #94a3b8; }
+    .contact-data-list { display: flex; flex-direction: column; gap: 1.35rem; }
+    .contact-data-item .lbl { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: #64748b; font-weight: 700; }
+    .contact-data-item .val { font-size: 1.05rem; font-weight: 700; color: #ffffff; margin-top: 0.2rem; }
+    .contact-data-item .val a { color: #ffffff; text-decoration: none; }
+    .contact-form-shell {
+      background: #ffffff; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
+      padding: clamp(1.75rem, 4vw, 3rem); box-shadow: var(--shadow-card);
+    }
+    .form-field { margin-bottom: 1.25rem; }
+    .form-field label { display: block; font-size: 0.85rem; font-weight: 700; color: var(--matrix-navy); margin-bottom: 0.35rem; }
+    .form-field input, .form-field select, .form-field textarea {
+      width: 100%; padding: 0.8rem 1rem; border: 1.5px solid var(--border-medium); border-radius: var(--radius-sm);
+      font-family: var(--font-main); font-size: 0.95rem; outline: none; min-height: 48px;
+    }
+    .form-field textarea { min-height: 90px; }
+
+    /* Footer */
+    footer.site-footer {
+      background: var(--matrix-navy-dark); color: #ffffff;
+      padding-top: clamp(3rem, 5vw, 4.5rem); border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.9rem; margin-top: auto;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 2.5rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 550px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-col h5 { font-size: 0.88rem; font-weight: 800; color: #ffffff; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.15rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+    .footer-col ul a { color: #94a3b8; text-decoration: none; cursor: pointer; }
+    .footer-col ul a:hover { color: #ffffff; }
+    .footer-bottom { padding: 1.75rem 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.78rem; color: #64748b; }
   </style>
 </head>
 <body>
@@ -965,6 +742,8 @@
         <span class="heritage-tag"><span class="flag">★</span> British Made for Quality</span>
         <span style="opacity: 0.4;">|</span>
         <span class="heritage-tag">Isle of Man Manufacturing</span>
+        <span style="opacity: 0.4;">|</span>
+        <span class="heritage-tag" style="color: var(--matrix-green);">● PPWR 2026 Compliant</span>
       </div>
       <div class="contact-fast-links">
         <a href="tel:+441624822960">Tel: +44 (0)1624 822960</a>
@@ -973,55 +752,46 @@
     </div>
   </div>
 
-  <!-- Main Sticky Navigation -->
+  <!-- Main Navigation Header -->
   <header class="site-header">
     <div class="container nav-wrapper">
-      <!-- Authentic Logo Linking to Home View -->
       <a onclick="navigateTo('home')" class="brand-logo-link" aria-label="Matrix Engineering">
         <svg class="svg-matrix-logo" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg">
-          <!-- Slate Matrix Channel Roof (#4A4A4A) -->
           <polygon points="120,70 380,25 380,70" fill="#4A4A4A" />
           <polygon points="400,70 400,25 660,70" fill="#4A4A4A" />
-
-          <!-- Letter M (#182B6B) -->
           <polygon points="120,80 185,80 205,135 225,80 290,80 290,155 240,155 240,115 218,155 192,155 170,115 170,155 120,155" fill="#182B6B" />
-
-          <!-- Letter A (#7B818A and #A5ABB5) -->
           <polygon points="305,155 350,80 370,80 345,155" fill="#7B818A" />
           <polygon points="360,80 405,155 380,155 365,125 335,125 350,95" fill="#A5ABB5" />
-
-          <!-- Letter T (#FF2E17) -->
           <path d="M 400,80 L 460,80 L 460,100 L 440,100 L 440,145 C 440,155 420,155 420,145 L 420,100 L 400,100 Z" fill="#FF2E17" />
-
-          <!-- Letter R (#182B6B) -->
           <path d="M 465,80 L 515,80 C 535,80 545,90 545,105 C 545,118 535,125 520,128 L 545,155 L 515,155 L 495,130 L 495,155 L 465,155 Z M 495,98 L 495,115 L 512,115 C 518,115 522,110 522,106 C 522,102 518,98 512,98 Z" fill="#182B6B" />
-
-          <!-- Letter I (#182B6B) -->
           <rect x="555" y="80" width="30" height="75" fill="#182B6B" />
-
-          <!-- Letter X (#182B6B) -->
           <polygon points="595,80 625,80 660,155 630,155" fill="#182B6B" />
           <polygon points="630,80 660,80 595,155 565,155" fill="#182B6B" />
-
-          <!-- Red Mid-Banner (#FF2E17) -->
           <polygon points="120,165 640,165 660,195 120,195" fill="#FF2E17" />
-
-          <!-- Navy Arrow Banner (#182B6B) -->
           <polygon points="120,205 660,205 680,240 120,240" fill="#182B6B" />
-
-          <!-- "ENGINEERING" Text -->
           <text x="390" y="232" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="900" font-size="28" fill="#ffffff" letter-spacing="9" text-anchor="middle">ENGINEERING</text>
         </svg>
       </a>
 
-      <!-- Clean Menu Structure -->
-      <nav class="site-nav">
+      <!-- Mobile Hamburger -->
+      <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Navigation Tabs -->
+      <nav class="site-nav" id="siteNav">
         <button class="nav-btn active" id="nav-home" onclick="navigateTo('home')">Home</button>
         <button class="nav-btn" id="nav-about" onclick="navigateTo('about')">About Us</button>
         <button class="nav-btn" id="nav-products" onclick="navigateTo('products')">Products</button>
         <button class="nav-btn" id="nav-technical" onclick="navigateTo('technical')">Technical</button>
         <button class="nav-btn" id="nav-accessories" onclick="navigateTo('accessories')">Accessories</button>
-        <button class="nav-btn" id="nav-contact" onclick="navigateTo('contact')">Contact Us</button>
+        <button class="nav-btn" id="nav-news" onclick="navigateTo('news')">Latest News</button>
+        <button class="nav-btn nav-btn-portal" id="nav-portal" onclick="navigateTo('portal')">
+          <span>Client Hub</span>
+        </button>
+        <button class="nav-btn" id="nav-contact" onclick="navigateTo('contact')">Contact</button>
       </nav>
 
       <button class="btn-header-cta" onclick="navigateTo('contact')">Request Samples</button>
@@ -1045,7 +815,7 @@
           </p>
           <div class="hero-actions">
             <button class="btn-solid-navy" onclick="navigateTo('products')">Explore Product Range</button>
-            <button class="btn-outline-navy" onclick="navigateTo('technical')">Launch Matrix Calculator</button>
+            <button class="btn-outline-navy" onclick="navigateTo('portal')">Live Order Tracker</button>
           </div>
         </div>
 
@@ -1062,7 +832,7 @@
       </div>
     </section>
 
-    <!-- Key Strategic Pillars -->
+    <!-- Key Pillars -->
     <section class="key-pillars-bar">
       <div class="container">
         <div class="pillars-grid">
@@ -1075,8 +845,8 @@
             <p>Every profile is designed, extruded, and precision-milled in our Ballasalla facility to maintain tolerances tighter than ±0.01mm.</p>
           </div>
           <div class="pillar-card">
-            <h3>Sustainable & Recyclable</h3>
-            <p>Formulated with environmentally conscious polymers that provide long impression runs while being fully recyclable after stripping.</p>
+            <h3>Sustainable & PPWR Ready</h3>
+            <p>Formulated with environmentally conscious polymers that provide long impression runs while being fully recyclable under European packaging mandates.</p>
           </div>
         </div>
       </div>
@@ -1097,11 +867,11 @@
       </div>
     </div>
 
-    <div class="container" style="padding-top: 4rem; padding-bottom: 5rem;">
+    <div class="container" style="padding-top: 3.5rem; padding-bottom: 5rem;">
       <div class="about-lead-card">
         <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-          <h3 style="font-size: 1.6rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 1rem;">Over 60 Years of Industry Expertise</h3>
-          <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7;">
+          <h3 style="font-size: 1.5rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.85rem;">Over 60 Years of Industry Expertise</h3>
+          <p style="color: var(--text-muted); font-size: 1.02rem; line-height: 1.7;">
             Designed and manufactured in-house on the Isle of Man, our bespoke production lines bring together cutting-edge materials and specialized extrusion technology. We are proud of our British manufacturing heritage and our commitment to supplying high-performance consumables to carton converters across the globe.
           </p>
         </div>
@@ -1299,7 +1069,7 @@
       <!-- Calculator Tool -->
       <div class="calc-box-wrap">
         <div>
-          <h3 style="font-size: 1.5rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 1.5rem;">Live Matrix Sizing Calculator</h3>
+          <h3 style="font-size: 1.4rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 1.25rem;">Live Matrix Sizing Calculator</h3>
           
           <div class="calc-input-group">
             <label for="boardCaliper">
@@ -1408,28 +1178,247 @@
     <div class="container acc-layout">
       <div class="acc-cards-grid">
         <div class="acc-item-card">
-          <span class="cat-tag">Make Ready</span>
-          <h3>Super Shim Plus & Profitape</h3>
-          <p>Micro-calibrated makeready tapes engineered for micro-adjusting cutting plate impression pressure without distorting the sheet.</p>
+          <div>
+            <span class="cat-tag">Make Ready</span>
+            <h3>Super Shim Plus & Profitape</h3>
+            <p>Micro-calibrated makeready tapes engineered for micro-adjusting cutting plate impression pressure without distorting the sheet.</p>
+          </div>
           <button class="btn-solid-navy" onclick="navigateTo('contact')">Enquire Tapes</button>
         </div>
         <div class="acc-item-card">
-          <span class="cat-tag">Cutting Tools</span>
-          <h3>Matrix Cutters (Hand & Bench)</h3>
-          <p>Precision 45-degree miter and straight 90-degree cutters delivering burr-free joins for tight corners in multi-crease dies.</p>
+          <div>
+            <span class="cat-tag">Cutting Tools</span>
+            <h3>Matrix Cutters (Hand & Bench)</h3>
+            <p>Precision 45-degree miter and straight 90-degree cutters delivering burr-free joins for tight corners in multi-crease dies.</p>
+          </div>
           <button class="btn-solid-navy" onclick="navigateTo('contact')">Enquire Cutters</button>
         </div>
         <div class="acc-item-card">
-          <span class="cat-tag">Nicking Systems</span>
-          <h3>Speedy-Nick Tool</h3>
-          <p>Handheld pneumatic and manual nicking systems ensuring consistent, clean micro-nicks to keep boxes secure during stripping.</p>
+          <div>
+            <span class="cat-tag">Nicking Systems</span>
+            <h3>Speedy-Nick Tool</h3>
+            <p>Handheld pneumatic and manual nicking systems ensuring consistent, clean micro-nicks to keep boxes secure during stripping.</p>
+          </div>
           <button class="btn-solid-navy" onclick="navigateTo('contact')">Enquire Nicking Tool</button>
         </div>
       </div>
     </div>
   </main>
 
-  <!-- ==================== VIEW 6: CONTACT PAGE ==================== -->
+  <!-- ==================== VIEW 6: LATEST NEWS (PPWR & SUSTAINABILITY) ==================== -->
+  <main id="view-news" class="page-view">
+    <div class="page-hero">
+      <div class="container">
+        <div class="section-head" style="margin-bottom: 0;">
+          <span class="section-eyebrow">Industry Innovation & Regulation</span>
+          <h2 class="section-title">Latest News & PPWR Compliance</h2>
+          <p class="section-desc">
+            How Matrix Engineering is leading the transition to sustainable packaging consumables under the new EU Packaging & Packaging Waste Regulation.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container news-layout">
+      <div class="news-grid">
+        <!-- Story 1: PPWR Compliance -->
+        <article class="news-card">
+          <div class="news-card-img">
+            <img src="https://www.thimm.com/fileadmin/_processed_/c/2/csm_faltkarton-klein-kaufen-kaufen-thimm_5d701ced62.jpg" alt="Recycled Cardboard Packaging Boxes">
+            <span class="news-badge">Regulatory Milestone</span>
+          </div>
+          <div class="news-card-content">
+            <div>
+              <div class="news-date">August 2026 • Sustainability Report</div>
+              <h3>Matrix Engineering Achieves Full PPWR 2026 Compliance Across All Product Lines</h3>
+              <p>
+                As the EU Packaging and Packaging Waste Regulation (PPWR) enters into full general application, Matrix Engineering confirms 100% compliance across our synthetic and steel matrix ranges. Our formulations guarantee zero heavy metal contamination and design-for-recycling compatibility for our global converting partners.
+              </p>
+            </div>
+            <button class="btn-outline-navy" style="width: 100%; min-height: 40px; font-size: 0.85rem;" onclick="navigateTo('contact')">Read Regulatory Whitepaper</button>
+          </div>
+        </article>
+
+        <!-- Story 2: Closed-Loop Extrusion -->
+        <article class="news-card">
+          <div class="news-card-img">
+            <img src="https://www.coexpan.com/wp-content/uploads/2025/05/DSC0476.webp" alt="Extrusion Facility Line">
+            <span class="news-badge" style="background: var(--matrix-navy);">Facility Upgrade</span>
+          </div>
+          <div class="news-card-content">
+            <div>
+              <div class="news-date">July 2026 • Manufacturing Excellence</div>
+              <h3>Closed-Loop Polymer Recovery: 100% Recyclable Extrusions on the Isle of Man</h3>
+              <p>
+                Under the leadership of our production team, our Ballasalla extrusion plant has implemented closed-loop post-industrial polymer recovery. All off-cuts and locator materials are re-granulated into zero-waste secondary production cycles, significantly lowering carbon footprints for die-makers.
+              </p>
+            </div>
+            <button class="btn-outline-navy" style="width: 100%; min-height: 40px; font-size: 0.85rem;" onclick="navigateTo('contact')">Learn About In-House Extrusion</button>
+          </div>
+        </article>
+
+        <!-- Story 3: PFAS-Free Adhesive -->
+        <article class="news-card">
+          <div class="news-card-img">
+            <img src="matrix-boxes-stack.jpg" alt="Matrix Engineering Product Boxes">
+            <span class="news-badge">Chemistry Breakthrough</span>
+          </div>
+          <div class="news-card-content">
+            <div>
+              <div class="news-date">June 2026 • Adhesive Technology</div>
+              <h3>PFAS-Free Clean-Peel Adhesive Backing Formulations Deployed</h3>
+              <p>
+                Meeting the stringent hazardous chemical restrictions of PPWR Article 5 ahead of statutory deadlines, our proprietary adhesive backing delivers high shear resistance on high-speed platens with zero fluorinated substances or toxic residues.
+              </p>
+            </div>
+            <button class="btn-outline-navy" style="width: 100%; min-height: 40px; font-size: 0.85rem;" onclick="navigateTo('contact')">Request Adhesive Spec Sheet</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== VIEW 7: CUSTOMER PORTAL (CLIENT HUB) ==================== -->
+  <main id="view-portal" class="page-view">
+    <div class="page-hero">
+      <div class="container">
+        <div class="section-head" style="margin-bottom: 0;">
+          <span class="section-eyebrow">Customer Self-Service Hub</span>
+          <h2 class="section-title">Client Production & Order Tracker</h2>
+          <p class="section-desc">
+            Monitor real-time manufacturing progression, adjust active order quantities, approve payments, and track dispatches.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container portal-layout">
+      <!-- Live Order Dashboard Card -->
+      <div class="portal-dashboard-card">
+        <div class="portal-header-bar">
+          <div class="client-profile-info">
+            <h3>Apex Packaging Solutions Ltd</h3>
+            <p>Account ID: <strong>MX-ACC-4089</strong> • Plant: Leeds Converter Unit 2</p>
+          </div>
+          <div class="order-id-badge">
+            ACTIVE ORDER: <span style="color: var(--matrix-red);">#MX-2026-8942</span>
+          </div>
+        </div>
+
+        <!-- 4-Stage Manufacturing Progression Stepper -->
+        <div class="stepper-container">
+          <div class="step-node completed" id="step1">
+            <div class="step-node-num">✓ Stage 01</div>
+            <div class="step-node-title">Order Confirmed</div>
+            <div class="step-node-sub">Profile specs validated</div>
+          </div>
+          <div class="step-node completed" id="step2">
+            <div class="step-node-num">✓ Stage 02</div>
+            <div class="step-node-title">Extrusion & Milling</div>
+            <div class="step-node-sub">Ballasalla Line 2 Complete</div>
+          </div>
+          <div class="step-node active-step" id="step3">
+            <div class="step-node-num">● Stage 03</div>
+            <div class="step-node-title" id="stage3Title">Ready for Dispatch</div>
+            <div class="step-node-sub" id="stage3Sub">Awaiting final release</div>
+          </div>
+          <div class="step-node" id="step4">
+            <div class="step-node-num">Stage 04</div>
+            <div class="step-node-title" id="stage4Title">In Transit</div>
+            <div class="step-node-sub" id="stage4Sub">Tracking ID pending</div>
+          </div>
+        </div>
+
+        <!-- Split View: Order Details & Actions -->
+        <div class="portal-grid-split">
+          <div>
+            <h4 style="font-size: 1.1rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 1rem;">Active Production Items</h4>
+            <div class="portal-table-wrap">
+              <table class="portal-table">
+                <thead>
+                  <tr>
+                    <th>Product & Specification</th>
+                    <th>Profile Type</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="orderItemsTable">
+                  <tr>
+                    <td><strong>PHOENIX+™</strong> 0.40 × 1.30 mm</td>
+                    <td>Synthetic Standard</td>
+                    <td id="qtyItem1">40 Boxes</td>
+                    <td><span style="color: var(--matrix-green); font-weight: 700;">● Milled & Packed</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>ULTRA-SR™</strong> 0.50 × 1.50 mm</td>
+                    <td>Steel Replacement</td>
+                    <td id="qtyItem2">20 Boxes</td>
+                    <td><span style="color: var(--matrix-green); font-weight: 700;">● Quality Passed</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Order Amendment Form (Min 10 boxes constraint) -->
+            <div class="amendment-box-panel" id="amendmentSection">
+              <h4>Add Boxes to Active Run</h4>
+              <p>Need extra boxes on this batch before pallet sealing? Minimum addition is <strong>10 boxes</strong> per spec.</p>
+              <div class="amend-input-row">
+                <select id="amendProductSelect" style="padding: 0.6rem 0.85rem; border: 1.5px solid var(--border-medium); border-radius: var(--radius-sm); font-weight: 600;">
+                  <option value="item1">PHOENIX+ 0.40 × 1.30 mm</option>
+                  <option value="item2">ULTRA-SR 0.50 × 1.50 mm</option>
+                </select>
+                <input type="number" id="amendQtyInput" value="10" min="10" step="5">
+                <button class="btn-solid-navy" style="padding: 0.6rem 1.15rem; min-height: 40px; font-size: 0.85rem;" onclick="handleAddBoxes()">+ Add to Batch</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action & Payment Sidebar -->
+          <div class="portal-sidebar-card">
+            <div>
+              <div class="sidebar-section-title">Order Financials & Dispatch</div>
+              <div class="status-alert-box" style="margin-bottom: 1.25rem;">
+                <div style="font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase; font-weight: 700;">Total Batch Count</div>
+                <div style="font-size: 1.75rem; font-weight: 900; color: var(--matrix-navy);" id="totalBoxCount">60 Boxes</div>
+                <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;" id="subtotalText">Total: £1,680.00 (Excl. VAT)</div>
+              </div>
+
+              <!-- Payment Action Panel -->
+              <div id="paymentPromptBox" style="background: rgba(255, 46, 23, 0.05); border: 1.5px solid var(--matrix-red); border-radius: var(--radius-md); padding: 1.25rem;">
+                <div style="font-size: 0.88rem; font-weight: 800; color: var(--matrix-red); margin-bottom: 0.35rem;">Action Required: Release for Freight</div>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
+                  Production and QA inspection are 100% complete at our Ballasalla facility. Settle invoice to release pallet for evening ferry dispatch.
+                </p>
+                <button class="btn-green-pay" style="width: 100%; justify-content: center;" onclick="processPortalPayment()">
+                  💳 Pay & Release Dispatch
+                </button>
+              </div>
+
+              <!-- Live Tracking (Hidden Until Paid) -->
+              <div id="trackingInfoBox" style="display: none; background: rgba(16, 185, 129, 0.08); border: 1.5px solid var(--matrix-green); border-radius: var(--radius-md); padding: 1.25rem;">
+                <div style="font-size: 0.88rem; font-weight: 800; color: var(--matrix-green-dark); margin-bottom: 0.25rem;">Shipment Dispatched</div>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+                  Carrier: <strong>DHL Express / Isle of Man Freight</strong><br>
+                  Tracking Number: <strong style="font-family: var(--font-mono); color: var(--matrix-navy);">DHL-IOM-8839210</strong>
+                </p>
+                <div style="font-size: 0.75rem; color: var(--matrix-navy); font-weight: 700;">
+                  ● Estimated Delivery: Tomorrow, 10:30 AM
+                </div>
+              </div>
+            </div>
+
+            <div style="font-size: 0.75rem; color: var(--text-dim); text-align: center;">
+              Direct Logistics Desk: +44 (0)1624 822960
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== VIEW 8: CONTACT PAGE ==================== -->
   <main id="view-contact" class="page-view">
     <div class="page-hero">
       <div class="container">
@@ -1470,8 +1459,8 @@
         </div>
 
         <div class="contact-form-shell">
-          <h3 style="font-size: 1.5rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.5rem;">Request Trial Sample Box</h3>
-          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.75rem;">Tell us your current substrate and machine setup to receive tailored samples.</p>
+          <h3 style="font-size: 1.4rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.4rem;">Request Trial Sample Box</h3>
+          <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.5rem;">Tell us your current substrate and machine setup to receive tailored samples.</p>
 
           <form id="contactForm" onsubmit="handleForm(event)">
             <div class="form-field">
@@ -1516,9 +1505,7 @@
           <p style="color: #94a3b8; line-height: 1.6; margin-bottom: 1rem;">
             Established in July 2009. Leading manufacturer of high-quality creasing matrix and ejection rubber for use in the global folding carton and die-cutting industries.
           </p>
-          <div style="font-size: 0.75rem; color: #64748b;">
-            Company No: 123380C
-          </div>
+          <div style="font-size: 0.75rem; color: #64748b;">Company No: 123380C</div>
         </div>
 
         <div class="footer-col">
@@ -1528,8 +1515,8 @@
             <li><a onclick="navigateTo('about')">About Us</a></li>
             <li><a onclick="navigateTo('products')">Products</a></li>
             <li><a onclick="navigateTo('technical')">Technical & Sizing</a></li>
-            <li><a onclick="navigateTo('accessories')">Accessories</a></li>
-            <li><a onclick="navigateTo('contact')">Contact Us</a></li>
+            <li><a onclick="navigateTo('news')">Latest News (PPWR)</a></li>
+            <li><a onclick="navigateTo('portal')">Customer Portal</a></li>
           </ul>
         </div>
 
@@ -1556,53 +1543,116 @@
       </div>
 
       <div class="footer-bottom">
-        <div>© 2026 Matrix Engineering Ltd. All rights reserved.</div>
-        <div>British Made for Quality • Isle of Man Chamber of Commerce • IADD Member</div>
+        <div>© 2026 Creasing Matrix. All rights reserved.</div>
+        <div>British Made for Quality • Isle of Man Chamber of Commerce • PPWR 2026 Compliant</div>
       </div>
     </div>
   </footer>
 
   <script>
-    // Traditional Multi-Page Navigation Router
+    // Navigation Router
+    const menuToggle = document.getElementById('menuToggle');
+    const siteNav = document.getElementById('siteNav');
+
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('open');
+      siteNav.classList.toggle('mobile-active');
+    });
+
     function navigateTo(pageId) {
-      // Hide all views
+      menuToggle.classList.remove('open');
+      siteNav.classList.remove('mobile-active');
+
       document.querySelectorAll('.page-view').forEach(view => {
         view.classList.remove('active-view');
       });
 
-      // Show selected view
       const targetView = document.getElementById(`view-${pageId}`);
-      if (targetView) {
-        targetView.classList.add('active-view');
-      }
+      if (targetView) targetView.classList.add('active-view');
 
-      // Update Nav Button Active State
       document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.classList.remove('active');
       });
       const targetBtn = document.getElementById(`nav-${pageId}`);
-      if (targetBtn) {
-        targetBtn.classList.add('active');
-      }
+      if (targetBtn) targetBtn.classList.add('active');
 
-      // Scroll to top of the page smoothly
       window.scrollTo({ top: 0, behavior: 'smooth' });
       history.pushState(null, '', `#${pageId}`);
     }
 
-    // Handle Browser Back/Forward buttons and direct URL hash loading
     window.addEventListener('popstate', () => {
       const hash = window.location.hash.replace('#', '') || 'home';
       navigateTo(hash);
     });
 
-    // Initialize initial view based on URL hash
     window.addEventListener('DOMContentLoaded', () => {
       const initialHash = window.location.hash.replace('#', '') || 'home';
       navigateTo(initialHash);
     });
 
-    // Live Matrix Sizing Calculator Logic
+    // Customer Portal Mockup Logic
+    let item1Boxes = 40;
+    let item2Boxes = 20;
+    const pricePerBox = 28.00;
+
+    function updatePortalFinancials() {
+      const totalBoxes = item1Boxes + item2Boxes;
+      const subtotal = totalBoxes * pricePerBox;
+      document.getElementById('totalBoxCount').textContent = `${totalBoxes} Boxes`;
+      document.getElementById('subtotalText').textContent = `Total: £${subtotal.toLocaleString('en-GB', { minimumFractionDigits: 2 })} (Excl. VAT)`;
+    }
+
+    function handleAddBoxes() {
+      const select = document.getElementById('amendProductSelect');
+      const qtyInput = document.getElementById('amendQtyInput');
+      const qty = parseInt(qtyInput.value, 10);
+
+      // Validate minimum 10 boxes
+      if (isNaN(qty) || qty < 10) {
+        alert('Order Amendment Notice: The minimum quantity addition is 10 boxes per specification.');
+        qtyInput.value = 10;
+        return;
+      }
+
+      if (select.value === 'item1') {
+        item1Boxes += qty;
+        document.getElementById('qtyItem1').textContent = `${item1Boxes} Boxes`;
+      } else {
+        item2Boxes += qty;
+        document.getElementById('qtyItem2').textContent = `${item2Boxes} Boxes`;
+      }
+
+      updatePortalFinancials();
+      alert(`Success: ${qty} additional boxes added to batch #MX-2026-8942. Production schedule adjusted.`);
+      qtyInput.value = 10;
+    }
+
+    function processPortalPayment() {
+      const total = (item1Boxes + item2Boxes) * pricePerBox;
+      const confirmPay = confirm(`Authorize card/invoice payment of £${total.toLocaleString('en-GB', { minimumFractionDigits: 2 })} to release Order #MX-2026-8942?`);
+      
+      if (confirmPay) {
+        // Update UI State to Dispatched
+        document.getElementById('step3').classList.remove('active-step');
+        document.getElementById('step3').classList.add('completed');
+        document.getElementById('step3').querySelector('.step-node-num').textContent = '✓ Stage 03';
+        document.getElementById('stage3Title').textContent = 'Payment Succeeded';
+        document.getElementById('stage3Sub').textContent = 'Receipt sent to accounts';
+
+        document.getElementById('step4').classList.add('active-step');
+        document.getElementById('step4').querySelector('.step-node-num').textContent = '● Stage 04';
+        document.getElementById('stage4Title').textContent = 'Dispatched (In Transit)';
+        document.getElementById('stage4Sub').textContent = 'DHL Courier Booked';
+
+        document.getElementById('paymentPromptBox').style.display = 'none';
+        document.getElementById('amendmentSection').style.display = 'none';
+        document.getElementById('trackingInfoBox').style.display = 'block';
+
+        alert('Payment Confirmed: Order #MX-2026-8942 has been marked as Dispatched. Live DHL tracking is now available.');
+      }
+    }
+
+    // Matrix Sizing Calculator Logic
     const caliperInput = document.getElementById('boardCaliper');
     const caliperVal = document.getElementById('caliperVal');
     const ruleInput = document.getElementById('creasingRule');
