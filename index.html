@@ -567,9 +567,6 @@
       align-items: center;
       justify-content: center;
     }
-    .detail-gallery-main.dark-hero {
-      background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0a1329 100%);
-    }
     .detail-gallery-main img {
       width: 100%;
       height: 100%;
@@ -1309,7 +1306,7 @@
     <div class="container products-layout">
       <div class="prod-grid-large">
         
-        <!-- PHOENIX+ (IMG_0341) -->
+        <!-- PHOENIX+ (IMG_0341) - CLICK OPENS PRODUCT DETAIL PAGE -->
         <div class="prod-item-card" style="cursor: pointer;" onclick="navigateTo('phoenix-plus')">
           <div class="prod-img-box">
             <span class="prod-tag-float">POLYMER BASE</span>
@@ -1332,7 +1329,7 @@
           </div>
         </div>
 
-        <!-- ULTRA-SR (IMG_0342) -->
+        <!-- ULTRA-SR (IMG_0342) - CLICK OPENS PRODUCT DETAIL PAGE -->
         <div class="prod-item-card" style="cursor: pointer;" onclick="navigateTo('ultra-sr')">
           <div class="prod-img-box">
             <span class="prod-tag-float">STEEL BASE</span>
@@ -1356,7 +1353,7 @@
         </div>
 
         <!-- EXCEED RUBBER (IMG_0340) -->
-        <div class="prod-item-card" style="cursor: pointer;" onclick="navigateTo('exceed-rubber')">
+        <div class="prod-item-card">
           <div class="prod-img-box prod-img-dark-bg">
             <span class="prod-tag-float" style="background: rgba(255,46,23,0.9);">EJECTION PROFILE</span>
             <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0340.png" alt="Exceed Rubber" loading="lazy">
@@ -1364,21 +1361,21 @@
           <div class="prod-content-box">
             <div>
               <h3>EXCEED™ RUBBER</h3>
-              <p>Advanced micro-cellular ejection profile that maintains its exact shape for over 1.6 million impressions without degrading or losing rebound memory.</p>
+              <p>Maintains dynamic profile for over 1.6 million impressions without degrading over time. Shortens makeready time and completely eliminates angel hair.</p>
             </div>
             <div>
               <table class="spec-table-compact">
                 <tr><td class="k">Impression Life</td><td class="v">1,600,000+ Cuts</td></tr>
                 <tr><td class="k">Advantage</td><td class="v">Zero Angel Hair</td></tr>
-                <tr><td class="k">Profile Dimensions</td><td class="v">5.00mm & 7.50mm Widths</td></tr>
-                <tr><td class="k">Forms</td><td class="v">Custom Profile Strip</td></tr>
+                <tr><td class="k">Profile Dimensions</td><td class="v">7.00mm × 5.00mm</td></tr>
+                <tr><td class="k">Forms</td><td class="v">Flat & Profile Strip</td></tr>
               </table>
-              <button class="btn-solid-navy" style="width: 100%;" onclick="event.stopPropagation(); navigateTo('exceed-rubber')">View Exceed Rubber Details & Chart →</button>
+              <button class="btn-solid-navy" style="width: 100%;" onclick="navigateTo('contact')">Enquire Exceed Rubber</button>
             </div>
           </div>
         </div>
 
-        <!-- PHOENIX XL (IMG_0345) -->
+        <!-- PHOENIX XL (IMG_0345) - CLICK OPENS PRODUCT DETAIL PAGE -->
         <div class="prod-item-card" style="cursor: pointer;" onclick="navigateTo('phoenix-xl')">
           <div class="prod-img-box">
             <span class="prod-tag-float">WIDE BASE</span>
@@ -1422,6 +1419,7 @@
     </div>
 
     <div class="container detail-layout">
+      
       <!-- Top Overview Row -->
       <div class="detail-grid-top">
         <div class="detail-gallery-main">
@@ -1444,50 +1442,443 @@
           </div>
         </div>
       </div>
-      <!-- Add full chart HTML from earlier versions here when expanding locally -->
-    </div>
-  </main>
 
-  <!-- ==================== VIEW 3B: DEDICATED PHOENIX XL PRODUCT PAGE ==================== -->
-  <main id="view-phoenix-xl" class="page-view">
-    <div class="page-hero">
-      <div class="container">
-        <div style="margin-bottom: 1.25rem;">
-          <button onclick="navigateTo('products')" style="background: none; border: none; color: var(--matrix-navy); font-weight: 800; font-size: 0.9rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem;">
-            ← Back to Products Range
-          </button>
+      <!-- Key Features Grid -->
+      <div class="section-head">
+        <span class="section-eyebrow">Engineering Advantages</span>
+        <h2 class="section-title">Key Performance Features</h2>
+        <p class="section-desc">Developed to provide flawless channel alignment, immaculate crease definition, and effortless plate changeover.</p>
+      </div>
+
+      <div class="features-card-grid">
+        <div class="feat-card">
+          <div class="feat-icon">✓</div>
+          <h4>Clean-Peel Adhesive System</h4>
+          <p>Features our proprietary high-tack, clean-peel adhesive backing that holds firmly during rigorous impression cycles yet removes effortlessly without leaving sticky platen residue.</p>
         </div>
-        <div class="section-head" style="margin-bottom: 0; text-align: left; max-width: 100%;">
-          <span class="section-eyebrow">Flagship Polymer Range</span>
-          <h2 class="section-title">PHOENIX XL™</h2>
-          <p class="section-desc" style="max-width: 800px;">The Ultimate Plastic-Based Creasing Matrix Engineered for High-Volume Production Runs.</p>
+
+        <div class="feat-card">
+          <div class="feat-icon">✓</div>
+          <h4>Self-Centering Locators</h4>
+          <p>Specially designed precision locator bridges seat accurately and securely over the rule, guaranteeing perfect channel alignment and eliminating channel twist.</p>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-icon">✓</div>
+          <h4>Next-Gen Virgin Polymer</h4>
+          <p>Utilises advanced high-impact polymers that withstand millions of cuts without channel wall collapse, delamination, or edge deformation.</p>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-icon">✓</div>
+          <h4>Ultra-Smooth Shoulder Profile</h4>
+          <p>Precision-beveled shoulders allow printed and laminated folding carton sheets to glide effortlessly over the counter plate at top press speeds without witness marks.</p>
+        </div>
+
+        <div class="feat-card" style="grid-column: 1 / -1;">
+          <div class="feat-icon">✓</div>
+          <h4>Dual-Surface Colour Coding</h4>
+          <p>Height specifications are colour-coded and printed on both the matrix base and locator bridge for rapid, error-free identification in busy pressroom environments.</p>
         </div>
       </div>
-    </div>
 
-    <div class="container detail-layout">
-      <!-- Top Overview Row -->
-      <div class="detail-grid-top">
-        <div class="detail-gallery-main">
-          <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0345.png" alt="Phoenix XL Full Box Showcase">
-        </div>
-
-        <div class="detail-info-pane">
-          <span class="detail-subtitle">High-Volume Converting Excellence</span>
-          <h1>Uncompromising Creasing Precision & Durability</h1>
-          <p class="detail-desc-lead">
-            Born from our relentless pursuit of engineering durability and pressroom precision, the <strong>Phoenix XL™</strong> represents the pinnacle in plastic-based matrix technology. By uniting next-generation virgin polymers, specialized clean-peel adhesives, and a refined shoulder profile, Phoenix XL delivers an uncompromising creasing solution.
-          </p>
-          <p class="detail-desc-lead">
-            Purpose-built to master the demanding tolerances of high-speed die-cutting, the Phoenix XL drastically minimizes machine downtime—keeping your press running at peak efficiency while protecting your production margins.
-          </p>
-
-          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
-            <button class="btn-solid-red" onclick="navigateTo('contact')">Request Phoenix XL Samples</button>
-            <button class="btn-solid-navy" onclick="navigateTo('portal')">Order via Client Portal</button>
+      <!-- Size Chart Technical Specifications -->
+      <div class="chart-section-shell">
+        <div class="chart-header-row">
+          <div>
+            <span class="section-eyebrow">Factory Sizing Specifications</span>
+            <h3>Phoenix+ Size & Selection Chart</h3>
+          </div>
+          <div class="heritage-tag" style="background: var(--bg-slate); padding: 8px 14px; border-radius: var(--radius-sm); font-size: 0.8rem;">
+            ● 750mm Standard Strip Length
           </div>
         </div>
+
+        <!-- 1. 7mm Mini Centre Base -->
+        <div style="margin-bottom: 2.5rem;">
+          <h4 style="font-size: 1.2rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.75rem;">
+            7mm Mini Centre Base
+          </h4>
+
+          <div class="tech-diagram-box">
+            <svg width="240" height="42" viewBox="0 0 240 42" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="10,38 30,15 95,15 95,38" fill="#182B6B" />
+              <polygon points="145,38 145,15 210,15 230,38" fill="#182B6B" />
+              <line x1="95" y1="10" x2="145" y2="10" stroke="#0f172a" stroke-width="1.5" />
+              <line x1="95" y1="5" x2="95" y2="15" stroke="#0f172a" stroke-width="1.5" />
+              <line x1="145" y1="5" x2="145" y2="15" stroke="#0f172a" stroke-width="1.5" />
+              <text x="120" y="8" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="900" text-anchor="middle" fill="#0f172a">a (Width)</text>
+              <line x1="105" y1="15" x2="105" y2="38" stroke="#FF2E17" stroke-width="1.5" />
+              <line x1="100" y1="15" x2="110" y2="15" stroke="#FF2E17" stroke-width="1.5" />
+              <line x1="100" y1="38" x2="110" y2="38" stroke="#FF2E17" stroke-width="1.5" />
+              <text x="115" y="30" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="900" fill="#FF2E17">b (Height)</text>
+            </svg>
+            <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-dim); margin-top: 4px;">Profile Cross-Section: 7mm Mini Centre Base</div>
+          </div>
+
+          <div class="size-table-container">
+            <table class="size-table">
+              <thead>
+                <tr>
+                  <th style="width: 110px;">Base Colour</th>
+                  <th style="width: 140px;">Height (mm) [b]</th>
+                  <th>Available Channel Widths (mm) [a]</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="color-swatch-bar color-pink"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.30 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">0.5, 0.6, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-navy"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.40 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">0.5, 0.6, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-lilac"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.45 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-red"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.50 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1 and 2.3</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-grey"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.55 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1 and 2.3</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-yellow"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.60 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9 and 2.1</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-orange"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.70 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.5, 1.6, 1.7, 1.9 and 2.1</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="box-yield-badge">📦 Contents of 7mm Mini box: 28 strips × 750mm = <strong>21 Metres</strong></div>
+        </div>
+
+        <hr style="border: none; border-top: 1.5px solid var(--border-subtle); margin: 2.5rem 0;">
+
+        <!-- 2. 7mm Off-Centre Base -->
+        <div style="margin-bottom: 2.5rem;">
+          <h4 style="font-size: 1.2rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.75rem;">
+            7mm Off-Centre Base
+          </h4>
+
+          <div class="tech-diagram-box">
+            <svg width="240" height="42" viewBox="0 0 240 42" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="10,38 10,15 55,15 55,38" fill="#182B6B" />
+              <polygon points="105,38 105,15 195,15 230,38" fill="#182B6B" />
+              <line x1="55" y1="10" x2="105" y2="10" stroke="#0f172a" stroke-width="1.5" />
+              <line x1="55" y1="5" x2="55" y2="15" stroke="#0f172a" stroke-width="1.5" />
+              <line x1="105" y1="5" x2="105" y2="15" stroke="#0f172a" stroke-width="1.5" />
+              <text x="80" y="8" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="900" text-anchor="middle" fill="#0f172a">a (Width)</text>
+              <line x1="65" y1="15" x2="65" y2="38" stroke="#FF2E17" stroke-width="1.5" />
+              <line x1="60" y1="15" x2="70" y2="15" stroke="#FF2E17" stroke-width="1.5" />
+              <line x1="60" y1="38" x2="70" y2="38" stroke="#FF2E17" stroke-width="1.5" />
+              <text x="75" y="30" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="900" fill="#FF2E17">b</text>
+            </svg>
+            <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-dim); margin-top: 4px;">Profile Cross-Section: 7mm Off-Centre Channel</div>
+          </div>
+
+          <div class="size-table-container">
+            <table class="size-table">
+              <thead>
+                <tr>
+                  <th style="width: 110px;">Base Colour</th>
+                  <th style="width: 140px;">Height (mm) [b]</th>
+                  <th>Available Channel Widths (mm) [a]</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="color-swatch-bar color-pink"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.30 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">0.5, 0.6, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-navy"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.40 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">0.5, 0.6, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-lilac"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.45 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-red"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.50 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1 and 2.3</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-grey"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.55 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1 and 2.3</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-yellow"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.60 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1, 2.3 and 2.5</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-magenta"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.65 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.5, 1.6, 1.7, 1.9, 2.1, 2.3 and 2.5</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-orange"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.70 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.5, 1.6, 1.7, 1.9, 2.1, 2.3 and 2.5</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="box-yield-badge">📦 Contents of 7mm Off-Centre box: 28 strips × 750mm = <strong>21 Metres</strong></div>
+        </div>
+
+        <hr style="border: none; border-top: 1.5px solid var(--border-subtle); margin: 2.5rem 0;">
+
+        <!-- 3. 10mm Standard Centre Base -->
+        <div style="margin-bottom: 2.5rem;">
+          <h4 style="font-size: 1.2rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.75rem;">
+            10mm Standard Centre Base
+          </h4>
+
+          <div class="tech-diagram-box">
+            <svg width="260" height="42" viewBox="0 0 260 42" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="10,38 35,15 105,15 105,38" fill="#182B6B" />
+              <polygon points="155,38 155,15 225,15 250,38" fill="#182B6B" />
+              <line x1="105" y1="10" x2="155" y2="10" stroke="#0f172a" stroke-width="1.5" />
+              <line x1="105" y1="5" x2="105" y2="15" stroke="#0f172a" stroke-width="1.5" />
+              <line x1="155" y1="5" x2="155" y2="15" stroke="#0f172a" stroke-width="1.5" />
+              <text x="130" y="8" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="900" text-anchor="middle" fill="#0f172a">a (Width)</text>
+              <line x1="115" y1="15" x2="115" y2="38" stroke="#FF2E17" stroke-width="1.5" />
+              <line x1="110" y1="15" x2="120" y2="15" stroke="#FF2E17" stroke-width="1.5" />
+              <line x1="110" y1="38" x2="120" y2="38" stroke="#FF2E17" stroke-width="1.5" />
+              <text x="125" y="30" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="900" fill="#FF2E17">b</text>
+            </svg>
+            <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-dim); margin-top: 4px;">Profile Cross-Section: 10mm Standard Centre</div>
+          </div>
+
+          <div class="size-table-container">
+            <table class="size-table">
+              <thead>
+                <tr>
+                  <th style="width: 110px;">Base Colour</th>
+                  <th style="width: 140px;">Height (mm) [b]</th>
+                  <th>Available Channel Widths (mm) [a]</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="color-swatch-bar color-pink"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.30 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">0.5, 0.6, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-navy"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.40 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">0.5, 0.6, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-lilac"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.45 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-red"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.50 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1 and 2.3</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-grey"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.55 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1 and 2.3</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-yellow"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.60 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.8, 3.0 and 3.2</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-magenta"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.65 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.8, 3.0 and 3.2</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-orange"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.70 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.8, 3.0 and 3.2</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-green"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.80 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.8, 3.0 and 3.2</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-sky"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">1.00 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">2.3, 2.5, 2.7, 2.8, 3.0 and 3.2</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="box-yield-badge">📦 Contents of 10mm Standard box: 32 strips × 750mm = <strong>24 Metres</strong></div>
+        </div>
+
+        <hr style="border: none; border-top: 1.5px solid var(--border-subtle); margin: 2.5rem 0;">
+
+        <!-- 4. 12mm Centre Base -->
+        <div style="margin-bottom: 2.5rem;">
+          <h4 style="font-size: 1.2rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.75rem;">
+            12mm Centre Base
+          </h4>
+
+          <div class="tech-diagram-box">
+            <svg width="270" height="42" viewBox="0 0 270 42" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="10,38 35,15 110,15 110,38" fill="#182B6B" />
+              <polygon points="160,38 160,15 235,15 260,38" fill="#182B6B" />
+              <line x1="110" y1="10" x2="160" y2="10" stroke="#0f172a" stroke-width="1.5" />
+              <line x1="110" y1="5" x2="110" y2="15" stroke="#0f172a" stroke-width="1.5" />
+              <line x1="160" y1="5" x2="160" y2="15" stroke="#0f172a" stroke-width="1.5" />
+              <text x="135" y="8" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="900" text-anchor="middle" fill="#0f172a">a (Width)</text>
+              <line x1="120" y1="15" x2="120" y2="38" stroke="#FF2E17" stroke-width="1.5" />
+              <line x1="115" y1="15" x2="125" y2="15" stroke="#FF2E17" stroke-width="1.5" />
+              <line x1="115" y1="38" x2="125" y2="38" stroke="#FF2E17" stroke-width="1.5" />
+              <text x="130" y="30" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="900" fill="#FF2E17">b</text>
+            </svg>
+            <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-dim); margin-top: 4px;">Profile Cross-Section: 12mm Wide Centre Base</div>
+          </div>
+
+          <div class="size-table-container">
+            <table class="size-table">
+              <thead>
+                <tr>
+                  <th style="width: 110px;">Base Colour</th>
+                  <th style="width: 140px;">Height (mm) [b]</th>
+                  <th>Available Channel Widths (mm) [a]</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="color-swatch-bar color-yellow"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.60 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">3.5*, 4.0# and 4.5#</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-magenta"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.65 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">3.5*, 4.0# and 4.5#</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-orange"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.70 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">3.5*, 4.0#, 4.5# and 5.0#</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-green"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.80 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">3.5*, 4.0#, 4.5# and 5.0#</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-sky"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">1.00 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">3.5*, 4.0#, 4.5# and 5.0#</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-grey"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">1.20 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">3.5*, 4.0#, 4.5# and 5.0#</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-lime"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">1.50 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">3.5*, 4.0#, 4.5# and 5.0#</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <div class="box-yield-badge">* Contents of 3.5mm box: 27 strips × 750mm = <strong>20.25 Metres</strong></div>
+            <div class="box-yield-badge" style="background: rgba(24, 43, 107, 0.08);"># Contents of 4.0-5.0mm box: 20 strips × 750mm = <strong>15 Metres</strong></div>
+          </div>
+        </div>
+
+        <hr style="border: none; border-top: 1.5px solid var(--border-subtle); margin: 2.5rem 0;">
+
+        <!-- 5. 12mm Double Crease Base -->
+        <div>
+          <h4 style="font-size: 1.2rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.75rem;">
+            12mm Double Crease Base
+          </h4>
+
+          <div class="tech-diagram-box">
+            <svg width="280" height="45" viewBox="0 0 280 45" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="10,40 30,15 70,15 70,40" fill="#182B6B" />
+              <rect x="110" y="15" width="60" height="25" fill="#182B6B" />
+              <polygon points="210,40 210,15 250,15 270,40" fill="#182B6B" />
+              <line x1="70" y1="10" x2="110" y2="10" stroke="#0f172a" stroke-width="1.2" />
+              <text x="90" y="8" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="900" text-anchor="middle" fill="#0f172a">a</text>
+              <line x1="170" y1="10" x2="210" y2="10" stroke="#0f172a" stroke-width="1.2" />
+              <text x="190" y="8" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="900" text-anchor="middle" fill="#0f172a">a</text>
+              <text x="140" y="8" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="900" text-anchor="middle" fill="#FF2E17">d (Rule Gap)</text>
+            </svg>
+            <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-dim); margin-top: 4px;">Double Crease Cross-Section (Distance Between Rules: 3.0, 4.0 and 5.0mm)</div>
+          </div>
+
+          <div class="size-table-container">
+            <table class="size-table">
+              <thead>
+                <tr>
+                  <th style="width: 110px;">Base Colour</th>
+                  <th style="width: 140px;">Height (mm) [b]</th>
+                  <th>Available Channel Widths (mm) [a]</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="color-swatch-bar color-navy"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.40 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.0, 1.3, and 1.5</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-lilac"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.45 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.0, 1.3, and 1.5</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-red"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.50 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.0, 1.3, and 1.5</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="box-yield-badge">📦 Contents of 12mm Double Crease box: 24 strips × 750mm = <strong>18 Metres</strong></div>
+        </div>
+
       </div>
+
+      <!-- Action Footer -->
+      <div style="text-align: center; background: var(--bg-light); border-radius: var(--radius-lg); padding: 2.5rem 1.25rem; border: 1.5px solid var(--border-subtle);">
+        <h3 style="font-size: 1.5rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.5rem;">Configure Phoenix+™ for Your Pressroom</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 600px; margin: 0 auto 1.5rem;">
+          Our technical specialists are ready to calculate the exact crease depth and width combinations for your folding carton specs.
+        </p>
+        <button class="btn-solid-red" onclick="navigateTo('contact')">Request Technical Recommendation</button>
+      </div>
+
     </div>
   </main>
 
@@ -1509,6 +1900,7 @@
     </div>
 
     <div class="container detail-layout">
+      
       <!-- Top Overview Row -->
       <div class="detail-grid-top">
         <div class="detail-gallery-main">
@@ -1531,11 +1923,418 @@
           </div>
         </div>
       </div>
+
+      <!-- Key Features Grid -->
+      <div class="section-head">
+        <span class="section-eyebrow">Engineering Advantages</span>
+        <h2 class="section-title">Key Performance Features</h2>
+        <p class="section-desc">Engineered for maximum hardness, zero edge-lift, and razor-sharp crease registration on demanding die-cutting platens.</p>
+      </div>
+
+      <div class="features-card-grid">
+        <div class="feat-card">
+          <div class="feat-icon">✓</div>
+          <h4>High-Tensile Steel Baseplate</h4>
+          <p>Fabricated from ultra-flat, hardened steel to provide an immovable creasing anvil that eliminates channel deflection and crushing under severe platen pressures.</p>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-icon">✓</div>
+          <h4>100 Mic Mylar Film Construction</h4>
+          <p>Features ultra-durable 100 Micron Mylar channel shoulders that resist abrasive wear and fibre tearing during high-speed folding boxboard processing.</p>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-icon">✓</div>
+          <h4>Full Visual Colour-Coding</h4>
+          <p>Comprehensive colour matching from Mauve (0.38 x 0.5mm) through to Orange (0.90 x 3.0mm) for instantaneous profile identification and fast makeready changes.</p>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-icon">✓</div>
+          <h4>Zero Edge-Lift Film Layer</h4>
+          <p>Specially coated micro-thin adhesive tape prevents sheet snagging and edge lifting, maintaining flawless board pass-through on automated high-speed carton lines.</p>
+        </div>
+
+        <div class="feat-card" style="grid-column: 1 / -1;">
+          <div class="feat-icon">✓</div>
+          <h4>Centre & Off-Centre Configurations</h4>
+          <p>Supplied in both 7mm Standard Centre and 7mm Off-Centre variants to accommodate tight rule spacings, reverse creases, and complex structural packaging dies.</p>
+        </div>
+      </div>
+
+      <!-- Size Chart Technical Specifications -->
+      <div class="chart-section-shell">
+        <div class="chart-header-row">
+          <div>
+            <span class="section-eyebrow">Factory Specification</span>
+            <h3>Ultra-SR Size & Selection Chart</h3>
+          </div>
+          <div class="heritage-tag" style="background: var(--bg-slate); padding: 8px 14px; border-radius: var(--radius-sm); font-size: 0.8rem;">
+            ● 750mm Standard Strip Length • 100 Mic Mylar
+          </div>
+        </div>
+
+        <!-- 1. 7mm Centre Base Chart -->
+        <div style="margin-bottom: 2.5rem;">
+          <h4 style="font-size: 1.2rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.75rem;">
+            7mm Centre Base (100 Mic Mylar)
+          </h4>
+
+          <div class="tech-diagram-box">
+            <svg width="240" height="42" viewBox="0 0 240 42" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="10,38 30,15 95,15 95,38" fill="#182B6B" />
+              <polygon points="145,38 145,15 210,15 230,38" fill="#182B6B" />
+              <line x1="95" y1="10" x2="145" y2="10" stroke="#0f172a" stroke-width="1.5" />
+              <line x1="95" y1="5" x2="95" y2="15" stroke="#0f172a" stroke-width="1.5" />
+              <line x1="145" y1="5" x2="145" y2="15" stroke="#0f172a" stroke-width="1.5" />
+              <text x="120" y="8" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="900" text-anchor="middle" fill="#0f172a">a (Width)</text>
+              <line x1="105" y1="15" x2="105" y2="38" stroke="#FF2E17" stroke-width="1.5" />
+              <line x1="100" y1="15" x2="110" y2="15" stroke="#FF2E17" stroke-width="1.5" />
+              <line x1="100" y1="38" x2="110" y2="38" stroke="#FF2E17" stroke-width="1.5" />
+              <text x="115" y="30" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="900" fill="#FF2E17">b (Height)</text>
+            </svg>
+            <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-dim); margin-top: 4px;">Profile Cross-Section: 7mm Steel Centre Base</div>
+          </div>
+
+          <div class="size-table-container">
+            <table class="size-table">
+              <thead>
+                <tr>
+                  <th style="width: 140px;">Base Colour</th>
+                  <th style="width: 140px;">Height (mm) [b]</th>
+                  <th style="width: 160px;">Channel Width (mm) [a]</th>
+                  <th>Pt Specification</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-mauve"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Mauve</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.38 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">0.5 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-silver"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Silver</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.38 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">0.8 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-buff"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Buff</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.38 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.0 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-violet"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Violet</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.38 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.2 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-white"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">White</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.45 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.3 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-sky"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Sky</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.45 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.4 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-lime"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Lime</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.45 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.5 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-yellow"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Yellow</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.50 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.6 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-rose"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Rose</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.50 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.7 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-slate"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Slate</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.55 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.9 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-green"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Green</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.60 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">2.0 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-brown"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Brown</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.60 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">2.1 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-red"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Red</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.70 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">2.3 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-black"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Black</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.70 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">2.4 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-blue"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Blue</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.80 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">2.6 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-orange"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Orange</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.90 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">3.0 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">3 / 4 pt</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="box-yield-badge">📦 Standard Steel Packaging: <strong>24 Metres / Box</strong></div>
+        </div>
+
+        <hr style="border: none; border-top: 1.5px solid var(--border-subtle); margin: 2.5rem 0;">
+
+        <!-- 2. 7mm Off-Centre Base Chart -->
+        <div>
+          <h4 style="font-size: 1.2rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.75rem;">
+            7mm Off-Centre Base (100 Mic Mylar)
+          </h4>
+
+          <div class="tech-diagram-box">
+            <svg width="240" height="42" viewBox="0 0 240 42" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="10,38 10,15 55,15 55,38" fill="#182B6B" />
+              <polygon points="105,38 105,15 195,15 230,38" fill="#182B6B" />
+              <line x1="55" y1="10" x2="105" y2="10" stroke="#0f172a" stroke-width="1.5" />
+              <line x1="55" y1="5" x2="55" y2="15" stroke="#0f172a" stroke-width="1.5" />
+              <line x1="105" y1="5" x2="105" y2="15" stroke="#0f172a" stroke-width="1.5" />
+              <text x="80" y="8" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="900" text-anchor="middle" fill="#0f172a">a (Width)</text>
+              <line x1="65" y1="15" x2="65" y2="38" stroke="#FF2E17" stroke-width="1.5" />
+              <line x1="60" y1="15" x2="70" y2="15" stroke="#FF2E17" stroke-width="1.5" />
+              <line x1="60" y1="38" x2="70" y2="38" stroke="#FF2E17" stroke-width="1.5" />
+              <text x="75" y="30" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="900" fill="#FF2E17">b</text>
+            </svg>
+            <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-dim); margin-top: 4px;">Profile Cross-Section: 7mm Steel Off-Centre Channel</div>
+          </div>
+
+          <div class="size-table-container">
+            <table class="size-table">
+              <thead>
+                <tr>
+                  <th style="width: 140px;">Base Colour</th>
+                  <th style="width: 140px;">Height (mm) [b]</th>
+                  <th style="width: 160px;">Channel Width (mm) [a]</th>
+                  <th>Pt Specification</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-silver"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Silver</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.38 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">0.8 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-buff"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Buff</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.38 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.0 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-violet"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Violet</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.38 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.2 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-white"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">White</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.45 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.3 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-sky"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Sky</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.45 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.4 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-lime"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Lime</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.45 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.5 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-yellow"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Yellow</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.50 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.6 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-rose"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Rose</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.50 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.7 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="box-yield-badge">📦 Standard Steel Packaging: <strong>24 Metres / Box</strong></div>
+        </div>
+
+      </div>
+
+      <!-- Action Footer -->
+      <div style="text-align: center; background: var(--bg-light); border-radius: var(--radius-lg); padding: 2.5rem 1.25rem; border: 1.5px solid var(--border-subtle);">
+        <h3 style="font-size: 1.5rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.5rem;">Configure Ultra-SR™ for Tough Substrates</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 600px; margin: 0 auto 1.5rem;">
+          Eliminate channel crushing and edge-lift on abrasive greyboard and solid board runs with Matrix Engineering steel matrix tooling.
+        </p>
+        <button class="btn-solid-red" onclick="navigateTo('contact')">Request Technical Recommendation</button>
+      </div>
+
     </div>
   </main>
 
-  <!-- ==================== VIEW 3D: DEDICATED EXCEED RUBBER PRODUCT PAGE ==================== -->
-  <main id="view-exceed-rubber" class="page-view">
+  <!-- ==================== VIEW 3D: DEDICATED PHOENIX XL PRODUCT PAGE (MOBILE FIT OPTIMIZED) ==================== -->
+  <main id="view-phoenix-xl" class="page-view">
     <div class="page-hero">
       <div class="container">
         <div style="margin-bottom: 1.25rem;">
@@ -1544,9 +2343,9 @@
           </button>
         </div>
         <div class="section-head" style="margin-bottom: 0; text-align: left; max-width: 100%;">
-          <span class="section-eyebrow">Advanced Micro-Cellular Technology</span>
-          <h2 class="section-title">EXCEED™ RUBBER</h2>
-          <p class="section-desc" style="max-width: 800px;">High-Performance Ejection Profile Designed to Maximize Press Speeds and Eliminate Angel Hair.</p>
+          <span class="section-eyebrow">Flagship Polymer Range</span>
+          <h2 class="section-title">PHOENIX XL™</h2>
+          <p class="section-desc" style="max-width: 800px;">The Ultimate Plastic-Based Creasing Matrix Engineered for High-Volume Production Runs.</p>
         </div>
       </div>
     </div>
@@ -1555,22 +2354,22 @@
       
       <!-- Top Overview Row -->
       <div class="detail-grid-top">
-        <div class="detail-gallery-main dark-hero">
-          <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0340.png" alt="Exceed Rubber Ejection Profile Showcase">
+        <div class="detail-gallery-main">
+          <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0345.png" alt="Phoenix XL Full Box Showcase">
         </div>
 
         <div class="detail-info-pane">
-          <span class="detail-subtitle">Over 40 Years of Extrusion Expertise</span>
-          <h1>Zero Degradation for Over 1.6 Million Impressions</h1>
+          <span class="detail-subtitle">High-Volume Converting Excellence</span>
+          <h1>Uncompromising Creasing Precision & Durability</h1>
           <p class="detail-desc-lead">
-            Engineered to outperform standard market alternatives, <strong>Exceed™ Rubber</strong> maintains its exact dynamic profile for over 1.6 million impressions. Unlike conventional rubber that degrades, hardens, or loses rebound memory over time, our advanced micro-cellular formulation guarantees consistent sheet ejection—drastically reducing makeready times, virtually eliminating angel hair, and maximizing your press speeds.
+            Born from our relentless pursuit of engineering durability and pressroom precision, the <strong>Phoenix XL™</strong> represents the pinnacle in plastic-based matrix technology. By uniting next-generation virgin polymers, specialized clean-peel adhesives, and a refined shoulder profile, Phoenix XL delivers an uncompromising creasing solution.
           </p>
           <p class="detail-desc-lead">
-            <strong>Fuelling Next-Generation Production:</strong> Driven by incredible global growth and relentless customer demand, we are thrilled to announce the commissioning of a second state-of-the-art rubber extrusion line at our Isle of Man facility. This major investment not only guarantees uninterrupted, high-volume supply of our signature Exceed Rubber, but paves the way for an innovative new suite of advanced ejection profiles coming to market in the near future.
+            Purpose-built to master the demanding tolerances of high-speed die-cutting, the Phoenix XL drastically minimizes machine downtime—keeping your press running at peak efficiency while protecting your production margins.
           </p>
 
           <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
-            <button class="btn-solid-red" onclick="navigateTo('contact')">Request Exceed Rubber Samples</button>
+            <button class="btn-solid-red" onclick="navigateTo('contact')">Request Phoenix XL Samples</button>
             <button class="btn-solid-navy" onclick="navigateTo('portal')">Order via Client Portal</button>
           </div>
         </div>
@@ -1580,32 +2379,50 @@
       <div class="section-head">
         <span class="section-eyebrow">Engineering Advantages</span>
         <h2 class="section-title">Key Performance Features</h2>
-        <p class="section-desc">Designed to deliver explosive rebound speed, immaculate cutting precision, and unparalleled long-run durability.</p>
+        <p class="section-desc">Every detail of Phoenix XL is engineered to ensure seamless channel transfer, flawless creasing, and zero machine downtime.</p>
       </div>
 
       <div class="features-card-grid">
         <div class="feat-card">
           <div class="feat-icon">✓</div>
-          <h4>1.6 Million+ Running Life</h4>
-          <p>Unmatched material memory means absolutely no reduction in ejection performance or profile height even after millions of rigorous die-cutting impressions.</p>
+          <h4>Next-Gen Clean-Peel Adhesive</h4>
+          <p>Micro-thin high-shear adhesive leaves zero adhesive residue on counter plates, completely eliminating tedious platen cleaning. High-tack tropical tape options available for high-heat/humidity environments.</p>
         </div>
 
         <div class="feat-card">
           <div class="feat-icon">✓</div>
-          <h4>Eliminates Angel Hair</h4>
-          <p>The precise structural shape ensures immediate sheet break-away from the cutting rule, radically reducing the generation of paper dust and angel hair.</p>
+          <h4>Zero Lead-Edge Taping</h4>
+          <p>Engineered with exceptional platen grip straight out of the box. No supplementary lead-edge taping required, streamlining your setup time and accelerating make-ready cycles.</p>
         </div>
 
         <div class="feat-card">
           <div class="feat-icon">✓</div>
-          <h4>Extreme UV & Heat Resistance</h4>
-          <p>Formulated to resist environmental degradation, preventing the rubber from becoming brittle or losing its rapid-rebound properties under intense press friction.</p>
+          <h4>12mm & 15mm Wide Base Options</h4>
+          <p>Available in versatile base widths to match your specific board caliper and press pressures. Accommodates creasing channels up to 3.2mm on 12mm bases and up to 5.0mm on 15mm bases.</p>
         </div>
 
         <div class="feat-card">
           <div class="feat-icon">✓</div>
-          <h4>Rapid Makeready & Installation</h4>
-          <p>Highly dimensionally stable profile makes cutting to length and adhering to the die-board faster and more precise, getting your press back into production sooner.</p>
+          <h4>Precision Self-Locating Bridges</h4>
+          <p>Specially contoured, high-rigidity locators seat firmly and accurately onto the creasing rule every single time for exact channel alignment without twisting.</p>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-icon">✓</div>
+          <h4>High-Impact Polymer Structure</h4>
+          <p>Moulded from advanced impact-resistant virgin polymers that resist channel wall collapse and deliver consistent crease profiles across multi-million impression runs.</p>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-icon">✓</div>
+          <h4>Refined Shoulder Slope Profile</h4>
+          <p>Precision-beveled shoulder angles eliminate witness marks and board cracking on sensitive laminated or printed folding cartons at maximum press speeds.</p>
+        </div>
+
+        <div class="feat-card" style="grid-column: 1 / -1;">
+          <div class="feat-icon">✓</div>
+          <h4>Dual-Surface Colour Coding</h4>
+          <p>Intuitive height color-coding is clearly printed on both the matrix base and locator bridge for rapid, error-free operator selection in busy pressrooms.</p>
         </div>
       </div>
 
@@ -1614,132 +2431,149 @@
         <div class="chart-header-row">
           <div>
             <span class="section-eyebrow">Factory Specification</span>
-            <h3>Exceed Rubber Size & Selection Chart</h3>
+            <h3>Phoenix XL Size & Selection Chart</h3>
           </div>
           <div class="heritage-tag" style="background: var(--bg-slate); padding: 8px 14px; border-radius: var(--radius-sm); font-size: 0.8rem;">
             ● 750mm Standard Strip Length
           </div>
         </div>
 
-        <!-- 1. 5mm Width Profile Chart -->
+        <!-- 12mm Standard Centre Chart -->
         <div style="margin-bottom: 2.5rem;">
           <h4 style="font-size: 1.2rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.75rem;">
-            5.00mm Width Profile
+            12 mm Standard Centre Base
           </h4>
 
-          <div class="tech-diagram-box" style="background: radial-gradient(circle at 50% 50%, #475569 0%, #1e293b 100%); border: none;">
-            <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-              <!-- Rubber Fin Profile (Narrow 5mm shape) -->
-              <path d="M 35,90 L 35,30 L 55,30 Q 45,55 90,90 Z" fill="#e2e8f0" />
-              <!-- Height Dimension -->
-              <line x1="25" y1="30" x2="25" y2="90" stroke="#EAB308" stroke-width="1.5" />
-              <line x1="20" y1="30" x2="30" y2="30" stroke="#EAB308" stroke-width="1.5" />
-              <line x1="20" y1="90" x2="30" y2="90" stroke="#EAB308" stroke-width="1.5" />
-              <!-- Width Dimension -->
-              <line x1="35" y1="100" x2="90" y2="100" stroke="#EAB308" stroke-width="1.5" />
-              <line x1="35" y1="95" x2="35" y2="105" stroke="#EAB308" stroke-width="1.5" />
-              <line x1="90" y1="95" x2="90" y2="105" stroke="#EAB308" stroke-width="1.5" />
+          <div class="tech-diagram-box">
+            <svg width="280" height="42" viewBox="0 0 280 42" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="10,38 35,15 115,15 115,38" fill="#182B6B" />
+              <polygon points="165,38 165,15 245,15 270,38" fill="#182B6B" />
+              <line x1="115" y1="10" x2="165" y2="10" stroke="#0f172a" stroke-width="1.5" />
+              <line x1="115" y1="5" x2="115" y2="15" stroke="#0f172a" stroke-width="1.5" />
+              <line x1="165" y1="5" x2="165" y2="15" stroke="#0f172a" stroke-width="1.5" />
+              <text x="140" y="8" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="900" text-anchor="middle" fill="#0f172a">a (Width)</text>
+              <line x1="125" y1="15" x2="125" y2="38" stroke="#FF2E17" stroke-width="1.5" />
+              <line x1="120" y1="15" x2="130" y2="15" stroke="#FF2E17" stroke-width="1.5" />
+              <line x1="120" y1="38" x2="130" y2="38" stroke="#FF2E17" stroke-width="1.5" />
+              <text x="135" y="30" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="900" fill="#FF2E17">b (Height)</text>
             </svg>
-            <div style="font-size: 0.72rem; font-weight: 700; color: #cbd5e1; margin-top: 8px;">Cross-Section: 5.00mm Base Width</div>
+            <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-dim); margin-top: 4px;">Profile Cross-Section: 12mm Shoulder Width</div>
           </div>
 
           <div class="size-table-container">
             <table class="size-table">
               <thead>
                 <tr>
-                  <th style="width: 140px;">Colour</th>
-                  <th style="width: 140px;">Height (mm)</th>
-                  <th style="width: 160px;">Width (mm)</th>
-                  <th>Metres per Box</th>
+                  <th style="width: 110px;">Base Colour</th>
+                  <th style="width: 140px;">Height (mm) [b]</th>
+                  <th>Available Channel Widths (mm) [a]</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                      <span class="color-swatch-bar color-white"></span>
-                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">White</strong>
-                    </div>
-                  </td>
-                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">7.00 mm</strong></td>
-                  <td style="font-weight: 700; color: #334155;">5.00 mm</td>
-                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-navy); font-weight: 700;">24 metres (32 x 750mm)</td>
+                  <td><span class="color-swatch-bar color-navy"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.40 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.3, 1.4, 1.5, 1.6, and 1.7</td>
                 </tr>
                 <tr>
-                  <td>
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                      <span class="color-swatch-bar color-white"></span>
-                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">White</strong>
-                    </div>
-                  </td>
-                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">7.25 mm</strong></td>
-                  <td style="font-weight: 700; color: #334155;">5.00 mm</td>
-                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-navy); font-weight: 700;">34 metres (32 x 750mm)</td>
+                  <td><span class="color-swatch-bar color-red"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.50 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.3, 1.4, 1.5, 1.6, 1.7, and 1.9</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-yellow"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.60 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 3.0, and 3.2</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-orange"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.70 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">2.1, 2.3, 2.5, 2.7, 3.0, and 3.2</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-green"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.80 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">2.1, 2.3, 2.5, 2.7, 3.0, and 3.2</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-sky"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">1.00 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">2.1, 2.3, 2.5, 2.7, 3.0, and 3.2</td>
                 </tr>
               </tbody>
             </table>
+          </div>
+
+          <div class="box-yield-badge">
+            📦 Contents of 12mm box: 32 strips × 750mm = <strong>24 Metres</strong>
           </div>
         </div>
 
         <hr style="border: none; border-top: 1.5px solid var(--border-subtle); margin: 2.5rem 0;">
 
-        <!-- 2. 7.5mm Width Profile Chart -->
+        <!-- 15mm Centre Chart -->
         <div>
           <h4 style="font-size: 1.2rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.75rem;">
-            7.50mm Width Profile
+            15 mm Extra-Wide Centre Base
           </h4>
 
-          <div class="tech-diagram-box" style="background: radial-gradient(circle at 50% 50%, #475569 0%, #1e293b 100%); border: none;">
-            <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-              <!-- Wider Rubber Fin Profile (Wide 7.5mm shape) -->
-              <path d="M 25,90 L 25,30 L 55,30 Q 40,55 95,90 Z" fill="#e2e8f0" />
-              <!-- Height Dimension -->
-              <line x1="15" y1="30" x2="15" y2="90" stroke="#EAB308" stroke-width="1.5" />
-              <line x1="10" y1="30" x2="20" y2="30" stroke="#EAB308" stroke-width="1.5" />
-              <line x1="10" y1="90" x2="20" y2="90" stroke="#EAB308" stroke-width="1.5" />
-              <!-- Width Dimension -->
-              <line x1="25" y1="100" x2="95" y2="100" stroke="#EAB308" stroke-width="1.5" />
-              <line x1="25" y1="95" x2="25" y2="105" stroke="#EAB308" stroke-width="1.5" />
-              <line x1="95" y1="95" x2="95" y2="105" stroke="#EAB308" stroke-width="1.5" />
+          <div class="tech-diagram-box">
+            <svg width="300" height="42" viewBox="0 0 300 42" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="10,38 45,15 120,15 120,38" fill="#0d173b" />
+              <polygon points="180,38 180,15 255,15 290,38" fill="#0d173b" />
+              <line x1="120" y1="10" x2="180" y2="10" stroke="#0f172a" stroke-width="1.5" />
+              <line x1="120" y1="5" x2="120" y2="15" stroke="#0f172a" stroke-width="1.5" />
+              <line x1="180" y1="5" x2="180" y2="15" stroke="#0f172a" stroke-width="1.5" />
+              <text x="150" y="8" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="900" text-anchor="middle" fill="#0f172a">a (Wide Width)</text>
+              <line x1="130" y1="15" x2="130" y2="38" stroke="#FF2E17" stroke-width="1.5" />
+              <line x1="125" y1="15" x2="135" y2="15" stroke="#FF2E17" stroke-width="1.5" />
+              <line x1="125" y1="38" x2="135" y2="38" stroke="#FF2E17" stroke-width="1.5" />
+              <text x="140" y="30" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="900" fill="#FF2E17">b (Height)</text>
             </svg>
-            <div style="font-size: 0.72rem; font-weight: 700; color: #cbd5e1; margin-top: 8px;">Cross-Section: 7.50mm Base Width</div>
+            <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-dim); margin-top: 4px;">Profile Cross-Section: 15mm Extra-Wide Flange</div>
           </div>
 
           <div class="size-table-container">
             <table class="size-table">
               <thead>
                 <tr>
-                  <th style="width: 140px;">Colour</th>
-                  <th style="width: 140px;">Height (mm)</th>
-                  <th style="width: 160px;">Width (mm)</th>
-                  <th>Metres per Box</th>
+                  <th style="width: 110px;">Base Colour</th>
+                  <th style="width: 140px;">Height (mm) [b]</th>
+                  <th>Available Channel Widths (mm) [a]</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                      <span class="color-swatch-bar color-white"></span>
-                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">White</strong>
-                    </div>
-                  </td>
-                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">7.00 mm</strong></td>
-                  <td style="font-weight: 700; color: #334155;">7.50 mm</td>
-                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-navy); font-weight: 700;">24 metres (32 x 750mm)</td>
+                  <td><span class="color-swatch-bar color-yellow"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.60 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">3.5*, 4.0#, 4.5#, and 5.0#</td>
                 </tr>
                 <tr>
-                  <td>
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                      <span class="color-swatch-bar color-white"></span>
-                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">White</strong>
-                    </div>
-                  </td>
-                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">7.25 mm</strong></td>
-                  <td style="font-weight: 700; color: #334155;">7.50 mm</td>
-                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-navy); font-weight: 700;">34 metres (32 x 750mm)</td>
+                  <td><span class="color-swatch-bar color-orange"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.70 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">3.5*, 4.0#, 4.5#, and 5.0#</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-green"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.80 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">3.5*, 4.0#, 4.5#, and 5.0#</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-sky"></span></td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">1.00 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">3.5*, 4.0#, 4.5#, and 5.0#</td>
                 </tr>
               </tbody>
             </table>
+          </div>
+
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <div class="box-yield-badge">
+              * Contents of 3.5mm box: 27 strips × 750mm = <strong>20.25 Metres</strong>
+            </div>
+            <div class="box-yield-badge" style="background: rgba(24, 43, 107, 0.08);">
+              # Contents of 4.0-5.0mm box: 20 strips × 750mm = <strong>15 Metres</strong>
+            </div>
           </div>
         </div>
 
@@ -1747,11 +2581,11 @@
 
       <!-- Action Footer -->
       <div style="text-align: center; background: var(--bg-light); border-radius: var(--radius-lg); padding: 2.5rem 1.25rem; border: 1.5px solid var(--border-subtle);">
-        <h3 style="font-size: 1.5rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.5rem;">Maximise Your Press Speeds Today</h3>
+        <h3 style="font-size: 1.5rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.5rem;">Ready to upgrade to Phoenix XL™?</h3>
         <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 600px; margin: 0 auto 1.5rem;">
-          Contact our technical sales team for pricing, bulk volume discounts, and to experience the Exceed Rubber difference on your next die.
+          Our technical team can advise on the exact channel width and base height for your converting substrates.
         </p>
-        <button class="btn-solid-red" onclick="navigateTo('contact')">Request Pricing & Samples</button>
+        <button class="btn-solid-red" onclick="navigateTo('contact')">Request Technical Recommendation</button>
       </div>
 
     </div>
@@ -2208,7 +3042,6 @@
             <li><a onclick="navigateTo('phoenix-plus')">Phoenix+™ Detail</a></li>
             <li><a onclick="navigateTo('ultra-sr')">Ultra-SR™ Detail</a></li>
             <li><a onclick="navigateTo('phoenix-xl')">Phoenix XL™ Detail</a></li>
-            <li><a onclick="navigateTo('exceed-rubber')">Exceed™ Rubber Detail</a></li>
             <li><a onclick="navigateTo('technical')">Technical & Sizing</a></li>
             <li><a onclick="navigateTo('news')">Latest News (PPWR)</a></li>
             <li><a onclick="navigateTo('portal')">Customer Portal</a></li>
@@ -2221,7 +3054,7 @@
             <li><a onclick="navigateTo('phoenix-plus')">PHOENIX+™ Synthetic</a></li>
             <li><a onclick="navigateTo('ultra-sr')">ULTRA-SR™ Steel Base</a></li>
             <li><a onclick="navigateTo('phoenix-xl')">PHOENIX XL™ Wide Base</a></li>
-            <li><a onclick="navigateTo('exceed-rubber')">EXCEED™ Ejection Rubber</a></li>
+            <li><a onclick="navigateTo('products')">EXCEED™ Ejection Rubber</a></li>
           </ul>
         </div>
 
@@ -2319,10 +3152,9 @@
         '1.00 x 3.50 (Sky)', '1.00 x 4.00 (Sky)', '1.00 x 4.50 (Sky)', '1.00 x 5.00 (Sky)'
       ],
       'Exceed': [
-        '-- 5.00mm Base Width --',
-        '7.00 x 5.00 (White)', '7.25 x 5.00 (White)',
-        '-- 7.50mm Base Width --',
-        '7.00 x 7.50 (White)', '7.25 x 7.50 (White)'
+        '7.00 x 5.00', '7.00 x 6.00', '7.00 x 7.00',
+        '8.00 x 5.00', '8.00 x 6.00', '8.00 x 7.00',
+        '10.00 x 7.00', '10.00 x 8.00', 'Profile Strip Custom'
       ],
       'Smart Formes': [
         '0.40 x 1.30', '0.40 x 1.50', '0.50 x 1.50', '0.50 x 1.70',
@@ -2332,7 +3164,7 @@
 
     // Amount (m) lengths based strictly on packaging format
     const LENGTHS_MAP = {
-      'Box': ['24m', '21m', '20.25m', '18m', '15m', '36m', '50m', '34m'],
+      'Box': ['24m', '21m', '20.25m', '18m', '15m', '36m', '50m'],
       'Reel': ['36m', '45m', '60m']
     };
 
@@ -2352,7 +3184,7 @@
       
       const specs = PRODUCT_SPECS_MAP[range] || PRODUCT_SPECS_MAP['PX Plus'];
       
-      if (range === 'Ultra SR' || range === 'Phoenix XL' || range === 'Phoenix+' || range === 'Exceed') {
+      if (range === 'Ultra SR' || range === 'Phoenix XL' || range === 'Phoenix+') {
         sizeSelect.innerHTML = specs.map(s => {
           if (s.startsWith('--')) return `<option disabled>${s}</option>`;
           return `<option value="${s}">${s}</option>`;
@@ -2361,7 +3193,6 @@
         if (range === 'Ultra SR') sizeSelect.value = 'White 0.45 x 1.3mm';
         else if (range === 'Phoenix XL') sizeSelect.value = '0.60 x 2.10 (Yellow)';
         else if (range === 'Phoenix+') sizeSelect.value = '0.40 x 1.30 (Navy)';
-        else if (range === 'Exceed') sizeSelect.value = '7.00 x 5.00 (White)';
       } else {
         sizeSelect.innerHTML = specs.map(s => `<option value="${s}">${s}${s.includes('Custom') || s.includes('Strip') ? '' : ' mm'}</option>`).join('');
       }
@@ -2610,7 +3441,7 @@
         return;
       }
 
-      const itemDesc = (range === 'Ultra SR' || range === 'Phoenix XL' || range === 'Phoenix+' || range === 'Exceed') 
+      const itemDesc = (range === 'Ultra SR' || range === 'Phoenix XL' || range === 'Phoenix+') 
         ? `${range} ${size} (${pt}) - ${meters} ${unitType}`
         : `${range} ${size} mm (${pt}) - ${meters} ${unitType}`;
 
