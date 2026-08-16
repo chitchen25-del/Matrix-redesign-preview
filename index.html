@@ -449,7 +449,7 @@
     .team-titles .role { font-size: 0.8rem; font-weight: 700; color: var(--matrix-red); text-transform: uppercase; letter-spacing: 0.04em; }
     .team-bio { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; }
 
-    /* PRODUCTS VIEW - WITH BALANCED FRAMING */
+    /* PRODUCTS VIEW */
     .products-layout { padding: clamp(2.5rem, 5vw, 4.5rem) 0; }
     .prod-grid-large { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
     @media (max-width: 480px) { .prod-grid-large { grid-template-columns: 1fr; } }
@@ -483,10 +483,10 @@
       background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0a1329 100%);
     }
     .prod-img-box img {
-      max-width: 90%;
-      max-height: 90%;
+      max-width: 92%;
+      max-height: 92%;
       object-fit: contain;
-      filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.12));
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.12));
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .prod-item-card:hover .prod-img-box img {
@@ -593,8 +593,42 @@
     .news-card-content h3 { font-size: 1.25rem; font-weight: 800; color: var(--matrix-navy-dark); line-height: 1.35; margin-bottom: 0.75rem; }
     .news-card-content p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem; }
 
-    /* CUSTOMER PORTAL VIEW */
+    /* CUSTOMER PORTAL VIEW & LOGIN */
     .portal-layout { padding: clamp(2.5rem, 5vw, 4.5rem) 0; }
+    
+    .portal-login-shell {
+      max-width: 480px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-card);
+      text-align: center;
+    }
+    .portal-login-shell h3 {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--matrix-navy-dark);
+      margin-bottom: 0.5rem;
+    }
+    .portal-login-shell p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.75rem;
+    }
+    .demo-credentials-note {
+      background: var(--bg-light);
+      border: 1px dashed var(--border-medium);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      font-size: 0.8rem;
+      color: var(--matrix-navy);
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+    .demo-credentials-note strong { color: var(--matrix-red); }
+
     .portal-dashboard-card {
       background: #ffffff;
       border: 1px solid var(--border-subtle);
@@ -863,7 +897,7 @@
         </div>
 
         <div class="hero-media-frame">
-          <img src="matrix-press-render.jpg" alt="Bobst Die-Cutter and Matrix Cross-Section Render" onerror="this.src='https://image.made-in-china.com/155f0j00GtEvdHMhaIzB/Oyang-Wh-1050ss-Platen-Automatic-Flatbed-Corrugated-Cardboard-Paper-Carton-Box-Die-Cutting-Creasing-Cutter-Machine-with-Stripping-Industrial.jpg'">
+          <img src="matrix-press-render.jpg" alt="Bobst Die-Cutter and Matrix Cross-Section Render" onerror="this.src='matrix-boxes-stack.jpg'">
           <div class="floating-caption-card">
             <div>
               <h4>Engineered on the Isle of Man</h4>
@@ -885,7 +919,7 @@
           </div>
           <div class="pillar-card">
             <h3>100% In-House Extrusion</h3>
-            <p>Every profile is designed, extruded, and precision-milled in our Ballasalla facility to maintain tolerances tighter than ±0.01mm.</p>
+            <p>Every profile is meticulously designed, tooling fabricated to tight tolerances, then extruded in our state of the art production facility in the isle of man.</p>
           </div>
           <div class="pillar-card">
             <h3>Sustainable & PPWR Ready</h3>
@@ -1009,7 +1043,7 @@
         <!-- PHOENIX+ -->
         <div class="prod-item-card">
           <div class="prod-img-box prod-img-white">
-            <img src="phoenix-plus.png" alt="Phoenix+ Synthetic Matrix with Blue Adhesive" loading="lazy" onerror="this.src='https://i.ebayimg.com/00/s/NzM4WDE2MDA=/z/98AAAOSwqwReh35H/$_57.JPG?set_id=8800005007'">
+            <img src="phoenix-plus.png" alt="Phoenix+ Synthetic Matrix with Blue Adhesive" loading="lazy">
             <span class="prod-tag-float">Polymer Base</span>
           </div>
           <div class="prod-content-box">
@@ -1032,7 +1066,7 @@
         <!-- ULTRA-SR -->
         <div class="prod-item-card">
           <div class="prod-img-box prod-img-white">
-            <img src="ultra-sr.png" alt="Ultra-SR Steel Base Matrix with Red Adhesive" loading="lazy" onerror="this.src='https://image.made-in-china.com/2f0j00rRkquYyWvKzG/Steel-Based-Matrix-Creasing-Matrix-for-Cardboard-Box-Making.webp'">
+            <img src="ultra-sr.png" alt="Ultra-SR Steel Base Matrix with Red Adhesive" loading="lazy">
             <span class="prod-tag-float">Steel Base</span>
           </div>
           <div class="prod-content-box">
@@ -1055,7 +1089,7 @@
         <!-- EXCEED RUBBER -->
         <div class="prod-item-card">
           <div class="prod-img-box prod-img-dark">
-            <img src="exceed-rubber.png" alt="Exceed Micro-Cellular Ejection Rubber Strip" loading="lazy" onerror="this.src='https://www.diecuttingcreasingmatrix.com/photo/py116250690-white_exceed_die_ejection_rubber_strip_7_3_8_700mm_for_prevent_paper_box_burst.jpg'">
+            <img src="exceed-rubber.png" alt="Exceed Micro-Cellular Ejection Rubber Strip" loading="lazy">
             <span class="prod-tag-float">Ejection Profile</span>
           </div>
           <div class="prod-content-box">
@@ -1078,7 +1112,7 @@
         <!-- PHOENIX XL -->
         <div class="prod-item-card">
           <div class="prod-img-box prod-img-white">
-            <img src="matrix-boxes-stack.jpg" alt="Matrix Engineering Product Packaging" loading="lazy" onerror="this.src='https://i.ebayimg.com/00/s/NzM4WDE2MDA=/z/98AAAOSwqwReh35H/$_57.JPG?set_id=8800005007'">
+            <img src="matrix-boxes-stack.jpg" alt="Matrix Engineering Product Packaging" loading="lazy">
             <span class="prod-tag-float">Wide Base</span>
           </div>
           <div class="prod-content-box">
@@ -1309,7 +1343,7 @@
         <!-- Story 3: PFAS-Free Adhesive -->
         <article class="news-card">
           <div class="news-card-img">
-            <img src="matrix-boxes-stack.jpg" alt="Matrix Engineering Product Boxes" onerror="this.src='https://i.ebayimg.com/00/s/NzM4WDE2MDA=/z/98AAAOSwqwReh35H/$_57.JPG?set_id=8800005007'">
+            <img src="matrix-boxes-stack.jpg" alt="Matrix Engineering Product Boxes">
             <span class="news-badge">Chemistry Breakthrough</span>
           </div>
           <div class="news-card-content">
@@ -1327,7 +1361,7 @@
     </div>
   </main>
 
-  <!-- ==================== VIEW 7: CUSTOMER PORTAL ==================== -->
+  <!-- ==================== VIEW 7: CUSTOMER PORTAL (PASSWORD PROTECTED) ==================== -->
   <main id="view-portal" class="page-view">
     <div class="page-hero">
       <div class="container">
@@ -1342,10 +1376,40 @@
     </div>
 
     <div class="container portal-layout">
-      <div class="portal-dashboard-card">
+      <!-- 1. LOGIN GATEWAY (SHOWN BY DEFAULT) -->
+      <div id="portalLoginGateway" class="portal-login-shell">
+        <div style="width: 48px; height: 48px; background: var(--bg-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; color: var(--matrix-navy); font-size: 1.25rem; font-weight: 800; border: 1.5px solid var(--border-medium);">
+          🔒
+        </div>
+        <h3>Client Portal Login</h3>
+        <p>Access your live production queue and order tracking.</p>
+
+        <div class="demo-credentials-note">
+          <strong>Demo Access:</strong><br>
+          Username: <code style="font-family: var(--font-mono); font-weight: 700;">test</code> &bull; Password: <code style="font-family: var(--font-mono); font-weight: 700;">test</code>
+        </div>
+
+        <form onsubmit="handlePortalLogin(event)" style="text-align: left;">
+          <div class="form-field">
+            <label for="portalUser">Account Username</label>
+            <input type="text" id="portalUser" required placeholder="Enter username (test)">
+          </div>
+          <div class="form-field">
+            <label for="portalPass">Password</label>
+            <input type="password" id="portalPass" required placeholder="Enter password (test)">
+          </div>
+          <button type="submit" class="btn-solid-navy" style="width: 100%; margin-top: 0.5rem;">Unlock Order Dashboard</button>
+        </form>
+      </div>
+
+      <!-- 2. AUTHENTICATED DASHBOARD (HIDDEN UNTIL LOGGED IN) -->
+      <div id="portalDashboard" class="portal-dashboard-card" style="display: none;">
         <div class="portal-header-bar">
           <div class="client-profile-info">
-            <h3>Apex Packaging Solutions Ltd</h3>
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <h3>Apex Packaging Solutions Ltd</h3>
+              <button onclick="handlePortalLogout()" style="background: none; border: 1px solid var(--border-medium); border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 700; color: var(--text-muted); padding: 2px 8px; cursor: pointer;">Log Out</button>
+            </div>
             <p>Account ID: <strong>MX-ACC-4089</strong> • Plant: Leeds Converter Unit 2</p>
           </div>
           <div class="order-id-badge">
@@ -1636,7 +1700,28 @@
       navigateTo(initialHash);
     });
 
-    // Customer Portal Mockup Logic
+    // Customer Portal Authentication Logic
+    function handlePortalLogin(e) {
+      e.preventDefault();
+      const user = document.getElementById('portalUser').value.trim();
+      const pass = document.getElementById('portalPass').value.trim();
+
+      if (user === 'test' && pass === 'test') {
+        document.getElementById('portalLoginGateway').style.display = 'none';
+        document.getElementById('portalDashboard').style.display = 'block';
+      } else {
+        alert('Authentication Failed: Invalid username or password. Please use test / test.');
+      }
+    }
+
+    function handlePortalLogout() {
+      document.getElementById('portalDashboard').style.display = 'none';
+      document.getElementById('portalLoginGateway').style.display = 'block';
+      document.getElementById('portalUser').value = '';
+      document.getElementById('portalPass').value = '';
+    }
+
+    // Customer Portal Order Logic
     let item1Boxes = 40;
     let item2Boxes = 20;
     const pricePerBox = 28.00;
@@ -1653,7 +1738,6 @@
       const qtyInput = document.getElementById('amendQtyInput');
       const qty = parseInt(qtyInput.value, 10);
 
-      // Validate minimum 10 boxes
       if (isNaN(qty) || qty < 10) {
         alert('Order Amendment Notice: The minimum quantity addition is 10 boxes per specification.');
         qtyInput.value = 10;
