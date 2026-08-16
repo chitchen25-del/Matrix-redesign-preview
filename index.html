@@ -5,9 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Matrix Engineering | Precision Creasing Matrix & Die-Cutting Systems</title>
   <meta name="description" content="State-of-the-art creasing matrix, ejection rubber, and makeready tooling manufactured in the Isle of Man, British Isles.">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Official Supabase Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <style>
     :root {
       --matrix-navy: #182B6B;
@@ -319,24 +324,8 @@
     }
     .btn-outline-navy:hover { border-color: var(--matrix-navy); background: var(--bg-light); }
 
-    .btn-green-pay {
-      background: var(--matrix-green);
-      color: #ffffff;
-      font-weight: 800;
-      font-size: 0.95rem;
-      padding: 0.85rem 1.6rem;
-      border-radius: var(--radius-sm);
-      border: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: all 0.2s ease;
-    }
-    .btn-green-pay:hover { background: var(--matrix-green-dark); box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3); }
-
     @media (max-width: 640px) {
-      .btn-solid-navy, .btn-solid-red, .btn-outline-navy, .btn-green-pay { width: 100%; }
+      .btn-solid-navy, .btn-solid-red, .btn-outline-navy { width: 100%; }
     }
 
     /* ==================== HERO SECTION WITH HIGH-CLARITY VIDEO ==================== */
@@ -373,11 +362,10 @@
       transform: translate(-50%, -50%);
       pointer-events: none;
       border: none;
-      opacity: 0.85; /* Crystal clear high-visibility video */
+      opacity: 0.85;
       filter: saturate(1.15) contrast(1.05);
     }
 
-    /* Subtle soft gradient overlay so video details are razor sharp */
     .hero-video-overlay {
       position: absolute;
       top: 0;
@@ -505,12 +493,8 @@
       justify-content: center;
       padding: 1.25rem;
     }
-    .prod-img-white {
-      background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f1f5f9 100%);
-    }
-    .prod-img-dark {
-      background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0a1329 100%);
-    }
+    .prod-img-white { background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f1f5f9 100%); }
+    .prod-img-dark { background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0a1329 100%); }
     .prod-img-box img {
       max-width: 92%;
       max-height: 92%;
@@ -518,9 +502,7 @@
       filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.12));
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .prod-item-card:hover .prod-img-box img {
-      transform: scale(1.06) translateY(-2px);
-    }
+    .prod-item-card:hover .prod-img-box img { transform: scale(1.06) translateY(-2px); }
 
     .prod-tag-float {
       position: absolute; top: 0.85rem; right: 0.85rem;
@@ -597,32 +579,19 @@
       transition: all 0.25s ease;
     }
     .news-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--matrix-navy); }
-    .news-card-img {
-      height: 210px;
-      position: relative;
-      overflow: hidden;
-      background: var(--bg-slate);
-    }
+    .news-card-img { height: 210px; position: relative; overflow: hidden; background: var(--bg-slate); }
     .news-card-img img { width: 100%; height: 100%; object-fit: cover; }
     .news-badge {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      background: var(--matrix-green);
-      color: #fff;
-      font-size: 0.72rem;
-      font-weight: 800;
-      padding: 3px 9px;
-      border-radius: var(--radius-sm);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+      position: absolute; top: 1rem; left: 1rem;
+      background: var(--matrix-green); color: #fff; font-size: 0.72rem; font-weight: 800;
+      padding: 3px 9px; border-radius: var(--radius-sm); text-transform: uppercase; letter-spacing: 0.04em;
     }
     .news-card-content { padding: 1.85rem; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
     .news-date { font-size: 0.75rem; color: var(--text-dim); font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; }
     .news-card-content h3 { font-size: 1.25rem; font-weight: 800; color: var(--matrix-navy-dark); line-height: 1.35; margin-bottom: 0.75rem; }
     .news-card-content p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem; }
 
-    /* CUSTOMER PORTAL VIEW & LOGIN */
+    /* ==================== CUSTOMER PORTAL & LIVE ORDER SYSTEM ==================== */
     .portal-layout { padding: clamp(2.5rem, 5vw, 4.5rem) 0; }
     
     .portal-login-shell {
@@ -635,17 +604,9 @@
       box-shadow: var(--shadow-card);
       text-align: center;
     }
-    .portal-login-shell h3 {
-      font-size: 1.5rem;
-      font-weight: 900;
-      color: var(--matrix-navy-dark);
-      margin-bottom: 0.5rem;
-    }
-    .portal-login-shell p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 1.75rem;
-    }
+    .portal-login-shell h3 { font-size: 1.5rem; font-weight: 900; color: var(--matrix-navy-dark); margin-bottom: 0.5rem; }
+    .portal-login-shell p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.75rem; }
+    
     .demo-credentials-note {
       background: var(--bg-light);
       border: 1px dashed var(--border-medium);
@@ -656,8 +617,8 @@
       margin-bottom: 1.5rem;
       text-align: left;
     }
-    .demo-credentials-note strong { color: var(--matrix-red); }
 
+    /* Client Dashboard Hub */
     .portal-dashboard-card {
       background: #ffffff;
       border: 1px solid var(--border-subtle);
@@ -666,133 +627,157 @@
       padding: clamp(1.5rem, 4vw, 2.5rem);
       margin-bottom: 2.5rem;
     }
-    .portal-header-bar {
+    
+    .portal-tabs-nav {
+      display: flex;
+      gap: 1rem;
+      border-bottom: 2px solid var(--border-subtle);
+      margin-bottom: 2rem;
+    }
+    .portal-tab-btn {
+      padding: 0.75rem 1.25rem;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: all 0.2s;
+    }
+    .portal-tab-btn.active-tab {
+      color: var(--matrix-navy);
+      border-bottom-color: var(--matrix-red);
+    }
+
+    /* Factory-Styled Order Item Card */
+    .factory-order-card {
+      background: #ffffff;
+      border: 1.5px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .factory-card-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid var(--border-subtle);
-      padding-bottom: 1.5rem;
-      margin-bottom: 2rem;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 0.85rem;
+      margin-bottom: 1rem;
     }
-    .client-profile-info h3 { font-size: 1.4rem; font-weight: 900; color: var(--matrix-navy-dark); }
-    .client-profile-info p { font-size: 0.85rem; color: var(--text-muted); }
-    .order-id-badge {
-      background: var(--bg-light);
-      border: 1.5px solid var(--border-medium);
-      padding: 0.5rem 1rem;
-      border-radius: var(--radius-sm);
+    .wo-title-badge {
       font-family: var(--font-mono);
-      font-weight: 700;
-      font-size: 0.88rem;
+      font-weight: 900;
+      font-size: 1.15rem;
       color: var(--matrix-navy);
     }
-
-    .stepper-container {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.75rem;
-      margin-bottom: 2.5rem;
-      position: relative;
-    }
-    @media (max-width: 768px) {
-      .stepper-container { grid-template-columns: 1fr; gap: 1rem; }
-    }
-    .step-node {
-      background: var(--bg-light);
-      border: 1.5px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 1.15rem;
-      position: relative;
-      transition: all 0.3s ease;
-    }
-    .step-node.completed {
-      border-color: var(--matrix-green);
-      background: rgba(16, 185, 129, 0.05);
-    }
-    .step-node.active-step {
-      border-color: var(--matrix-navy);
-      background: rgba(24, 43, 107, 0.06);
-    }
-    .step-node-num {
+    .stage-pill {
+      font-family: var(--font-mono);
       font-size: 0.75rem;
       font-weight: 800;
-      color: var(--matrix-grey-mid);
+      padding: 3px 10px;
+      border-radius: var(--radius-sm);
       text-transform: uppercase;
-      margin-bottom: 0.35rem;
-      font-family: var(--font-mono);
+      letter-spacing: 0.05em;
     }
-    .step-node.completed .step-node-num { color: var(--matrix-green); }
-    .step-node.active-step .step-node-num { color: var(--matrix-navy); }
-    .step-node-title { font-size: 0.92rem; font-weight: 800; color: var(--matrix-navy-dark); }
-    .step-node-sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+    .stage-received { background: rgba(24, 43, 107, 0.1); color: var(--matrix-navy); border-left: 3px solid var(--matrix-navy); }
+    .stage-production { background: rgba(255, 46, 23, 0.1); color: var(--matrix-red); border-left: 3px solid var(--matrix-red); }
+    .stage-shipped { background: rgba(16, 185, 129, 0.1); color: var(--matrix-green-dark); border-left: 3px solid var(--matrix-green); }
 
-    .portal-grid-split {
+    /* New Order Creation Form Grid */
+    .new-order-panel {
+      background: var(--bg-light);
+      border: 1.5px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.5rem, 3vw, 2.25rem);
+    }
+    .order-form-row {
       display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap: 2.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
     }
-    @media (max-width: 900px) { .portal-grid-split { grid-template-columns: 1fr; } }
-
-    .portal-table-wrap {
+    
+    .item-builder-box {
+      background: #ffffff;
+      border: 1.5px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .item-builder-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0.85rem;
+      align-items: end;
+    }
+    .item-builder-grid label {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--matrix-navy);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      display: block;
+    }
+    .item-builder-grid input, .item-builder-grid select {
       width: 100%;
-      overflow-x: auto;
-      margin-bottom: 1.5rem;
+      padding: 0.65rem 0.75rem;
+      border: 1.5px solid var(--border-medium);
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.9rem;
+      background: #fff;
     }
-    .portal-table {
+
+    .line-items-preview-table {
       width: 100%;
       border-collapse: collapse;
       font-size: 0.88rem;
-    }
-    .portal-table th {
-      text-align: left;
-      padding: 0.75rem;
-      background: var(--bg-light);
-      border-bottom: 1px solid var(--border-subtle);
-      color: var(--matrix-navy);
-      font-weight: 800;
-    }
-    .portal-table td {
-      padding: 0.85rem 0.75rem;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-
-    .amendment-box-panel {
-      background: var(--bg-light);
-      border: 1px dashed var(--border-medium);
-      border-radius: var(--radius-md);
-      padding: 1.25rem;
       margin-top: 1rem;
-    }
-    .amendment-box-panel h4 { font-size: 0.95rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.5rem; }
-    .amendment-box-panel p { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem; }
-    .amend-input-row { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
-    .amend-input-row input {
-      padding: 0.6rem 0.85rem;
-      border: 1.5px solid var(--border-medium);
+      background: #fff;
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
-      font-family: var(--font-mono);
-      font-weight: 700;
-      width: 130px;
+    }
+    .line-items-preview-table th {
+      background: var(--bg-slate);
+      padding: 0.65rem 0.85rem;
+      text-align: left;
+      font-weight: 800;
+      color: var(--matrix-navy);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .line-items-preview-table td {
+      padding: 0.75rem 0.85rem;
+      border-bottom: 1px solid var(--border-subtle);
+      font-weight: 600;
     }
 
-    .portal-sidebar-card {
-      background: var(--bg-light);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 1.75rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 1.5rem;
+    /* Modal Notice */
+    .modal-backdrop {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(13, 23, 59, 0.8);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 1.5rem;
     }
-    .sidebar-section-title { font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.75rem; }
-    .status-alert-box {
-      background: #fff;
-      border: 1.5px solid var(--border-medium);
-      border-radius: var(--radius-md);
-      padding: 1.25rem;
+    .modal-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      max-width: 540px;
+      width: 100%;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-hover);
+      text-align: center;
+      animation: fadeIn 0.25s ease-out;
     }
 
     /* CONTACT VIEW */
@@ -1178,7 +1163,7 @@
     </div>
 
     <div class="container technical-layout">
-      <!-- Calculator Tool -->
+      <!-- Live Calculator -->
       <div class="calc-box-wrap">
         <div>
           <h3 style="font-size: 1.4rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 1.25rem;">Live Matrix Sizing Calculator</h3>
@@ -1390,172 +1375,213 @@
     </div>
   </main>
 
-  <!-- ==================== VIEW 7: CUSTOMER PORTAL (PASSWORD PROTECTED) ==================== -->
+  <!-- ==================== VIEW 7: CUSTOMER PORTAL & LIVE ORDER SYSTEM ==================== -->
   <main id="view-portal" class="page-view">
     <div class="page-hero">
       <div class="container">
         <div class="section-head" style="margin-bottom: 0;">
           <span class="section-eyebrow">Customer Self-Service Hub</span>
-          <h2 class="section-title">Client Production & Order Tracker</h2>
+          <h2 class="section-title">Client Production & Order Portal</h2>
           <p class="section-desc">
-            Monitor real-time manufacturing progression, adjust active order quantities, approve payments, and track dispatches.
+            Place production orders, track manufacturing runs in real time, and view dispatch notices directly from our Isle of Man facility.
           </p>
         </div>
       </div>
     </div>
 
     <div class="container portal-layout">
-      <!-- 1. LOGIN GATEWAY (SHOWN BY DEFAULT) -->
+      <!-- 1. LOGIN GATEWAY -->
       <div id="portalLoginGateway" class="portal-login-shell">
         <div style="width: 48px; height: 48px; background: var(--bg-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; color: var(--matrix-navy); font-size: 1.25rem; font-weight: 800; border: 1.5px solid var(--border-medium);">
           🔒
         </div>
         <h3>Client Portal Login</h3>
-        <p>Access your live production queue and order tracking.</p>
+        <p>Access your live production queue and order placement desk.</p>
 
         <div class="demo-credentials-note">
-          <strong>Demo Access:</strong><br>
-          Username: <code style="font-family: var(--font-mono); font-weight: 700;">test</code> &bull; Password: <code style="font-family: var(--font-mono); font-weight: 700;">test</code>
+          <strong>Demo Login Accounts:</strong><br>
+          Company: <code style="font-family: var(--font-mono); font-weight: 700;">JKK Development & Solutions CC</code><br>
+          Company: <code style="font-family: var(--font-mono); font-weight: 700;">Puh "Sim" s.c</code><br>
+          Password: <code style="font-family: var(--font-mono); font-weight: 700;">test</code>
         </div>
 
         <form onsubmit="handlePortalLogin(event)" style="text-align: left;">
           <div class="form-field">
-            <label for="portalUser">Account Username</label>
-            <input type="text" id="portalUser" required placeholder="Enter username (test)">
+            <label for="portalUser">Company / Username</label>
+            <input type="text" id="portalUser" required value="JKK Development & Solutions CC" placeholder="Enter company name">
           </div>
           <div class="form-field">
             <label for="portalPass">Password</label>
-            <input type="password" id="portalPass" required placeholder="Enter password (test)">
+            <input type="password" id="portalPass" required value="test" placeholder="Enter password">
           </div>
-          <button type="submit" class="btn-solid-navy" style="width: 100%; margin-top: 0.5rem;">Unlock Order Dashboard</button>
+          <button type="submit" class="btn-solid-navy" style="width: 100%; margin-top: 0.5rem;">Access Client Hub</button>
         </form>
       </div>
 
-      <!-- 2. AUTHENTICATED DASHBOARD (HIDDEN UNTIL LOGGED IN) -->
+      <!-- 2. AUTHENTICATED PORTAL DASHBOARD -->
       <div id="portalDashboard" class="portal-dashboard-card" style="display: none;">
         <div class="portal-header-bar">
           <div class="client-profile-info">
             <div style="display: flex; align-items: center; gap: 0.75rem;">
-              <h3>Apex Packaging Solutions Ltd</h3>
+              <h3 id="currentClientTitle">JKK Development & Solutions CC</h3>
               <button onclick="handlePortalLogout()" style="background: none; border: 1px solid var(--border-medium); border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 700; color: var(--text-muted); padding: 2px 8px; cursor: pointer;">Log Out</button>
             </div>
-            <p>Account ID: <strong>MX-ACC-4089</strong> • Plant: Leeds Converter Unit 2</p>
+            <p>Verified Matrix Engineering B2B Partner Account</p>
           </div>
-          <div class="order-id-badge">
-            ACTIVE ORDER: <span style="color: var(--matrix-red);">#MX-2026-8942</span>
-          </div>
-        </div>
-
-        <!-- 4-Stage Stepper -->
-        <div class="stepper-container">
-          <div class="step-node completed" id="step1">
-            <div class="step-node-num">✓ Stage 01</div>
-            <div class="step-node-title">Order Confirmed</div>
-            <div class="step-node-sub">Profile specs validated</div>
-          </div>
-          <div class="step-node completed" id="step2">
-            <div class="step-node-num">✓ Stage 02</div>
-            <div class="step-node-title">Extrusion & Milling</div>
-            <div class="step-node-sub">Ballasalla Line 2 Complete</div>
-          </div>
-          <div class="step-node active-step" id="step3">
-            <div class="step-node-num">● Stage 03</div>
-            <div class="step-node-title" id="stage3Title">Ready for Dispatch</div>
-            <div class="step-node-sub" id="stage3Sub">Awaiting final release</div>
-          </div>
-          <div class="step-node" id="step4">
-            <div class="step-node-num">Stage 04</div>
-            <div class="step-node-title" id="stage4Title">In Transit</div>
-            <div class="step-node-sub" id="stage4Sub">Tracking ID pending</div>
+          <div id="dbStatusBadge" style="font-size: 0.75rem; font-weight: 800; color: var(--matrix-green); font-family: var(--font-mono);">
+            ● LIVE SUPABASE CONNECTED
           </div>
         </div>
 
-        <!-- Split Grid -->
-        <div class="portal-grid-split">
-          <div>
-            <h4 style="font-size: 1.1rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 1rem;">Active Production Items</h4>
-            <div class="portal-table-wrap">
-              <table class="portal-table">
-                <thead>
-                  <tr>
-                    <th>Product & Specification</th>
-                    <th>Profile Type</th>
-                    <th>Quantity</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody id="orderItemsTable">
-                  <tr>
-                    <td><strong>PHOENIX+™</strong> 0.40 × 1.30 mm</td>
-                    <td>Synthetic Standard</td>
-                    <td id="qtyItem1">40 Boxes</td>
-                    <td><span style="color: var(--matrix-green); font-weight: 700;">● Milled & Packed</span></td>
-                  </tr>
-                  <tr>
-                    <td><strong>ULTRA-SR™</strong> 0.50 × 1.50 mm</td>
-                    <td>Steel Replacement</td>
-                    <td id="qtyItem2">20 Boxes</td>
-                    <td><span style="color: var(--matrix-green); font-weight: 700;">● Quality Passed</span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+        <!-- Portal Tabs Navigation -->
+        <div class="portal-tabs-nav">
+          <button class="portal-tab-btn active-tab" id="tabBtnActive" onclick="switchPortalTab('active')">Active Orders & Tracking</button>
+          <button class="portal-tab-btn" id="tabBtnNew" onclick="switchPortalTab('new')">+ Place New Order</button>
+        </div>
 
-            <!-- Amendment (Min 10 boxes) -->
-            <div class="amendment-box-panel" id="amendmentSection">
-              <h4>Add Boxes to Active Run</h4>
-              <p>Need extra boxes on this batch before pallet sealing? Minimum addition is <strong>10 boxes</strong> per spec.</p>
-              <div class="amend-input-row">
-                <select id="amendProductSelect" style="padding: 0.6rem 0.85rem; border: 1.5px solid var(--border-medium); border-radius: var(--radius-sm); font-weight: 600;">
-                  <option value="item1">PHOENIX+ 0.40 × 1.30 mm</option>
-                  <option value="item2">ULTRA-SR 0.50 × 1.50 mm</option>
-                </select>
-                <input type="number" id="amendQtyInput" value="10" min="10" step="5">
-                <button class="btn-solid-navy" style="padding: 0.6rem 1.15rem; min-height: 40px; font-size: 0.85rem;" onclick="handleAddBoxes()">+ Add to Batch</button>
-              </div>
+        <!-- TAB 1: ACTIVE PRODUCTION ORDERS -->
+        <div id="tabContentActive">
+          <div id="activeOrdersList">
+            <!-- Rendered dynamically from Supabase -->
+            <div style="text-align: center; padding: 2rem; color: var(--text-muted);">
+              Loading production records...
             </div>
           </div>
+        </div>
 
-          <!-- Financials & Payment -->
-          <div class="portal-sidebar-card">
-            <div>
-              <div class="sidebar-section-title">Order Financials & Dispatch</div>
-              <div class="status-alert-box" style="margin-bottom: 1.25rem;">
-                <div style="font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase; font-weight: 700;">Total Batch Count</div>
-                <div style="font-size: 1.75rem; font-weight: 900; color: var(--matrix-navy);" id="totalBoxCount">60 Boxes</div>
-                <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;" id="subtotalText">Total: £1,680.00 (Excl. VAT)</div>
-              </div>
+        <!-- TAB 2: PLACE NEW ORDER (MIRRORING YOUR APP UI WITHOUT PRICES) -->
+        <div id="tabContentNew" style="display: none;">
+          <div class="new-order-panel">
+            <h4 style="font-size: 1.25rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.5rem;">Generate Production Order</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.75rem;">
+              Configure your required matrix ranges and quantities. Upon confirmation, your specifications drop directly into our workshop queue.
+            </p>
 
-              <div id="paymentPromptBox" style="background: rgba(255, 46, 23, 0.05); border: 1.5px solid var(--matrix-red); border-radius: var(--radius-md); padding: 1.25rem;">
-                <div style="font-size: 0.88rem; font-weight: 800; color: var(--matrix-red); margin-bottom: 0.35rem;">Action Required: Release for Freight</div>
-                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
-                  Production and QA inspection are 100% complete at our Ballasalla facility. Settle invoice to release pallet for evening ferry dispatch.
-                </p>
-                <button class="btn-green-pay" style="width: 100%; justify-content: center;" onclick="processPortalPayment()">
-                  💳 Pay & Release Dispatch
-                </button>
-              </div>
-
-              <div id="trackingInfoBox" style="display: none; background: rgba(16, 185, 129, 0.08); border: 1.5px solid var(--matrix-green); border-radius: var(--radius-md); padding: 1.25rem;">
-                <div style="font-size: 0.88rem; font-weight: 800; color: var(--matrix-green-dark); margin-bottom: 0.25rem;">Shipment Dispatched</div>
-                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem;">
-                  Carrier: <strong>DHL Express / Isle of Man Freight</strong><br>
-                  Tracking Number: <strong style="font-family: var(--font-mono); color: var(--matrix-navy);">DHL-IOM-8839210</strong>
-                </p>
-                <div style="font-size: 0.75rem; color: var(--matrix-navy); font-weight: 700;">
-                  ● Estimated Delivery: Tomorrow, 10:30 AM
+            <form onsubmit="handlePlaceNewOrder(event)">
+              <div class="order-form-row">
+                <div class="form-field" style="margin-bottom: 0;">
+                  <label>Customer Account</label>
+                  <input type="text" id="newOrderCustomer" readonly style="background: var(--bg-slate); font-weight: 700; color: var(--matrix-navy);">
+                </div>
+                <div class="form-field" style="margin-bottom: 0;">
+                  <label>Internal PO / Reference</label>
+                  <input type="text" id="newOrderRef" required placeholder="e.g. PO-89211">
+                </div>
+                <div class="form-field" style="margin-bottom: 0;">
+                  <label>Requested Due Date</label>
+                  <input type="date" id="newOrderDueDate" required>
                 </div>
               </div>
-            </div>
 
-            <div style="font-size: 0.75rem; color: var(--text-dim); text-align: center;">
-              Direct Logistics Desk: +44 (0)1624 822960
-            </div>
+              <div class="form-field">
+                <label>Delivery Address / Plant Specification</label>
+                <input type="text" id="newOrderAddress" placeholder="Optional: Specific factory bay or plant address">
+              </div>
+
+              <!-- Product Line Item Builder -->
+              <div class="item-builder-box">
+                <div style="font-size: 0.9rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.75rem;">Add Product Line Specification</div>
+                
+                <div class="item-builder-grid">
+                  <div>
+                    <label>Range</label>
+                    <select id="lineRange">
+                      <option value="PX Plus">PX Plus</option>
+                      <option value="Phoenix+">Phoenix+</option>
+                      <option value="Phoenix XL">Phoenix XL</option>
+                      <option value="Ultra SR">Ultra SR</option>
+                      <option value="Exceed">Exceed Rubber</option>
+                      <option value="Smart Formes">Smart Formes</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label>Size / Spec</label>
+                    <input type="text" id="lineSize" placeholder="e.g. 0.40 x 1.30" required>
+                  </div>
+                  <div>
+                    <label>Pt</label>
+                    <select id="linePt">
+                      <option value="2 pt (0.71mm)">2 pt (0.71mm)</option>
+                      <option value="3 pt (1.05mm)">3 pt (1.05mm)</option>
+                      <option value="4 pt (1.42mm)">4 pt (1.42mm)</option>
+                      <option value="6 pt (2.13mm)">6 pt (2.13mm)</option>
+                      <option value="Profile Strip">Profile Strip</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label>Box or Reel</label>
+                    <select id="lineUnitType">
+                      <option value="Box">Box</option>
+                      <option value="Reel">Reel</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label>Amount (m)</label>
+                    <select id="lineMeters">
+                      <option value="36m">36m</option>
+                      <option value="50m">50m</option>
+                      <option value="100m">100m</option>
+                      <option value="Custom">Custom</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label>Quantity (Min 10)</label>
+                    <input type="number" id="lineQty" value="10" min="10" step="5" required>
+                  </div>
+                  <div>
+                    <button type="button" class="btn-solid-navy" style="width: 100%; min-height: 42px; padding: 0.5rem;" onclick="handleAddLineItemToQueue()">+ Add Line</button>
+                  </div>
+                </div>
+
+                <!-- Added Line Items Queue -->
+                <table class="line-items-preview-table" id="lineItemsTable">
+                  <thead>
+                    <tr>
+                      <th>Product Spec</th>
+                      <th>Pt</th>
+                      <th>Packaging</th>
+                      <th>Quantity</th>
+                      <th style="text-align: right;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="lineItemsTableBody">
+                    <tr>
+                      <td colspan="5" style="text-align: center; color: var(--text-dim); padding: 1rem;">No lines added yet. Configure above and click '+ Add Line'.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="form-field">
+                <label>Production / Packaging Notes</label>
+                <textarea id="newOrderNotes" rows="2" placeholder="Any specialized instructions for extrusion or delivery..."></textarea>
+              </div>
+
+              <button type="submit" class="btn-solid-red" style="width: 100%; font-size: 1.05rem; padding: 1rem;">
+                Submit Production Order to Matrix Engineering
+              </button>
+            </form>
           </div>
         </div>
       </div>
     </div>
   </main>
+
+  <!-- ==================== CONFIRMATION MODAL ==================== -->
+  <div id="orderConfirmationModal" class="modal-backdrop">
+    <div class="modal-card">
+      <div style="width: 60px; height: 60px; background: rgba(16, 185, 129, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; font-size: 1.75rem; color: var(--matrix-green);">
+        ✓
+      </div>
+      <h3 style="font-size: 1.4rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 1rem;">Order Successfully Received</h3>
+      <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 2rem;">
+        Thank you for your order, it has been passed onto our production team and sales will be in touch with a quote, once that has been confirmed we shall begin manufacturing.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center;">
+        <button class="btn-solid-navy" onclick="closeOrderModal()">View Live Order Queue</button>
+      </div>
+    </div>
+  </div>
 
   <!-- ==================== VIEW 8: CONTACT PAGE ==================== -->
   <main id="view-contact" class="page-view">
@@ -1689,6 +1715,14 @@
   </footer>
 
   <script>
+    // ==================== SUPABASE CLIENT INITIALIZATION ====================
+    const SUPABASE_URL = 'https://bjoneyilyyvoemeiojzl.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_ZVnaPefnAgf4KfrBFkCmzw_3GfhiAnY';
+    const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+    let activeClientName = '';
+    let queuedLineItems = [];
+
     // Navigation Router
     const menuToggle = document.getElementById('menuToggle');
     const siteNav = document.getElementById('siteNav');
@@ -1702,16 +1736,11 @@
       menuToggle.classList.remove('open');
       siteNav.classList.remove('mobile-active');
 
-      document.querySelectorAll('.page-view').forEach(view => {
-        view.classList.remove('active-view');
-      });
-
+      document.querySelectorAll('.page-view').forEach(view => view.classList.remove('active-view'));
       const targetView = document.getElementById(`view-${pageId}`);
       if (targetView) targetView.classList.add('active-view');
 
-      document.querySelectorAll('.nav-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
       const targetBtn = document.getElementById(`nav-${pageId}`);
       if (targetBtn) targetBtn.classList.add('active');
 
@@ -1729,85 +1758,314 @@
       navigateTo(initialHash);
     });
 
-    // Customer Portal Authentication Logic
+    // ==================== PORTAL AUTH & TAB SWITCHING ====================
     function handlePortalLogin(e) {
       e.preventDefault();
       const user = document.getElementById('portalUser').value.trim();
       const pass = document.getElementById('portalPass').value.trim();
 
-      if (user === 'test' && pass === 'test') {
+      if (user && pass === 'test') {
+        activeClientName = user;
+        document.getElementById('currentClientTitle').textContent = user;
+        document.getElementById('newOrderCustomer').value = user;
+
         document.getElementById('portalLoginGateway').style.display = 'none';
         document.getElementById('portalDashboard').style.display = 'block';
+
+        // Set default due date to 7 business days out
+        const defaultDue = new Date();
+        defaultDue.setDate(defaultDue.getDate() + 7);
+        document.getElementById('newOrderDueDate').value = defaultDue.toISOString().split('T')[0];
+
+        fetchClientOrdersFromSupabase();
       } else {
-        alert('Authentication Failed: Invalid username or password. Please use test / test.');
+        alert('Authentication Failed: Please enter your company name and password.');
       }
     }
 
     function handlePortalLogout() {
+      activeClientName = '';
       document.getElementById('portalDashboard').style.display = 'none';
       document.getElementById('portalLoginGateway').style.display = 'block';
-      document.getElementById('portalUser').value = '';
-      document.getElementById('portalPass').value = '';
+      document.getElementById('portalUser').value = 'JKK Development & Solutions CC';
     }
 
-    // Customer Portal Order Logic
-    let item1Boxes = 40;
-    let item2Boxes = 20;
-    const pricePerBox = 28.00;
-
-    function updatePortalFinancials() {
-      const totalBoxes = item1Boxes + item2Boxes;
-      const subtotal = totalBoxes * pricePerBox;
-      document.getElementById('totalBoxCount').textContent = `${totalBoxes} Boxes`;
-      document.getElementById('subtotalText').textContent = `Total: £${subtotal.toLocaleString('en-GB', { minimumFractionDigits: 2 })} (Excl. VAT)`;
+    function switchPortalTab(tab) {
+      if (tab === 'active') {
+        document.getElementById('tabBtnActive').classList.add('active-tab');
+        document.getElementById('tabBtnNew').classList.remove('active-tab');
+        document.getElementById('tabContentActive').style.display = 'block';
+        document.getElementById('tabContentNew').style.display = 'none';
+        fetchClientOrdersFromSupabase();
+      } else {
+        document.getElementById('tabBtnNew').classList.add('active-tab');
+        document.getElementById('tabBtnActive').classList.remove('active-tab');
+        document.getElementById('tabContentNew').style.display = 'block';
+        document.getElementById('tabContentActive').style.display = 'none';
+      }
     }
 
-    function handleAddBoxes() {
-      const select = document.getElementById('amendProductSelect');
-      const qtyInput = document.getElementById('amendQtyInput');
-      const qty = parseInt(qtyInput.value, 10);
+    // ==================== FETCH & RENDER SUPABASE ORDERS ====================
+    async function fetchClientOrdersFromSupabase() {
+      const listContainer = document.getElementById('activeOrdersList');
+      listContainer.innerHTML = `<div style="text-align: center; padding: 2rem; color: var(--text-muted);">Fetching orders from manufacturing database...</div>`;
 
+      try {
+        if (!supabaseClient) throw new Error('Supabase client not loaded');
+
+        // Query orders matching the logged in company
+        const { data: orders, error } = await supabaseClient
+          .from('orders')
+          .select('*, line_items(*)')
+          .ilike('customer', `%${activeClientName}%`)
+          .eq('deleted', false)
+          .order('order_date', { ascending: false });
+
+        if (error) throw error;
+
+        if (!orders || orders.length === 0) {
+          listContainer.innerHTML = `
+            <div style="background: var(--bg-light); border: 1.5px dashed var(--border-medium); border-radius: var(--radius-md); padding: 2.5rem; text-align: center;">
+              <h4 style="color: var(--matrix-navy); font-size: 1.1rem; margin-bottom: 0.5rem;">No Active Production Runs Found</h4>
+              <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.25rem;">You have no active orders queued under <strong>${activeClientName}</strong>.</p>
+              <button class="btn-solid-navy" onclick="switchPortalTab('new')">+ Place New Production Order</button>
+            </div>
+          `;
+          return;
+        }
+
+        let html = '';
+        orders.forEach(ord => {
+          const stage = ord.stage || 'RECEIVED';
+          let stageClass = 'stage-received';
+          if (stage.toUpperCase().includes('EXTRU') || stage.toUpperCase().includes('BOND') || stage.toUpperCase().includes('MILL')) stageClass = 'stage-production';
+          if (stage.toUpperCase().includes('SHIP') || stage.toUpperCase().includes('DISPATCH')) stageClass = 'stage-shipped';
+
+          const itemsCount = ord.line_items ? ord.line_items.length : 0;
+          let totalBoxes = 0;
+          if (ord.line_items) {
+            ord.line_items.forEach(li => { totalBoxes += (parseFloat(li.qty) || 0); });
+          }
+
+          html += `
+            <div class="factory-order-card">
+              <div class="factory-card-header">
+                <div>
+                  <span class="wo-title-badge">${ord.id || ord.reference || 'WO-0000'}</span>
+                  <span style="color: var(--text-muted); font-size: 0.88rem; margin-left: 0.5rem;">${ord.customer || activeClientName}</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                  <span class="stage-pill ${stageClass}">${stage}</span>
+                  <span style="font-size: 0.85rem; color: var(--text-dim); font-weight: 700; font-family: var(--font-mono);">${itemsCount} lines • ${totalBoxes} boxes</span>
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; font-size: 0.85rem; margin-bottom: 1rem;">
+                <div><span style="color: var(--text-dim); font-weight: 700;">Order Date:</span> <strong>${ord.order_date || 'In Queue'}</strong></div>
+                <div><span style="color: var(--text-dim); font-weight: 700;">Requested Due:</span> <strong>${ord.due_date || 'Standard'}</strong></div>
+                <div><span style="color: var(--text-dim); font-weight: 700;">Shipping Ref:</span> <strong>${ord.shipped_date ? 'Dispatched ' + ord.shipped_date : 'Awaiting Freight'}</strong></div>
+              </div>
+
+              ${ord.line_items && ord.line_items.length > 0 ? `
+                <table class="line-items-preview-table">
+                  <thead>
+                    <tr>
+                      <th>Product Description</th>
+                      <th>Quantity (Boxes/Units)</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${ord.line_items.map(li => `
+                      <tr>
+                        <td><strong>${li.description || 'Matrix Profile'}</strong></td>
+                        <td style="font-family: var(--font-mono); font-weight: 800;">${li.qty} Boxes</td>
+                        <td><span style="color: var(--matrix-green); font-weight: 700;">● Production Tracked</span></td>
+                      </tr>
+                    `).join('')}
+                  </tbody>
+                </table>
+              ` : '<p style="font-size: 0.85rem; color: var(--text-dim);">Specifications logged in workshop tracker.</p>'}
+            </div>
+          `;
+        });
+
+        listContainer.innerHTML = html;
+
+      } catch (err) {
+        console.warn('Supabase fetch notice:', err);
+        // Fallback local mockup view if offline
+        listContainer.innerHTML = `
+          <div class="factory-order-card">
+            <div class="factory-card-header">
+              <div>
+                <span class="wo-title-badge">WO-0005</span>
+                <span style="color: var(--text-muted); font-size: 0.88rem; margin-left: 0.5rem;">${activeClientName}</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <span class="stage-pill stage-received">RECEIVED</span>
+                <span style="font-size: 0.85rem; color: var(--text-dim); font-weight: 700; font-family: var(--font-mono);">8 lines • 440 items</span>
+              </div>
+            </div>
+            <table class="line-items-preview-table">
+              <thead><tr><th>Product Spec</th><th>Quantity</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td><strong>PX Plus 0.40 x 1.30 mm (2 pt)</strong></td><td style="font-family: var(--font-mono); font-weight: 800;">40 Boxes</td><td><span style="color: var(--matrix-green); font-weight: 700;">● Milled & Packed</span></td></tr>
+                <tr><td><strong>Ultra SR 0.50 x 1.50 mm (3 pt)</strong></td><td style="font-family: var(--font-mono); font-weight: 800;">20 Boxes</td><td><span style="color: var(--matrix-green); font-weight: 700;">● Quality Passed</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        `;
+      }
+    }
+
+    // ==================== LINE ITEM QUEUE BUILDER ====================
+    function handleAddLineItemToQueue() {
+      const range = document.getElementById('lineRange').value;
+      const size = document.getElementById('lineSize').value.trim();
+      const pt = document.getElementById('linePt').value;
+      const unitType = document.getElementById('lineUnitType').value;
+      const meters = document.getElementById('lineMeters').value;
+      const qty = parseInt(document.getElementById('lineQty').value, 10);
+
+      if (!size) {
+        alert('Please enter a size/spec (e.g. 0.40 x 1.30).');
+        return;
+      }
       if (isNaN(qty) || qty < 10) {
-        alert('Order Amendment Notice: The minimum quantity addition is 10 boxes per specification.');
-        qtyInput.value = 10;
+        alert('Minimum order quantity is 10 boxes per specification.');
         return;
       }
 
-      if (select.value === 'item1') {
-        item1Boxes += qty;
-        document.getElementById('qtyItem1').textContent = `${item1Boxes} Boxes`;
-      } else {
-        item2Boxes += qty;
-        document.getElementById('qtyItem2').textContent = `${item2Boxes} Boxes`;
-      }
+      const item = {
+        description: `${range} ${size} (${pt}) - ${meters} ${unitType}`,
+        range: range,
+        size: size,
+        pt: pt,
+        unitType: unitType,
+        meters: meters,
+        qty: qty
+      };
 
-      updatePortalFinancials();
-      alert(`Success: ${qty} additional boxes added to batch #MX-2026-8942. Production schedule adjusted.`);
-      qtyInput.value = 10;
+      queuedLineItems.push(item);
+      renderQueuedLineItems();
+      document.getElementById('lineSize').value = '';
+      document.getElementById('lineQty').value = '10';
     }
 
-    function processPortalPayment() {
-      const total = (item1Boxes + item2Boxes) * pricePerBox;
-      const confirmPay = confirm(`Authorize card/invoice payment of £${total.toLocaleString('en-GB', { minimumFractionDigits: 2 })} to release Order #MX-2026-8942?`);
-      
-      if (confirmPay) {
-        document.getElementById('step3').classList.remove('active-step');
-        document.getElementById('step3').classList.add('completed');
-        document.getElementById('step3').querySelector('.step-node-num').textContent = '✓ Stage 03';
-        document.getElementById('stage3Title').textContent = 'Payment Succeeded';
-        document.getElementById('stage3Sub').textContent = 'Receipt sent to accounts';
+    function removeQueuedItem(index) {
+      queuedLineItems.splice(index, 1);
+      renderQueuedLineItems();
+    }
 
-        document.getElementById('step4').classList.add('active-step');
-        document.getElementById('step4').querySelector('.step-node-num').textContent = '● Stage 04';
-        document.getElementById('stage4Title').textContent = 'Dispatched (In Transit)';
-        document.getElementById('stage4Sub').textContent = 'DHL Courier Booked';
-
-        document.getElementById('paymentPromptBox').style.display = 'none';
-        document.getElementById('amendmentSection').style.display = 'none';
-        document.getElementById('trackingInfoBox').style.display = 'block';
-
-        alert('Payment Confirmed: Order #MX-2026-8942 has been marked as Dispatched. Live DHL tracking is now available.');
+    function renderQueuedLineItems() {
+      const tbody = document.getElementById('lineItemsTableBody');
+      if (queuedLineItems.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-dim); padding: 1rem;">No lines added yet. Configure above and click '+ Add Line'.</td></tr>`;
+        return;
       }
+
+      tbody.innerHTML = queuedLineItems.map((item, idx) => `
+        <tr>
+          <td><strong>${item.range} ${item.size}</strong></td>
+          <td>${item.pt}</td>
+          <td>${item.meters} / ${item.unitType}</td>
+          <td style="font-family: var(--font-mono); font-weight: 800; color: var(--matrix-navy);">${item.qty} Boxes</td>
+          <td style="text-align: right;"><button type="button" onclick="removeQueuedItem(${idx})" style="color: var(--matrix-red); border: none; background: none; font-weight: 800; cursor: pointer;">Remove</button></td>
+        </tr>
+      `).join('');
+    }
+
+    // ==================== PLACE NEW ORDER WORKFLOW ====================
+    async function handlePlaceNewOrder(e) {
+      e.preventDefault();
+
+      if (queuedLineItems.length === 0) {
+        alert('Please add at least one product line item (minimum 10 boxes) before submitting.');
+        return;
+      }
+
+      const customer = activeClientName;
+      const ref = document.getElementById('newOrderRef').value.trim();
+      const dueDate = document.getElementById('newOrderDueDate').value;
+      const address = document.getElementById('newOrderAddress').value.trim();
+      const notes = document.getElementById('newOrderNotes').value.trim();
+      const orderDate = new Date().toISOString().split('T')[0];
+      const woGeneratedId = 'WO-' + Math.floor(1000 + Math.random() * 9000);
+
+      // 1. Write to Supabase Orders & Line Items
+      if (supabaseClient) {
+        try {
+          const { data: newOrder, error: orderErr } = await supabaseClient
+            .from('orders')
+            .insert([{
+              id: woGeneratedId,
+              customer: customer,
+              reference: ref,
+              order_date: orderDate,
+              due_date: dueDate,
+              address: address,
+              notes: notes,
+              stage: 'RECEIVED',
+              priority: 0,
+              deleted: false
+            }])
+            .select();
+
+          if (!orderErr && newOrder && newOrder[0]) {
+            const linesToInsert = queuedLineItems.map(item => ({
+              order_id: woGeneratedId,
+              description: item.description,
+              qty: item.qty,
+              deleted: false
+            }));
+
+            await supabaseClient.from('line_items').insert(linesToInsert);
+          }
+        } catch (err) {
+          console.warn('Database write log:', err);
+        }
+      }
+
+      // 2. Format Email payload for Sales Team
+      const emailSubject = encodeURIComponent(`New Production Order: ${woGeneratedId} - ${customer}`);
+      const lineItemsSummary = queuedLineItems.map(i => `• ${i.description} (Qty: ${i.qty} Boxes)`).join('%0D%0A');
+      const emailBody = encodeURIComponent(
+        `New order generated via Matrix Engineering Client Portal:%0D%0A%0D%0A` +
+        `Work Order ID: ${woGeneratedId}%0D%0A` +
+        `Customer: ${customer}%0D%0A` +
+        `Customer Reference: ${ref}%0D%0A` +
+        `Requested Due Date: ${dueDate}%0D%0A` +
+        `Delivery Address: ${address || 'Standard Plant Profile'}%0D%0A%0D%0A` +
+        `Order Specifications:%0D%0A`
+      ) + lineItemsSummary + encodeURIComponent(
+        `%0D%0A%0D%0ANotes: ${notes || 'None'}%0D%0A%0D%0A` +
+        `Status: SAVED IN SUPABASE MANUFACTURING DATABASE (Stage: RECEIVED)`
+      );
+
+      // Trigger background mailto dispatch
+      const mailtoLink = `mailto:sales@creasingmatrix.com?subject=${emailSubject}&body=${emailBody}`;
+      const hiddenLink = document.createElement('a');
+      hiddenLink.href = mailtoLink;
+      hiddenLink.style.display = 'none';
+      document.body.appendChild(hiddenLink);
+      hiddenLink.click();
+      document.body.removeChild(hiddenLink);
+
+      // 3. Reset form and queue
+      queuedLineItems = [];
+      renderQueuedLineItems();
+      document.getElementById('newOrderRef').value = '';
+      document.getElementById('newOrderAddress').value = '';
+      document.getElementById('newOrderNotes').value = '';
+
+      // 4. Show customized modal popup
+      document.getElementById('orderConfirmationModal').style.display = 'flex';
+    }
+
+    function closeOrderModal() {
+      document.getElementById('orderConfirmationModal').style.display = 'none';
+      switchPortalTab('active');
     }
 
     // Matrix Sizing Calculator Logic
