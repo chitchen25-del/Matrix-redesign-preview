@@ -82,7 +82,6 @@ nav.site-nav{display:flex;align-items:center;gap:0.2rem;}
 .team-titles h4{font-size:1.15rem;font-weight:800;color:var(--matrix-navy-dark);}
 .team-titles .role{font-size:0.8rem;font-weight:700;color:var(--matrix-red);text-transform:uppercase;letter-spacing:0.04em;}
 .team-bio{font-size:0.9rem;color:var(--text-muted);line-height:1.65;}
-/* PRODUCTS CATALOG */
 .products-layout{padding:clamp(2.5rem,5vw,4.5rem) 0;}
 .prod-grid-large{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2.5rem;}
 @media (max-width:480px){.prod-grid-large{grid-template-columns:1fr;}}
@@ -101,7 +100,6 @@ nav.site-nav{display:flex;align-items:center;gap:0.2rem;}
 .spec-table-compact td{padding:0.5rem 0.75rem;}
 .spec-table-compact td.k{color:var(--text-dim);font-weight:600;}
 .spec-table-compact td.v{text-align:right;font-weight:700;color:var(--matrix-navy-dark);font-family:var(--font-mono);}
-/* DEDICATED PRODUCT DETAIL PAGES */
 .detail-layout{padding:clamp(1.5rem,4vw,3.5rem) 0 clamp(3rem,6vw,5rem);}
 .detail-grid-top{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,3vw,3rem);align-items:start;margin-bottom:clamp(2.5rem,5vw,4rem);}
 @media (max-width:900px){.detail-grid-top{grid-template-columns:1fr;}}
@@ -129,11 +127,7 @@ nav.site-nav{display:flex;align-items:center;gap:0.2rem;}
 .size-table td{padding:0.85rem;border-bottom:1px solid var(--border-subtle);vertical-align:middle;}
 .size-table tr:hover td{background:rgba(248,250,252,0.8);}
 .color-swatch-bar{width:50px;height:12px;border-radius:3px;display:block;border:1px solid rgba(0,0,0,0.12);box-shadow:0 1px 3px rgba(0,0,0,0.08);}
-.color-pink{background:#F472B6;} .color-navy{background:#182B6B;} .color-lilac{background:#C084FC;} .color-red{background:#FF2E17;}
-.color-grey{background:#94A3B8;} .color-yellow{background:#EAB308;} .color-magenta{background:#DB2777;} .color-orange{background:#F97316;}
-.color-green{background:#10B981;} .color-sky{background:#38BDF8;} .color-lime{background:#84CC16;} .color-mauve{background:#8B5CF6;}
-.color-silver{background:#E2E8F0;} .color-buff{background:#FDE047;} .color-violet{background:#7C3AED;} .color-white{background:#FFFFFF;border:1.5px solid #CBD5E1;}
-.color-rose{background:#FB7185;} .color-slate{background:#64748B;} .color-brown{background:#92400E;} .color-black{background:#0F172A;} .color-blue{background:#2563EB;}
+.color-pink{background:#F472B6;} .color-navy{background:#182B6B;} .color-lilac{background:#C084FC;} .color-red{background:#FF2E17;} .color-grey{background:#94A3B8;} .color-yellow{background:#EAB308;} .color-magenta{background:#DB2777;} .color-orange{background:#F97316;} .color-green{background:#10B981;} .color-sky{background:#38BDF8;} .color-lime{background:#84CC16;} .color-mauve{background:#8B5CF6;} .color-silver{background:#E2E8F0;} .color-buff{background:#FDE047;} .color-violet{background:#7C3AED;} .color-white{background:#FFFFFF;border:1.5px solid #CBD5E1;} .color-rose{background:#FB7185;} .color-slate{background:#64748B;} .color-brown{background:#92400E;} .color-black{background:#0F172A;} .color-blue{background:#2563EB;} .color-cream{background:#FDF5E6;}
 .box-yield-badge{display:inline-block;background:var(--bg-slate);color:var(--matrix-navy);font-size:0.78rem;font-weight:800;padding:6px 12px;border-radius:var(--radius-sm);font-family:var(--font-mono);margin-top:0.5rem;}
 .technical-layout{padding:clamp(2.5rem,5vw,4.5rem) 0;}
 .calc-box-wrap{background:#ffffff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:clamp(1.5rem,4vw,3rem);display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-bottom:3.5rem;}
@@ -436,12 +430,12 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
           <div class="prod-content-box">
             <div>
               <h3>ULTRA-SR™</h3>
-              <p>High-precision steel-based matrix engineered for maximum durability against abrasive recycled fibers and ultra-long die-cutting runs.</p>
+              <p>Advanced polyester base alternative to steel matrix, engineered for extreme durability against abrasive recycled fibers and ultra-long die-cutting runs.</p>
             </div>
             <div>
               <table class="spec-table-compact">
                 <tr><td class="k">Substrate</td><td class="v">Recycled & Greyboard</td></tr>
-                <tr><td class="k">Base Material</td><td class="v">High-Tensile Steel</td></tr>
+                <tr><td class="k">Base Material</td><td class="v">High Impact Polyester</td></tr>
                 <tr><td class="k">Durability</td><td class="v">Extreme Run Life</td></tr>
               </table>
               <button class="btn-solid-navy" style="width: 100%;" onclick="event.stopPropagation(); navigateTo('ultra-sr')">View Ultra-SR Details & Chart →</button>
@@ -519,10 +513,11 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
 
       <div class="section-head"><span class="section-eyebrow">Engineering Advantages</span><h2 class="section-title">Key Performance Features</h2></div>
       <div class="features-card-grid">
-        <div class="feat-card"><div class="feat-icon">✓</div><h4>Clean-Peel Adhesive System</h4><p>Proprietary high-tack adhesive holds firmly during rigorous impression cycles yet removes effortlessly without leaving sticky platen residue.</p></div>
-        <div class="feat-card"><div class="feat-icon">✓</div><h4>Self-Centering Locators</h4><p>Precision locator bridges seat accurately over the rule, guaranteeing perfect channel alignment.</p></div>
-        <div class="feat-card"><div class="feat-icon">✓</div><h4>Next-Gen Virgin Polymer</h4><p>Utilises advanced high-impact polymers that withstand millions of cuts without channel wall collapse.</p></div>
-        <div class="feat-card"><div class="feat-icon">✓</div><h4>Ultra-Smooth Shoulder Profile</h4><p>Bevelled shoulders allow printed folding carton sheets to glide effortlessly over the counter plate.</p></div>
+        <div class="feat-card"><div class="feat-icon">✓</div><h4>Clean-Peel Adhesive System</h4><p>New High Quality Adhesive. No need for cleaning the platen.</p></div>
+        <div class="feat-card"><div class="feat-icon">✓</div><h4>Self-Centering Locators</h4><p>Specially designed locators. Self-locating securely in the channel.</p></div>
+        <div class="feat-card"><div class="feat-icon">✓</div><h4>Next-Gen Virgin Polymer</h4><p>High Impact Plastic. The very latest in polymer technology.</p></div>
+        <div class="feat-card"><div class="feat-icon">✓</div><h4>Ultra-Smooth Shoulder Profile</h4><p>Extremely smooth shoulder profile for use on high speed machines.</p></div>
+        <div class="feat-card" style="grid-column: 1 / -1;"><div class="feat-icon">✓</div><h4>Dual-Surface Colour Coding</h4><p>Colour coded for height and printed on both the base and locator for easy identification.</p></div>
       </div>
 
       <div class="chart-section-shell">
@@ -545,12 +540,12 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
               <thead><tr><th>Base Colour</th><th>Height (mm)</th><th>Available Channel Widths (mm)</th></tr></thead>
               <tbody>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-pink"></span><strong>Pink</strong></div></td><td><strong>0.30 mm</strong></td><td>0.5, 0.6, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-navy"></span><strong>Navy</strong></div></td><td><strong>0.40 mm</strong></td><td>0.5, 0.6, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-lilac"></span><strong>Lilac</strong></div></td><td><strong>0.45 mm</strong></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-blue"></span><strong>Blue</strong></div></td><td><strong>0.40 mm</strong></td><td>0.5, 0.6, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-white"></span><strong>White</strong></div></td><td><strong>0.45 mm</strong></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-red"></span><strong>Red</strong></div></td><td><strong>0.50 mm</strong></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1 and 2.3</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-grey"></span><strong>Grey</strong></div></td><td><strong>0.55 mm</strong></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1 and 2.3</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-yellow"></span><strong>Yellow</strong></div></td><td><strong>0.60 mm</strong></td><td>1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9 and 2.1</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-orange"></span><strong>Orange</strong></div></td><td><strong>0.70 mm</strong></td><td>1.5, 1.6, 1.7, 1.9 and 2.1</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-silver"></span><strong>Silver</strong></div></td><td><strong>0.55 mm</strong></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1 and 2.3</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-yellow"></span><strong>Yellow</strong></div></td><td><strong>0.60 mm</strong></td><td>1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1, 2.3 and 2.5</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-orange"></span><strong>Orange</strong></div></td><td><strong>0.70 mm</strong></td><td>1.5, 1.6, 1.7, 1.9, 2.1, 2.3 and 2.5</td></tr>
               </tbody>
             </table>
           </div>
@@ -573,12 +568,12 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
               <thead><tr><th>Base Colour</th><th>Height (mm)</th><th>Available Channel Widths (mm)</th></tr></thead>
               <tbody>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-pink"></span><strong>Pink</strong></div></td><td><strong>0.30 mm</strong></td><td>0.5, 0.6, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-navy"></span><strong>Navy</strong></div></td><td><strong>0.40 mm</strong></td><td>0.5, 0.6, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-lilac"></span><strong>Lilac</strong></div></td><td><strong>0.45 mm</strong></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-blue"></span><strong>Blue</strong></div></td><td><strong>0.40 mm</strong></td><td>0.5, 0.6, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-white"></span><strong>White</strong></div></td><td><strong>0.45 mm</strong></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-red"></span><strong>Red</strong></div></td><td><strong>0.50 mm</strong></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1 and 2.3</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-grey"></span><strong>Grey</strong></div></td><td><strong>0.55 mm</strong></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1 and 2.3</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-silver"></span><strong>Silver</strong></div></td><td><strong>0.55 mm</strong></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1 and 2.3</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-yellow"></span><strong>Yellow</strong></div></td><td><strong>0.60 mm</strong></td><td>1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1, 2.3 and 2.5</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-magenta"></span><strong>Magenta</strong></div></td><td><strong>0.65 mm</strong></td><td>1.5, 1.6, 1.7, 1.9, 2.1, 2.3 and 2.5</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-mauve"></span><strong>Mauve</strong></div></td><td><strong>0.65 mm</strong></td><td>1.5, 1.6, 1.7, 1.9, 2.1, 2.3 and 2.5</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-orange"></span><strong>Orange</strong></div></td><td><strong>0.70 mm</strong></td><td>1.5, 1.6, 1.7, 1.9, 2.1, 2.3 and 2.5</td></tr>
               </tbody>
             </table>
@@ -602,12 +597,12 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
               <thead><tr><th>Base Colour</th><th>Height (mm)</th><th>Available Channel Widths (mm)</th></tr></thead>
               <tbody>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-pink"></span><strong>Pink</strong></div></td><td><strong>0.30 mm</strong></td><td>0.5, 0.6, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-navy"></span><strong>Navy</strong></div></td><td><strong>0.40 mm</strong></td><td>0.5, 0.6, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-lilac"></span><strong>Lilac</strong></div></td><td><strong>0.45 mm</strong></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-blue"></span><strong>Blue</strong></div></td><td><strong>0.40 mm</strong></td><td>0.5, 0.6, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-white"></span><strong>White</strong></div></td><td><strong>0.45 mm</strong></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-red"></span><strong>Red</strong></div></td><td><strong>0.50 mm</strong></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1 and 2.3</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-grey"></span><strong>Grey</strong></div></td><td><strong>0.55 mm</strong></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1 and 2.3</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-silver"></span><strong>Silver</strong></div></td><td><strong>0.55 mm</strong></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1 and 2.3</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-yellow"></span><strong>Yellow</strong></div></td><td><strong>0.60 mm</strong></td><td>1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.8, 3.0 and 3.2</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-magenta"></span><strong>Magenta</strong></div></td><td><strong>0.65 mm</strong></td><td>1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.8, 3.0 and 3.2</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-mauve"></span><strong>Mauve</strong></div></td><td><strong>0.65 mm</strong></td><td>1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.8, 3.0 and 3.2</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-orange"></span><strong>Orange</strong></div></td><td><strong>0.70 mm</strong></td><td>1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.8, 3.0 and 3.2</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-green"></span><strong>Green</strong></div></td><td><strong>0.80 mm</strong></td><td>1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.8, 3.0 and 3.2</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-sky"></span><strong>Sky</strong></div></td><td><strong>1.00 mm</strong></td><td>2.3, 2.5, 2.7, 2.8, 3.0 and 3.2</td></tr>
@@ -633,11 +628,11 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
               <thead><tr><th>Base Colour</th><th>Height (mm)</th><th>Available Channel Widths (mm)</th></tr></thead>
               <tbody>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-yellow"></span><strong>Yellow</strong></div></td><td><strong>0.60 mm</strong></td><td>3.5*, 4.0# and 4.5#</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-magenta"></span><strong>Magenta</strong></div></td><td><strong>0.65 mm</strong></td><td>3.5*, 4.0# and 4.5#</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-mauve"></span><strong>Mauve</strong></div></td><td><strong>0.65 mm</strong></td><td>3.5*, 4.0# and 4.5#</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-orange"></span><strong>Orange</strong></div></td><td><strong>0.70 mm</strong></td><td>3.5*, 4.0#, 4.5# and 5.0#</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-green"></span><strong>Green</strong></div></td><td><strong>0.80 mm</strong></td><td>3.5*, 4.0#, 4.5# and 5.0#</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-sky"></span><strong>Sky</strong></div></td><td><strong>1.00 mm</strong></td><td>3.5*, 4.0#, 4.5# and 5.0#</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-grey"></span><strong>Grey</strong></div></td><td><strong>1.20 mm</strong></td><td>3.5*, 4.0#, 4.5# and 5.0#</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-silver"></span><strong>Silver</strong></div></td><td><strong>1.20 mm</strong></td><td>3.5*, 4.0#, 4.5# and 5.0#</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-lime"></span><strong>Lime</strong></div></td><td><strong>1.50 mm</strong></td><td>3.5*, 4.0#, 4.5# and 5.0#</td></tr>
               </tbody>
             </table>
@@ -665,8 +660,8 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
             <table class="size-table">
               <thead><tr><th>Base Colour</th><th>Height (mm)</th><th>Available Channel Widths (mm)</th></tr></thead>
               <tbody>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-navy"></span><strong>Navy</strong></div></td><td><strong>0.40 mm</strong></td><td>1.0, 1.3, and 1.5</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-lilac"></span><strong>Lilac</strong></div></td><td><strong>0.45 mm</strong></td><td>1.0, 1.3, and 1.5</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-blue"></span><strong>Blue</strong></div></td><td><strong>0.40 mm</strong></td><td>1.0, 1.3, and 1.5</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-white"></span><strong>White</strong></div></td><td><strong>0.45 mm</strong></td><td>1.0, 1.3, and 1.5</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-red"></span><strong>Red</strong></div></td><td><strong>0.50 mm</strong></td><td>1.0, 1.3, and 1.5</td></tr>
               </tbody>
             </table>
@@ -716,7 +711,7 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
             <table class="size-table">
               <thead><tr><th>Base Colour</th><th>Height (mm)</th><th>Available Channel Widths (mm)</th></tr></thead>
               <tbody>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-navy"></span><strong>Navy</strong></div></td><td><strong>0.40 mm</strong></td><td>1.3, 1.4, 1.5, 1.6, and 1.7</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-blue"></span><strong>Blue</strong></div></td><td><strong>0.40 mm</strong></td><td>1.3, 1.4, 1.5, 1.6, and 1.7</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-red"></span><strong>Red</strong></div></td><td><strong>0.50 mm</strong></td><td>1.3, 1.4, 1.5, 1.6, 1.7, and 1.9</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-yellow"></span><strong>Yellow</strong></div></td><td><strong>0.60 mm</strong></td><td>1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 3.0, and 3.2</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-orange"></span><strong>Orange</strong></div></td><td><strong>0.70 mm</strong></td><td>2.1, 2.3, 2.5, 2.7, 3.0, and 3.2</td></tr>
@@ -757,7 +752,7 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
     <div class="page-hero">
       <div class="container">
         <div style="margin-bottom: 1.25rem;"><button onclick="navigateTo('products')" style="background: none; border: none; color: var(--matrix-navy); font-weight: 800; font-size: 0.9rem; cursor: pointer;">← Back to Products Range</button></div>
-        <div class="section-head" style="margin-bottom: 0; text-align: left;"><span class="section-eyebrow">Steel-Based Extreme Durability</span><h2 class="section-title">ULTRA-SR™</h2></div>
+        <div class="section-head" style="margin-bottom: 0; text-align: left;"><span class="section-eyebrow">Advanced Polyester Base Alternative to Steel</span><h2 class="section-title">ULTRA-SR™</h2></div>
       </div>
     </div>
 
@@ -767,46 +762,48 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
         <div class="detail-info-pane">
           <span class="detail-subtitle">Engineered for Abrasive Recycled Boards</span>
           <h1>Extreme Run Life with Zero Edge-Lift Durability</h1>
-          <p class="detail-desc-lead">The <strong>Ultra-SR™</strong> represents the benchmark in heavy-duty, steel-based creasing matrix technology. Engineered with a precision-rolled high-tensile steel baseplate and 100 Micron Mylar channel film, Ultra-SR is purpose-built to withstand the punishing friction of abrasive recycled fibres and micro-flute substrates.</p>
+          <p class="detail-desc-lead">The <strong>Ultra-SR™</strong> represents a breakthrough in heavy-duty creasing. Engineered as a high-impact polyester base product that matches the exact thickness of traditional steel-based matrix, it is fully compatible with any steel-based product on the market.</p>
+          <p class="detail-desc-lead">Ultra-SR is purpose-built to provide exceptional stability and durability without the risk of rusting or perforation marks, ensuring micron-accurate crease depth across multi-million impression packaging runs.</p>
           <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;"><button class="btn-solid-red" onclick="navigateTo('contact')">Request Ultra-SR Samples</button></div>
         </div>
       </div>
 
       <div class="section-head"><span class="section-eyebrow">Engineering Advantages</span><h2 class="section-title">Key Performance Features</h2></div>
       <div class="features-card-grid">
-        <div class="feat-card"><div class="feat-icon">✓</div><h4>High-Tensile Steel Baseplate</h4><p>Fabricated from ultra-flat, hardened steel to provide an immovable creasing anvil that eliminates channel deflection.</p></div>
-        <div class="feat-card"><div class="feat-icon">✓</div><h4>100 Mic Mylar Film Construction</h4><p>Features ultra-durable 100 Micron Mylar channel shoulders that resist abrasive wear and fibre tearing.</p></div>
-        <div class="feat-card"><div class="feat-icon">✓</div><h4>Full Visual Colour-Coding</h4><p>Comprehensive colour matching from Mauve through to Orange for instantaneous profile identification.</p></div>
+        <div class="feat-card"><div class="feat-icon">✓</div><h4>High Quality Adhesive</h4><p>Specially formulated High Quality Adhesive for maximum impressions.</p></div>
+        <div class="feat-card"><div class="feat-icon">✓</div><h4>Special High Impact Plastic</h4><p>Providing great stability and durability, fully compatible with steel matrix.</p></div>
+        <div class="feat-card"><div class="feat-icon">✓</div><h4>No Rusting or Perforation</h4><p>Advanced material construction guarantees no rusting and no perforation marks on the board.</p></div>
+        <div class="feat-card"><div class="feat-icon">✓</div><h4>Fingerlift Tape Standard</h4><p>All products are supplied with fingerlift tape as standard for fast makeready changes.</p></div>
       </div>
 
       <div class="chart-section-shell">
         <div class="chart-header-row">
           <div><span class="section-eyebrow">Factory Specification</span><h3>Ultra-SR Size & Selection Chart</h3></div>
-          <div class="heritage-tag" style="background: var(--bg-slate); padding: 8px 14px; border-radius: var(--radius-sm); font-size: 0.8rem; color:var(--matrix-navy);">● 100 Mic Mylar Film</div>
+          <div class="heritage-tag" style="background: var(--matrix-navy); padding: 8px 14px; border-radius: var(--radius-sm); font-size: 0.8rem; color:var(--bg-white);">Note: An allowance of 0.20 must be considered the same as all other steel based products.</div>
         </div>
 
         <div style="margin-bottom: 2.5rem;">
-          <h4 style="font-size: 1.2rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.75rem;">7mm Centre Base (100 Mic Mylar)</h4>
+          <h4 style="font-size: 1.2rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.75rem;">Ultra SR 7mm Centre</h4>
           <div class="size-table-container">
             <table class="size-table">
-              <thead><tr><th>Base Colour</th><th>Height (mm)</th><th>Channel Width (mm)</th><th>Pt Specification</th></tr></thead>
+              <thead><tr><th>Base Colour</th><th>Height (mm)</th><th>Channel Width (mm)</th><th>Pt Spec</th></tr></thead>
               <tbody>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-mauve"></span><strong>Mauve</strong></div></td><td><strong>0.38 mm</strong></td><td>0.5 mm</td><td style="color:var(--matrix-red);font-weight:700;">2 / 3 pt</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-silver"></span><strong>Silver</strong></div></td><td><strong>0.38 mm</strong></td><td>0.8 mm</td><td style="color:var(--matrix-red);font-weight:700;">2 / 3 pt</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-buff"></span><strong>Buff</strong></div></td><td><strong>0.38 mm</strong></td><td>1.0 mm</td><td style="color:var(--matrix-red);font-weight:700;">2 / 3 pt</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-violet"></span><strong>Violet</strong></div></td><td><strong>0.38 mm</strong></td><td>1.2 mm</td><td style="color:var(--matrix-red);font-weight:700;">2 / 3 pt</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-white"></span><strong>White</strong></div></td><td><strong>0.45 mm</strong></td><td>1.3 mm</td><td style="color:var(--matrix-red);font-weight:700;">2 / 3 pt</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-sky"></span><strong>Sky</strong></div></td><td><strong>0.45 mm</strong></td><td>1.4 mm</td><td style="color:var(--matrix-red);font-weight:700;">2 / 3 pt</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-lime"></span><strong>Lime</strong></div></td><td><strong>0.45 mm</strong></td><td>1.5 mm</td><td style="color:var(--matrix-red);font-weight:700;">2 / 3 pt</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-yellow"></span><strong>Yellow</strong></div></td><td><strong>0.50 mm</strong></td><td>1.6 mm</td><td style="color:var(--matrix-red);font-weight:700;">2 / 3 pt</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-rose"></span><strong>Rose</strong></div></td><td><strong>0.50 mm</strong></td><td>1.7 mm</td><td style="color:var(--matrix-red);font-weight:700;">2 / 3 pt</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-slate"></span><strong>Slate</strong></div></td><td><strong>0.55 mm</strong></td><td>1.9 mm</td><td style="color:var(--matrix-red);font-weight:700;">2 / 3 pt</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-green"></span><strong>Green</strong></div></td><td><strong>0.60 mm</strong></td><td>2.0 mm</td><td style="color:var(--matrix-red);font-weight:700;">2 / 3 pt</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-brown"></span><strong>Brown</strong></div></td><td><strong>0.60 mm</strong></td><td>2.1 mm</td><td style="color:var(--matrix-red);font-weight:700;">2 / 3 pt</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-red"></span><strong>Red</strong></div></td><td><strong>0.70 mm</strong></td><td>2.3 mm</td><td style="color:var(--matrix-red);font-weight:700;">2 / 3 pt</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-black"></span><strong>Black</strong></div></td><td><strong>0.70 mm</strong></td><td>2.4 mm</td><td style="color:var(--matrix-red);font-weight:700;">2 / 3 pt</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-blue"></span><strong>Blue</strong></div></td><td><strong>0.80 mm</strong></td><td>2.6 mm</td><td style="color:var(--matrix-red);font-weight:700;">2 / 3 pt</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-orange"></span><strong>Orange</strong></div></td><td><strong>0.90 mm</strong></td><td>3.0 mm</td><td style="color:var(--matrix-red);font-weight:700;">3 / 4 pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-mauve"></span><strong>Mauve</strong></div></td><td><strong>0.38 mm</strong></td><td>0.5 mm</td><td style="color:var(--matrix-red);font-weight:700;">2-3pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-silver"></span><strong>Silver</strong></div></td><td><strong>0.38 mm</strong></td><td>0.8 mm</td><td style="color:var(--matrix-red);font-weight:700;">2-3pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-buff"></span><strong>Buff</strong></div></td><td><strong>0.38 mm</strong></td><td>1.0 mm</td><td style="color:var(--matrix-red);font-weight:700;">2-3pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-violet"></span><strong>Violet</strong></div></td><td><strong>0.38 mm</strong></td><td>1.2 mm</td><td style="color:var(--matrix-red);font-weight:700;">2-3pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-white"></span><strong>White</strong></div></td><td><strong>0.45 mm</strong></td><td>1.3 mm</td><td style="color:var(--matrix-red);font-weight:700;">2-3pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-sky"></span><strong>Sky</strong></div></td><td><strong>0.45 mm</strong></td><td>1.4 mm</td><td style="color:var(--matrix-red);font-weight:700;">2-3pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-lime"></span><strong>Lime</strong></div></td><td><strong>0.45 mm</strong></td><td>1.5 mm</td><td style="color:var(--matrix-red);font-weight:700;">2-3pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-yellow"></span><strong>Yellow</strong></div></td><td><strong>0.50 mm</strong></td><td>1.6 mm</td><td style="color:var(--matrix-red);font-weight:700;">2-3pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-rose"></span><strong>Rose</strong></div></td><td><strong>0.50 mm</strong></td><td>1.7 mm</td><td style="color:var(--matrix-red);font-weight:700;">2-3pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-slate"></span><strong>Slate</strong></div></td><td><strong>0.55 mm</strong></td><td>1.9 mm</td><td style="color:var(--matrix-red);font-weight:700;">2-3pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-green"></span><strong>Green</strong></div></td><td><strong>0.60 mm</strong></td><td>2.0 mm</td><td style="color:var(--matrix-red);font-weight:700;">2-3pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-brown"></span><strong>Brown</strong></div></td><td><strong>0.60 mm</strong></td><td>2.1 mm</td><td style="color:var(--matrix-red);font-weight:700;">2-3pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-red"></span><strong>Red</strong></div></td><td><strong>0.70 mm</strong></td><td>2.3 mm</td><td style="color:var(--matrix-red);font-weight:700;">2-3pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-black"></span><strong>Black</strong></div></td><td><strong>0.70 mm</strong></td><td>2.4 mm</td><td style="color:var(--matrix-red);font-weight:700;">2-3pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-blue"></span><strong>Blue</strong></div></td><td><strong>0.80 mm</strong></td><td>2.6 mm</td><td style="color:var(--matrix-red);font-weight:700;">2-3pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-orange"></span><strong>Orange</strong></div></td><td><strong>0.90 mm</strong></td><td>3.0 mm</td><td style="color:var(--matrix-red);font-weight:700;">3-4pt</td></tr>
               </tbody>
             </table>
           </div>
@@ -814,25 +811,67 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
 
         <hr style="border: none; border-top: 1.5px solid var(--border-subtle); margin: 2.5rem 0;">
 
-        <div>
-          <h4 style="font-size: 1.2rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.75rem;">7mm Off-Centre Base (100 Mic Mylar)</h4>
+        <div style="margin-bottom: 2.5rem;">
+          <h4 style="font-size: 1.2rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.75rem;">Ultra SR 7mm Off-Centre</h4>
           <div class="size-table-container">
             <table class="size-table">
-              <thead><tr><th>Base Colour</th><th>Height (mm)</th><th>Channel Width (mm)</th><th>Pt Specification</th></tr></thead>
+              <thead><tr><th>Base Colour</th><th>Height (mm)</th><th>Channel Width (mm)</th><th>Pt Spec</th></tr></thead>
               <tbody>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-silver"></span><strong>Silver</strong></div></td><td><strong>0.38 mm</strong></td><td>0.8 mm</td><td style="color:var(--matrix-red);font-weight:700;">2 / 3 pt</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-buff"></span><strong>Buff</strong></div></td><td><strong>0.38 mm</strong></td><td>1.0 mm</td><td style="color:var(--matrix-red);font-weight:700;">2 / 3 pt</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-violet"></span><strong>Violet</strong></div></td><td><strong>0.38 mm</strong></td><td>1.2 mm</td><td style="color:var(--matrix-red);font-weight:700;">2 / 3 pt</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-white"></span><strong>White</strong></div></td><td><strong>0.45 mm</strong></td><td>1.3 mm</td><td style="color:var(--matrix-red);font-weight:700;">2 / 3 pt</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-sky"></span><strong>Sky</strong></div></td><td><strong>0.45 mm</strong></td><td>1.4 mm</td><td style="color:var(--matrix-red);font-weight:700;">2 / 3 pt</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-lime"></span><strong>Lime</strong></div></td><td><strong>0.45 mm</strong></td><td>1.5 mm</td><td style="color:var(--matrix-red);font-weight:700;">2 / 3 pt</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-yellow"></span><strong>Yellow</strong></div></td><td><strong>0.50 mm</strong></td><td>1.6 mm</td><td style="color:var(--matrix-red);font-weight:700;">2 / 3 pt</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-rose"></span><strong>Rose</strong></div></td><td><strong>0.50 mm</strong></td><td>1.7 mm</td><td style="color:var(--matrix-red);font-weight:700;">2 / 3 pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-silver"></span><strong>Silver</strong></div></td><td><strong>0.38 mm</strong></td><td>0.8 mm</td><td style="color:var(--matrix-red);font-weight:700;">2-3pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-buff"></span><strong>Buff</strong></div></td><td><strong>0.38 mm</strong></td><td>1.0 mm</td><td style="color:var(--matrix-red);font-weight:700;">2-3pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-violet"></span><strong>Violet</strong></div></td><td><strong>0.38 mm</strong></td><td>1.2 mm</td><td style="color:var(--matrix-red);font-weight:700;">2-3pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-white"></span><strong>White</strong></div></td><td><strong>0.45 mm</strong></td><td>1.3 mm</td><td style="color:var(--matrix-red);font-weight:700;">2-3pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-sky"></span><strong>Sky</strong></div></td><td><strong>0.45 mm</strong></td><td>1.4 mm</td><td style="color:var(--matrix-red);font-weight:700;">2-3pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-lime"></span><strong>Lime</strong></div></td><td><strong>0.45 mm</strong></td><td>1.5 mm</td><td style="color:var(--matrix-red);font-weight:700;">2-3pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-yellow"></span><strong>Yellow</strong></div></td><td><strong>0.50 mm</strong></td><td>1.6 mm</td><td style="color:var(--matrix-red);font-weight:700;">2-3pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-rose"></span><strong>Rose</strong></div></td><td><strong>0.50 mm</strong></td><td>1.7 mm</td><td style="color:var(--matrix-red);font-weight:700;">2-3pt</td></tr>
               </tbody>
             </table>
           </div>
-          <div class="box-yield-badge">📦 Standard Steel Packaging: <strong>24 Metres / Box</strong></div>
+          <div class="box-yield-badge">📦 Contents of box 32 x 750mm strips = <strong>24 Metres</strong> For both Centre and Off-Centre Products</div>
         </div>
+
+        <hr style="border: none; border-top: 1.5px solid var(--border-subtle); margin: 2.5rem 0;">
+
+        <div style="margin-bottom: 2.5rem;">
+          <h4 style="font-size: 1.2rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.75rem;">Ultra SR 12mm Centre</h4>
+          <div class="size-table-container">
+            <table class="size-table">
+              <thead><tr><th>Base Colour</th><th>Height (mm)</th><th>Channel Width (mm)</th><th>Pt Spec</th></tr></thead>
+              <tbody>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-grey"></span><strong>Grey</strong></div></td><td><strong>1.30 mm</strong></td><td>3.80 mm</td><td style="color:var(--matrix-red);font-weight:700;">3-4pt & 4-6pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-black"></span><strong>Black</strong></div></td><td><strong>1.50 mm</strong></td><td>5.00 mm</td><td style="color:var(--matrix-red);font-weight:700;">3-4pt & 4-6pt</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-cream"></span><strong>Cream</strong></div></td><td><strong>1.70 mm</strong></td><td>6.00 mm</td><td style="color:var(--matrix-red);font-weight:700;">3-4pt & 4-6pt</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="box-yield-badge">📦 Contents of box 20 x 750mm strips = <strong>15 Metres</strong></div>
+        </div>
+
+        <hr style="border: none; border-top: 1.5px solid var(--border-subtle); margin: 2.5rem 0;">
+
+        <div>
+          <h4 style="font-size: 1.2rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.75rem;">Ultra SR Size Chart 12mm Double Crease</h4>
+          <p style="font-size:0.8rem; font-weight:700; color:var(--text-dim); margin-bottom:1rem;">*(Distance Between Rules available in 3.00, 4.00 and 5.00mm)</p>
+          <div class="size-table-container">
+            <table class="size-table">
+              <thead><tr><th>Base Colour</th><th>Height (mm)</th><th>Channel Width (mm)</th></tr></thead>
+              <tbody>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-buff"></span><strong>Buff</strong></div></td><td><strong>0.38 mm</strong></td><td style="font-weight:700; color:#334155;">1.0mm D3</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-buff"></span><strong>Buff</strong></div></td><td><strong>0.38 mm</strong></td><td style="font-weight:700; color:#334155;">1.0mm D4</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-buff"></span><strong>Buff</strong></div></td><td><strong>0.38 mm</strong></td><td style="font-weight:700; color:#334155;">1.0mm D5</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-white"></span><strong>White</strong></div></td><td><strong>0.45 mm</strong></td><td style="font-weight:700; color:#334155;">1.3mm D3</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-white"></span><strong>White</strong></div></td><td><strong>0.45 mm</strong></td><td style="font-weight:700; color:#334155;">1.3mm D4</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-white"></span><strong>White</strong></div></td><td><strong>0.45 mm</strong></td><td style="font-weight:700; color:#334155;">1.3mm D5</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-yellow"></span><strong>Yellow</strong></div></td><td><strong>0.50 mm</strong></td><td style="font-weight:700; color:#334155;">1.6mm D3</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-yellow"></span><strong>Yellow</strong></div></td><td><strong>0.50 mm</strong></td><td style="font-weight:700; color:#334155;">1.6mm D4</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-yellow"></span><strong>Yellow</strong></div></td><td><strong>0.50 mm</strong></td><td style="font-weight:700; color:#334155;">1.6mm D5</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="box-yield-badge">📦 Contents of box 24 x 750mm strips = <strong>18 Metres</strong></div>
+        </div>
+
       </div>
     </div>
   </main>
@@ -848,31 +887,32 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
 
     <div class="container detail-layout">
       <div class="detail-grid-top">
-        <div class="detail-gallery-main dark-hero"><img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0340.png" alt="Exceed Rubber"></div>
+        <div class="detail-gallery-main dark-hero"><img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0340.png" alt="Exceed Rubber Ejection Profile Showcase"></div>
         <div class="detail-info-pane">
           <span class="detail-subtitle">Over 40 Years of Extrusion Expertise</span>
           <h1>Zero Degradation for Over 1.6 Million Impressions</h1>
-          <p class="detail-desc-lead">Engineered to outperform standard market alternatives, <strong>Exceed™ Rubber</strong> maintains its exact dynamic profile for over 1.6 million impressions. Unlike conventional rubber that degrades, hardens, or loses rebound memory over time, our advanced micro-cellular formulation guarantees consistent sheet ejection—drastically reducing makeready times, virtually eliminating angel hair, and maximizing your press speeds.</p>
+          <p class="detail-desc-lead">Our Ejection Rubber will maintain its profile for over 1.6 million impressions and will not degrade over time like some rubber products, making this a very cost-effective product which will also shorten make-ready time and reduce angel hair.</p>
           <p class="detail-desc-lead"><strong>Fuelling Next-Generation Production:</strong> Driven by incredible global growth and relentless customer demand, we are thrilled to announce the commissioning of a second state-of-the-art rubber extrusion line at our Isle of Man facility. This major investment guarantees uninterrupted, high-volume supply of our signature Exceed Rubber, and paves the way for an innovative new suite of advanced ejection profiles coming to market very soon.</p>
           <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;"><button class="btn-solid-red" onclick="navigateTo('contact')">Request Exceed Samples</button></div>
         </div>
       </div>
 
-      <div class="section-head"><span class="section-eyebrow">Engineering Advantages</span><h2 class="section-title">Your Benefits</h2></div>
+      <div class="section-head"><span class="section-eyebrow">Engineering Advantages</span><h2 class="section-title">Your benefits</h2></div>
       <div class="features-card-grid">
-        <div class="feat-card"><div class="feat-icon">✓</div><h4>1.6 Million+ Running Life</h4><p>Unmatched material memory means absolutely no reduction in ejection performance after millions of impressions.</p></div>
-        <div class="feat-card"><div class="feat-icon">✓</div><h4>Eliminates Angel Hair</h4><p>The precise structural shape ensures immediate sheet break-away from the cutting rule, radically reducing paper dust.</p></div>
-        <div class="feat-card"><div class="feat-icon">✓</div><h4>Extreme UV & Heat Resistance</h4><p>Formulated to resist environmental degradation, preventing the rubber from becoming brittle under intense press friction.</p></div>
-        <div class="feat-card"><div class="feat-icon">✓</div><h4>Rapid Makeready</h4><p>Highly dimensionally stable profile makes adhering to the die-board faster and more precise.</p></div>
+        <div class="feat-card"><div class="feat-icon">✓</div><h4>1.6 Million+ Running Life</h4><p>Higher running life, no reduction in performance after 1.6 million impressions.</p></div>
+        <div class="feat-card"><div class="feat-icon">✓</div><h4>Excellent UV resistance</h4><p>Formulated to resist environmental degradation under intense shop floor lighting.</p></div>
+        <div class="feat-card"><div class="feat-icon">✓</div><h4>High Resistance to heat</h4><p>Maintains dynamic profile and prevents becoming brittle under intense press friction.</p></div>
+        <div class="feat-card"><div class="feat-icon">✓</div><h4>Reduced make-ready time</h4><p>Highly dimensionally stable profile makes adhering to the die-board faster and more precise.</p></div>
       </div>
 
       <div class="chart-section-shell">
         <div class="chart-header-row">
           <div><span class="section-eyebrow">Factory Specification</span><h3>Exceed Rubber Size Chart</h3></div>
+          <div class="heritage-tag" style="background: var(--bg-slate); padding: 8px 14px; border-radius: var(--radius-sm); font-size: 0.8rem; color:var(--matrix-navy);">● Supplied in White</div>
         </div>
 
         <div style="margin-bottom: 2.5rem;">
-          <h4 style="font-size: 1.2rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.75rem;">5.00mm Width Profile</h4>
+          <h4 style="font-size: 1.2rem; font-weight: 900; color: var(--matrix-red); margin-bottom: 0.75rem; text-align: center;">Exceed 5.00mm</h4>
           <div class="tech-diagram-box" style="background: radial-gradient(circle at 50% 50%, #475569 0%, #1e293b 100%); border: none;">
             <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
               <path d="M 35,90 L 35,30 L 55,30 Q 45,55 90,90 Z" fill="#e2e8f0" />
@@ -887,10 +927,12 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
           </div>
           <div class="size-table-container">
             <table class="size-table">
-              <thead><tr><th>Colour</th><th>Height (mm)</th><th>Width (mm)</th><th>Metres per Box</th></tr></thead>
+              <thead><tr><th>Product</th><th>Height (A)</th><th>Width (B)</th><th>Colour</th><th>Metres per Box</th></tr></thead>
               <tbody>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-white"></span><strong>White</strong></div></td><td><strong>7.00 mm</strong></td><td>5.00 mm</td><td><strong>24 metres</strong> (32 x 750mm)</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-white"></span><strong>White</strong></div></td><td><strong>7.25 mm</strong></td><td>5.00 mm</td><td><strong>34 metres</strong> (32 x 750mm)</td></tr>
+                <tr><td>Exceed 7.00mm x 5.00mm</td><td><strong>7.00mm</strong></td><td>5.00mm</td><td>White</td><td><strong style="color:var(--matrix-navy);">24 metres</strong> (32 x 750mm)</td></tr>
+                <tr><td>Exceed 7.00mm x 5.00mm</td><td><strong>7.00mm</strong></td><td>5.00mm</td><td>White</td><td><strong style="color:var(--matrix-navy);">60 metres</strong> (80 x 750mm)</td></tr>
+                <tr><td>Exceed 7.25mm x 5.00mm</td><td><strong>7.25mm</strong></td><td>5.00mm</td><td>White</td><td><strong style="color:var(--matrix-navy);">24 metres</strong> (32 x 750mm)</td></tr>
+                <tr><td>Exceed 7.25mm x 5.00mm</td><td><strong>7.25mm</strong></td><td>5.00mm</td><td>White</td><td><strong style="color:var(--matrix-navy);">60 metres</strong> (80 x 750mm)</td></tr>
               </tbody>
             </table>
           </div>
@@ -899,7 +941,7 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
         <hr style="border: none; border-top: 1.5px solid var(--border-subtle); margin: 2.5rem 0;">
 
         <div>
-          <h4 style="font-size: 1.2rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.75rem;">7.50mm Width Profile</h4>
+          <h4 style="font-size: 1.2rem; font-weight: 900; color: var(--matrix-red); margin-bottom: 0.75rem; text-align: center;">Exceed 7.50mm</h4>
           <div class="tech-diagram-box" style="background: radial-gradient(circle at 50% 50%, #475569 0%, #1e293b 100%); border: none;">
             <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
               <path d="M 25,90 L 25,30 L 55,30 Q 40,55 95,90 Z" fill="#e2e8f0" />
@@ -914,14 +956,16 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
           </div>
           <div class="size-table-container">
             <table class="size-table">
-              <thead><tr><th>Colour</th><th>Height (mm)</th><th>Width (mm)</th><th>Metres per Box</th></tr></thead>
+              <thead><tr><th>Product</th><th>Height (A)</th><th>Width (B)</th><th>Colour</th><th>Metres per Box</th></tr></thead>
               <tbody>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-white"></span><strong>White</strong></div></td><td><strong>7.00 mm</strong></td><td>7.50 mm</td><td><strong>24 metres</strong> (32 x 750mm)</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-white"></span><strong>White</strong></div></td><td><strong>7.25 mm</strong></td><td>7.50 mm</td><td><strong>34 metres</strong> (32 x 750mm)</td></tr>
+                <tr><td>Exceed 7.00mm x 7.50mm</td><td><strong>7.00mm</strong></td><td>7.50mm</td><td>White</td><td><strong style="color:var(--matrix-navy);">24 metres</strong> (32 x 750mm)</td></tr>
+                <tr><td>Exceed 7.00mm x 7.50mm</td><td><strong>7.00mm</strong></td><td>7.50mm</td><td>White</td><td><strong style="color:var(--matrix-navy);">60 metres</strong> (80 x 750mm)</td></tr>
+                <tr><td>Exceed 7.25mm x 7.50mm</td><td><strong>7.25mm</strong></td><td>7.50mm</td><td>White</td><td><strong style="color:var(--matrix-navy);">24 metres</strong> (32 x 750mm)</td></tr>
+                <tr><td>Exceed 7.25mm x 7.50mm</td><td><strong>7.25mm</strong></td><td>7.50mm</td><td>White</td><td><strong style="color:var(--matrix-navy);">60 metres</strong> (80 x 750mm)</td></tr>
               </tbody>
             </table>
           </div>
-          <p style="font-size: 0.85rem; font-weight: 700; color: var(--matrix-navy); margin-top: 1rem; text-align: center;">Exceed Rubber comes from a combined experience of over 40 years of design and production of profile extrusion.</p>
+          <p style="font-size: 0.85rem; font-weight: 800; color: var(--matrix-red); margin-top: 1.5rem; text-align: center;">Exceed rubber comes from a combined experience of over 40 years' of design and production of profile extrusion.</p>
         </div>
       </div>
     </div>
@@ -943,70 +987,24 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
       <div class="calc-box-wrap">
         <div>
           <h3 style="font-size: 1.4rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 1.25rem;">Live Matrix Sizing Calculator</h3>
-          
-          <div class="calc-input-group">
-            <label for="boardCaliper">
-              <span>Board Caliper (mm)</span>
-              <span id="caliperVal" style="color: var(--matrix-navy); font-family: var(--font-mono);">0.45 mm</span>
-            </label>
-            <input type="number" id="boardCaliper" value="0.45" step="0.05" min="0.10" max="3.00">
-          </div>
-
-          <div class="calc-input-group">
-            <label for="creasingRule">Creasing Rule Spec</label>
-            <select id="creasingRule">
-              <option value="0.71">2 pt (0.71 mm) - Standard Carton</option>
-              <option value="1.05">3 pt (1.05 mm) - Heavy Carton / Solid Board</option>
-              <option value="1.42">4 pt (1.42 mm) - Corrugated / Flute</option>
-              <option value="2.13">6 pt (2.13 mm) - Heavy Flute</option>
-            </select>
-          </div>
-
-          <div class="calc-input-group">
-            <label for="boardType">Substrate Category</label>
-            <select id="boardType">
-              <option value="virgin">Virgin Fiber Carton (Folding Box)</option>
-              <option value="recycled">Recycled / Greyboard (Use Ultra-SR)</option>
-              <option value="solid">Heavy Solid Board / Micro-Flute (Phoenix XL)</option>
-            </select>
-          </div>
+          <div class="calc-input-group"><label for="boardCaliper"><span>Board Caliper (mm)</span><span id="caliperVal" style="color: var(--matrix-navy); font-family: var(--font-mono);">0.45 mm</span></label><input type="number" id="boardCaliper" value="0.45" step="0.05" min="0.10" max="3.00"></div>
+          <div class="calc-input-group"><label for="creasingRule">Creasing Rule Spec</label><select id="creasingRule"><option value="0.71">2 pt (0.71 mm) - Standard Carton</option><option value="1.05">3 pt (1.05 mm) - Heavy Carton / Solid Board</option><option value="1.42">4 pt (1.42 mm) - Corrugated / Flute</option><option value="2.13">6 pt (2.13 mm) - Heavy Flute</option></select></div>
+          <div class="calc-input-group"><label for="boardType">Substrate Category</label><select id="boardType"><option value="virgin">Virgin Fiber Carton (Folding Box)</option><option value="recycled">Recycled / Greyboard (Use Ultra-SR)</option><option value="solid">Heavy Solid Board / Micro-Flute (Phoenix XL)</option></select></div>
         </div>
 
         <div class="calc-output-panel">
           <div>
             <h4>Recommended Matrix Dimensions</h4>
             <div class="res-metric-grid">
-              <div class="res-metric-card">
-                <div class="num" id="resDepth">0.40</div>
-                <div class="lbl">Depth (mm)</div>
-              </div>
-              <div class="res-metric-card">
-                <div class="num" id="resWidth">1.40</div>
-                <div class="lbl">Width (mm)</div>
-              </div>
+              <div class="res-metric-card"><div class="num" id="resDepth">0.40</div><div class="lbl">Depth (mm)</div></div>
+              <div class="res-metric-card"><div class="num" id="resWidth">1.40</div><div class="lbl">Width (mm)</div></div>
             </div>
           </div>
-
           <div style="background: rgba(255, 46, 23, 0.15); border-left: 3px solid var(--matrix-red); padding: 0.85rem 1rem; font-size: 0.85rem; color: #f8fafc;">
             <strong>Recommended Solution:</strong> <span id="resProduct">PHOENIX+™</span>
             <div style="font-size: 0.75rem; margin-top: 4px; opacity: 0.85;">Formula: Depth ≈ Caliper; Width = (Caliper × 1.5) + Rule Width</div>
           </div>
         </div>
-      </div>
-
-      <div class="section-head">
-        <span class="section-eyebrow">Operating Procedure</span>
-        <h2 class="section-title">6-Step Matrix Installation</h2>
-        <p class="section-desc">Follow our standardized process to ensure optimal channel transfer and rule durability.</p>
-      </div>
-
-      <div class="guide-step-grid">
-        <div class="guide-card"><div class="step-badge">STEP 01</div><h4>Clean Plate Surface</h4><p>Thoroughly degrease and dry the cutting plate or counter matrix jacket using standard solvent degreaser.</p></div>
-        <div class="guide-card"><div class="step-badge">STEP 02</div><h4>Cut Matrix to Size</h4><p>Cut the matrix strip cleanly to length using a dedicated 45° or 90° matrix hand/bench cutter.</p></div>
-        <div class="guide-card"><div class="step-badge">STEP 03</div><h4>Locate onto Rule</h4><p>Fit the locator channel bridge firmly over the creasing rule in the die.</p></div>
-        <div class="guide-card"><div class="step-badge">STEP 04</div><h4>Peel Adhesive Backing</h4><p>Peel the protective finger-lift backing tape to expose the high-tack adhesive layer.</p></div>
-        <div class="guide-card"><div class="step-badge">STEP 05</div><h4>Press Impression</h4><p>Cycle the press through one impression under standard pressure to transfer the matrix onto the counter plate.</p></div>
-        <div class="guide-card"><div class="step-badge">STEP 06</div><h4>Remove Locators</h4><p>Remove the plastic locator bridges from the channel. You are now ready for production.</p></div>
       </div>
     </div>
   </main>
@@ -1022,21 +1020,11 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
         </div>
       </div>
     </div>
-
     <div class="container acc-layout">
       <div class="acc-cards-grid">
-        <div class="acc-item-card">
-          <div><span class="cat-tag">Make Ready</span><h3>Super Shim Plus & Profitape</h3><p>Micro-calibrated makeready tapes engineered for micro-adjusting cutting plate impression pressure without distorting the sheet.</p></div>
-          <button class="btn-solid-navy" onclick="navigateTo('contact')">Enquire Tapes</button>
-        </div>
-        <div class="acc-item-card">
-          <div><span class="cat-tag">Cutting Tools</span><h3>Matrix Cutters (Hand & Bench)</h3><p>Precision 45-degree miter and straight 90-degree cutters delivering burr-free joins for tight corners in multi-crease dies.</p></div>
-          <button class="btn-solid-navy" onclick="navigateTo('contact')">Enquire Cutters</button>
-        </div>
-        <div class="acc-item-card">
-          <div><span class="cat-tag">Nicking Systems</span><h3>Speedy-Nick Tool</h3><p>Handheld pneumatic and manual nicking systems ensuring consistent, clean micro-nicks to keep boxes secure during stripping.</p></div>
-          <button class="btn-solid-navy" onclick="navigateTo('contact')">Enquire Nicking Tool</button>
-        </div>
+        <div class="acc-item-card"><div><span class="cat-tag">Make Ready</span><h3>Super Shim Plus & Profitape</h3><p>Micro-calibrated makeready tapes engineered for micro-adjusting cutting plate impression pressure without distorting the sheet.</p></div><button class="btn-solid-navy" onclick="navigateTo('contact')">Enquire Tapes</button></div>
+        <div class="acc-item-card"><div><span class="cat-tag">Cutting Tools</span><h3>Matrix Cutters (Hand & Bench)</h3><p>Precision 45-degree miter and straight 90-degree cutters delivering burr-free joins for tight corners in multi-crease dies.</p></div><button class="btn-solid-navy" onclick="navigateTo('contact')">Enquire Cutters</button></div>
+        <div class="acc-item-card"><div><span class="cat-tag">Nicking Systems</span><h3>Speedy-Nick Tool</h3><p>Handheld pneumatic and manual nicking systems ensuring consistent, clean micro-nicks to keep boxes secure during stripping.</p></div><button class="btn-solid-navy" onclick="navigateTo('contact')">Enquire Nicking Tool</button></div>
       </div>
     </div>
   </main>
@@ -1052,31 +1040,11 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
         </div>
       </div>
     </div>
-
     <div class="container news-layout">
       <div class="news-grid">
         <article class="news-card">
           <div class="news-card-img"><img src="https://www.thimm.com/fileadmin/_processed_/c/2/csm_faltkarton-klein-kaufen-kaufen-thimm_5d701ced62.jpg" alt="Recycled Cardboard Packaging Boxes"><span class="news-badge">Regulatory Milestone</span></div>
-          <div class="news-card-content">
-            <div><div class="news-date">August 2026 • Sustainability Report</div><h3>Matrix Engineering Achieves Full PPWR 2026 Compliance Across All Product Lines</h3><p>As the EU Packaging and Packaging Waste Regulation enters full application, Matrix Engineering confirms 100% compliance across our synthetic and steel matrix ranges with zero hazardous chemicals.</p></div>
-            <button class="btn-outline-navy" style="width: 100%; min-height: 40px; font-size: 0.85rem;" onclick="navigateTo('contact')">Read Regulatory Whitepaper</button>
-          </div>
-        </article>
-
-        <article class="news-card">
-          <div class="news-card-img"><img src="https://www.coexpan.com/wp-content/uploads/2025/05/DSC0476.webp" alt="Extrusion Facility Line"><span class="news-badge" style="background: var(--matrix-navy);">Facility Upgrade</span></div>
-          <div class="news-card-content">
-            <div><div class="news-date">July 2026 • Manufacturing Excellence</div><h3>Closed-Loop Polymer Recovery: 100% Recyclable Extrusions on the Isle of Man</h3><p>Our Ballasalla extrusion plant has implemented closed-loop post-industrial polymer recovery. All off-cuts and locator materials are re-granulated into zero-waste secondary production cycles.</p></div>
-            <button class="btn-outline-navy" style="width: 100%; min-height: 40px; font-size: 0.85rem;" onclick="navigateTo('contact')">Learn About In-House Extrusion</button>
-          </div>
-        </article>
-
-        <article class="news-card">
-          <div class="news-card-img"><img src="matrix-boxes-stack.jpg" alt="Matrix Engineering Product Boxes" onerror="this.src='https://i.ebayimg.com/00/s/NzM4WDE2MDA=/z/98AAAOSwqwReh35H/$_57.JPG?set_id=8800005007'"><span class="news-badge">Chemistry Breakthrough</span></div>
-          <div class="news-card-content">
-            <div><div class="news-date">June 2026 • Adhesive Technology</div><h3>PFAS-Free Clean-Peel Adhesive Backing Formulations Deployed</h3><p>Meeting the stringent hazardous chemical restrictions of PPWR Article 5 ahead of statutory deadlines, our proprietary adhesive backing delivers high shear resistance with zero fluorinated substances.</p></div>
-            <button class="btn-outline-navy" style="width: 100%; min-height: 40px; font-size: 0.85rem;" onclick="navigateTo('contact')">Request Adhesive Spec Sheet</button>
-          </div>
+          <div class="news-card-content"><div><div class="news-date">August 2026 • Sustainability Report</div><h3>Matrix Engineering Achieves Full PPWR 2026 Compliance</h3><p>Matrix Engineering confirms 100% compliance across our synthetic and steel matrix ranges with zero hazardous chemicals.</p></div><button class="btn-outline-navy" style="width: 100%; min-height: 40px; font-size: 0.85rem;" onclick="navigateTo('contact')">Read Regulatory Whitepaper</button></div>
         </article>
       </div>
     </div>
@@ -1097,32 +1065,19 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
     <div class="container portal-layout">
       <!-- 1. LOGIN GATEWAY -->
       <div id="portalLoginGateway" class="portal-login-shell">
-        <div style="width: 48px; height: 48px; background: var(--bg-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; color: var(--matrix-navy); font-size: 1.25rem; font-weight: 800; border: 1.5px solid var(--border-medium);">
-          🔒
-        </div>
+        <div style="width: 48px; height: 48px; background: var(--bg-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; color: var(--matrix-navy); font-size: 1.25rem; font-weight: 800; border: 1.5px solid var(--border-medium);">🔒</div>
         <h3>Client Portal Login</h3>
         <p>Access your live production queue and order placement desk.</p>
 
         <form onsubmit="handlePortalLogin(event)" style="text-align: left;">
-          <div class="form-field">
-            <label for="portalUser">Company Account Name</label>
-            <input type="text" id="portalUser" required placeholder="e.g. JKK Development & Solutions CC">
-          </div>
-          <div class="form-field">
-            <label for="portalPass">Access PIN / Password</label>
-            <input type="password" id="portalPass" required placeholder="Enter Access PIN">
-          </div>
+          <div class="form-field"><label for="portalUser">Company Account Name</label><input type="text" id="portalUser" required placeholder="e.g. JKK Development & Solutions CC"></div>
+          <div class="form-field"><label for="portalPass">Access PIN / Password</label><input type="password" id="portalPass" required placeholder="Enter Access PIN"></div>
           <button type="submit" class="btn-solid-navy" style="width: 100%; margin-top: 0.5rem;">Access Client Hub</button>
         </form>
 
         <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 0.75rem;">
-          <button type="button" onclick="openRequestAccessModal()" style="background: none; border: none; color: var(--matrix-navy); font-size: 0.85rem; font-weight: 800; cursor: pointer; text-decoration: underline;">
-            Don't have login details? Request Portal Access
-          </button>
-          
-          <button type="button" onclick="openAdminLoginModal()" style="background: none; border: none; color: var(--text-dim); font-size: 0.75rem; font-weight: 700; cursor: pointer;">
-            ⚙ Staff Admin Management Console
-          </button>
+          <button type="button" onclick="openRequestAccessModal()" style="background: none; border: none; color: var(--matrix-navy); font-size: 0.85rem; font-weight: 800; cursor: pointer; text-decoration: underline;">Don't have login details? Request Portal Access</button>
+          <button type="button" onclick="openAdminLoginModal()" style="background: none; border: none; color: var(--text-dim); font-size: 0.75rem; font-weight: 700; cursor: pointer;">⚙ Staff Admin Management Console</button>
         </div>
       </div>
 
@@ -1130,15 +1085,10 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
       <div id="portalDashboard" class="portal-dashboard-card" style="display: none;">
         <div class="portal-header-bar">
           <div class="client-profile-info">
-            <div style="display: flex; align-items: center; gap: 0.75rem;">
-              <h3 id="currentClientTitle">JKK Development & Solutions CC</h3>
-              <button onclick="handlePortalLogout()" style="background: none; border: 1px solid var(--border-medium); border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 700; color: var(--text-muted); padding: 2px 8px; cursor: pointer;">Log Out</button>
-            </div>
+            <div style="display: flex; align-items: center; gap: 0.75rem;"><h3 id="currentClientTitle">JKK Development & Solutions CC</h3><button onclick="handlePortalLogout()" style="background: none; border: 1px solid var(--border-medium); border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 700; color: var(--text-muted); padding: 2px 8px; cursor: pointer;">Log Out</button></div>
             <p>Verified Matrix Engineering B2B Partner Account</p>
           </div>
-          <div id="dbStatusBadge" style="font-size: 0.75rem; font-weight: 800; color: var(--matrix-green); font-family: var(--font-mono);">
-            ● LIVE SUPABASE CONNECTED
-          </div>
+          <div id="dbStatusBadge" style="font-size: 0.75rem; font-weight: 800; color: var(--matrix-green); font-family: var(--font-mono);">● LIVE SUPABASE CONNECTED</div>
         </div>
 
         <div class="portal-tabs-nav">
@@ -1146,102 +1096,38 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
           <button class="portal-tab-btn" id="tabBtnNew" onclick="switchPortalTab('new')">+ Place New Order</button>
         </div>
 
-        <div id="tabContentActive">
-          <div id="activeOrdersList">
-            <div style="text-align: center; padding: 2rem; color: var(--text-muted);">Loading production records...</div>
-          </div>
-        </div>
+        <div id="tabContentActive"><div id="activeOrdersList"><div style="text-align: center; padding: 2rem; color: var(--text-muted);">Loading production records...</div></div></div>
 
         <div id="tabContentNew" style="display: none;">
           <div class="new-order-panel">
             <h4 style="font-size: 1.25rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.5rem;">Generate Production Order</h4>
-            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.75rem;">Configure your required matrix ranges and quantities. Upon confirmation, your specifications drop directly into our workshop queue.</p>
-
             <form onsubmit="handlePlaceNewOrder(event)">
               <div class="order-form-row">
-                <div class="form-field" style="margin-bottom: 0;">
-                  <label>Customer Account</label>
-                  <input type="text" id="newOrderCustomer" readonly style="background: var(--bg-slate); font-weight: 700; color: var(--matrix-navy);">
-                </div>
-                <div class="form-field" style="margin-bottom: 0;">
-                  <label>Internal PO / Reference</label>
-                  <input type="text" id="newOrderRef" required placeholder="e.g. PO-89211">
-                </div>
-                <div class="form-field" style="margin-bottom: 0;">
-                  <label>Requested Due Date</label>
-                  <input type="date" id="newOrderDueDate" required>
-                </div>
+                <div class="form-field" style="margin-bottom: 0;"><label>Customer Account</label><input type="text" id="newOrderCustomer" readonly style="background: var(--bg-slate); font-weight: 700; color: var(--matrix-navy);"></div>
+                <div class="form-field" style="margin-bottom: 0;"><label>Internal PO / Reference</label><input type="text" id="newOrderRef" required placeholder="e.g. PO-89211"></div>
+                <div class="form-field" style="margin-bottom: 0;"><label>Requested Due Date</label><input type="date" id="newOrderDueDate" required></div>
               </div>
-
-              <div class="form-field">
-                <label>Delivery Address / Plant Specification</label>
-                <input type="text" id="newOrderAddress" placeholder="Optional: Specific factory bay or plant address">
-              </div>
-
+              <div class="form-field"><label>Delivery Address / Plant Specification</label><input type="text" id="newOrderAddress" placeholder="Optional: Specific factory bay or plant address"></div>
+              
               <div class="item-builder-box">
                 <div style="font-size: 0.9rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.75rem;">Add Product Line Specification</div>
-                
                 <div class="item-builder-grid">
-                  <div>
-                    <label>Range</label>
-                    <select id="lineRange" onchange="handleRangeChange()">
-                      <option value="PX Plus">PX Plus</option>
-                      <option value="Phoenix+">Phoenix+</option>
-                      <option value="Phoenix XL">Phoenix XL</option>
-                      <option value="Ultra SR">Ultra SR (100 Mic Mylar)</option>
-                      <option value="Exceed">Exceed Rubber</option>
-                      <option value="Smart Formes">Smart Formes</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label>Size / Spec</label>
-                    <select id="lineSizeSelect" onchange="handleSizeSpecChange()" required></select>
-                  </div>
-                  <div>
-                    <label>Pt</label>
-                    <select id="linePt">
-                      <option value="2 / 3 pt">2 / 3 pt</option>
-                      <option value="3 / 4 pt">3 / 4 pt</option>
-                      <option value="6 pt">6 pt</option>
-                      <option value="Profile Strip">Profile Strip</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label>Box or Reel</label>
-                    <select id="lineUnitType" onchange="handleUnitTypeChange()">
-                      <option value="Box">Box</option>
-                      <option value="Reel">Reel</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label>Amount (m)</label>
-                    <select id="lineMeters" required></select>
-                  </div>
-                  <div>
-                    <label>Quantity (Min 10)</label>
-                    <input type="number" id="lineQty" value="10" min="10" step="5" required>
-                  </div>
-                  <div>
-                    <button type="button" class="btn-solid-navy" style="width: 100%; min-height: 42px; padding: 0.5rem;" onclick="handleAddLineItemToQueue()">+ Add Line</button>
-                  </div>
+                  <div><label>Range</label><select id="lineRange" onchange="handleRangeChange()"><option value="PX Plus">PX Plus</option><option value="Phoenix+">Phoenix+</option><option value="Phoenix XL">Phoenix XL</option><option value="Ultra SR">Ultra SR</option><option value="Exceed">Exceed Rubber</option><option value="Smart Formes">Smart Formes</option></select></div>
+                  <div><label>Size / Spec</label><select id="lineSizeSelect" onchange="handleSizeSpecChange()" required></select></div>
+                  <div><label>Pt</label><select id="linePt"><option value="2 / 3 pt">2 / 3 pt</option><option value="3 / 4 pt">3 / 4 pt</option><option value="6 pt">6 pt</option><option value="Profile Strip">Profile Strip</option></select></div>
+                  <div><label>Box or Reel</label><select id="lineUnitType" onchange="handleUnitTypeChange()"><option value="Box">Box</option><option value="Reel">Reel</option></select></div>
+                  <div><label>Amount (m)</label><select id="lineMeters" required></select></div>
+                  <div><label>Quantity (Min 10)</label><input type="number" id="lineQty" value="10" min="10" step="5" required></div>
+                  <div><button type="button" class="btn-solid-navy" style="width: 100%; min-height: 42px; padding: 0.5rem;" onclick="handleAddLineItemToQueue()">+ Add Line</button></div>
                 </div>
-
                 <table class="line-items-preview-table" id="lineItemsTable">
                   <thead><tr><th>Product Spec</th><th>Pt</th><th>Packaging</th><th>Quantity</th><th style="text-align: right;">Action</th></tr></thead>
-                  <tbody id="lineItemsTableBody">
-                    <tr><td colspan="5" style="text-align: center; color: var(--text-dim); padding: 1rem;">No lines added yet. Configure above and click '+ Add Line'.</td></tr>
-                  </tbody>
+                  <tbody id="lineItemsTableBody"><tr><td colspan="5" style="text-align: center; color: var(--text-dim); padding: 1rem;">No lines added yet. Configure above and click '+ Add Line'.</td></tr></tbody>
                 </table>
               </div>
 
-              <div class="form-field">
-                <label>Production / Packaging Notes</label>
-                <textarea id="newOrderNotes" rows="2" placeholder="Any specialized instructions for extrusion or delivery..."></textarea>
-              </div>
-
-              <button type="submit" class="btn-solid-red" style="width: 100%; font-size: 1.05rem; padding: 1rem;">
-                Submit Production Order to Matrix Engineering
-              </button>
+              <div class="form-field"><label>Production / Packaging Notes</label><textarea id="newOrderNotes" rows="2" placeholder="Any specialized instructions for extrusion or delivery..."></textarea></div>
+              <button type="submit" class="btn-solid-red" style="width: 100%; font-size: 1.05rem; padding: 1rem;">Submit Production Order to Matrix Engineering</button>
             </form>
           </div>
         </div>
@@ -1251,108 +1137,60 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
       <div id="portalAdminConsole" class="portal-dashboard-card" style="display: none;">
         <div class="portal-header-bar">
           <div class="client-profile-info">
-            <div style="display: flex; align-items: center; gap: 0.75rem;">
-              <h3 style="color: var(--matrix-red);">Matrix Staff Admin Desk</h3>
-              <button onclick="closeAdminConsole()" style="background: none; border: 1px solid var(--border-medium); border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 700; color: var(--text-muted); padding: 2px 8px; cursor: pointer;">Exit Admin</button>
-            </div>
-            <p>Manage Client Portal Credentials & Access Requests</p>
+            <div style="display: flex; align-items: center; gap: 0.75rem;"><h3 style="color: var(--matrix-red);">Matrix Staff Admin Desk</h3><button onclick="closeAdminConsole()" style="background: none; border: 1px solid var(--border-medium); border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 700; color: var(--text-muted); padding: 2px 8px; cursor: pointer;">Exit Admin</button></div>
           </div>
-          <button class="btn-solid-navy" style="min-height: 38px; font-size: 0.85rem; padding: 0.4rem 1rem;" onclick="loadAdminPortalUsers()">↻ Refresh Users</button>
         </div>
-
         <div style="display: grid; grid-template-columns: 1fr 1.6fr; gap: 2rem;">
           <div style="background: var(--bg-light); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.5rem;">
             <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.5rem;">Issue Client Access PIN</h4>
-            <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.25rem;">Authorize a new company or update their login Access PIN.</p>
-
             <form onsubmit="handleAdminCreateUser(event)">
-              <div class="form-field">
-                <label>Company Legal Name</label>
-                <input type="text" id="adminNewCompany" required placeholder="Exact Company Name">
-              </div>
-              <div class="form-field">
-                <label>Primary Contact Email</label>
-                <input type="email" id="adminNewEmail" required placeholder="buyer@client.com">
-              </div>
-              <div class="form-field">
-                <label>Assign Access PIN</label>
-                <input type="text" id="adminNewPIN" required value="MX2026" placeholder="e.g. MX2026">
-              </div>
+              <div class="form-field"><label>Company Legal Name</label><input type="text" id="adminNewCompany" required placeholder="Exact Company Name"></div>
+              <div class="form-field"><label>Primary Contact Email</label><input type="email" id="adminNewEmail" required placeholder="buyer@client.com"></div>
+              <div class="form-field"><label>Assign Access PIN</label><input type="text" id="adminNewPIN" required value="MX2026" placeholder="e.g. MX2026"></div>
               <button type="submit" class="btn-solid-navy" style="width: 100%; min-height: 42px; font-size: 0.9rem;">Save & Authorize Access</button>
             </form>
           </div>
-
           <div>
-            <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.5rem;">Authorized Clients & Access Log</h4>
+            <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.5rem;">Authorized Clients</h4>
             <div style="overflow-x: auto;">
               <table class="admin-data-table">
                 <thead><tr><th>Company Name</th><th>Contact Email</th><th>Access PIN</th><th>Status</th><th>Action</th></tr></thead>
-                <tbody id="adminUserTableBody">
-                  <tr><td colspan="5" style="text-align: center; color: var(--text-dim); padding: 1.5rem;">Loading user database...</td></tr>
-                </tbody>
+                <tbody id="adminUserTableBody"><tr><td colspan="5" style="text-align: center; color: var(--text-dim); padding: 1.5rem;">Loading user database...</td></tr></tbody>
               </table>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </main>
 
-  <!-- ==================== MODAL: REQUEST ACCESS ==================== -->
+  <!-- MODALS -->
   <div id="requestAccessModal" class="modal-backdrop">
     <div class="modal-card">
       <h3 style="font-size: 1.4rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.5rem;">Request Client Portal Access</h3>
-      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.5rem;">Existing folding carton and die-making customers can request their company login PIN below.</p>
-
       <form onsubmit="handleSubmitAccessRequest(event)" style="text-align: left;">
-        <div class="form-field">
-          <label>Company Name</label>
-          <input type="text" id="reqCompany" required placeholder="e.g. Leeds Packaging Converters Ltd">
-        </div>
-        <div class="form-field">
-          <label>Work Email Address</label>
-          <input type="email" id="reqEmail" required placeholder="purchasing@converter.com">
-        </div>
-        <div class="form-field">
-          <label>Recent Invoice No / PO Reference (For Verification)</label>
-          <input type="text" id="reqRef" placeholder="e.g. INV-8921 or PO-4402">
-        </div>
-        <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
-          <button type="submit" class="btn-solid-red" style="flex: 1;">Submit Request</button>
-          <button type="button" class="btn-outline-navy" style="flex: 1;" onclick="closeRequestAccessModal()">Cancel</button>
-        </div>
+        <div class="form-field"><label>Company Name</label><input type="text" id="reqCompany" required placeholder="e.g. Leeds Packaging Converters Ltd"></div>
+        <div class="form-field"><label>Work Email Address</label><input type="email" id="reqEmail" required placeholder="purchasing@converter.com"></div>
+        <div class="form-field"><label>Recent Invoice No / PO Reference</label><input type="text" id="reqRef" placeholder="e.g. INV-8921"></div>
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem;"><button type="submit" class="btn-solid-red" style="flex: 1;">Submit Request</button><button type="button" class="btn-outline-navy" style="flex: 1;" onclick="closeRequestAccessModal()">Cancel</button></div>
       </form>
     </div>
   </div>
 
-  <!-- ==================== MODAL: ADMIN ACCESS GATEWAY ==================== -->
   <div id="adminLoginModal" class="modal-backdrop">
     <div class="modal-card" style="max-width: 420px;">
       <h3 style="font-size: 1.35rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.5rem;">Staff Admin Gateway</h3>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">Enter the Matrix Engineering master admin passcode.</p>
-
       <form onsubmit="handleVerifyAdminPass(event)" style="text-align: left;">
-        <div class="form-field">
-          <label>Admin Passcode</label>
-          <input type="password" id="adminMasterPass" required placeholder="Enter passcode">
-        </div>
-        <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
-          <button type="submit" class="btn-solid-navy" style="flex: 1;">Unlock Desk</button>
-          <button type="button" class="btn-outline-navy" style="flex: 1;" onclick="closeAdminLoginModal()">Cancel</button>
-        </div>
+        <div class="form-field"><label>Admin Passcode</label><input type="password" id="adminMasterPass" required placeholder="Enter passcode"></div>
+        <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;"><button type="submit" class="btn-solid-navy" style="flex: 1;">Unlock Desk</button><button type="button" class="btn-outline-navy" style="flex: 1;" onclick="closeAdminLoginModal()">Cancel</button></div>
       </form>
     </div>
   </div>
 
-  <!-- ==================== MODAL: ORDER CONFIRMATION ==================== -->
   <div id="orderConfirmationModal" class="modal-backdrop">
     <div class="modal-card">
       <div style="width: 60px; height: 60px; background: rgba(16, 185, 129, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; font-size: 1.75rem; color: var(--matrix-green);">✓</div>
       <h3 style="font-size: 1.4rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 1rem;">Order Successfully Received</h3>
-      <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 2rem;">
-        Thank you for your order, it has been passed onto our production team and sales will be in touch with a quote, once that has been confirmed we shall begin manufacturing.
-      </p>
       <button class="btn-solid-navy" onclick="closeOrderModal()">View Live Order Queue</button>
     </div>
   </div>
@@ -1363,85 +1201,47 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
       <div class="footer-grid">
         <div class="footer-col" style="padding-right: 1.5rem;">
           <h5 style="color: #ffffff;">Matrix Engineering</h5>
-          <p style="color: #94a3b8; line-height: 1.6; margin-bottom: 1rem;">
-            Established in July 2009. Leading manufacturer of high-quality creasing matrix and ejection rubber for use in the global folding carton and die-cutting industries.
-          </p>
+          <p style="color: #94a3b8; line-height: 1.6; margin-bottom: 1rem;">Established in July 2009. Leading manufacturer of high-quality creasing matrix and ejection rubber for use in the global folding carton and die-cutting industries.</p>
           <div style="font-size: 0.75rem; color: #64748b;">Company No: 123380C</div>
         </div>
-
         <div class="footer-col">
           <h5>Navigation</h5>
-          <ul>
-            <li><a onclick="navigateTo('home')">Home</a></li>
-            <li><a onclick="navigateTo('about')">About Us</a></li>
-            <li><a onclick="navigateTo('products')">Products</a></li>
-            <li><a onclick="navigateTo('phoenix-plus')">Phoenix+™ Detail</a></li>
-            <li><a onclick="navigateTo('ultra-sr')">Ultra-SR™ Detail</a></li>
-            <li><a onclick="navigateTo('phoenix-xl')">Phoenix XL™ Detail</a></li>
-            <li><a onclick="navigateTo('exceed-rubber')">Exceed™ Rubber Detail</a></li>
-            <li><a onclick="navigateTo('technical')">Technical & Sizing</a></li>
-            <li><a onclick="navigateTo('news')">Latest News (PPWR)</a></li>
-            <li><a onclick="navigateTo('portal')">Customer Portal</a></li>
-          </ul>
+          <ul><li><a onclick="navigateTo('home')">Home</a></li><li><a onclick="navigateTo('products')">Products</a></li><li><a onclick="navigateTo('phoenix-plus')">Phoenix+™ Detail</a></li><li><a onclick="navigateTo('ultra-sr')">Ultra-SR™ Detail</a></li><li><a onclick="navigateTo('phoenix-xl')">Phoenix XL™ Detail</a></li><li><a onclick="navigateTo('exceed-rubber')">Exceed™ Rubber Detail</a></li><li><a onclick="navigateTo('portal')">Customer Portal</a></li></ul>
         </div>
-
         <div class="footer-col">
           <h5>Product Lines</h5>
-          <ul>
-            <li><a onclick="navigateTo('phoenix-plus')">PHOENIX+™ Synthetic</a></li>
-            <li><a onclick="navigateTo('ultra-sr')">ULTRA-SR™ Steel Base</a></li>
-            <li><a onclick="navigateTo('phoenix-xl')">PHOENIX XL™ Wide Base</a></li>
-            <li><a onclick="navigateTo('exceed-rubber')">EXCEED™ Ejection Rubber</a></li>
-          </ul>
+          <ul><li><a onclick="navigateTo('phoenix-plus')">PHOENIX+™ Synthetic</a></li><li><a onclick="navigateTo('ultra-sr')">ULTRA-SR™ Steel Base</a></li><li><a onclick="navigateTo('phoenix-xl')">PHOENIX XL™ Wide Base</a></li><li><a onclick="navigateTo('exceed-rubber')">EXCEED™ Ejection Rubber</a></li></ul>
         </div>
-
         <div class="footer-col">
           <h5>Headquarters</h5>
-          <ul>
-            <li style="color: #ffffff; font-weight: 700;">Matrix Engineering Ltd</li>
-            <li>Unit 7a, Parkway</li>
-            <li>Balthane Ind Estate</li>
-            <li>Ballasalla, Isle of Man, IM9 2AQ</li>
-            <li style="margin-top: 0.5rem;"><a href="tel:+441624822960">+44 (0)1624 822960</a></li>
-          </ul>
+          <ul><li style="color: #ffffff; font-weight: 700;">Matrix Engineering Ltd</li><li>Unit 7a, Parkway</li><li>Balthane Ind Estate</li><li>Ballasalla, Isle of Man, IM9 2AQ</li><li style="margin-top: 0.5rem;"><a href="tel:+441624822960">+44 (0)1624 822960</a></li></ul>
         </div>
       </div>
-
-      <div class="footer-bottom">
-        <div>© 2026 Creasing Matrix. All rights reserved.</div>
-        <div>British Made for Quality • Isle of Man Chamber of Commerce • PPWR 2026 Compliant</div>
-      </div>
+      <div class="footer-bottom"><div>© 2026 Creasing Matrix. All rights reserved.</div><div>British Made for Quality • Isle of Man Chamber of Commerce • PPWR 2026 Compliant</div></div>
     </div>
   </footer>
 
   <script>
-    // ==================== SUPABASE CLIENT INITIALIZATION ====================
     const SUPABASE_URL = 'https://bjoneyilyyvoemeiojzl.supabase.co';
     const SUPABASE_ANON_KEY = 'sb_publishable_ZVnaPefnAgf4KfrBFkCmzw_3GfhiAnY';
     const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
-
-    let activeClientName = '';
-    let queuedLineItems = [];
+    let activeClientName = '', queuedLineItems = [];
 
     const PRODUCT_SPECS_MAP = {
       'PX Plus': ['0.30 x 0.80', '0.30 x 1.00', '0.30 x 1.20', '0.40 x 1.00', '0.40 x 1.20', '0.40 x 1.30', '0.40 x 1.50', '0.50 x 1.30', '0.50 x 1.40', '0.50 x 1.50', '0.50 x 1.70', '0.60 x 1.50', '0.60 x 1.70', '0.60 x 1.90', '0.70 x 1.90', '0.80 x 2.10'],
       'Phoenix+': ['-- 7mm Mini Centre --', '0.30 x 0.80 (Pink)', '0.30 x 1.00 (Pink)', '0.30 x 1.20 (Pink)', '0.30 x 1.40 (Pink)', '0.40 x 1.00 (Navy)', '0.40 x 1.20 (Navy)', '0.40 x 1.30 (Navy)', '0.40 x 1.50 (Navy)', '0.45 x 1.30 (Lilac)', '0.45 x 1.40 (Lilac)', '0.45 x 1.50 (Lilac)', '0.50 x 1.30 (Red)', '0.50 x 1.40 (Red)', '0.50 x 1.50 (Red)', '0.50 x 1.70 (Red)', '0.55 x 1.40 (Grey)', '0.55 x 1.50 (Grey)', '0.55 x 1.70 (Grey)', '0.60 x 1.50 (Yellow)', '0.60 x 1.70 (Yellow)', '0.60 x 1.90 (Yellow)', '0.70 x 1.90 (Orange)', '0.70 x 2.10 (Orange)', '-- 7mm Off-Centre --', 'Off-Centre 0.30 x 1.00 (Pink)', 'Off-Centre 0.40 x 1.20 (Navy)', 'Off-Centre 0.50 x 1.50 (Red)', '-- 10mm Standard Centre --', '10mm 0.40 x 1.30 (Navy)', '10mm 0.50 x 1.50 (Red)', '10mm 0.60 x 1.70 (Yellow)', '10mm 0.80 x 2.10 (Green)'],
-      'Ultra SR': ['-- 7mm Centre --', 'Mauve 0.38 x 0.5mm', 'Silver 0.38 x 0.8mm', 'Buff 0.38 x 1.0mm', 'Violet 0.38 x 1.2mm', 'White 0.45 x 1.3mm', 'Sky 0.45 x 1.4mm', 'Lime 0.45 x 1.5mm', 'Yellow 0.50 x 1.6mm', 'Rose 0.50 x 1.7mm', 'Slate 0.55 x 1.9mm', 'Green 0.60 x 2.0mm', 'Brown 0.60 x 2.1mm', 'Red 0.70 x 2.3mm', 'Black 0.70 x 2.4mm', 'Blue 0.80 x 2.6mm', 'Orange 0.90 x 3.0mm', '-- 7mm Off-Centre --', 'Off-Centre Silver 0.38 x 0.8mm', 'Off-Centre Buff 0.38 x 1.0mm', 'Off-Centre Violet 0.38 x 1.2mm', 'Off-Centre White 0.45 x 1.3mm', 'Off-Centre Sky 0.45 x 1.4mm', 'Off-Centre Lime 0.45 x 1.5mm', 'Off-Centre Yellow 0.50 x 1.6mm', 'Off-Centre Rose 0.50 x 1.7mm'],
+      'Ultra SR': ['-- 7mm Centre --', 'Mauve 0.38 x 0.5mm', 'Silver 0.38 x 0.8mm', 'Buff 0.38 x 1.0mm', 'Violet 0.38 x 1.2mm', 'White 0.45 x 1.3mm', 'Sky 0.45 x 1.4mm', 'Lime 0.45 x 1.5mm', 'Yellow 0.50 x 1.6mm', 'Rose 0.50 x 1.7mm', 'Slate 0.55 x 1.9mm', 'Green 0.60 x 2.0mm', 'Brown 0.60 x 2.1mm', 'Red 0.70 x 2.3mm', 'Black 0.70 x 2.4mm', 'Blue 0.80 x 2.6mm', 'Orange 0.90 x 3.0mm', '-- 7mm Off-Centre --', 'Off-Centre Silver 0.38 x 0.8mm', 'Off-Centre Buff 0.38 x 1.0mm', 'Off-Centre Violet 0.38 x 1.2mm', 'Off-Centre White 0.45 x 1.3mm', 'Off-Centre Sky 0.45 x 1.4mm', 'Off-Centre Lime 0.45 x 1.5mm', 'Off-Centre Yellow 0.50 x 1.6mm', 'Off-Centre Rose 0.50 x 1.7mm', '-- 12mm Centre --', 'Grey 1.30mm (3.80)', 'Black 1.50mm (5.00)', 'Cream 1.70mm (6.00)', '-- 12mm Double --', 'Buff 0.38mm D3/D4/D5', 'White 0.45mm D3/D4/D5', 'Yellow 0.50mm D3/D4/D5'],
       'Phoenix XL': ['-- 12mm Standard Base --', '0.40 x 1.30 (Navy)', '0.40 x 1.40 (Navy)', '0.40 x 1.50 (Navy)', '0.40 x 1.60 (Navy)', '0.40 x 1.70 (Navy)', '0.50 x 1.30 (Red)', '0.50 x 1.40 (Red)', '0.50 x 1.50 (Red)', '0.50 x 1.60 (Red)', '0.50 x 1.70 (Red)', '0.50 x 1.90 (Red)', '0.60 x 1.50 (Yellow)', '0.60 x 1.70 (Yellow)', '0.60 x 1.90 (Yellow)', '0.60 x 2.10 (Yellow)', '0.60 x 2.30 (Yellow)', '0.60 x 2.50 (Yellow)', '0.60 x 2.70 (Yellow)', '0.60 x 3.00 (Yellow)', '0.60 x 3.20 (Yellow)', '0.70 x 2.10 (Orange)', '0.70 x 2.30 (Orange)', '0.70 x 2.50 (Orange)', '0.70 x 2.70 (Orange)', '0.70 x 3.00 (Orange)', '0.70 x 3.20 (Orange)', '0.80 x 2.10 (Green)', '0.80 x 2.30 (Green)', '0.80 x 2.50 (Green)', '0.80 x 2.70 (Green)', '0.80 x 3.00 (Green)', '0.80 x 3.20 (Green)', '1.00 x 2.10 (Sky)', '1.00 x 2.30 (Sky)', '1.00 x 2.50 (Sky)', '1.00 x 2.70 (Sky)', '1.00 x 3.00 (Sky)', '1.00 x 3.20 (Sky)', '-- 15mm Extra-Wide Base --', '0.60 x 3.50 (Yellow)', '0.60 x 4.00 (Yellow)', '0.60 x 4.50 (Yellow)', '0.60 x 5.00 (Yellow)', '0.70 x 3.50 (Orange)', '0.70 x 4.00 (Orange)', '0.70 x 4.50 (Orange)', '0.70 x 5.00 (Orange)', '0.80 x 3.50 (Green)', '0.80 x 4.00 (Green)', '0.80 x 4.50 (Green)', '0.80 x 5.00 (Green)', '1.00 x 3.50 (Sky)', '1.00 x 4.00 (Sky)', '1.00 x 4.50 (Sky)', '1.00 x 5.00 (Sky)'],
       'Exceed': ['-- 5.00mm Base Width --', '7.00 x 5.00 (White)', '7.25 x 5.00 (White)', '-- 7.50mm Base Width --', '7.00 x 7.50 (White)', '7.25 x 7.50 (White)'],
       'Smart Formes': ['0.40 x 1.30', '0.40 x 1.50', '0.50 x 1.50', '0.50 x 1.70', '0.60 x 1.70', '0.60 x 1.90', '0.70 x 1.90']
     };
 
-    const LENGTHS_MAP = {
-      'Box': ['24m', '21m', '20.25m', '18m', '15m', '36m', '50m', '34m'],
-      'Reel': ['36m', '45m', '60m']
-    };
+    const LENGTHS_MAP = { 'Box': ['24m', '21m', '20.25m', '18m', '15m', '36m', '50m', '34m', '60m'], 'Reel': ['36m', '45m', '60m'] };
 
     function handleUnitTypeChange() {
       const unitType = document.getElementById('lineUnitType').value;
       const metersSelect = document.getElementById('lineMeters');
       const lengths = LENGTHS_MAP[unitType] || LENGTHS_MAP['Box'];
-      
       metersSelect.innerHTML = lengths.map(len => `<option value="${len}">${len}</option>`).join('');
       metersSelect.value = (unitType === 'Box') ? '24m' : '36m';
     }
@@ -1449,23 +1249,19 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
     function handleRangeChange() {
       const range = document.getElementById('lineRange').value;
       const sizeSelect = document.getElementById('lineSizeSelect');
-      
       const specs = PRODUCT_SPECS_MAP[range] || PRODUCT_SPECS_MAP['PX Plus'];
-      
-      if (range === 'Ultra SR' || range === 'Phoenix XL' || range === 'Phoenix+' || range === 'Exceed') {
+      if (['Ultra SR', 'Phoenix XL', 'Phoenix+', 'Exceed'].includes(range)) {
         sizeSelect.innerHTML = specs.map(s => {
           if (s.startsWith('--')) return `<option disabled>${s}</option>`;
           return `<option value="${s}">${s}</option>`;
         }).join('');
-        
-        if (range === 'Ultra SR') sizeSelect.value = 'White 0.45 x 1.3mm';
-        else if (range === 'Phoenix XL') sizeSelect.value = '0.60 x 2.10 (Yellow)';
-        else if (range === 'Phoenix+') sizeSelect.value = '0.40 x 1.30 (Navy)';
+        if (range === 'Ultra SR') sizeSelect.value = 'Mauve 0.38 x 0.5mm';
+        else if (range === 'Phoenix XL') sizeSelect.value = '0.40 x 1.30 (Navy)';
+        else if (range === 'Phoenix+') sizeSelect.value = '0.30 x 0.80 (Pink)';
         else if (range === 'Exceed') sizeSelect.value = '7.00 x 5.00 (White)';
       } else {
         sizeSelect.innerHTML = specs.map(s => `<option value="${s}">${s}${s.includes('Custom') || s.includes('Strip') ? '' : ' mm'}</option>`).join('');
       }
-
       handleSizeSpecChange();
     }
 
@@ -1473,15 +1269,11 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
       const range = document.getElementById('lineRange').value;
       const size = document.getElementById('lineSizeSelect').value;
       const ptSelect = document.getElementById('linePt');
-
       if (range === 'Ultra SR') {
-        if (size.includes('Orange')) ptSelect.value = '3 / 4 pt';
-        else ptSelect.value = '2 / 3 pt';
-      } else if (range === 'Exceed') {
-        ptSelect.value = 'Profile Strip';
+        if (size.includes('Orange')) ptSelect.value = '3 / 4 pt'; else ptSelect.value = '2 / 3 pt';
+      } else if (range === 'Exceed') { ptSelect.value = 'Profile Strip';
       } else if (range === 'Phoenix XL') {
-        if (size.includes('15mm') || size.includes('3.50') || size.includes('4.00') || size.includes('5.00')) ptSelect.value = '3 / 4 pt';
-        else ptSelect.value = '2 / 3 pt';
+        if (size.includes('15mm') || size.includes('3.50') || size.includes('4.00') || size.includes('5.00')) ptSelect.value = '3 / 4 pt'; else ptSelect.value = '2 / 3 pt';
       } else {
         if (ptSelect.value === 'Profile Strip') ptSelect.value = '2 / 3 pt';
       }
@@ -1489,15 +1281,10 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
 
     const menuToggle = document.getElementById('menuToggle');
     const siteNav = document.getElementById('siteNav');
-
-    menuToggle.addEventListener('click', () => {
-      menuToggle.classList.toggle('open');
-      siteNav.classList.toggle('mobile-active');
-    });
+    menuToggle.addEventListener('click', () => { menuToggle.classList.toggle('open'); siteNav.classList.toggle('mobile-active'); });
 
     function navigateTo(pageId) {
-      menuToggle.classList.remove('open');
-      siteNav.classList.remove('mobile-active');
+      menuToggle.classList.remove('open'); siteNav.classList.remove('mobile-active');
       document.querySelectorAll('.page-view').forEach(view => view.classList.remove('active-view'));
       const targetView = document.getElementById(`view-${pageId}`);
       if (targetView) targetView.classList.add('active-view');
@@ -1508,299 +1295,146 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
       history.pushState(null, '', `#${pageId}`);
     }
 
-    window.addEventListener('popstate', () => {
-      const hash = window.location.hash.replace('#', '') || 'home';
-      navigateTo(hash);
-    });
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const initialHash = window.location.hash.replace('#', '') || 'home';
-      navigateTo(initialHash);
-      handleRangeChange();
-      handleUnitTypeChange();
-    });
+    window.addEventListener('popstate', () => { navigateTo(window.location.hash.replace('#', '') || 'home'); });
+    window.addEventListener('DOMContentLoaded', () => { navigateTo(window.location.hash.replace('#', '') || 'home'); handleRangeChange(); handleUnitTypeChange(); });
 
     async function handlePortalLogin(e) {
       e.preventDefault();
-      const user = document.getElementById('portalUser').value.trim();
-      const pass = document.getElementById('portalPass').value.trim();
+      const user = document.getElementById('portalUser').value.trim(), pass = document.getElementById('portalPass').value.trim();
       if (!user || !pass) return;
-
       if (supabaseClient) {
         try {
           const { data: userRec, error } = await supabaseClient.from('portal_users').select('*').ilike('company_name', user).eq('access_pin', pass).eq('status', 'Active').limit(1);
-          if (!error && userRec && userRec.length > 0) {
-            loginSuccess(userRec[0].company_name);
-            return;
-          }
-        } catch (err) { console.warn('Auth check error:', err); }
+          if (!error && userRec && userRec.length > 0) { loginSuccess(userRec[0].company_name); return; }
+        } catch (err) {}
       }
-
-      if ((user.toLowerCase().includes('jkk') && pass === 'MX2026') || (user.toLowerCase().includes('sim') && pass === 'MX2026') || (user.toLowerCase() === 'test' && pass === 'test')) {
-        loginSuccess(user);
-      } else {
-        alert('Authentication Failed: Invalid company name or Access PIN.');
-      }
+      if ((user.toLowerCase().includes('jkk') && pass === 'MX2026') || (user.toLowerCase().includes('sim') && pass === 'MX2026') || (user.toLowerCase() === 'test' && pass === 'test')) { loginSuccess(user); } else { alert('Authentication Failed.'); }
     }
 
     function loginSuccess(companyName) {
-      activeClientName = companyName;
-      document.getElementById('currentClientTitle').textContent = companyName;
-      document.getElementById('newOrderCustomer').value = companyName;
-      document.getElementById('portalLoginGateway').style.display = 'none';
-      document.getElementById('portalDashboard').style.display = 'block';
-      const defaultDue = new Date();
-      defaultDue.setDate(defaultDue.getDate() + 7);
-      document.getElementById('newOrderDueDate').value = defaultDue.toISOString().split('T')[0];
+      activeClientName = companyName; document.getElementById('currentClientTitle').textContent = companyName; document.getElementById('newOrderCustomer').value = companyName;
+      document.getElementById('portalLoginGateway').style.display = 'none'; document.getElementById('portalDashboard').style.display = 'block';
+      const defaultDue = new Date(); defaultDue.setDate(defaultDue.getDate() + 7); document.getElementById('newOrderDueDate').value = defaultDue.toISOString().split('T')[0];
       fetchClientOrdersFromSupabase();
     }
 
     function handlePortalLogout() {
-      activeClientName = '';
-      document.getElementById('portalDashboard').style.display = 'none';
-      document.getElementById('portalLoginGateway').style.display = 'block';
-      document.getElementById('portalUser').value = '';
-      document.getElementById('portalPass').value = '';
+      activeClientName = ''; document.getElementById('portalDashboard').style.display = 'none'; document.getElementById('portalLoginGateway').style.display = 'block';
+      document.getElementById('portalUser').value = ''; document.getElementById('portalPass').value = '';
     }
 
     function switchPortalTab(tab) {
       if (tab === 'active') {
-        document.getElementById('tabBtnActive').classList.add('active-tab');
-        document.getElementById('tabBtnNew').classList.remove('active-tab');
-        document.getElementById('tabContentActive').style.display = 'block';
-        document.getElementById('tabContentNew').style.display = 'none';
-        fetchClientOrdersFromSupabase();
+        document.getElementById('tabBtnActive').classList.add('active-tab'); document.getElementById('tabBtnNew').classList.remove('active-tab');
+        document.getElementById('tabContentActive').style.display = 'block'; document.getElementById('tabContentNew').style.display = 'none'; fetchClientOrdersFromSupabase();
       } else {
-        document.getElementById('tabBtnNew').classList.add('active-tab');
-        document.getElementById('tabBtnActive').classList.remove('active-tab');
-        document.getElementById('tabContentNew').style.display = 'block';
-        document.getElementById('tabContentActive').style.display = 'none';
+        document.getElementById('tabBtnNew').classList.add('active-tab'); document.getElementById('tabBtnActive').classList.remove('active-tab');
+        document.getElementById('tabContentNew').style.display = 'block'; document.getElementById('tabContentActive').style.display = 'none';
       }
     }
 
     async function fetchClientOrdersFromSupabase() {
       const listContainer = document.getElementById('activeOrdersList');
-      listContainer.innerHTML = `<div style="text-align: center; padding: 2rem; color: var(--text-muted);">Fetching orders from manufacturing database...</div>`;
+      listContainer.innerHTML = `<div style="text-align:center;padding:2rem;color:var(--text-muted);">Loading production records...</div>`;
       try {
         if (!supabaseClient) throw new Error('Supabase client not loaded');
         const { data: orders, error } = await supabaseClient.from('orders').select('*, line_items(*)').ilike('customer', `%${activeClientName}%`).eq('deleted', false).order('order_date', { ascending: false });
         if (error) throw error;
         if (!orders || orders.length === 0) {
-          listContainer.innerHTML = `<div style="background: var(--bg-light); border: 1.5px dashed var(--border-medium); border-radius: var(--radius-md); padding: 2.5rem; text-align: center;"><h4 style="color: var(--matrix-navy); font-size: 1.1rem; margin-bottom: 0.5rem;">No Active Production Runs Found</h4><p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.25rem;">You have no active orders queued under <strong>${activeClientName}</strong>.</p><button class="btn-solid-navy" onclick="switchPortalTab('new')">+ Place New Production Order</button></div>`;
+          listContainer.innerHTML = `<div style="background:var(--bg-light);border:1.5px dashed var(--border-medium);border-radius:var(--radius-md);padding:2.5rem;text-align:center;"><h4 style="color:var(--matrix-navy);font-size:1.1rem;margin-bottom:0.5rem;">No Active Production Runs</h4><button class="btn-solid-navy" onclick="switchPortalTab('new')">+ Place New Production Order</button></div>`;
           return;
         }
-
         let html = '';
         orders.forEach(ord => {
-          const stage = ord.stage || 'Received';
-          let stageClass = 'stage-received';
+          const stage = ord.stage || 'Received'; let stageClass = 'stage-received';
           if (stage.toUpperCase().includes('EXTRU') || stage.toUpperCase().includes('BOND') || stage.toUpperCase().includes('MILL')) stageClass = 'stage-production';
           if (stage.toUpperCase().includes('SHIP') || stage.toUpperCase().includes('DISPATCH')) stageClass = 'stage-shipped';
-          const itemsCount = ord.line_items ? ord.line_items.length : 0;
-          let totalBoxes = 0;
+          const itemsCount = ord.line_items ? ord.line_items.length : 0; let totalBoxes = 0;
           if (ord.line_items) { ord.line_items.forEach(li => { totalBoxes += (parseFloat(li.qty) || 0); }); }
-
-          html += `<div class="factory-order-card"><div class="factory-card-header"><div><span class="wo-title-badge">${ord.id || ord.reference || 'WO-0000'}</span><span style="color: var(--text-muted); font-size: 0.88rem; margin-left: 0.5rem;">${ord.customer || activeClientName}</span></div><div style="display: flex; align-items: center; gap: 0.75rem;"><span class="stage-pill ${stageClass}">${stage}</span><span style="font-size: 0.85rem; color: var(--text-dim); font-weight: 700; font-family: var(--font-mono);">${itemsCount} lines • ${totalBoxes} boxes</span></div></div><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; font-size: 0.85rem; margin-bottom: 1rem;"><div><span style="color: var(--text-dim); font-weight: 700;">Order Date:</span> <strong>${ord.order_date || 'In Queue'}</strong></div><div><span style="color: var(--text-dim); font-weight: 700;">Requested Due:</span> <strong>${ord.due_date || 'Standard'}</strong></div><div><span style="color: var(--text-dim); font-weight: 700;">Shipping Ref:</span> <strong>${ord.shipped_date ? 'Dispatched ' + ord.shipped_date : 'Awaiting Freight'}</strong></div></div>${ord.line_items && ord.line_items.length > 0 ? `<table class="line-items-preview-table"><thead><tr><th>Product Description</th><th>Quantity (Boxes/Units)</th><th>Status</th></tr></thead><tbody>${ord.line_items.map(li => `<tr><td><strong>${li.description || 'Matrix Profile'}</strong></td><td style="font-family: var(--font-mono); font-weight: 800;">${li.qty} Boxes</td><td><span style="color: var(--matrix-green); font-weight: 700;">● Production Tracked</span></td></tr>`).join('')}</tbody></table>` : '<p style="font-size: 0.85rem; color: var(--text-dim);">Specifications logged in workshop tracker.</p>'}</div>`;
+          html += `<div class="factory-order-card"><div class="factory-card-header"><div><span class="wo-title-badge">${ord.id || ord.reference || 'WO-0000'}</span><span style="color:var(--text-muted);font-size:0.88rem;margin-left:0.5rem;">${ord.customer || activeClientName}</span></div><div style="display:flex;align-items:center;gap:0.75rem;"><span class="stage-pill ${stageClass}">${stage}</span><span style="font-size:0.85rem;color:var(--text-dim);font-weight:700;font-family:var(--font-mono);">${itemsCount} lines • ${totalBoxes} boxes</span></div></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;font-size:0.85rem;margin-bottom:1rem;"><div><span style="color:var(--text-dim);font-weight:700;">Order Date:</span> <strong>${ord.order_date || 'In Queue'}</strong></div><div><span style="color:var(--text-dim);font-weight:700;">Requested Due:</span> <strong>${ord.due_date || 'Standard'}</strong></div><div><span style="color:var(--text-dim);font-weight:700;">Shipping Ref:</span> <strong>${ord.shipped_date ? 'Dispatched ' + ord.shipped_date : 'Awaiting Freight'}</strong></div></div>${ord.line_items && ord.line_items.length > 0 ? `<table class="line-items-preview-table"><thead><tr><th>Product Description</th><th>Quantity (Boxes/Units)</th><th>Status</th></tr></thead><tbody>${ord.line_items.map(li => `<tr><td><strong>${li.description || 'Matrix Profile'}</strong></td><td style="font-family:var(--font-mono);font-weight:800;">${li.qty} Boxes</td><td><span style="color:var(--matrix-green);font-weight:700;">● Production Tracked</span></td></tr>`).join('')}</tbody></table>` : '<p style="font-size:0.85rem;color:var(--text-dim);">Specifications logged in workshop tracker.</p>'}</div>`;
         });
         listContainer.innerHTML = html;
-      } catch (err) { console.warn('Supabase fetch notice:', err); }
+      } catch (err) {}
     }
 
     function handleAddLineItemToQueue() {
-      const range = document.getElementById('lineRange').value;
-      const size = document.getElementById('lineSizeSelect').value;
-      const pt = document.getElementById('linePt').value;
-      const unitType = document.getElementById('lineUnitType').value;
-      const meters = document.getElementById('lineMeters').value;
-      const qty = parseInt(document.getElementById('lineQty').value, 10);
-
+      const range = document.getElementById('lineRange').value, size = document.getElementById('lineSizeSelect').value, pt = document.getElementById('linePt').value, unitType = document.getElementById('lineUnitType').value, meters = document.getElementById('lineMeters').value, qty = parseInt(document.getElementById('lineQty').value, 10);
       if (!size || size.startsWith('--')) { alert('Please select a valid specification.'); return; }
       if (isNaN(qty) || qty < 10) { alert('Minimum order quantity is 10 boxes per specification.'); return; }
-
-      const itemDesc = (range === 'Ultra SR' || range === 'Phoenix XL' || range === 'Phoenix+' || range === 'Exceed') ? `${range} ${size} (${pt}) - ${meters} ${unitType}` : `${range} ${size} mm (${pt}) - ${meters} ${unitType}`;
+      const itemDesc = (['Ultra SR','Phoenix XL','Phoenix+','Exceed'].includes(range)) ? `${range} ${size} (${pt}) - ${meters} ${unitType}` : `${range} ${size} mm (${pt}) - ${meters} ${unitType}`;
       queuedLineItems.push({ description: itemDesc, range: range, size: size, pt: pt, unitType: unitType, meters: meters, qty: qty });
-      renderQueuedLineItems();
-      document.getElementById('lineQty').value = '10';
+      renderQueuedLineItems(); document.getElementById('lineQty').value = '10';
     }
 
     function removeQueuedItem(index) { queuedLineItems.splice(index, 1); renderQueuedLineItems(); }
 
     function renderQueuedLineItems() {
       const tbody = document.getElementById('lineItemsTableBody');
-      if (queuedLineItems.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-dim); padding: 1rem;">No lines added yet. Configure above and click '+ Add Line'.</td></tr>`;
-        return;
-      }
-      tbody.innerHTML = queuedLineItems.map((item, idx) => `<tr><td><strong>${item.range} ${item.size}</strong></td><td>${item.pt}</td><td>${item.meters} / ${item.unitType}</td><td style="font-family: var(--font-mono); font-weight: 800; color: var(--matrix-navy);">${item.qty} Boxes</td><td style="text-align: right;"><button type="button" onclick="removeQueuedItem(${idx})" style="color: var(--matrix-red); border: none; background: none; font-weight: 800; cursor: pointer;">Remove</button></td></tr>`).join('');
+      if (queuedLineItems.length === 0) { tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--text-dim);padding:1rem;">No lines added yet.</td></tr>`; return; }
+      tbody.innerHTML = queuedLineItems.map((item, idx) => `<tr><td><strong>${item.range} ${item.size}</strong></td><td>${item.pt}</td><td>${item.meters} / ${item.unitType}</td><td style="font-family:var(--font-mono);font-weight:800;color:var(--matrix-navy);">${item.qty} Boxes</td><td style="text-align:right;"><button type="button" onclick="removeQueuedItem(${idx})" style="color:var(--matrix-red);border:none;background:none;font-weight:800;cursor:pointer;">Remove</button></td></tr>`).join('');
     }
 
     async function handlePlaceNewOrder(e) {
       e.preventDefault();
-      if (queuedLineItems.length === 0) { alert('Please add at least one product line item (minimum 10 boxes) before submitting.'); return; }
-      const customer = activeClientName;
-      const ref = document.getElementById('newOrderRef').value.trim();
-      const dueDate = document.getElementById('newOrderDueDate').value;
-      const address = document.getElementById('newOrderAddress').value.trim();
-      const notes = document.getElementById('newOrderNotes').value.trim();
-      const orderDate = new Date().toISOString().split('T')[0];
-      const woGeneratedId = 'WO-' + Math.floor(1000 + Math.random() * 9000);
-
+      if (queuedLineItems.length === 0) { alert('Please add at least one product line item.'); return; }
+      const customer = activeClientName, ref = document.getElementById('newOrderRef').value.trim(), dueDate = document.getElementById('newOrderDueDate').value, address = document.getElementById('newOrderAddress').value.trim(), notes = document.getElementById('newOrderNotes').value.trim(), orderDate = new Date().toISOString().split('T')[0], woGeneratedId = 'WO-' + Math.floor(1000 + Math.random() * 9000);
       if (supabaseClient) {
         try {
           const { data: newOrder, error: orderErr } = await supabaseClient.from('orders').insert([{ id: woGeneratedId, customer: customer, reference: ref, order_date: orderDate, due_date: dueDate, address: address, notes: notes, stage: 'Received', currency: 'GBP', priority: 0, deleted: false }]).select();
           if (orderErr) { alert('Database write failed: ' + orderErr.message); return; }
           if (newOrder && newOrder[0]) {
             const linesToInsert = queuedLineItems.map((item, index) => ({ id: `${woGeneratedId}-L${index + 1}`, order_id: woGeneratedId, description: item.description, qty: Number(item.qty), unit_price: 0, from_other_stock: 0, deleted: false }));
-            const { error: linesErr } = await supabaseClient.from('line_items').insert(linesToInsert);
-            if (linesErr) { alert('Error inserting order lines: ' + linesErr.message); return; }
+            await supabaseClient.from('line_items').insert(linesToInsert);
           }
         } catch (err) { alert('Network/Database error: ' + err.message); return; }
       }
-
       const emailSubject = `New Production Order: ${woGeneratedId} - ${customer}`;
       const lineSummaryText = queuedLineItems.map(i => `  • ${i.description} | Quantity: ${i.qty} Boxes`).join('\n');
-      const emailBodyRaw = `NEW ORDER GENERATED VIA CLIENT PORTAL\n--------------------------------------------------\nWork Order ID : ${woGeneratedId}\nCustomer      : ${customer}\nPO Reference  : ${ref}\nOrder Date    : ${orderDate}\nDue Date      : ${dueDate}\nDelivery Bay  : ${address || 'Standard Plant Address'}\n\nPRODUCT LINE SPECIFICATIONS:\n${lineSummaryText}\n\nCUSTOMER NOTES:\n${notes || 'No special instructions provided.'}\n--------------------------------------------------\nStatus: Automatically logged in Supabase manufacturing tracker (Stage: Received).`;
-      const hiddenLink = document.createElement('a');
-      hiddenLink.href = `mailto:sales@creasingmatrix.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBodyRaw)}`;
-      hiddenLink.style.display = 'none';
-      document.body.appendChild(hiddenLink);
-      hiddenLink.click();
-      document.body.removeChild(hiddenLink);
-
-      queuedLineItems = [];
-      renderQueuedLineItems();
-      document.getElementById('newOrderRef').value = '';
-      document.getElementById('newOrderAddress').value = '';
-      document.getElementById('newOrderNotes').value = '';
-      document.getElementById('orderConfirmationModal').style.display = 'flex';
+      const emailBodyRaw = `NEW ORDER GENERATED VIA CLIENT PORTAL\n--------------------------------------------------\nWork Order ID : ${woGeneratedId}\nCustomer      : ${customer}\nPO Reference  : ${ref}\nOrder Date    : ${orderDate}\nDue Date      : ${dueDate}\nDelivery Bay  : ${address || 'Standard Plant Address'}\n\nPRODUCT LINE SPECIFICATIONS:\n${lineSummaryText}\n\nCUSTOMER NOTES:\n${notes || 'No special instructions provided.'}\n--------------------------------------------------`;
+      const hiddenLink = document.createElement('a'); hiddenLink.href = `mailto:sales@creasingmatrix.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBodyRaw)}`; hiddenLink.style.display = 'none'; document.body.appendChild(hiddenLink); hiddenLink.click(); document.body.removeChild(hiddenLink);
+      queuedLineItems = []; renderQueuedLineItems(); document.getElementById('newOrderRef').value = ''; document.getElementById('newOrderAddress').value = ''; document.getElementById('newOrderNotes').value = ''; document.getElementById('orderConfirmationModal').style.display = 'flex';
     }
 
-    function closeOrderModal() {
-      document.getElementById('orderConfirmationModal').style.display = 'none';
-      switchPortalTab('active');
-    }
-
+    function closeOrderModal() { document.getElementById('orderConfirmationModal').style.display = 'none'; switchPortalTab('active'); }
     function openRequestAccessModal() { document.getElementById('requestAccessModal').style.display = 'flex'; }
     function closeRequestAccessModal() { document.getElementById('requestAccessModal').style.display = 'none'; }
-
     async function handleSubmitAccessRequest(e) {
-      e.preventDefault();
-      const comp = document.getElementById('reqCompany').value.trim();
-      const email = document.getElementById('reqEmail').value.trim();
-      const ref = document.getElementById('reqRef').value.trim();
-      if (supabaseClient) {
-        try { await supabaseClient.from('portal_users').insert([{ company_name: comp, contact_email: email, access_pin: 'PENDING', status: 'Pending' }]); } catch (err) { console.warn('Request access log error:', err); }
-      }
-      const subject = `Client Portal Access Request: ${comp}`;
-      const body = `A customer has requested login access to the Matrix Engineering Client Hub:\n\nCompany Name       : ${comp}\nContact Email      : ${email}\nVerification Ref/PO: ${ref || 'None provided'}`;
-      window.location.href = `mailto:sales@creasingmatrix.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      closeRequestAccessModal();
-      alert('Thank you! Your request has been logged. Our sales team will verify your account and email your login Access PIN shortly.');
+      e.preventDefault(); const comp = document.getElementById('reqCompany').value.trim(), email = document.getElementById('reqEmail').value.trim(), ref = document.getElementById('reqRef').value.trim();
+      if (supabaseClient) { try { await supabaseClient.from('portal_users').insert([{ company_name: comp, contact_email: email, access_pin: 'PENDING', status: 'Pending' }]); } catch (err) {} }
+      const subject = `Client Portal Access Request: ${comp}`; const body = `A customer has requested login access to the Matrix Engineering Client Hub:\n\nCompany Name       : ${comp}\nContact Email      : ${email}\nVerification Ref/PO: ${ref || 'None provided'}`;
+      window.location.href = `mailto:sales@creasingmatrix.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`; closeRequestAccessModal(); alert('Thank you! Your request has been logged.');
     }
-
     function openAdminLoginModal() { document.getElementById('adminLoginModal').style.display = 'flex'; }
     function closeAdminLoginModal() { document.getElementById('adminLoginModal').style.display = 'none'; document.getElementById('adminMasterPass').value = ''; }
-
     function handleVerifyAdminPass(e) {
-      e.preventDefault();
-      const pass = document.getElementById('adminMasterPass').value.trim();
-      if (pass.toLowerCase() === 'buster26') {
-        closeAdminLoginModal();
-        document.getElementById('portalLoginGateway').style.display = 'none';
-        document.getElementById('portalDashboard').style.display = 'none';
-        document.getElementById('portalAdminConsole').style.display = 'block';
-        loadAdminPortalUsers();
-      } else { alert('Access Denied: Incorrect master passcode.'); }
+      e.preventDefault(); const pass = document.getElementById('adminMasterPass').value.trim();
+      if (pass.toLowerCase() === 'buster26') { closeAdminLoginModal(); document.getElementById('portalLoginGateway').style.display = 'none'; document.getElementById('portalDashboard').style.display = 'none'; document.getElementById('portalAdminConsole').style.display = 'block'; loadAdminPortalUsers(); } else { alert('Access Denied.'); }
     }
-
-    function closeAdminConsole() {
-      document.getElementById('portalAdminConsole').style.display = 'none';
-      document.getElementById('portalLoginGateway').style.display = 'block';
-    }
-
+    function closeAdminConsole() { document.getElementById('portalAdminConsole').style.display = 'none'; document.getElementById('portalLoginGateway').style.display = 'block'; }
     async function loadAdminPortalUsers() {
-      const tbody = document.getElementById('adminUserTableBody');
-      tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-dim); padding: 1rem;">Loading user database...</td></tr>`;
+      const tbody = document.getElementById('adminUserTableBody'); tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-dim); padding: 1rem;">Loading user database...</td></tr>`;
       if (supabaseClient) {
         try {
           const { data: users, error } = await supabaseClient.from('portal_users').select('*').order('created_at', { ascending: false });
-          if (!error && users && users.length > 0) {
-            tbody.innerHTML = users.map(u => `<tr><td><strong>${u.company_name}</strong></td><td>${u.contact_email}</td><td><code style="font-family: var(--font-mono); font-weight: 800; color: var(--matrix-red);">${u.access_pin}</code></td><td><span style="font-weight: 800; color: ${u.status === 'Active' ? 'var(--matrix-green)' : 'var(--matrix-red)'};">● ${u.status}</span></td><td>${u.status === 'Pending' ? `<button class="btn-solid-navy" style="min-height: 28px; padding: 2px 8px; font-size: 0.75rem;" onclick="handleAdminApprove('${u.id}', '${u.company_name}', '${u.contact_email}')">Approve PIN</button>` : `<button style="border: 1px solid var(--border-medium); background: none; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 700; padding: 2px 6px; cursor: pointer;" onclick="handleAdminRevoke('${u.id}')">Revoke</button>`}</td></tr>`).join('');
-            return;
-          }
-        } catch (err) { console.warn('Admin user load error:', err); }
+          if (!error && users && users.length > 0) { tbody.innerHTML = users.map(u => `<tr><td><strong>${u.company_name}</strong></td><td>${u.contact_email}</td><td><code style="font-family: var(--font-mono); font-weight: 800; color: var(--matrix-red);">${u.access_pin}</code></td><td><span style="font-weight: 800; color: ${u.status === 'Active' ? 'var(--matrix-green)' : 'var(--matrix-red)'};">● ${u.status}</span></td><td>${u.status === 'Pending' ? `<button class="btn-solid-navy" style="min-height: 28px; padding: 2px 8px; font-size: 0.75rem;" onclick="handleAdminApprove('${u.id}', '${u.company_name}', '${u.contact_email}')">Approve PIN</button>` : `<button style="border: 1px solid var(--border-medium); background: none; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 700; padding: 2px 6px; cursor: pointer;" onclick="handleAdminRevoke('${u.id}')">Revoke</button>`}</td></tr>`).join(''); return; }
+        } catch (err) {}
       }
-      tbody.innerHTML = `<tr><td><strong>JKK Development & Solutions CC</strong></td><td>purchasing@jkkdev.com</td><td><code>MX2026</code></td><td><span style="color:var(--matrix-green); font-weight:800;">● Active</span></td><td>-</td></tr><tr><td><strong>Puh "Sim" s.c</strong></td><td>orders@puhsim.pl</td><td><code>MX2026</code></td><td><span style="color:var(--matrix-green); font-weight:800;">● Active</span></td><td>-</td></tr>`;
+      tbody.innerHTML = `<tr><td><strong>JKK Development & Solutions CC</strong></td><td>purchasing@jkkdev.com</td><td><code>MX2026</code></td><td><span style="color:var(--matrix-green); font-weight:800;">● Active</span></td><td>-</td></tr>`;
     }
+    async function handleAdminCreateUser(e) { e.preventDefault(); const comp = document.getElementById('adminNewCompany').value.trim(), email = document.getElementById('adminNewEmail').value.trim(), pin = document.getElementById('adminNewPIN').value.trim(); if (supabaseClient) { try { await supabaseClient.from('portal_users').insert([{ company_name: comp, contact_email: email, access_pin: pin, status: 'Active' }]); alert(`Success.`); document.getElementById('adminNewCompany').value = ''; document.getElementById('adminNewEmail').value = ''; loadAdminPortalUsers(); } catch (err) {} } }
+    async function handleAdminApprove(id, comp, email) { const pin = prompt(`Enter Access PIN to assign for ${comp}:`, 'MX2026'); if (!pin) return; if (supabaseClient) { try { await supabaseClient.from('portal_users').update({ access_pin: pin, status: 'Active' }).eq('id', id); loadAdminPortalUsers(); } catch (err) {} } }
+    async function handleAdminRevoke(id) { if (!confirm('Revoke access for this client?')) return; if (supabaseClient) { try { await supabaseClient.from('portal_users').update({ status: 'Revoked' }).eq('id', id); loadAdminPortalUsers(); } catch (err) {} } }
 
-    async function handleAdminCreateUser(e) {
-      e.preventDefault();
-      const comp = document.getElementById('adminNewCompany').value.trim();
-      const email = document.getElementById('adminNewEmail').value.trim();
-      const pin = document.getElementById('adminNewPIN').value.trim();
-      if (supabaseClient) {
-        try {
-          await supabaseClient.from('portal_users').insert([{ company_name: comp, contact_email: email, access_pin: pin, status: 'Active' }]);
-          alert(`Success: Access PIN [${pin}] assigned to ${comp}.`);
-          document.getElementById('adminNewCompany').value = '';
-          document.getElementById('adminNewEmail').value = '';
-          loadAdminPortalUsers();
-        } catch (err) { alert('Error saving user: ' + err.message); }
-      }
-    }
-
-    async function handleAdminApprove(id, comp, email) {
-      const pin = prompt(`Enter Access PIN to assign for ${comp}:`, 'MX2026');
-      if (!pin) return;
-      if (supabaseClient) {
-        try {
-          await supabaseClient.from('portal_users').update({ access_pin: pin, status: 'Active' }).eq('id', id);
-          alert(`Approved: ${comp} can now log in using PIN: ${pin}`);
-          loadAdminPortalUsers();
-        } catch (err) { alert('Error updating user: ' + err.message); }
-      }
-    }
-
-    async function handleAdminRevoke(id) {
-      if (!confirm('Revoke access for this client?')) return;
-      if (supabaseClient) {
-        try {
-          await supabaseClient.from('portal_users').update({ status: 'Revoked' }).eq('id', id);
-          loadAdminPortalUsers();
-        } catch (err) { alert('Error revoking user: ' + err.message); }
-      }
-    }
-
-    const caliperInput = document.getElementById('boardCaliper');
-    const caliperVal = document.getElementById('caliperVal');
-    const ruleInput = document.getElementById('creasingRule');
-    const boardType = document.getElementById('boardType');
-    const resDepth = document.getElementById('resDepth');
-    const resWidth = document.getElementById('resWidth');
-    const resProduct = document.getElementById('resProduct');
-
+    const caliperInput = document.getElementById('boardCaliper'), caliperVal = document.getElementById('caliperVal'), ruleInput = document.getElementById('creasingRule'), boardType = document.getElementById('boardType'), resDepth = document.getElementById('resDepth'), resWidth = document.getElementById('resWidth'), resProduct = document.getElementById('resProduct');
     function calculateMatrix() {
-      const caliper = parseFloat(caliperInput.value) || 0;
-      const rule = parseFloat(ruleInput.value) || 0;
-      const bType = boardType.value;
+      const caliper = parseFloat(caliperInput.value) || 0, rule = parseFloat(ruleInput.value) || 0, bType = boardType.value;
       caliperVal.textContent = `${caliper.toFixed(2)} mm`;
-
       if (caliper > 0 && rule > 0) {
-        const depth = (Math.round((caliper * 0.9) * 20) / 20).toFixed(2);
-        const width = (Math.round(((caliper * 1.5) + rule) * 20) / 20).toFixed(2);
-        resDepth.textContent = depth;
-        resWidth.textContent = width;
-
-        if (bType === 'recycled') resProduct.textContent = 'ULTRA-SR™ (Steel Base)';
-        else if (caliper > 0.8 || bType === 'solid') resProduct.textContent = 'PHOENIX XL™ (Wide Base)';
-        else resProduct.textContent = 'PHOENIX+™ (Polymer Base)';
+        resDepth.textContent = (Math.round((caliper * 0.9) * 20) / 20).toFixed(2); resWidth.textContent = (Math.round(((caliper * 1.5) + rule) * 20) / 20).toFixed(2);
+        if (bType === 'recycled') resProduct.textContent = 'ULTRA-SR™ (Steel Base)'; else if (caliper > 0.8 || bType === 'solid') resProduct.textContent = 'PHOENIX XL™ (Wide Base)'; else resProduct.textContent = 'PHOENIX+™ (Polymer Base)';
       }
     }
-
-    caliperInput.addEventListener('input', calculateMatrix);
-    ruleInput.addEventListener('change', calculateMatrix);
-    boardType.addEventListener('change', calculateMatrix);
-    calculateMatrix();
+    caliperInput.addEventListener('input', calculateMatrix); ruleInput.addEventListener('change', calculateMatrix); boardType.addEventListener('change', calculateMatrix); calculateMatrix();
   </script>
 </body>
 </html>
