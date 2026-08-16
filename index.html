@@ -449,10 +449,11 @@
     .team-titles .role { font-size: 0.8rem; font-weight: 700; color: var(--matrix-red); text-transform: uppercase; letter-spacing: 0.04em; }
     .team-bio { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; }
 
-    /* PRODUCTS VIEW */
+    /* PRODUCTS VIEW - WITH BALANCED FRAMING */
     .products-layout { padding: clamp(2.5rem, 5vw, 4.5rem) 0; }
     .prod-grid-large { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
     @media (max-width: 480px) { .prod-grid-large { grid-template-columns: 1fr; } }
+    
     .prod-item-card {
       background: #ffffff;
       border: 1px solid var(--border-subtle);
@@ -464,12 +465,39 @@
       transition: all 0.25s ease;
     }
     .prod-item-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--matrix-navy); }
-    .prod-img-box { height: 210px; background: var(--bg-light); position: relative; overflow: hidden; border-bottom: 1px solid var(--border-subtle); }
-    .prod-img-box img { width: 100%; height: 100%; object-fit: contain; background: #ffffff; padding: 0.75rem; }
+    
+    .prod-img-box {
+      height: 220px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+    }
+    .prod-img-white {
+      background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f1f5f9 100%);
+    }
+    .prod-img-dark {
+      background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0a1329 100%);
+    }
+    .prod-img-box img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.12));
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .prod-item-card:hover .prod-img-box img {
+      transform: scale(1.06) translateY(-2px);
+    }
+
     .prod-tag-float {
       position: absolute; top: 0.85rem; right: 0.85rem;
       background: rgba(13, 23, 59, 0.85); color: #ffffff; font-size: 0.7rem; font-weight: 800;
       padding: 3px 8px; border-radius: var(--radius-sm); text-transform: uppercase; font-family: var(--font-mono);
+      z-index: 2;
     }
     .prod-content-box { padding: 1.75rem; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
     .prod-content-box h3 { font-size: 1.35rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.4rem; }
@@ -977,10 +1005,11 @@
 
     <div class="container products-layout">
       <div class="prod-grid-large">
-        <!-- Phoenix+ -->
+        
+        <!-- PHOENIX+ -->
         <div class="prod-item-card">
-          <div class="prod-img-box">
-            <img src="phoenix-matrix-render.jpg" alt="Phoenix+ Matrix Channel Profile with Green Adhesive Base" onerror="this.src='https://i.ebayimg.com/00/s/NzM4WDE2MDA=/z/98AAAOSwqwReh35H/$_57.JPG?set_id=8800005007'">
+          <div class="prod-img-box prod-img-white">
+            <img src="phoenix-plus.png" alt="Phoenix+ Synthetic Matrix with Blue Adhesive" loading="lazy" onerror="this.src='https://i.ebayimg.com/00/s/NzM4WDE2MDA=/z/98AAAOSwqwReh35H/$_57.JPG?set_id=8800005007'">
             <span class="prod-tag-float">Polymer Base</span>
           </div>
           <div class="prod-content-box">
@@ -992,6 +1021,7 @@
               <table class="spec-table-compact">
                 <tr><td class="k">Substrate</td><td class="v">Folding Carton</td></tr>
                 <tr><td class="k">Profile</td><td class="v">Standard & Chamfered</td></tr>
+                <tr><td class="k">Base Material</td><td class="v">Virgin Polymer</td></tr>
                 <tr><td class="k">Recyclability</td><td class="v">100% Recyclable</td></tr>
               </table>
               <button class="btn-solid-navy" style="width: 100%;" onclick="navigateTo('contact')">Enquire Phoenix+</button>
@@ -999,10 +1029,56 @@
           </div>
         </div>
 
-        <!-- Phoenix XL -->
+        <!-- ULTRA-SR -->
         <div class="prod-item-card">
-          <div class="prod-img-box">
-            <img src="matrix-boxes-stack.jpg" alt="Matrix Engineering Product Packaging" onerror="this.src='https://i.ebayimg.com/00/s/NzM4WDE2MDA=/z/98AAAOSwqwReh35H/$_57.JPG?set_id=8800005007'">
+          <div class="prod-img-box prod-img-white">
+            <img src="ultra-sr.png" alt="Ultra-SR Steel Base Matrix with Red Adhesive" loading="lazy" onerror="this.src='https://image.made-in-china.com/2f0j00rRkquYyWvKzG/Steel-Based-Matrix-Creasing-Matrix-for-Cardboard-Box-Making.webp'">
+            <span class="prod-tag-float">Steel Base</span>
+          </div>
+          <div class="prod-content-box">
+            <div>
+              <h3>ULTRA-SR™</h3>
+              <p>High-precision steel-based replacement matrix engineered for maximum durability against abrasive recycled fibers and ultra-long die-cutting runs.</p>
+            </div>
+            <div>
+              <table class="spec-table-compact">
+                <tr><td class="k">Substrate</td><td class="v">Recycled & Greyboard</td></tr>
+                <tr><td class="k">Base Material</td><td class="v">High-Tensile Steel</td></tr>
+                <tr><td class="k">Adhesion Type</td><td class="v">Zero Edge-Lift Film</td></tr>
+                <tr><td class="k">Durability</td><td class="v">Extreme Run Life</td></tr>
+              </table>
+              <button class="btn-solid-navy" style="width: 100%;" onclick="navigateTo('contact')">Enquire Ultra-SR</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- EXCEED RUBBER -->
+        <div class="prod-item-card">
+          <div class="prod-img-box prod-img-dark">
+            <img src="exceed-rubber.png" alt="Exceed Micro-Cellular Ejection Rubber Strip" loading="lazy" onerror="this.src='https://www.diecuttingcreasingmatrix.com/photo/py116250690-white_exceed_die_ejection_rubber_strip_7_3_8_700mm_for_prevent_paper_box_burst.jpg'">
+            <span class="prod-tag-float">Ejection Profile</span>
+          </div>
+          <div class="prod-content-box">
+            <div>
+              <h3>EXCEED™ RUBBER</h3>
+              <p>Maintains dynamic profile for over 1.6 million impressions without degrading over time. Shortens makeready time and completely eliminates angel hair.</p>
+            </div>
+            <div>
+              <table class="spec-table-compact">
+                <tr><td class="k">Impression Life</td><td class="v">1,600,000+ Cuts</td></tr>
+                <tr><td class="k">Advantage</td><td class="v">Zero Angel Hair</td></tr>
+                <tr><td class="k">Profile Dimensions</td><td class="v">7.00mm × 5.00mm</td></tr>
+                <tr><td class="k">Forms</td><td class="v">Flat & Profile Strip</td></tr>
+              </table>
+              <button class="btn-solid-navy" style="width: 100%;" onclick="navigateTo('contact')">Enquire Exceed Rubber</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PHOENIX XL -->
+        <div class="prod-item-card">
+          <div class="prod-img-box prod-img-white">
+            <img src="matrix-boxes-stack.jpg" alt="Matrix Engineering Product Packaging" loading="lazy" onerror="this.src='https://i.ebayimg.com/00/s/NzM4WDE2MDA=/z/98AAAOSwqwReh35H/$_57.JPG?set_id=8800005007'">
             <span class="prod-tag-float">Wide Base</span>
           </div>
           <div class="prod-content-box">
@@ -1015,55 +1091,13 @@
                 <tr><td class="k">Substrate</td><td class="v">Heavy Solid Board / Flute</td></tr>
                 <tr><td class="k">Base Type</td><td class="v">Extra Wide Flange</td></tr>
                 <tr><td class="k">Adhesion</td><td class="v">High Shear Resistance</td></tr>
+                <tr><td class="k">Platen Grip</td><td class="v">Extreme Friction Lock</td></tr>
               </table>
               <button class="btn-solid-navy" style="width: 100%;" onclick="navigateTo('contact')">Enquire Phoenix XL</button>
             </div>
           </div>
         </div>
 
-        <!-- Ultra SR -->
-        <div class="prod-item-card">
-          <div class="prod-img-box">
-            <img src="ultra-sr-box.jpg" alt="Ultra-SR Steel Base Replacement Matrix Profile with Red Tape" onerror="this.src='https://image.made-in-china.com/2f0j00rRkquYyWvKzG/Steel-Based-Matrix-Creasing-Matrix-for-Cardboard-Box-Making.webp'">
-            <span class="prod-tag-float">Steel Base</span>
-          </div>
-          <div class="prod-content-box">
-            <div>
-              <h3>ULTRA-SR™</h3>
-              <p>High-precision steel-based replacement matrix engineered for maximum durability against abrasive recycled fibers and ultra-long die-cutting runs.</p>
-            </div>
-            <div>
-              <table class="spec-table-compact">
-                <tr><td class="k">Substrate</td><td class="v">Recycled & Greyboard</td></tr>
-                <tr><td class="k">Base Material</td><td class="v">High-Tensile Steel</td></tr>
-                <tr><td class="k">Advantage</td><td class="v">Extreme Longevity</td></tr>
-              </table>
-              <button class="btn-solid-navy" style="width: 100%;" onclick="navigateTo('contact')">Enquire Ultra-SR</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Exceed Rubber -->
-        <div class="prod-item-card">
-          <div class="prod-img-box">
-            <img src="exceed-rubber.jpg" alt="Exceed Die Ejection Rubber Profile" onerror="this.src='https://www.diecuttingcreasingmatrix.com/photo/py116250690-white_exceed_die_ejection_rubber_strip_7_3_8_700mm_for_prevent_paper_box_burst.jpg'">
-            <span class="prod-tag-float">Ejection Profile</span>
-          </div>
-          <div class="prod-content-box">
-            <div>
-              <h3>EXCEED™ RUBBER</h3>
-              <p>Maintains dynamic profile for over 1.6 million impressions without degrading over time. Shortens makeready time and completely eliminates angel hair.</p>
-            </div>
-            <div>
-              <table class="spec-table-compact">
-                <tr><td class="k">Impression Life</td><td class="v">1,600,000+ Cuts</td></tr>
-                <tr><td class="k">Performance</td><td class="v">Zero Angel Hair</td></tr>
-                <tr><td class="k">Forms</td><td class="v">Flat & Profile Strip</td></tr>
-              </table>
-              <button class="btn-solid-navy" style="width: 100%;" onclick="navigateTo('contact')">Enquire Exceed Rubber</button>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </main>
