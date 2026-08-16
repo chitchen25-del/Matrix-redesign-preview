@@ -537,6 +537,195 @@
     .spec-table-compact td.k { color: var(--text-dim); font-weight: 600; }
     .spec-table-compact td.v { text-align: right; font-weight: 700; color: var(--matrix-navy-dark); font-family: var(--font-mono); }
 
+    /* ==================== DEDICATED PRODUCT DETAIL VIEW ==================== */
+    .detail-layout { padding: clamp(2.5rem, 5vw, 4.5rem) 0; }
+    .detail-grid-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+      margin-bottom: 4rem;
+    }
+    @media (max-width: 900px) {
+      .detail-grid-top { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    .detail-gallery-main {
+      width: 100%;
+      height: 380px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f1f5f9 100%);
+      border: 1.5px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .detail-gallery-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .detail-info-pane h1 {
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      font-weight: 900;
+      color: var(--matrix-navy);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+    .detail-subtitle {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--matrix-red);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+    .detail-desc-lead {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Key Features Card Grid */
+    .features-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4.5rem;
+    }
+    .feat-card {
+      background: var(--bg-light);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .feat-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--matrix-navy);
+    }
+    .feat-card .feat-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(24, 43, 107, 0.1);
+      color: var(--matrix-navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      margin-bottom: 0.75rem;
+    }
+    .feat-card h4 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--matrix-navy);
+      margin-bottom: 0.4rem;
+    }
+    .feat-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* Size Chart Technical Tables */
+    .chart-section-shell {
+      background: #ffffff;
+      border: 1.5px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.5rem, 4vw, 3rem);
+      box-shadow: var(--shadow-card);
+      margin-bottom: 3.5rem;
+    }
+    .chart-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-bottom: 2px solid var(--matrix-navy);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+    .chart-header-row h3 {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--matrix-navy);
+    }
+    
+    .tech-diagram-box {
+      background: var(--bg-light);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .size-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+    .size-table th {
+      background: var(--bg-slate);
+      color: var(--matrix-navy);
+      font-weight: 800;
+      text-align: left;
+      padding: 0.85rem 1rem;
+      border-bottom: 2px solid var(--border-medium);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .size-table td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+      vertical-align: middle;
+    }
+    .size-table tr:hover td {
+      background: rgba(248, 250, 252, 0.8);
+    }
+
+    .color-swatch-bar {
+      width: 60px;
+      height: 14px;
+      border-radius: 3px;
+      display: block;
+      border: 1px solid rgba(0,0,0,0.12);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    .color-navy   { background: #182B6B; }
+    .color-red    { background: #FF2E17; }
+    .color-yellow { background: #EAB308; }
+    .color-orange { background: #F97316; }
+    .color-green  { background: #10B981; }
+    .color-sky    { background: #38BDF8; }
+
+    .box-yield-badge {
+      display: inline-block;
+      background: var(--bg-slate);
+      color: var(--matrix-navy);
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      margin-top: 0.5rem;
+    }
+
     /* TECHNICAL VIEW */
     .technical-layout { padding: clamp(2.5rem, 5vw, 4.5rem) 0; }
     .calc-box-wrap {
@@ -1061,7 +1250,7 @@
     </div>
   </main>
 
-  <!-- ==================== VIEW 3: PRODUCTS PAGE (PREMIUM FULL-FILL DYNAMIC IMAGES) ==================== -->
+  <!-- ==================== VIEW 3: PRODUCTS CATALOG PAGE ==================== -->
   <main id="view-products" class="page-view">
     <div class="page-hero">
       <div class="container">
@@ -1145,8 +1334,8 @@
           </div>
         </div>
 
-        <!-- PHOENIX XL (IMG_0345) -->
-        <div class="prod-item-card">
+        <!-- PHOENIX XL (IMG_0345) - CLICK OPENS PRODUCT DETAIL PAGE -->
+        <div class="prod-item-card" style="cursor: pointer;" onclick="navigateTo('phoenix-xl')">
           <div class="prod-img-box">
             <span class="prod-tag-float">WIDE BASE</span>
             <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0345.png" alt="Phoenix XL Wide Base Creasing Matrix" loading="lazy">
@@ -1154,20 +1343,282 @@
           <div class="prod-content-box">
             <div>
               <h3>PHOENIX XL™</h3>
-              <p>Designed with an extended width baseplate to distribute platen pressure on high-caliper solid boards and micro-flutes, preventing matrix shift.</p>
+              <p>The ultimate plastic-based matrix engineered for high-volume conversion on heavy solid boards and micro-flutes. Click to explore detailed specifications & sizing chart.</p>
             </div>
             <div>
               <table class="spec-table-compact">
                 <tr><td class="k">Substrate</td><td class="v">Heavy Solid Board / Flute</td></tr>
-                <tr><td class="k">Base Type</td><td class="v">Extra Wide Flange</td></tr>
-                <tr><td class="k">Adhesion</td><td class="v">High Shear Resistance</td></tr>
-                <tr><td class="k">Platen Grip</td><td class="v">Extreme Friction Lock</td></tr>
+                <tr><td class="k">Base Type</td><td class="v">12mm & 15mm Wide Flange</td></tr>
+                <tr><td class="k">Adhesion</td><td class="v">High Shear Clean-Peel</td></tr>
+                <tr><td class="k">Platen Grip</td><td class="v">Zero-Shift Extreme Lock</td></tr>
               </table>
-              <button class="btn-solid-navy" style="width: 100%;" onclick="navigateTo('contact')">Enquire Phoenix XL</button>
+              <button class="btn-solid-navy" style="width: 100%;" onclick="event.stopPropagation(); navigateTo('phoenix-xl')">View Phoenix XL Details & Size Chart →</button>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </main>
+
+  <!-- ==================== VIEW 3B: DEDICATED PHOENIX XL PRODUCT PAGE ==================== -->
+  <main id="view-phoenix-xl" class="page-view">
+    <div class="page-hero">
+      <div class="container">
+        <div style="margin-bottom: 1.25rem;">
+          <button onclick="navigateTo('products')" style="background: none; border: none; color: var(--matrix-navy); font-weight: 800; font-size: 0.9rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem;">
+            ← Back to Products Range
+          </button>
+        </div>
+        <div class="section-head" style="margin-bottom: 0; text-align: left; max-width: 100%;">
+          <span class="section-eyebrow">Flagship Polymer Range</span>
+          <h2 class="section-title">PHOENIX XL™</h2>
+          <p class="section-desc" style="max-width: 800px;">The Ultimate Plastic-Based Creasing Matrix Engineered for High-Volume Production Runs.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container detail-layout">
+      
+      <!-- Top Overview Row -->
+      <div class="detail-grid-top">
+        <div class="detail-gallery-main">
+          <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0345.png" alt="Phoenix XL Full Box Showcase">
+        </div>
+
+        <div class="detail-info-pane">
+          <span class="detail-subtitle">High-Volume Converting Excellence</span>
+          <h1>Uncompromising Creasing Precision & Durability</h1>
+          <p class="detail-desc-lead">
+            Born from our relentless pursuit of engineering durability and pressroom precision, the <strong>Phoenix XL™</strong> represents the pinnacle in plastic-based matrix technology. By uniting next-generation virgin polymers, specialized clean-peel adhesives, and a refined shoulder profile, Phoenix XL delivers an uncompromising creasing solution.
+          </p>
+          <p class="detail-desc-lead">
+            Purpose-built to master the demanding tolerances of high-speed die-cutting, the Phoenix XL drastically minimizes machine downtime—keeping your press running at peak efficiency while protecting your production margins.
+          </p>
+
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
+            <button class="btn-solid-red" onclick="navigateTo('contact')">Request Phoenix XL Samples</button>
+            <button class="btn-solid-navy" onclick="navigateTo('portal')">Order via Client Portal</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key Features Grid -->
+      <div class="section-head">
+        <span class="section-eyebrow">Engineering Advantages</span>
+        <h2 class="section-title">Key Performance Features</h2>
+        <p class="section-desc">Every detail of Phoenix XL is engineered to ensure seamless channel transfer, flawless creasing, and zero machine downtime.</p>
+      </div>
+
+      <div class="features-card-grid">
+        <div class="feat-card">
+          <div class="feat-icon">✓</div>
+          <h4>Next-Gen Clean-Peel Adhesive</h4>
+          <p>Micro-thin high-shear adhesive leaves zero adhesive residue on counter plates, completely eliminating tedious platen cleaning. High-tack tropical tape options available for high-heat/humidity environments.</p>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-icon">✓</div>
+          <h4>Zero Lead-Edge Taping</h4>
+          <p>Engineered with exceptional platen grip straight out of the box. No supplementary lead-edge taping required, streamlining your setup time and accelerating make-ready cycles.</p>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-icon">✓</div>
+          <h4>12mm & 15mm Wide Base Options</h4>
+          <p>Available in versatile base widths to match your specific board caliper and press pressures. Accommodates creasing channels up to 3.2mm on 12mm bases and up to 5.0mm on 15mm bases.</p>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-icon">✓</div>
+          <h4>Precision Self-Locating Bridges</h4>
+          <p>Specially contoured, high-rigidity locators seat firmly and accurately onto the creasing rule every single time for exact channel alignment without twisting.</p>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-icon">✓</div>
+          <h4>High-Impact Polymer Structure</h4>
+          <p>Moulded from advanced impact-resistant virgin polymers that resist channel wall collapse and deliver consistent crease profiles across multi-million impression runs.</p>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-icon">✓</div>
+          <h4>Refined Shoulder Slope Profile</h4>
+          <p>Precision-beveled shoulder angles eliminate witness marks and board cracking on sensitive laminated or printed folding cartons at maximum press speeds.</p>
+        </div>
+
+        <div class="feat-card" style="grid-column: 1 / -1;">
+          <div class="feat-icon">✓</div>
+          <h4>Dual-Surface Colour Coding</h4>
+          <p>Intuitive height color-coding is clearly printed on both the matrix base and locator bridge for rapid, error-free operator selection in busy pressrooms.</p>
+        </div>
+      </div>
+
+      <!-- Size Chart Technical Specifications -->
+      <div class="chart-section-shell">
+        <div class="chart-header-row">
+          <div>
+            <span class="section-eyebrow">Factory Specification</span>
+            <h3>Phoenix XL Size & Selection Chart</h3>
+          </div>
+          <div class="heritage-tag" style="background: var(--bg-slate); padding: 8px 14px; border-radius: var(--radius-sm); font-size: 0.8rem;">
+            ● 750mm Standard Strip Length
+          </div>
+        </div>
+
+        <!-- 12mm Standard Centre Chart -->
+        <div style="margin-bottom: 3rem;">
+          <h4 style="font-size: 1.25rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem;">
+            <span>12 mm Standard Centre Base</span>
+          </h4>
+
+          <div class="tech-diagram-box">
+            <svg width="280" height="45" viewBox="0 0 280 45" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="10,40 35,15 115,15 115,40" fill="#182B6B" />
+              <polygon points="165,40 165,15 245,15 270,40" fill="#182B6B" />
+              <!-- Dimension A (Width) -->
+              <line x1="115" y1="10" x2="165" y2="10" stroke="#0f172a" stroke-width="1.5" />
+              <line x1="115" y1="5" x2="115" y2="15" stroke="#0f172a" stroke-width="1.5" />
+              <line x1="165" y1="5" x2="165" y2="15" stroke="#0f172a" stroke-width="1.5" />
+              <text x="140" y="8" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="900" text-anchor="middle" fill="#0f172a">a (Width)</text>
+              <!-- Dimension B (Height) -->
+              <line x1="125" y1="15" x2="125" y2="40" stroke="#FF2E17" stroke-width="1.5" />
+              <line x1="120" y1="15" x2="130" y2="15" stroke="#FF2E17" stroke-width="1.5" />
+              <line x1="120" y1="40" x2="130" y2="40" stroke="#FF2E17" stroke-width="1.5" />
+              <text x="135" y="32" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="900" fill="#FF2E17">b (Height)</text>
+            </svg>
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-dim); margin-top: 6px;">Profile Cross-Section: 12mm Shoulder Width</div>
+          </div>
+
+          <div style="overflow-x: auto;">
+            <table class="size-table">
+              <thead>
+                <tr>
+                  <th style="width: 140px;">Base Colour</th>
+                  <th style="width: 160px;">Height (mm) [b]</th>
+                  <th>Available Channel Widths (mm) [a]</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="color-swatch-bar color-navy"></span></td>
+                  <td><strong style="font-family: var(--font-mono); font-size: 1.05rem; color: var(--matrix-navy);">0.40 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.3, 1.4, 1.5, 1.6, and 1.7</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-red"></span></td>
+                  <td><strong style="font-family: var(--font-mono); font-size: 1.05rem; color: var(--matrix-navy);">0.50 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.3, 1.4, 1.5, 1.6, 1.7, and 1.9</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-yellow"></span></td>
+                  <td><strong style="font-family: var(--font-mono); font-size: 1.05rem; color: var(--matrix-navy);">0.60 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 3.0, and 3.2</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-orange"></span></td>
+                  <td><strong style="font-family: var(--font-mono); font-size: 1.05rem; color: var(--matrix-navy);">0.70 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">2.1, 2.3, 2.5, 2.7, 3.0, and 3.2</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-green"></span></td>
+                  <td><strong style="font-family: var(--font-mono); font-size: 1.05rem; color: var(--matrix-navy);">0.80 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">2.1, 2.3, 2.5, 2.7, 3.0, and 3.2</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-sky"></span></td>
+                  <td><strong style="font-family: var(--font-mono); font-size: 1.05rem; color: var(--matrix-navy);">1.00 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">2.1, 2.3, 2.5, 2.7, 3.0, and 3.2</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="box-yield-badge">
+            📦 Contents of 12mm box: 32 strips × 750mm = <strong>24 Metres</strong>
+          </div>
+        </div>
+
+        <hr style="border: none; border-top: 1.5px solid var(--border-subtle); margin: 3rem 0;">
+
+        <!-- 15mm Centre Chart -->
+        <div>
+          <h4 style="font-size: 1.25rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem;">
+            <span>15 mm Extra-Wide Centre Base</span>
+          </h4>
+
+          <div class="tech-diagram-box">
+            <svg width="320" height="45" viewBox="0 0 320 45" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="10,40 45,15 125,15 125,40" fill="#0d173b" />
+              <polygon points="195,40 195,15 275,15 310,40" fill="#0d173b" />
+              <!-- Dimension A (Width) -->
+              <line x1="125" y1="10" x2="195" y2="10" stroke="#0f172a" stroke-width="1.5" />
+              <line x1="125" y1="5" x2="125" y2="15" stroke="#0f172a" stroke-width="1.5" />
+              <line x1="195" y1="5" x2="195" y2="15" stroke="#0f172a" stroke-width="1.5" />
+              <text x="160" y="8" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="900" text-anchor="middle" fill="#0f172a">a (Wide Width)</text>
+              <!-- Dimension B (Height) -->
+              <line x1="135" y1="15" x2="135" y2="40" stroke="#FF2E17" stroke-width="1.5" />
+              <line x1="130" y1="15" x2="140" y2="15" stroke="#FF2E17" stroke-width="1.5" />
+              <line x1="130" y1="40" x2="140" y2="40" stroke="#FF2E17" stroke-width="1.5" />
+              <text x="145" y="32" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="900" fill="#FF2E17">b (Height)</text>
+            </svg>
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-dim); margin-top: 6px;">Profile Cross-Section: 15mm Extra-Wide Flange</div>
+          </div>
+
+          <div style="overflow-x: auto;">
+            <table class="size-table">
+              <thead>
+                <tr>
+                  <th style="width: 140px;">Base Colour</th>
+                  <th style="width: 160px;">Height (mm) [b]</th>
+                  <th>Available Channel Widths (mm) [a]</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="color-swatch-bar color-yellow"></span></td>
+                  <td><strong style="font-family: var(--font-mono); font-size: 1.05rem; color: var(--matrix-navy);">0.60 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">3.5*, 4.0#, 4.5#, and 5.0#</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-orange"></span></td>
+                  <td><strong style="font-family: var(--font-mono); font-size: 1.05rem; color: var(--matrix-navy);">0.70 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">3.5*, 4.0#, 4.5#, and 5.0#</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-green"></span></td>
+                  <td><strong style="font-family: var(--font-mono); font-size: 1.05rem; color: var(--matrix-navy);">0.80 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">3.5*, 4.0#, 4.5#, and 5.0#</td>
+                </tr>
+                <tr>
+                  <td><span class="color-swatch-bar color-sky"></span></td>
+                  <td><strong style="font-family: var(--font-mono); font-size: 1.05rem; color: var(--matrix-navy);">1.00 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">3.5*, 4.0#, 4.5#, and 5.0#</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.75rem;">
+            <div class="box-yield-badge">
+              * Contents of 3.5mm box: 27 strips × 750mm = <strong>20.25 Metres</strong>
+            </div>
+            <div class="box-yield-badge" style="background: rgba(24, 43, 107, 0.08);">
+              # Contents of 4.0-5.0mm box: 20 strips × 750mm = <strong>15 Metres</strong>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action Footer -->
+      <div style="text-align: center; background: var(--bg-light); border-radius: var(--radius-lg); padding: 3rem 1.5rem; border: 1.5px solid var(--border-subtle);">
+        <h3 style="font-size: 1.6rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.5rem;">Ready to upgrade to Phoenix XL™?</h3>
+        <p style="color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto 1.75rem;">
+          Our technical team can advise on the exact channel width and base height for your converting substrates.
+        </p>
+        <button class="btn-solid-red" onclick="navigateTo('contact')">Request Technical Recommendation</button>
+      </div>
+
     </div>
   </main>
 
@@ -1211,7 +1662,7 @@
             <select id="boardType">
               <option value="virgin">Virgin Fiber Carton (Folding Box)</option>
               <option value="recycled">Recycled / Greyboard (Use Ultra-SR)</option>
-              <option value="solid">Heavy Solid Board / Micro-Flute</option>
+              <option value="solid">Heavy Solid Board / Micro-Flute (Phoenix XL)</option>
             </select>
           </div>
         </div>
@@ -1619,6 +2070,7 @@
             <li><a onclick="navigateTo('home')">Home</a></li>
             <li><a onclick="navigateTo('about')">About Us</a></li>
             <li><a onclick="navigateTo('products')">Products</a></li>
+            <li><a onclick="navigateTo('phoenix-xl')">Phoenix XL™ Detail</a></li>
             <li><a onclick="navigateTo('technical')">Technical & Sizing</a></li>
             <li><a onclick="navigateTo('news')">Latest News (PPWR)</a></li>
             <li><a onclick="navigateTo('portal')">Customer Portal</a></li>
@@ -1629,7 +2081,7 @@
           <h5>Product Lines</h5>
           <ul>
             <li><a onclick="navigateTo('products')">PHOENIX+™ Synthetic</a></li>
-            <li><a onclick="navigateTo('products')">PHOENIX XL™ Wide Base</a></li>
+            <li><a onclick="navigateTo('phoenix-xl')">PHOENIX XL™ Wide Base</a></li>
             <li><a onclick="navigateTo('products')">ULTRA-SR™ Steel Base</a></li>
             <li><a onclick="navigateTo('products')">EXCEED™ Ejection Rubber</a></li>
           </ul>
@@ -1708,9 +2160,18 @@
         'Off-Centre Rose 0.50 x 1.7mm'
       ],
       'Phoenix XL': [
-        '0.50 x 1.70', '0.50 x 1.90', '0.60 x 1.90', '0.60 x 2.10',
-        '0.70 x 2.10', '0.70 x 2.30', '0.80 x 2.30', '0.80 x 2.70',
-        '0.90 x 2.70', '1.00 x 3.00', '1.20 x 3.50', '1.40 x 4.00'
+        '-- 12mm Standard Base --',
+        '0.40 x 1.30 (Navy)', '0.40 x 1.40 (Navy)', '0.40 x 1.50 (Navy)', '0.40 x 1.60 (Navy)', '0.40 x 1.70 (Navy)',
+        '0.50 x 1.30 (Red)', '0.50 x 1.40 (Red)', '0.50 x 1.50 (Red)', '0.50 x 1.60 (Red)', '0.50 x 1.70 (Red)', '0.50 x 1.90 (Red)',
+        '0.60 x 1.50 (Yellow)', '0.60 x 1.70 (Yellow)', '0.60 x 1.90 (Yellow)', '0.60 x 2.10 (Yellow)', '0.60 x 2.30 (Yellow)', '0.60 x 2.50 (Yellow)', '0.60 x 2.70 (Yellow)', '0.60 x 3.00 (Yellow)', '0.60 x 3.20 (Yellow)',
+        '0.70 x 2.10 (Orange)', '0.70 x 2.30 (Orange)', '0.70 x 2.50 (Orange)', '0.70 x 2.70 (Orange)', '0.70 x 3.00 (Orange)', '0.70 x 3.20 (Orange)',
+        '0.80 x 2.10 (Green)', '0.80 x 2.30 (Green)', '0.80 x 2.50 (Green)', '0.80 x 2.70 (Green)', '0.80 x 3.00 (Green)', '0.80 x 3.20 (Green)',
+        '1.00 x 2.10 (Sky)', '1.00 x 2.30 (Sky)', '1.00 x 2.50 (Sky)', '1.00 x 2.70 (Sky)', '1.00 x 3.00 (Sky)', '1.00 x 3.20 (Sky)',
+        '-- 15mm Extra-Wide Base --',
+        '0.60 x 3.50 (Yellow)', '0.60 x 4.00 (Yellow)', '0.60 x 4.50 (Yellow)', '0.60 x 5.00 (Yellow)',
+        '0.70 x 3.50 (Orange)', '0.70 x 4.00 (Orange)', '0.70 x 4.50 (Orange)', '0.70 x 5.00 (Orange)',
+        '0.80 x 3.50 (Green)', '0.80 x 4.00 (Green)', '0.80 x 4.50 (Green)', '0.80 x 5.00 (Green)',
+        '1.00 x 3.50 (Sky)', '1.00 x 4.00 (Sky)', '1.00 x 4.50 (Sky)', '1.00 x 5.00 (Sky)'
       ],
       'Exceed': [
         '7.00 x 5.00', '7.00 x 6.00', '7.00 x 7.00',
@@ -1725,7 +2186,7 @@
 
     // Amount (m) lengths based strictly on packaging format
     const LENGTHS_MAP = {
-      'Box': ['24m', '36m', '50m'],
+      'Box': ['24m', '20.25m', '15m', '36m', '50m'],
       'Reel': ['36m', '45m', '60m']
     };
 
@@ -1745,12 +2206,12 @@
       
       const specs = PRODUCT_SPECS_MAP[range] || PRODUCT_SPECS_MAP['PX Plus'];
       
-      if (range === 'Ultra SR') {
+      if (range === 'Ultra SR' || range === 'Phoenix XL') {
         sizeSelect.innerHTML = specs.map(s => {
           if (s.startsWith('--')) return `<option disabled>${s}</option>`;
           return `<option value="${s}">${s}</option>`;
         }).join('');
-        sizeSelect.value = 'White 0.45 x 1.3mm';
+        sizeSelect.value = range === 'Ultra SR' ? 'White 0.45 x 1.3mm' : '0.60 x 2.10 (Yellow)';
       } else {
         sizeSelect.innerHTML = specs.map(s => `<option value="${s}">${s}${s.includes('Custom') || s.includes('Strip') ? '' : ' mm'}</option>`).join('');
       }
@@ -1771,6 +2232,12 @@
         }
       } else if (range === 'Exceed') {
         ptSelect.value = 'Profile Strip';
+      } else if (range === 'Phoenix XL') {
+        if (size.includes('15mm') || size.includes('3.50') || size.includes('4.00') || size.includes('5.00')) {
+          ptSelect.value = '3 / 4 pt';
+        } else {
+          ptSelect.value = '2 / 3 pt';
+        }
       } else {
         if (ptSelect.value === 'Profile Strip') ptSelect.value = '2 / 3 pt';
       }
@@ -1993,7 +2460,7 @@
         return;
       }
 
-      const itemDesc = (range === 'Ultra SR') 
+      const itemDesc = (range === 'Ultra SR' || range === 'Phoenix XL') 
         ? `${range} ${size} (${pt}) - ${meters} ${unitType}`
         : `${range} ${size} mm (${pt}) - ${meters} ${unitType}`;
 
@@ -2026,7 +2493,7 @@
 
       tbody.innerHTML = queuedLineItems.map((item, idx) => `
         <tr>
-          <td><strong>${item.range} ${item.size}${item.range === 'Ultra SR' ? '' : ' mm'}</strong></td>
+          <td><strong>${item.range} ${item.size}</strong></td>
           <td>${item.pt}</td>
           <td>${item.meters} / ${item.unitType}</td>
           <td style="font-family: var(--font-mono); font-weight: 800; color: var(--matrix-navy);">${item.qty} Boxes</td>
