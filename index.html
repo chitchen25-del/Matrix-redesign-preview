@@ -1043,7 +1043,7 @@
     </div>
   </main>
 
-  <!-- ==================== VIEW 3: PRODUCTS PAGE ==================== -->
+  <!-- ==================== VIEW 3: PRODUCTS PAGE (UPDATED WITH YOUR IMAGES) ==================== -->
   <main id="view-products" class="page-view">
     <div class="page-hero">
       <div class="container">
@@ -1057,9 +1057,11 @@
 
     <div class="container products-layout">
       <div class="prod-grid-large">
+        
+        <!-- PHOENIX+ (IMG_0341) -->
         <div class="prod-item-card">
           <div class="prod-img-box prod-img-white">
-            <img src="phoenix-plus.png" alt="Phoenix+ Synthetic Matrix with Blue Adhesive" loading="lazy" onerror="this.src='https://i.ebayimg.com/00/s/NzM4WDE2MDA=/z/98AAAOSwqwReh35H/$_57.JPG?set_id=8800005007'">
+            <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0341.png" alt="Phoenix Plus" loading="lazy">
             <span class="prod-tag-float">Polymer Base</span>
           </div>
           <div class="prod-content-box">
@@ -1079,9 +1081,10 @@
           </div>
         </div>
 
+        <!-- ULTRA-SR (IMG_0342) -->
         <div class="prod-item-card">
           <div class="prod-img-box prod-img-white">
-            <img src="ultra-sr.png" alt="Ultra-SR Steel Base Matrix with Red Adhesive" loading="lazy" onerror="this.src='https://image.made-in-china.com/2f0j00rRkquYyWvKzG/Steel-Based-Matrix-Creasing-Matrix-for-Cardboard-Box-Making.webp'">
+            <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0342.png" alt="Ultra SR" loading="lazy">
             <span class="prod-tag-float">Steel Base</span>
           </div>
           <div class="prod-content-box">
@@ -1101,9 +1104,10 @@
           </div>
         </div>
 
+        <!-- EXCEED RUBBER (IMG_0340) -->
         <div class="prod-item-card">
           <div class="prod-img-box prod-img-dark">
-            <img src="exceed-rubber.png" alt="Exceed Micro-Cellular Ejection Rubber Strip" loading="lazy" onerror="this.src='https://www.diecuttingcreasingmatrix.com/photo/py116250690-white_exceed_die_ejection_rubber_strip_7_3_8_700mm_for_prevent_paper_box_burst.jpg'">
+            <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0340.png" alt="Exceed Rubber" loading="lazy">
             <span class="prod-tag-float">Ejection Profile</span>
           </div>
           <div class="prod-content-box">
@@ -1727,7 +1731,6 @@
           if (s.startsWith('--')) return `<option disabled>${s}</option>`;
           return `<option value="${s}">${s}</option>`;
         }).join('');
-        // Automatically default to White 0.45 x 1.3mm
         sizeSelect.value = 'White 0.45 x 1.3mm';
       } else {
         sizeSelect.innerHTML = specs.map(s => `<option value="${s}">${s}${s.includes('Custom') || s.includes('Strip') ? '' : ' mm'}</option>`).join('');
