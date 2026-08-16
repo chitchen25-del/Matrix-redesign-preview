@@ -591,7 +591,7 @@
     .news-card-content h3 { font-size: 1.25rem; font-weight: 800; color: var(--matrix-navy-dark); line-height: 1.35; margin-bottom: 0.75rem; }
     .news-card-content p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem; }
 
-    /* CUSTOMER PORTAL & LIVE ORDER SYSTEM */
+    /* CUSTOMER PORTAL & ADMIN SYSTEM */
     .portal-layout { padding: clamp(2.5rem, 5vw, 4.5rem) 0; }
     
     .portal-login-shell {
@@ -1429,18 +1429,15 @@
                   </div>
                   <div>
                     <label>Box or Reel</label>
-                    <select id="lineUnitType">
+                    <select id="lineUnitType" onchange="handleUnitTypeChange()">
                       <option value="Box">Box</option>
                       <option value="Reel">Reel</option>
                     </select>
                   </div>
                   <div>
                     <label>Amount (m)</label>
-                    <select id="lineMeters">
-                      <option value="36m">36m</option>
-                      <option value="50m">50m</option>
-                      <option value="100m">100m</option>
-                      <option value="Custom">Custom</option>
+                    <select id="lineMeters" required>
+                      <!-- Dynamically populated based on Box vs Reel -->
                     </select>
                   </div>
                   <div>
@@ -1685,6 +1682,27 @@
       ]
     };
 
+    // Amount (m) lengths based on packaging format
+    const LENGTHS_MAP = {
+      'Box': ['24m', '36m', '50m', 'Custom'],
+      'Reel': ['500m', '600m', '750m', '1000m', 'Custom']
+    };
+
+    function handleUnitTypeChange() {
+      const unitType = document.getElementById('lineUnitType').value;
+      const metersSelect = document.getElementById('lineMeters');
+      const lengths = LENGTHS_MAP[unitType] || LENGTHS_MAP['Box'];
+      
+      metersSelect.innerHTML = lengths.map(len => `<option value="${len}">${len}</option>`).join('');
+      
+      // Default standard selection
+      if (unitType === 'Box') {
+        metersSelect.value = '36m';
+      } else {
+        metersSelect.value = '600m';
+      }
+    }
+
     function handleRangeChange() {
       const range = document.getElementById('lineRange').value;
       const sizeSelect = document.getElementById('lineSizeSelect');
@@ -1734,6 +1752,7 @@
       const initialHash = window.location.hash.replace('#', '') || 'home';
       navigateTo(initialHash);
       handleRangeChange();
+      handleUnitTypeChange();
     });
 
     // ==================== PORTAL AUTHENTICATION ====================
@@ -2098,7 +2117,6 @@
       e.preventDefault();
       const pass = document.getElementById('adminMasterPass').value.trim();
       
-      // Case-insensitive check for Buster26
       if (pass.toLowerCase() === 'buster26') {
         closeAdminLoginModal();
         document.getElementById('portalLoginGateway').style.display = 'none';
