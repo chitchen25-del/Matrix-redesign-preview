@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matrix Engineering | Technical Brochure</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #182B6B; --navy-dark: #0d173b; --red: #FF2E17; --green: #10b981; 
+    --text-main: #0f172a; --text-muted: #475569; --border: #cbd5e1; --bg-light: #f8fafc;
+    --font-main: 'Plus Jakarta Sans', sans-serif; --font-mono: 'JetBrains Mono', monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  body { font-family: var(--font-main); background: #e2e8f0; color: var(--text-main); line-height: 1.5; padding: 2rem; display: flex; flex-direction: column; align-items: center; gap: 2rem; }
+  
+  /* Print Controls */
+  .no-print { background: var(--navy); color: #fff; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 800; display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: none; font-size: 1rem; }
+  .no-print:hover { background: var(--red); }
+
+  /* A4 Page Setup */
+  .page { background: #fff; width: 210mm; min-height: 297mm; padding: 15mm 15mm; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
+  
+  @media print {
+    @page { size: A4 portrait; margin: 0; }
+    body { background: none; padding: 0; gap: 0; }
+    .no-print { display: none !important; }
+    .page { box-shadow: none; margin: 0; padding: 12mm 15mm; page-break-after: always; min-height: 100vh; }
+  }
+
+  /* Brochure Typography & Structure */
+  .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid var(--navy); padding-bottom: 10px; margin-bottom: 20px; }
+  .logo svg { height: 45px; }
+  .doc-title { text-align: right; color: var(--navy); }
+  .doc-title h2 { font-weight: 900; font-size: 1.8rem; line-height: 1; letter-spacing: -0.03em; }
+  .doc-title p { font-weight: 800; color: var(--red); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; }
+  
+  .footer { margin-top: auto; border-top: 1px solid var(--border); padding-top: 10px; display: flex; justify-content: space-between; font-size: 0.65rem; font-weight: 600; color: var(--text-muted); }
+  .footer strong { color: var(--navy); }
+
+  .section-title { font-weight: 900; font-size: 1.5rem; color: var(--navy); margin-bottom: 5px; display: flex; align-items: center; gap: 10px; }
+  .section-title span { background: var(--red); color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; vertical-align: middle; }
+  .lead-text { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px; max-width: 90%; }
+  
+  .product-hero { display: flex; gap: 15px; margin-bottom: 15px; align-items: center; background: var(--bg-light); border: 1px solid var(--border); border-radius: 8px; padding: 15px; }
+  .product-hero img { width: 180px; height: auto; object-fit: contain; mix-blend-mode: multiply; }
+  .product-features { list-style: none; font-size: 0.75rem; flex: 1; }
+  .product-features li { margin-bottom: 6px; padding-left: 18px; position: relative; }
+  .product-features li::before { content: '✓'; position: absolute; left: 0; color: var(--red); font-weight: 900; }
+
+  /* Data Tables */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
+  .table-box { border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+  .table-head { background: var(--navy); color: #fff; padding: 4px 10px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; display: flex; justify-content: space-between; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.7rem; }
+  th { background: #f1f5f9; color: var(--navy); font-weight: 800; text-align: left; padding: 4px 8px; border-bottom: 1px solid var(--border); text-transform: uppercase; font-size: 0.65rem; }
+  td { padding: 4px 8px; border-bottom: 1px solid #e2e8f0; vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  .font-mono { font-family: var(--font-mono); font-weight: 700; color: var(--navy); }
+  .pt-spec { color: var(--red); font-weight: 800; font-family: var(--font-mono); font-size: 0.65rem; }
+
+  /* Color Swatches */
+  .c-bar { width: 28px; height: 10px; border-radius: 2px; display: inline-block; vertical-align: middle; border: 1px solid rgba(0,0,0,0.1); }
+  .c-pink { background: #F472B6; } .c-navy { background: #182B6B; } .c-lilac { background: #C084FC; } 
+  .c-red { background: #FF2E17; } .c-grey { background: #94A3B8; } .c-yellow { background: #EAB308; } 
+  .c-magenta { background: #DB2777; } .c-orange { background: #F97316; } .c-green { background: #10B981; } 
+  .c-sky { background: #38BDF8; } .c-lime { background: #84CC16; } .c-mauve { background: #8B5CF6; } 
+  .c-silver { background: #E2E8F0; } .c-buff { background: #FDE047; } .c-violet { background: #7C3AED; } 
+  .c-white { background: #FFFFFF; border: 1px solid #cbd5e1; } .c-rose { background: #FB7185; } 
+  .c-slate { background: #64748B; } .c-brown { background: #92400E; } .c-black { background: #0F172A; } 
+  .c-blue { background: #2563EB; } .c-cream { background: #FDF5E6; }
+
+  .yield-note { background: #fef2f2; color: var(--red); font-size: 0.65rem; font-weight: 800; padding: 4px 10px; border-top: 1px solid var(--border); }
+  
+  /* SVG Diagrams */
+  .diagram-container { display: flex; align-items: center; justify-content: center; padding: 5px; background: #fff; border-bottom: 1px solid var(--border); }
+  .diagram-container svg { height: 35px; width: auto; }
+</style>
+</head>
+<body>
+
+  <!-- Controls -->
+  <button class="no-print" onclick="window.print()">🖨️ Print / Save as PDF Brochure</button>
+
+  <!-- ==================== PAGE 1: PHOENIX+ ==================== -->
+  <div class="page">
+    <div class="header">
+      <div class="logo">
+        <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="120,70 380,25 380,70" fill="#4A4A4A"/><polygon points="400,70 400,25 660,70" fill="#4A4A4A"/>
+          <polygon points="120,80 185,80 205,135 225,80 290,80 290,155 240,155 240,115 218,155 192,155 170,115 170,155 120,155" fill="#182B6B"/>
+          <polygon points="305,155 350,80 370,80 345,155" fill="#7B818A"/><polygon points="360,80 405,155 380,155 365,125 335,125 350,95" fill="#A5ABB5"/>
+          <path d="M 400,80 L 460,80 L 460,100 L 440,100 L 440,145 C 440,155 420,155 420,145 L 420,100 L 400,100 Z" fill="#FF2E17"/>
+          <path d="M 465,80 L 515,80 C 535,80 545,90 545,105 C 545,118 535,125 520,128 L 545,155 L 515,155 L 495,130 L 495,155 L 465,155 Z M 495,98 L 495,115 L 512,115 C 518,115 522,110 522,106 C 522,102 518,98 512,98 Z" fill="#182B6B"/>
+          <rect x="555" y="80" width="30" height="75" fill="#182B6B"/><polygon points="595,80 625,80 660,155 630,155" fill="#182B6B"/>
+          <polygon points="630,80 660,80 595,155 565,155" fill="#182B6B"/><polygon points="120,165 640,165 660,195 120,195" fill="#FF2E17"/>
+          <polygon points="120,205 660,205 680,240 120,240" fill="#182B6B"/>
+          <text x="390" y="232" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="28" fill="#ffffff" letter-spacing="9" text-anchor="middle">ENGINEERING</text>
+        </svg>
+      </div>
+      <div class="doc-title">
+        <h2>TECHNICAL SPECS</h2>
+        <p>Precision Consumables Portfolio</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">PHOENIX+™ <span>Synthetic Polymer</span></h2>
+    <p class="lead-text">Our quest to produce the most durable plastic-based matrix possible incorporates our research into new raw materials and adhesives. This is a non-compromising solution to your creasing needs, designed to withstand the demands of extended production runs.</p>
+    
+    <div class="product-hero">
+      <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0341.png" alt="Phoenix Plus">
+      <ul class="product-features">
+        <li><strong>New High Quality Adhesive:</strong> Bespoke clean-peel tape eliminates creeping on the platen. Leaves no residue, requiring no clean-up.</li>
+        <li><strong>Specially Designed Locators:</strong> Small in size to fit tight areas. Thermally bonded—no adhesives. Self-locates securely.</li>
+        <li><strong>High Impact Plastic:</strong> The very latest in virgin polymer technology prevents channel wall collapse under pressure.</li>
+        <li><strong>Ultra-Smooth Shoulders:</strong> Perfect sheet transfer. Eliminates reworking of matrix shoulders on high speed machinery.</li>
+        <li><strong>Dual-Surface Colour Coding:</strong> Printed on both the base and locator for instant, error-free operator identification.</li>
+      </ul>
+    </div>
+
+    <!-- Phoenix+ Tables: Mini & Off-Centre -->
+    <div class="grid-2">
+      <!-- 7mm Mini Centre -->
+      <div class="table-box">
+        <div class="table-head">7mm Mini Centre <span>📦 28 strips x 750mm = 21m</span></div>
+        <div class="diagram-container">
+          <svg viewBox="0 0 240 42"><polygon points="10,38 30,15 95,15 95,38" fill="#182B6B"/><polygon points="145,38 145,15 210,15 230,38" fill="#182B6B"/><line x1="95" y1="10" x2="145" y2="10" stroke="#0f172a" stroke-width="1.5"/><text x="120" y="8" font-family="sans-serif" font-size="9" font-weight="900" text-anchor="middle">a (Width)</text><line x1="105" y1="15" x2="105" y2="38" stroke="#FF2E17" stroke-width="1.5"/><text x="115" y="30" font-family="sans-serif" font-size="9" font-weight="900" fill="#FF2E17">b (Height)</text></svg>
+        </div>
+        <table>
+          <tr><th>Height (b)</th><th>Channel Widths (a)</th></tr>
+          <tr><td><span class="c-bar c-pink"></span> <span class="font-mono">0.30</span></td><td>0.5, 0.6, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9</td></tr>
+          <tr><td><span class="c-bar c-blue"></span> <span class="font-mono">0.40</span></td><td>0.5, 0.6, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9</td></tr>
+          <tr><td><span class="c-bar c-white"></span> <span class="font-mono">0.45</span></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9</td></tr>
+          <tr><td><span class="c-bar c-red"></span> <span class="font-mono">0.50</span></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1, 2.3</td></tr>
+          <tr><td><span class="c-bar c-silver"></span> <span class="font-mono">0.55</span></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1, 2.3</td></tr>
+          <tr><td><span class="c-bar c-yellow"></span> <span class="font-mono">0.60</span></td><td>1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1</td></tr>
+          <tr><td><span class="c-bar c-orange"></span> <span class="font-mono">0.70</span></td><td>1.5, 1.6, 1.7, 1.9, 2.1</td></tr>
+        </table>
+      </div>
+
+      <!-- 7mm Off-Centre -->
+      <div class="table-box">
+        <div class="table-head">7mm Off-Centre <span>📦 28 strips x 750mm = 21m</span></div>
+        <div class="diagram-container">
+          <svg viewBox="0 0 240 42"><polygon points="10,38 10,15 55,15 55,38" fill="#182B6B"/><polygon points="105,38 105,15 195,15 230,38" fill="#182B6B"/><line x1="55" y1="10" x2="105" y2="10" stroke="#0f172a" stroke-width="1.5"/><text x="80" y="8" font-family="sans-serif" font-size="9" font-weight="900" text-anchor="middle">a (Width)</text><line x1="65" y1="15" x2="65" y2="38" stroke="#FF2E17" stroke-width="1.5"/><text x="75" y="30" font-family="sans-serif" font-size="9" font-weight="900" fill="#FF2E17">b (Height)</text></svg>
+        </div>
+        <table>
+          <tr><th>Height (b)</th><th>Channel Widths (a)</th></tr>
+          <tr><td><span class="c-bar c-pink"></span> <span class="font-mono">0.30</span></td><td>0.5, 0.6, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9</td></tr>
+          <tr><td><span class="c-bar c-blue"></span> <span class="font-mono">0.40</span></td><td>0.5, 0.6, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9</td></tr>
+          <tr><td><span class="c-bar c-white"></span> <span class="font-mono">0.45</span></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9</td></tr>
+          <tr><td><span class="c-bar c-red"></span> <span class="font-mono">0.50</span></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1, 2.3</td></tr>
+          <tr><td><span class="c-bar c-silver"></span> <span class="font-mono">0.55</span></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1, 2.3</td></tr>
+          <tr><td><span class="c-bar c-yellow"></span> <span class="font-mono">0.60</span></td><td>1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5</td></tr>
+          <tr><td><span class="c-bar c-magenta"></span> <span class="font-mono">0.65</span></td><td>1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5</td></tr>
+          <tr><td><span class="c-bar c-orange"></span> <span class="font-mono">0.70</span></td><td>1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Phoenix+ 10mm Standard -->
+    <div class="table-box">
+      <div class="table-head">10mm Standard Centre Sizes <span>📦 32 strips x 750mm = 24m</span></div>
+      <div class="diagram-container">
+        <svg viewBox="0 0 260 42"><polygon points="10,38 35,15 105,15 105,38" fill="#182B6B"/><polygon points="155,38 155,15 225,15 250,38" fill="#182B6B"/><line x1="105" y1="10" x2="155" y2="10" stroke="#0f172a" stroke-width="1.5"/><text x="130" y="8" font-family="sans-serif" font-size="9" font-weight="900" text-anchor="middle">a (Width)</text><line x1="115" y1="15" x2="115" y2="38" stroke="#FF2E17" stroke-width="1.5"/><text x="125" y="30" font-family="sans-serif" font-size="9" font-weight="900" fill="#FF2E17">b</text></svg>
+      </div>
+      <table style="column-count: 2; display: block;">
+        <tbody style="display: grid; grid-template-columns: 1fr 1fr; gap: 0 15px;">
+          <tr><td><span class="c-bar c-pink"></span> <span class="font-mono">0.30</span></td><td>0.5, 0.6, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9</td></tr>
+          <tr><td><span class="c-bar c-blue"></span> <span class="font-mono">0.40</span></td><td>0.5, 0.6, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9</td></tr>
+          <tr><td><span class="c-bar c-white"></span> <span class="font-mono">0.45</span></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9</td></tr>
+          <tr><td><span class="c-bar c-red"></span> <span class="font-mono">0.50</span></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1, 2.3</td></tr>
+          <tr><td><span class="c-bar c-silver"></span> <span class="font-mono">0.55</span></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1, 2.3</td></tr>
+          <tr><td><span class="c-bar c-yellow"></span> <span class="font-mono">0.60</span></td><td>1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.8, 3.0, 3.2</td></tr>
+          <tr><td><span class="c-bar c-magenta"></span> <span class="font-mono">0.65</span></td><td>1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.8, 3.0, 3.2</td></tr>
+          <tr><td><span class="c-bar c-orange"></span> <span class="font-mono">0.70</span></td><td>1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.8, 3.0, 3.2</td></tr>
+          <tr><td><span class="c-bar c-green"></span> <span class="font-mono">0.80</span></td><td>1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.8, 3.0, 3.2</td></tr>
+          <tr><td><span class="c-bar c-sky"></span> <span class="font-mono">1.00</span></td><td>2.3, 2.5, 2.7, 2.8, 3.0, 3.2</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="footer">
+      <div>Matrix Engineering Ltd • Isle of Man, British Isles</div>
+      <div><strong>sales@creasingmatrix.com</strong></div>
+      <div>Page 1</div>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE 2: PHOENIX+ Cont & PHOENIX XL ==================== -->
+  <div class="page">
+    <div class="header">
+      <div class="logo"><svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><polygon points="120,70 380,25 380,70" fill="#4A4A4A"/><polygon points="400,70 400,25 660,70" fill="#4A4A4A"/><polygon points="120,80 185,80 205,135 225,80 290,80 290,155 240,155 240,115 218,155 192,155 170,115 170,155 120,155" fill="#182B6B"/><polygon points="305,155 350,80 370,80 345,155" fill="#7B818A"/><polygon points="360,80 405,155 380,155 365,125 335,125 350,95" fill="#A5ABB5"/><path d="M 400,80 L 460,80 L 460,100 L 440,100 L 440,145 C 440,155 420,155 420,145 L 420,100 L 400,100 Z" fill="#FF2E17"/><path d="M 465,80 L 515,80 C 535,80 545,90 545,105 C 545,118 535,125 520,128 L 545,155 L 515,155 L 495,130 L 495,155 L 465,155 Z M 495,98 L 495,115 L 512,115 C 518,115 522,110 522,106 C 522,102 518,98 512,98 Z" fill="#182B6B"/><rect x="555" y="80" width="30" height="75" fill="#182B6B"/><polygon points="595,80 625,80 660,155 630,155" fill="#182B6B"/><polygon points="630,80 660,80 595,155 565,155" fill="#182B6B"/><polygon points="120,165 640,165 660,195 120,195" fill="#FF2E17"/><polygon points="120,205 660,205 680,240 120,240" fill="#182B6B"/><text x="390" y="232" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="28" fill="#ffffff" letter-spacing="9" text-anchor="middle">ENGINEERING</text></svg></div>
+      <div class="doc-title"><h2>TECHNICAL SPECS</h2><p>Precision Consumables Portfolio</p></div>
+    </div>
+
+    <!-- Phoenix+ 12mm Sizes -->
+    <div class="grid-2">
+      <div class="table-box">
+        <div class="table-head">Phoenix 12mm Centre <span>📦 27 strips = 20.25m</span></div>
+        <div class="diagram-container"><svg viewBox="0 0 270 42"><polygon points="10,38 35,15 110,15 110,38" fill="#182B6B"/><polygon points="160,38 160,15 235,15 260,38" fill="#182B6B"/><line x1="110" y1="10" x2="160" y2="10" stroke="#0f172a" stroke-width="1.5"/><text x="135" y="8" font-family="sans-serif" font-size="9" font-weight="900" text-anchor="middle">a</text><line x1="120" y1="15" x2="120" y2="38" stroke="#FF2E17" stroke-width="1.5"/><text x="130" y="30" font-family="sans-serif" font-size="9" font-weight="900" fill="#FF2E17">b</text></svg></div>
+        <table>
+          <tr><th>Height (b)</th><th>Channel Widths (a)</th></tr>
+          <tr><td><span class="c-bar c-yellow"></span> <span class="font-mono">0.60</span></td><td>3.5*, 4.0# and 4.5#</td></tr>
+          <tr><td><span class="c-bar c-magenta"></span> <span class="font-mono">0.65</span></td><td>3.5*, 4.0# and 4.5#</td></tr>
+          <tr><td><span class="c-bar c-orange"></span> <span class="font-mono">0.70</span></td><td>3.5*, 4.0#, 4.5# and 5.0#</td></tr>
+          <tr><td><span class="c-bar c-green"></span> <span class="font-mono">0.80</span></td><td>3.5*, 4.0#, 4.5# and 5.0#</td></tr>
+          <tr><td><span class="c-bar c-sky"></span> <span class="font-mono">1.00</span></td><td>3.5*, 4.0#, 4.5# and 5.0#</td></tr>
+          <tr><td><span class="c-bar c-grey"></span> <span class="font-mono">1.20</span></td><td>3.5*, 4.0#, 4.5# and 5.0#</td></tr>
+          <tr><td><span class="c-bar c-lime"></span> <span class="font-mono">1.50</span></td><td>3.5*, 4.0#, 4.5# and 5.0#</td></tr>
+        </table>
+        <div class="yield-note">* 3.5mm: 20.25m | # 4.0-5.0mm: 20 strips = 15m</div>
+      </div>
+
+      <div class="table-box">
+        <div class="table-head">Phoenix 12mm Double Crease <span>📦 24 strips = 18m</span></div>
+        <div class="diagram-container"><svg viewBox="0 0 280 45"><polygon points="10,40 30,15 70,15 70,40" fill="#182B6B"/><rect x="110" y="15" width="60" height="25" fill="#182B6B"/><polygon points="210,40 210,15 250,15 270,40" fill="#182B6B"/><line x1="70" y1="10" x2="110" y2="10" stroke="#0f172a" stroke-width="1.2"/><text x="90" y="8" font-family="sans-serif" font-size="8" font-weight="900" text-anchor="middle">a</text><line x1="170" y1="10" x2="210" y2="10" stroke="#0f172a" stroke-width="1.2"/><text x="190" y="8" font-family="sans-serif" font-size="8" font-weight="900" text-anchor="middle">a</text><text x="140" y="8" font-family="sans-serif" font-size="8" font-weight="900" text-anchor="middle" fill="#FF2E17">d (Rule Gap)</text></svg></div>
+        <table>
+          <tr><th>Height</th><th>Channel Width (a)</th></tr>
+          <tr><td colspan="2" style="background:#f8fafc; text-align:center; font-size:0.65rem;">Rule Gaps (d) available: 3.0, 4.0, 5.0mm</td></tr>
+          <tr><td><span class="c-bar c-blue"></span> <span class="font-mono">0.40</span></td><td>1.0, 1.3, 1.5</td></tr>
+          <tr><td><span class="c-bar c-white"></span> <span class="font-mono">0.45</span></td><td>1.0, 1.3, 1.5</td></tr>
+          <tr><td><span class="c-bar c-red"></span> <span class="font-mono">0.50</span></td><td>1.0, 1.3, 1.5</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- PHOENIX XL -->
+    <hr style="border:none; border-top:2px dashed var(--border); margin:20px 0;">
+    <h2 class="section-title">PHOENIX XL™ <span>Wide Base</span></h2>
+    <p class="lead-text">Designed to meet the ever-increasing demands of high-volume production runs on solid board and flute. Phoenix XL minimises machinery downtime with an extended flange for maximum stability.</p>
+    
+    <div class="product-hero">
+      <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0345.png" alt="Phoenix XL">
+      <ul class="product-features">
+        <li><strong>No Lead Edge Taping Required:</strong> Secure, reliable performance straight out of the box with zero matrix shift.</li>
+        <li><strong>Choice of Base Size:</strong> Available in 12mm or 15mm extra-wide bases to distribute aggressive platen pressure.</li>
+        <li><strong>High-Impact Polymer:</strong> Unmatched durability for the heaviest, most abrasive substrates.</li>
+        <li><strong>Clean-Peel Tape:</strong> Extreme friction lock during runs, zero cleanup required upon removal.</li>
+      </ul>
+    </div>
+
+    <div class="grid-2">
+      <!-- XL 12mm -->
+      <div class="table-box">
+        <div class="table-head">Phoenix XL 12mm Standard <span>📦 32 strips = 24m</span></div>
+        <table>
+          <tr><th>Height (b)</th><th>Channel Widths (a)</th></tr>
+          <tr><td><span class="c-bar c-blue"></span> <span class="font-mono">0.40</span></td><td>1.3, 1.4, 1.5, 1.6, 1.7</td></tr>
+          <tr><td><span class="c-bar c-red"></span> <span class="font-mono">0.50</span></td><td>1.3, 1.4, 1.5, 1.6, 1.7, 1.9</td></tr>
+          <tr><td><span class="c-bar c-yellow"></span> <span class="font-mono">0.60</span></td><td>1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 3.0, 3.2</td></tr>
+          <tr><td><span class="c-bar c-orange"></span> <span class="font-mono">0.70</span></td><td>2.1, 2.3, 2.5, 2.7, 3.0, 3.2</td></tr>
+          <tr><td><span class="c-bar c-green"></span> <span class="font-mono">0.80</span></td><td>2.1, 2.3, 2.5, 2.7, 3.0, 3.2</td></tr>
+          <tr><td><span class="c-bar c-sky"></span> <span class="font-mono">1.00</span></td><td>2.1, 2.3, 2.5, 2.7, 3.0, 3.2</td></tr>
+        </table>
+      </div>
+
+      <!-- XL 15mm -->
+      <div class="table-box">
+        <div class="table-head">Phoenix XL 15mm Extra-Wide <span>📦 27 strips = 20.25m</span></div>
+        <table>
+          <tr><th>Height (b)</th><th>Channel Widths (a)</th></tr>
+          <tr><td><span class="c-bar c-yellow"></span> <span class="font-mono">0.60</span></td><td>3.5*, 4.0#, 4.5#, 5.0#</td></tr>
+          <tr><td><span class="c-bar c-orange"></span> <span class="font-mono">0.70</span></td><td>3.5*, 4.0#, 4.5#, 5.0#</td></tr>
+          <tr><td><span class="c-bar c-green"></span> <span class="font-mono">0.80</span></td><td>3.5*, 4.0#, 4.5#, 5.0#</td></tr>
+          <tr><td><span class="c-bar c-sky"></span> <span class="font-mono">1.00</span></td><td>3.5*, 4.0#, 4.5#, 5.0#</td></tr>
+        </table>
+        <div class="yield-note">* 3.5mm: 20.25m | # 4.0-5.0mm: 20 strips = 15m</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div>Matrix Engineering Ltd • Isle of Man, British Isles</div>
+      <div><strong>sales@creasingmatrix.com</strong></div>
+      <div>Page 2</div>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE 3: ULTRA-SR ==================== -->
+  <div class="page">
+    <div class="header">
+      <div class="logo"><svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><polygon points="120,70 380,25 380,70" fill="#4A4A4A"/><polygon points="400,70 400,25 660,70" fill="#4A4A4A"/><polygon points="120,80 185,80 205,135 225,80 290,80 290,155 240,155 240,115 218,155 192,155 170,115 170,155 120,155" fill="#182B6B"/><polygon points="305,155 350,80 370,80 345,155" fill="#7B818A"/><polygon points="360,80 405,155 380,155 365,125 335,125 350,95" fill="#A5ABB5"/><path d="M 400,80 L 460,80 L 460,100 L 440,100 L 440,145 C 440,155 420,155 420,145 L 420,100 L 400,100 Z" fill="#FF2E17"/><path d="M 465,80 L 515,80 C 535,80 545,90 545,105 C 545,118 535,125 520,128 L 545,155 L 515,155 L 495,130 L 495,155 L 465,155 Z M 495,98 L 495,115 L 512,115 C 518,115 522,110 522,106 C 522,102 518,98 512,98 Z" fill="#182B6B"/><rect x="555" y="80" width="30" height="75" fill="#182B6B"/><polygon points="595,80 625,80 660,155 630,155" fill="#182B6B"/><polygon points="630,80 660,80 595,155 565,155" fill="#182B6B"/><polygon points="120,165 640,165 660,195 120,195" fill="#FF2E17"/><polygon points="120,205 660,205 680,240 120,240" fill="#182B6B"/><text x="390" y="232" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="28" fill="#ffffff" letter-spacing="9" text-anchor="middle">ENGINEERING</text></svg></div>
+      <div class="doc-title"><h2>TECHNICAL SPECS</h2><p>Precision Consumables Portfolio</p></div>
+    </div>
+
+    <h2 class="section-title">ULTRA-SR™ <span>100 Mic Mylar Film</span></h2>
+    <p class="lead-text">A high impact polyester base product the same thickness as steel based matrix and fully compatible with any steel based product on the market. Engineered for abrasive recycled boards.</p>
+    
+    <div class="product-hero">
+      <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0342.png" alt="Ultra-SR">
+      <ul class="product-features">
+        <li><strong>No Rusting or Perforation Marks:</strong> Clean converting on sensitive substrates.</li>
+        <li><strong>Extreme Durability:</strong> Special High Impact Plastic providing stability comparable to steel.</li>
+        <li><strong>Full Visual Coding:</strong> Both base and locator have sizes printed on for easy identification.</li>
+        <li><strong>Important Technical Note:</strong> An allowance of 0.20 must be considered the same as all other steel based products.</li>
+      </ul>
+    </div>
+
+    <div class="grid-2">
+      <!-- Ultra SR 7mm Centre -->
+      <div class="table-box">
+        <div class="table-head">Ultra SR 7mm Centre <span>📦 32 strips = 24m</span></div>
+        <table>
+          <tr><th>Height (mm)</th><th>Channel (mm)</th><th>Pt</th></tr>
+          <tr><td><span class="c-bar c-mauve"></span> <span class="font-mono">0.38</span></td><td>0.5</td><td class="pt-spec">2-3pt</td></tr>
+          <tr><td><span class="c-bar c-silver"></span> <span class="font-mono">0.38</span></td><td>0.8</td><td class="pt-spec">2-3pt</td></tr>
+          <tr><td><span class="c-bar c-buff"></span> <span class="font-mono">0.38</span></td><td>1.0</td><td class="pt-spec">2-3pt</td></tr>
+          <tr><td><span class="c-bar c-violet"></span> <span class="font-mono">0.38</span></td><td>1.2</td><td class="pt-spec">2-3pt</td></tr>
+          <tr><td><span class="c-bar c-white"></span> <span class="font-mono">0.45</span></td><td>1.3</td><td class="pt-spec">2-3pt</td></tr>
+          <tr><td><span class="c-bar c-sky"></span> <span class="font-mono">0.45</span></td><td>1.4</td><td class="pt-spec">2-3pt</td></tr>
+          <tr><td><span class="c-bar c-lime"></span> <span class="font-mono">0.45</span></td><td>1.5</td><td class="pt-spec">2-3pt</td></tr>
+          <tr><td><span class="c-bar c-yellow"></span> <span class="font-mono">0.50</span></td><td>1.6</td><td class="pt-spec">2-3pt</td></tr>
+          <tr><td><span class="c-bar c-rose"></span> <span class="font-mono">0.50</span></td><td>1.7</td><td class="pt-spec">2-3pt</td></tr>
+          <tr><td><span class="c-bar c-slate"></span> <span class="font-mono">0.55</span></td><td>1.9</td><td class="pt-spec">2-3pt</td></tr>
+          <tr><td><span class="c-bar c-green"></span> <span class="font-mono">0.60</span></td><td>2.0</td><td class="pt-spec">2-3pt</td></tr>
+          <tr><td><span class="c-bar c-brown"></span> <span class="font-mono">0.60</span></td><td>2.1</td><td class="pt-spec">2-3pt</td></tr>
+          <tr><td><span class="c-bar c-red"></span> <span class="font-mono">0.70</span></td><td>2.3</td><td class="pt-spec">2-3pt</td></tr>
+          <tr><td><span class="c-bar c-black"></span> <span class="font-mono">0.70</span></td><td>2.4</td><td class="pt-spec">2-3pt</td></tr>
+          <tr><td><span class="c-bar c-blue"></span> <span class="font-mono">0.80</span></td><td>2.6</td><td class="pt-spec">2-3pt</td></tr>
+          <tr><td><span class="c-bar c-orange"></span> <span class="font-mono">0.90</span></td><td>3.0</td><td class="pt-spec">3-4pt</td></tr>
+        </table>
+      </div>
+
+      <div>
+        <!-- Ultra SR 7mm Off-Centre -->
+        <div class="table-box" style="margin-bottom: 15px;">
+          <div class="table-head">Ultra SR 7mm Off-Centre <span>📦 24m</span></div>
+          <table>
+            <tr><th>Height (mm)</th><th>Channel (mm)</th><th>Pt</th></tr>
+            <tr><td><span class="c-bar c-silver"></span> <span class="font-mono">0.38</span></td><td>0.8</td><td class="pt-spec">2-3pt</td></tr>
+            <tr><td><span class="c-bar c-buff"></span> <span class="font-mono">0.38</span></td><td>1.0</td><td class="pt-spec">2-3pt</td></tr>
+            <tr><td><span class="c-bar c-violet"></span> <span class="font-mono">0.38</span></td><td>1.2</td><td class="pt-spec">2-3pt</td></tr>
+            <tr><td><span class="c-bar c-white"></span> <span class="font-mono">0.45</span></td><td>1.3</td><td class="pt-spec">2-3pt</td></tr>
+            <tr><td><span class="c-bar c-sky"></span> <span class="font-mono">0.45</span></td><td>1.4</td><td class="pt-spec">2-3pt</td></tr>
+            <tr><td><span class="c-bar c-lime"></span> <span class="font-mono">0.45</span></td><td>1.5</td><td class="pt-spec">2-3pt</td></tr>
+            <tr><td><span class="c-bar c-yellow"></span> <span class="font-mono">0.50</span></td><td>1.6</td><td class="pt-spec">2-3pt</td></tr>
+            <tr><td><span class="c-bar c-rose"></span> <span class="font-mono">0.50</span></td><td>1.7</td><td class="pt-spec">2-3pt</td></tr>
+          </table>
+        </div>
+
+        <!-- Ultra SR 12mm Centre & Double -->
+        <div class="table-box" style="margin-bottom: 15px;">
+          <div class="table-head">Ultra SR 12mm Centre <span>📦 15m</span></div>
+          <table>
+            <tr><th>Height (mm)</th><th>Channel</th><th>Pt</th></tr>
+            <tr><td><span class="c-bar c-grey"></span> <span class="font-mono">1.30</span></td><td>3.80</td><td class="pt-spec">3-4/4-6pt</td></tr>
+            <tr><td><span class="c-bar c-black"></span> <span class="font-mono">1.50</span></td><td>5.00</td><td class="pt-spec">3-4/4-6pt</td></tr>
+            <tr><td><span class="c-bar c-cream"></span> <span class="font-mono">1.70</span></td><td>6.00</td><td class="pt-spec">3-4/4-6pt</td></tr>
+          </table>
+        </div>
+
+        <div class="table-box">
+          <div class="table-head">Ultra SR 12mm Double <span>📦 18m</span></div>
+          <table>
+            <tr><th>Height</th><th>Channel</th></tr>
+            <tr><td><span class="c-bar c-buff"></span> <span class="font-mono">0.38</span></td><td>1.0 (D3,D4,D5)</td></tr>
+            <tr><td><span class="c-bar c-white"></span> <span class="font-mono">0.45</span></td><td>1.3 (D3,D4,D5)</td></tr>
+            <tr><td><span class="c-bar c-yellow"></span> <span class="font-mono">0.50</span></td><td>1.6 (D3,D4,D5)</td></tr>
+          </table>
+          <div class="yield-note">Rule gaps: 3.00, 4.00, 5.00mm</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div>Matrix Engineering Ltd • Isle of Man, British Isles</div>
+      <div><strong>sales@creasingmatrix.com</strong></div>
+      <div>Page 3</div>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE 4: EXCEED & ACCESSORIES ==================== -->
+  <div class="page">
+    <div class="header">
+      <div class="logo"><svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><polygon points="120,70 380,25 380,70" fill="#4A4A4A"/><polygon points="400,70 400,25 660,70" fill="#4A4A4A"/><polygon points="120,80 185,80 205,135 225,80 290,80 290,155 240,155 240,115 218,155 192,155 170,115 170,155 120,155" fill="#182B6B"/><polygon points="305,155 350,80 370,80 345,155" fill="#7B818A"/><polygon points="360,80 405,155 380,155 365,125 335,125 350,95" fill="#A5ABB5"/><path d="M 400,80 L 460,80 L 460,100 L 440,100 L 440,145 C 440,155 420,155 420,145 L 420,100 L 400,100 Z" fill="#FF2E17"/><path d="M 465,80 L 515,80 C 535,80 545,90 545,105 C 545,118 535,125 520,128 L 545,155 L 515,155 L 495,130 L 495,155 L 465,155 Z M 495,98 L 495,115 L 512,115 C 518,115 522,110 522,106 C 522,102 518,98 512,98 Z" fill="#182B6B"/><rect x="555" y="80" width="30" height="75" fill="#182B6B"/><polygon points="595,80 625,80 660,155 630,155" fill="#182B6B"/><polygon points="630,80 660,80 595,155 565,155" fill="#182B6B"/><polygon points="120,165 640,165 660,195 120,195" fill="#FF2E17"/><polygon points="120,205 660,205 680,240 120,240" fill="#182B6B"/><text x="390" y="232" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="28" fill="#ffffff" letter-spacing="9" text-anchor="middle">ENGINEERING</text></svg></div>
+      <div class="doc-title"><h2>TECHNICAL SPECS</h2><p>Precision Consumables Portfolio</p></div>
+    </div>
+
+    <h2 class="section-title">EXCEED™ RUBBER <span>Micro-Cellular Ejection</span></h2>
+    <p class="lead-text">Exceed rubber comes from a combined experience of over 40 years of design and production of profile extrusion. Maintaining its exact profile for over 1.6 million impressions, it provides a highly cost-effective solution.</p>
+    
+    <div class="product-hero">
+      <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0340.png" alt="Exceed Rubber" style="mix-blend-mode: normal;">
+      <ul class="product-features">
+        <li><strong>Zero Degradation:</strong> Higher running life with absolutely no reduction in performance after 1.6 million+ impressions.</li>
+        <li><strong>Eliminates Angel Hair:</strong> Flawless sheet breakaway from the cutting rule.</li>
+        <li><strong>Resilient Formulation:</strong> Excellent UV resistance and high resistance to heat generated from press friction.</li>
+        <li><strong>Faster Setup:</strong> Highly dimensionally stable for greatly reduced make-ready time.</li>
+      </ul>
+    </div>
+
+    <div class="grid-2" style="margin-bottom: 30px;">
+      <div class="table-box">
+        <div class="table-head">Exceed 5.00mm Width</div>
+        <table>
+          <tr><th>Height (A)</th><th>Width (B)</th><th>Colour</th><th>Box Yield</th></tr>
+          <tr><td class="font-mono">7.00mm</td><td>5.00mm</td><td>White</td><td><strong>24m</strong> (32x750mm)</td></tr>
+          <tr><td class="font-mono">7.00mm</td><td>5.00mm</td><td>White</td><td><strong>60m</strong> (80x750mm)</td></tr>
+          <tr><td class="font-mono">7.25mm</td><td>5.00mm</td><td>White</td><td><strong>24m</strong> (32x750mm)</td></tr>
+          <tr><td class="font-mono">7.25mm</td><td>5.00mm</td><td>White</td><td><strong>60m</strong> (80x750mm)</td></tr>
+        </table>
+      </div>
+
+      <div class="table-box">
+        <div class="table-head">Exceed 7.50mm Width</div>
+        <table>
+          <tr><th>Height (A)</th><th>Width (B)</th><th>Colour</th><th>Box Yield</th></tr>
+          <tr><td class="font-mono">7.00mm</td><td>7.50mm</td><td>White</td><td><strong>24m</strong> (32x750mm)</td></tr>
+          <tr><td class="font-mono">7.00mm</td><td>7.50mm</td><td>White</td><td><strong>60m</strong> (80x750mm)</td></tr>
+          <tr><td class="font-mono">7.25mm</td><td>7.50mm</td><td>White</td><td><strong>24m</strong> (32x750mm)</td></tr>
+          <tr><td class="font-mono">7.25mm</td><td>7.50mm</td><td>White</td><td><strong>60m</strong> (80x750mm)</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <h2 class="section-title">WORKSHOP ACCESSORIES</h2>
+    <div class="grid-2">
+      <!-- Super Shim Plus -->
+      <div class="table-box" style="border-color: var(--navy);">
+        <div class="table-head">Super Shim Plus Tape</div>
+        <div style="padding: 10px; font-size: 0.7rem; color: var(--text-muted);">
+          Made from hardened stainless steel which will not compress. 8.0mm wide using a 12mm finger-lift backing for quick use.
+        </div>
+        <table>
+          <tr><th>Thickness Range</th><th>Roll Spec</th></tr>
+          <tr><td class="font-mono">0.03mm (30 microns)</td><td>8mm x 10m roll</td></tr>
+          <tr><td class="font-mono">0.05mm (50 microns)</td><td>8mm x 10m roll</td></tr>
+          <tr><td class="font-mono">0.10mm (100 microns)</td><td>8mm x 10m roll</td></tr>
+        </table>
+      </div>
+
+      <!-- Profitape -->
+      <div class="table-box" style="border-color: var(--navy);">
+        <div class="table-head">Profitape</div>
+        <div style="padding: 10px; font-size: 0.7rem; color: var(--text-muted);">
+          Self-adhesive precise patching make-ready tape. Super translucent, extreme hardness, no moistening necessary.
+        </div>
+        <table>
+          <tr><th>Colour Code</th><th>W x Thickness x L</th><th>Rolls/Pack</th></tr>
+          <tr><td><span class="c-bar c-blue"></span> Blue</td><td>3mm/6mm x 30µ x 35m</td><td>40 / 25</td></tr>
+          <tr><td><span class="c-bar c-red"></span> Red</td><td>3mm/6mm x 50µ x 25m</td><td>40 / 25</td></tr>
+          <tr><td><span class="c-bar c-yellow"></span> Yellow</td><td>3mm/6mm x 80µ x 18m</td><td>40 / 25</td></tr>
+        </table>
+        <div class="yield-note">12mm and 20mm widths available on request.</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div>Matrix Engineering Ltd • Isle of Man, British Isles</div>
+      <div><strong>sales@creasingmatrix.com</strong></div>
+      <div>Page 4</div>
+    </div>
+  </div>
+
+</body>
+</html>
