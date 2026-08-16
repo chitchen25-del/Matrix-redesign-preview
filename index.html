@@ -1436,9 +1436,7 @@
                   </div>
                   <div>
                     <label>Amount (m)</label>
-                    <select id="lineMeters" required>
-                      <!-- Dynamically populated based on Box vs Reel -->
-                    </select>
+                    <select id="lineMeters" required></select>
                   </div>
                   <div>
                     <label>Quantity (Min 10)</label>
@@ -1484,7 +1482,6 @@
         </div>
 
         <div style="display: grid; grid-template-columns: 1fr 1.6fr; gap: 2rem;">
-          <!-- Quick Add / Issue PIN Box -->
           <div style="background: var(--bg-light); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.5rem;">
             <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.5rem;">Issue Client Access PIN</h4>
             <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.25rem;">Authorize a new company or update their login Access PIN.</p>
@@ -1506,7 +1503,6 @@
             </form>
           </div>
 
-          <!-- Active & Requested Users List -->
           <div>
             <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.5rem;">Authorized Clients & Access Log</h4>
             <div style="overflow-x: auto;">
@@ -1682,7 +1678,6 @@
       ]
     };
 
-    // Amount (m) lengths based on packaging format
     const LENGTHS_MAP = {
       'Box': ['24m', '36m', '50m', 'Custom'],
       'Reel': ['500m', '600m', '750m', '1000m', 'Custom']
@@ -1694,13 +1689,7 @@
       const lengths = LENGTHS_MAP[unitType] || LENGTHS_MAP['Box'];
       
       metersSelect.innerHTML = lengths.map(len => `<option value="${len}">${len}</option>`).join('');
-      
-      // Default standard selection
-      if (unitType === 'Box') {
-        metersSelect.value = '36m';
-      } else {
-        metersSelect.value = '600m';
-      }
+      metersSelect.value = (unitType === 'Box') ? '36m' : '600m';
     }
 
     function handleRangeChange() {
@@ -1973,7 +1962,7 @@
       `).join('');
     }
 
-    // ==================== PLACE NEW ORDER WORKFLOW ====================
+    // ==================== PLACE NEW ORDER WORKFLOW (WITH SCHEMA COMPLIANCE) ====================
     async function handlePlaceNewOrder(e) {
       e.preventDefault();
 
@@ -1990,6 +1979,7 @@
       const orderDate = new Date().toISOString().split('T')[0];
       const woGeneratedId = 'WO-' + Math.floor(1000 + Math.random() * 9000);
 
+      // 1. Insert Order Header and Line Items into Supabase
       if (supabaseClient) {
         try {
           const { data: newOrder, error: orderErr } = await supabaseClient
@@ -2002,43 +1992,72 @@
               due_date: dueDate,
               address: address,
               notes: notes,
-              stage: 'RECEIVED',
+              stage: 'Received',
+              currency: 'GBP',
               priority: 0,
               deleted: false
             }])
             .select();
 
-          if (!orderErr && newOrder && newOrder[0]) {
-            const linesToInsert = queuedLineItems.map(item => ({
+          if (orderErr) {
+            console.error('Order creation error:', orderErr);
+            alert('Database write failed: ' + orderErr.message);
+            return;
+          }
+
+          if (newOrder && newOrder[0]) {
+            // Build line_items ensuring all schema columns (id, unit_price, numeric qty) are valid
+            const linesToInsert = queuedLineItems.map((item, index) => ({
+              id: `${woGeneratedId}-L${index + 1}`,
               order_id: woGeneratedId,
               description: item.description,
-              qty: item.qty,
+              qty: Number(item.qty),
+              unit_price: 0,
+              from_other_stock: 0,
               deleted: false
             }));
 
-            await supabaseClient.from('line_items').insert(linesToInsert);
+            const { error: linesErr } = await supabaseClient
+              .from('line_items')
+              .insert(linesToInsert);
+
+            if (linesErr) {
+              console.error('Line items insert error:', linesErr);
+              alert('Error inserting order lines: ' + linesErr.message);
+              return;
+            }
           }
         } catch (err) {
-          console.warn('Database write log:', err);
+          console.error('Database write exception:', err);
+          alert('Network/Database error: ' + err.message);
+          return;
         }
       }
 
-      const emailSubject = encodeURIComponent(`New Production Order: ${woGeneratedId} - ${customer}`);
-      const lineItemsSummary = queuedLineItems.map(i => `• ${i.description} (Qty: ${i.qty} Boxes)`).join('%0D%0A');
-      const emailBody = encodeURIComponent(
-        `New order generated via Matrix Engineering Client Portal:%0D%0A%0D%0A` +
-        `Work Order ID: ${woGeneratedId}%0D%0A` +
-        `Customer: ${customer}%0D%0A` +
-        `Customer Reference: ${ref}%0D%0A` +
-        `Requested Due Date: ${dueDate}%0D%0A` +
-        `Delivery Address: ${address || 'Standard Plant Profile'}%0D%0A%0D%0A` +
-        `Order Specifications:%0D%0A`
-      ) + lineItemsSummary + encodeURIComponent(
-        `%0D%0A%0D%0ANotes: ${notes || 'None'}%0D%0A%0D%0A` +
-        `Status: SAVED IN SUPABASE MANUFACTURING DATABASE (Stage: RECEIVED)`
-      );
+      // 2. Build Clean Plain-Text Email Notification (No double URI encoding)
+      const emailSubject = `New Production Order: ${woGeneratedId} - ${customer}`;
+      const lineSummaryText = queuedLineItems.map(i => `  • ${i.description} | Quantity: ${i.qty} Boxes`).join('\n');
+      
+      const emailBodyRaw = 
+`NEW ORDER GENERATED VIA CLIENT PORTAL
+--------------------------------------------------
+Work Order ID : ${woGeneratedId}
+Customer      : ${customer}
+PO Reference  : ${ref}
+Order Date    : ${orderDate}
+Due Date      : ${dueDate}
+Delivery Bay  : ${address || 'Standard Plant Address'}
 
-      const mailtoLink = `mailto:sales@creasingmatrix.com?subject=${emailSubject}&body=${emailBody}`;
+PRODUCT LINE SPECIFICATIONS:
+${lineSummaryText}
+
+CUSTOMER NOTES:
+${notes || 'No special instructions provided.'}
+--------------------------------------------------
+Status: Automatically logged in Supabase manufacturing tracker (Stage: Received).`;
+
+      // Trigger mail client safely
+      const mailtoLink = `mailto:sales@creasingmatrix.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBodyRaw)}`;
       const hiddenLink = document.createElement('a');
       hiddenLink.href = mailtoLink;
       hiddenLink.style.display = 'none';
@@ -2046,12 +2065,14 @@
       hiddenLink.click();
       document.body.removeChild(hiddenLink);
 
+      // 3. Reset line queue & form
       queuedLineItems = [];
       renderQueuedLineItems();
       document.getElementById('newOrderRef').value = '';
       document.getElementById('newOrderAddress').value = '';
       document.getElementById('newOrderNotes').value = '';
 
+      // 4. Show confirmation modal
       document.getElementById('orderConfirmationModal').style.display = 'flex';
     }
 
@@ -2090,14 +2111,15 @@
         }
       }
 
-      const subject = encodeURIComponent(`Client Portal Access Request: ${comp}`);
-      const body = encodeURIComponent(
-        `A customer has requested login details for the Matrix Engineering Client Hub:%0D%0A%0D%0A` +
-        `Company: ${comp}%0D%0A` +
-        `Contact Email: ${email}%0D%0A` +
-        `Verification Reference: ${ref || 'None'}`
-      );
-      window.location.href = `mailto:sales@creasingmatrix.com?subject=${subject}&body=${body}`;
+      const subject = `Client Portal Access Request: ${comp}`;
+      const body = 
+`A customer has requested login access to the Matrix Engineering Client Hub:
+
+Company Name       : ${comp}
+Contact Email      : ${email}
+Verification Ref/PO: ${ref || 'None provided'}`;
+
+      window.location.href = `mailto:sales@creasingmatrix.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
       closeRequestAccessModal();
       alert('Thank you! Your request has been logged. Our sales team will verify your account and email your login Access PIN shortly.');
