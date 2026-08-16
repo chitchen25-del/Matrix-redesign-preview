@@ -1657,10 +1657,15 @@
         '0.70 x 1.90', '0.80 x 2.10'
       ],
       'Ultra SR': [
-        '0.35 x 1.00', '0.40 x 1.20', '0.40 x 1.30', '0.40 x 1.50',
-        '0.50 x 1.30', '0.50 x 1.50', '0.50 x 1.70',
-        '0.60 x 1.50', '0.60 x 1.70', '0.60 x 1.90',
-        '0.70 x 1.90', '0.70 x 2.10', '0.80 x 2.30'
+        'Yellow 1.60',
+        'Green 1.60',
+        'Orange 1.60',
+        'Blue 1.60',
+        'Red 1.60',
+        'White 1.60',
+        'Black 1.60',
+        'Silver 1.60',
+        'Custom Spec'
       ],
       'Phoenix XL': [
         '0.50 x 1.70', '0.50 x 1.90', '0.60 x 1.90', '0.60 x 2.10',
@@ -1678,9 +1683,10 @@
       ]
     };
 
+    // Amount (m) lengths based on packaging format
     const LENGTHS_MAP = {
       'Box': ['24m', '36m', '50m', 'Custom'],
-      'Reel': ['500m', '600m', '750m', '1000m', 'Custom']
+      'Reel': ['36m', '45m', '60m']
     };
 
     function handleUnitTypeChange() {
@@ -1689,7 +1695,7 @@
       const lengths = LENGTHS_MAP[unitType] || LENGTHS_MAP['Box'];
       
       metersSelect.innerHTML = lengths.map(len => `<option value="${len}">${len}</option>`).join('');
-      metersSelect.value = (unitType === 'Box') ? '36m' : '600m';
+      metersSelect.value = (unitType === 'Box') ? '36m' : '36m';
     }
 
     function handleRangeChange() {
@@ -1698,7 +1704,13 @@
       const ptSelect = document.getElementById('linePt');
       
       const specs = PRODUCT_SPECS_MAP[range] || PRODUCT_SPECS_MAP['PX Plus'];
-      sizeSelect.innerHTML = specs.map(s => `<option value="${s}">${s} mm</option>`).join('');
+      
+      // Formatting options nicely
+      if (range === 'Ultra SR') {
+        sizeSelect.innerHTML = specs.map(s => `<option value="${s}">${s}</option>`).join('');
+      } else {
+        sizeSelect.innerHTML = specs.map(s => `<option value="${s}">${s}${s.includes('Custom') || s.includes('Strip') ? '' : ' mm'}</option>`).join('');
+      }
 
       if (range === 'Exceed') {
         ptSelect.value = 'Profile Strip';
@@ -1924,8 +1936,12 @@
         return;
       }
 
+      const itemDesc = (range === 'Ultra SR') 
+        ? `${range} ${size} (${pt}) - ${meters} ${unitType}`
+        : `${range} ${size} mm (${pt}) - ${meters} ${unitType}`;
+
       const item = {
-        description: `${range} ${size} mm (${pt}) - ${meters} ${unitType}`,
+        description: itemDesc,
         range: range,
         size: size,
         pt: pt,
@@ -1953,7 +1969,7 @@
 
       tbody.innerHTML = queuedLineItems.map((item, idx) => `
         <tr>
-          <td><strong>${item.range} ${item.size} mm</strong></td>
+          <td><strong>${item.range} ${item.size}${item.range === 'Ultra SR' ? '' : ' mm'}</strong></td>
           <td>${item.pt}</td>
           <td>${item.meters} / ${item.unitType}</td>
           <td style="font-family: var(--font-mono); font-weight: 800; color: var(--matrix-navy);">${item.qty} Boxes</td>
@@ -1962,7 +1978,7 @@
       `).join('');
     }
 
-    // ==================== PLACE NEW ORDER WORKFLOW (WITH SCHEMA COMPLIANCE) ====================
+    // ==================== PLACE NEW ORDER WORKFLOW ====================
     async function handlePlaceNewOrder(e) {
       e.preventDefault();
 
@@ -2006,7 +2022,6 @@
           }
 
           if (newOrder && newOrder[0]) {
-            // Build line_items ensuring all schema columns (id, unit_price, numeric qty) are valid
             const linesToInsert = queuedLineItems.map((item, index) => ({
               id: `${woGeneratedId}-L${index + 1}`,
               order_id: woGeneratedId,
@@ -2034,7 +2049,7 @@
         }
       }
 
-      // 2. Build Clean Plain-Text Email Notification (No double URI encoding)
+      // 2. Build Clean Plain-Text Email Notification
       const emailSubject = `New Production Order: ${woGeneratedId} - ${customer}`;
       const lineSummaryText = queuedLineItems.map(i => `  • ${i.description} | Quantity: ${i.qty} Boxes`).join('\n');
       
@@ -2056,7 +2071,6 @@ ${notes || 'No special instructions provided.'}
 --------------------------------------------------
 Status: Automatically logged in Supabase manufacturing tracker (Stage: Received).`;
 
-      // Trigger mail client safely
       const mailtoLink = `mailto:sales@creasingmatrix.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBodyRaw)}`;
       const hiddenLink = document.createElement('a');
       hiddenLink.href = mailtoLink;
