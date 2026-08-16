@@ -65,8 +65,9 @@
       padding: 0 1.5rem;
     }
 
-    @media (max-width: 640px) {
-      .container { padding: 0 1.25rem; }
+    /* Fixed iPhone Edge Padding */
+    @media (max-width: 640px) { 
+      .container { padding: 0 1.25rem; } 
     }
 
     /* Top Utility Bar */
@@ -572,9 +573,16 @@
       object-fit: cover;
     }
 
+    /* Important: Text padding fixes for iPhone edges */
     .detail-info-pane {
-      padding: 0 0.25rem;
+      padding: 0;
     }
+    @media (max-width: 640px) {
+      .detail-info-pane {
+        padding: 0 0.5rem;
+      }
+    }
+
     .detail-info-pane h1 {
       font-size: clamp(1.85rem, 4vw, 2.5rem);
       font-weight: 900;
@@ -724,6 +732,7 @@
       box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     }
 
+    /* Matrix Product Colours */
     .color-pink   { background: #F472B6; }
     .color-navy   { background: #182B6B; }
     .color-lilac  { background: #C084FC; }
