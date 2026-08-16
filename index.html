@@ -3,33 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Matrix Engineering | High-Performance Creasing Matrix Solutions</title>
-  <meta name="description" content="Precision creasing matrix solutions, ejection rubber, and makeready tooling for the folding carton and corrugated packaging industries.">
+  <title>Matrix Engineering | Precision Creasing Systems & Tooling</title>
+  <meta name="description" content="World-leading manufacturers of high-performance creasing matrix, ejection rubber, and makeready tooling for folding carton and corrugated packaging converters.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-main: #0b0f19;
-      --bg-surface: #111827;
-      --bg-surface-elevated: #1f2937;
-      --bg-surface-glass: rgba(17, 24, 39, 0.85);
-      --accent-primary: #0284c7;
-      --accent-hover: #0369a1;
-      --accent-highlight: #38bdf8;
-      --accent-glow: rgba(56, 189, 248, 0.15);
-      --text-main: #f9fafb;
-      --text-muted: #9ca3af;
-      --text-dim: #6b7280;
-      --border-subtle: #374151;
-      --border-focus: #0284c7;
-      --radius-sm: 6px;
-      --radius-md: 10px;
-      --radius-lg: 16px;
+      --bg-base: #07090e;
+      --bg-surface: #0e131f;
+      --bg-surface-elevated: #161e31;
+      --bg-surface-card: rgba(17, 24, 39, 0.75);
+      --accent-cyan: #38bdf8;
+      --accent-blue: #0284c7;
+      --accent-glow: rgba(56, 189, 248, 0.25);
+      --accent-emerald: #10b981;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-bright: rgba(56, 189, 248, 0.4);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
       --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
-      --container-max: 1200px;
-      --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --container-max: 1240px;
+      --shadow-ambient: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
     }
 
     * {
@@ -38,28 +38,49 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: var(--font-main);
-      background-color: var(--bg-main);
+      background-color: var(--bg-base);
       color: var(--text-main);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Ambient Background Mesh */
+    .ambient-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      background: 
+        radial-gradient(circle at 15% 20%, rgba(2, 132, 199, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 60%, rgba(56, 189, 248, 0.08) 0%, transparent 45%);
     }
 
     .container {
       width: 100%;
       max-width: var(--container-max);
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 1.75rem;
+      position: relative;
+      z-index: 1;
     }
 
-    /* Navigation */
+    /* Header */
     header.site-header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: var(--bg-surface-glass);
-      backdrop-filter: blur(12px);
+      background: rgba(7, 9, 14, 0.85);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-subtle);
     }
 
@@ -67,34 +88,39 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 72px;
+      height: 80px;
     }
 
     .brand-logo {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.85rem;
       text-decoration: none;
       color: var(--text-main);
       font-weight: 800;
-      font-size: 1.25rem;
-      letter-spacing: -0.02em;
+      font-size: 1.35rem;
+      letter-spacing: -0.03em;
     }
 
-    .brand-logo .logo-badge {
-      background: linear-gradient(135deg, var(--accent-highlight), var(--accent-primary));
-      color: #fff;
-      padding: 4px 8px;
+    .brand-logo .logo-icon {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
       border-radius: var(--radius-sm);
-      font-size: 0.85rem;
-      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
       font-family: var(--font-mono);
+      font-size: 1.1rem;
+      box-shadow: 0 0 16px var(--accent-glow);
     }
 
     nav.main-nav {
       display: flex;
       align-items: center;
-      gap: 1.75rem;
+      gap: 2rem;
     }
 
     .nav-link {
@@ -102,231 +128,276 @@
       text-decoration: none;
       font-size: 0.95rem;
       font-weight: 500;
-      transition: var(--transition-smooth);
+      transition: all 0.2s ease;
     }
 
     .nav-link:hover {
-      color: var(--accent-highlight);
+      color: var(--accent-cyan);
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      padding: 0.65rem 1.25rem;
+      gap: 0.6rem;
+      padding: 0.75rem 1.4rem;
       border-radius: var(--radius-md);
       font-size: 0.95rem;
       font-weight: 600;
       text-decoration: none;
       cursor: pointer;
       border: 1px solid transparent;
-      transition: var(--transition-smooth);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .btn-primary {
-      background-color: var(--accent-primary);
-      color: #fff;
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
     }
 
     .btn-primary:hover {
-      background-color: var(--accent-hover);
-      box-shadow: 0 0 16px var(--accent-glow);
+      background: linear-gradient(135deg, #38bdf8, #0284c7);
+      box-shadow: 0 0 24px var(--accent-glow);
+      transform: translateY(-1px);
     }
 
     .btn-secondary {
-      background-color: var(--bg-surface-elevated);
+      background: var(--bg-surface-elevated);
       color: var(--text-main);
       border-color: var(--border-subtle);
     }
 
     .btn-secondary:hover {
-      border-color: var(--accent-highlight);
+      border-color: var(--accent-cyan);
       color: #fff;
+      transform: translateY(-1px);
     }
 
     /* Hero Section */
     .hero-section {
-      padding: 5rem 0 4rem;
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid var(--border-subtle);
-      background: radial-gradient(circle at 50% -20%, rgba(2, 132, 199, 0.18), transparent 70%);
-    }
-
-    .hero-content {
+      padding: 6.5rem 0 5rem;
       text-align: center;
-      max-width: 840px;
-      margin: 0 auto;
+      position: relative;
     }
 
-    .hero-pill {
+    .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.35rem 0.85rem;
+      gap: 0.6rem;
+      padding: 0.4rem 1rem;
       border-radius: 999px;
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--border-subtle);
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid var(--border-bright);
       font-size: 0.85rem;
-      color: var(--accent-highlight);
-      margin-bottom: 1.5rem;
-      font-weight: 500;
+      color: var(--accent-cyan);
+      margin-bottom: 2rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-badge .pulse-dot {
+      width: 7px;
+      height: 7px;
+      background-color: var(--accent-cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent-cyan);
     }
 
     .hero-title {
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-size: clamp(2.5rem, 5.5vw, 4.2rem);
       font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -0.03em;
-      margin-bottom: 1.25rem;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(180deg, #ffffff 40%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .hero-subtitle {
-      font-size: 1.15rem;
+      font-size: 1.25rem;
       color: var(--text-muted);
-      margin-bottom: 2rem;
-      font-weight: 400;
-      max-width: 680px;
+      margin-bottom: 2.75rem;
+      max-width: 720px;
       margin-left: auto;
       margin-right: auto;
+      font-weight: 400;
     }
 
     .hero-actions {
       display: flex;
       justify-content: center;
-      gap: 1rem;
+      gap: 1.25rem;
       flex-wrap: wrap;
     }
 
-    .stats-bar {
-      margin-top: 3.5rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border-subtle);
+    /* Metrics Ribbon */
+    .metrics-bar {
+      margin-top: 5rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 2rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      box-shadow: var(--shadow-ambient);
+    }
+
+    .metric-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
     }
 
-    .stat-item .stat-num {
-      font-size: 2rem;
+    .metric-box .metric-value {
+      font-size: 2.25rem;
       font-weight: 800;
-      color: var(--accent-highlight);
+      color: var(--accent-cyan);
       font-family: var(--font-mono);
+      letter-spacing: -0.02em;
     }
 
-    .stat-item .stat-lbl {
+    .metric-box .metric-label {
       font-size: 0.85rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      font-weight: 600;
+      margin-top: 0.25rem;
     }
 
-    /* Section Header */
-    .section-header {
+    /* Section Headings */
+    .section-head {
       text-align: center;
-      max-width: 650px;
-      margin: 0 auto 3rem;
+      max-width: 700px;
+      margin: 0 auto 3.5rem;
     }
 
     .section-tag {
       font-size: 0.8rem;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--accent-highlight);
+      letter-spacing: 0.12em;
+      color: var(--accent-cyan);
       font-weight: 700;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
       display: block;
     }
 
     .section-title {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.75rem;
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
     }
 
     .section-desc {
       color: var(--text-muted);
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
 
     /* Product Grid */
     .products-section {
-      padding: 5rem 0;
-      border-bottom: 1px solid var(--border-subtle);
+      padding: 6rem 0;
     }
 
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.75rem;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
     }
 
     .product-card {
-      background: var(--bg-surface);
+      background: var(--bg-surface-card);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      padding: 1.75rem;
+      padding: 2.25rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: var(--transition-smooth);
+      backdrop-filter: blur(8px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
     .product-card:hover {
-      border-color: var(--accent-primary);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.5);
+      border-color: rgba(56, 189, 248, 0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.1);
+    }
+
+    .product-card:hover::before {
+      opacity: 1;
+    }
+
+    .product-tag-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
     }
 
     .product-badge {
-      align-self: flex-start;
       font-size: 0.75rem;
-      font-weight: 600;
-      padding: 2px 8px;
-      border-radius: var(--radius-sm);
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
       background: var(--bg-surface-elevated);
-      color: var(--accent-highlight);
+      color: var(--accent-cyan);
       border: 1px solid var(--border-subtle);
-      margin-bottom: 1rem;
+      font-family: var(--font-mono);
     }
 
     .product-card h3 {
-      font-size: 1.35rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.6rem;
+      margin-bottom: 0.75rem;
       font-weight: 700;
+      letter-spacing: -0.02em;
     }
 
     .product-card p {
       color: var(--text-muted);
       font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-      flex-grow: 1;
+      margin-bottom: 1.75rem;
+      line-height: 1.65;
     }
 
-    .product-specs {
-      background: var(--bg-main);
+    .specs-table {
+      background: var(--bg-base);
       border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
-      padding: 0.75rem 1rem;
-      margin-bottom: 1.5rem;
-      font-size: 0.85rem;
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      margin-bottom: 1.75rem;
     }
 
-    .spec-row {
+    .spec-item {
       display: flex;
       justify-content: space-between;
-      padding: 0.25rem 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.85rem;
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     }
 
-    .spec-row:last-child {
+    .spec-item:last-child {
       border-bottom: none;
     }
 
-    .spec-label {
+    .spec-name {
       color: var(--text-dim);
     }
 
@@ -337,186 +408,272 @@
     }
 
     /* Calculator Section */
-    .calculator-section {
-      padding: 5rem 0;
-      background: linear-gradient(180deg, var(--bg-main) 0%, var(--bg-surface) 100%);
-      border-bottom: 1px solid var(--border-subtle);
+    .calc-section {
+      padding: 6rem 0;
+      background: radial-gradient(circle at 50% 50%, rgba(2, 132, 199, 0.08) 0%, transparent 60%);
     }
 
-    .calc-container {
-      max-width: 800px;
-      margin: 0 auto;
+    .calc-shell {
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      padding: 2.25rem;
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
-    }
-
-    .calc-grid {
+      padding: 3rem;
+      box-shadow: var(--shadow-ambient);
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    @media (max-width: 640px) {
-      .calc-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .input-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .input-group label {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text-muted);
-    }
-
-    .input-wrapper {
-      position: relative;
-      display: flex;
+      gap: 3.5rem;
       align-items: center;
     }
 
-    .input-wrapper input,
-    .input-wrapper select {
+    @media (max-width: 900px) {
+      .calc-shell {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+      }
+    }
+
+    .calc-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+
+    .calc-input-group label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      color: var(--text-muted);
+    }
+
+    .calc-input-group label span.val-display {
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+    }
+
+    .range-slider {
       width: 100%;
-      background: var(--bg-main);
+      height: 8px;
+      border-radius: 4px;
+      background: var(--bg-surface-elevated);
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    .range-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--accent-cyan);
+      border: 2px solid #fff;
+    }
+
+    .select-custom {
+      width: 100%;
+      background: var(--bg-base);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
       color: var(--text-main);
       font-family: var(--font-mono);
       font-size: 1rem;
-      padding: 0.75rem 1rem;
+      padding: 0.85rem 1rem;
       outline: none;
-      transition: var(--transition-smooth);
     }
 
-    .input-wrapper input:focus,
-    .input-wrapper select:focus {
-      border-color: var(--accent-highlight);
-      box-shadow: 0 0 0 2px var(--accent-glow);
+    .select-custom:focus {
+      border-color: var(--accent-cyan);
     }
 
-    .calc-results {
-      background: var(--bg-main);
+    /* Dynamic Cross-Section Visualizer */
+    .visualizer-card {
+      background: var(--bg-base);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
-      padding: 1.5rem;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .cross-section-stage {
+      width: 100%;
+      height: 180px;
+      background: #080b12;
+      border-radius: var(--radius-sm);
+      border: 1px dashed var(--border-subtle);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+
+    .diagram-rule {
+      width: 30px;
+      height: 60px;
+      background: linear-gradient(180deg, #475569, #94a3b8);
+      border-radius: 2px 2px 0 0;
+      position: absolute;
+      top: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: #000;
+      font-weight: 700;
+      transition: width 0.2s ease;
+    }
+
+    .diagram-board {
+      width: 80%;
+      height: 12px;
+      background: #d97706;
+      position: absolute;
+      top: 75px;
+      border-radius: 2px;
+      transition: height 0.2s ease;
+    }
+
+    .diagram-channel {
+      width: 70px;
+      height: 25px;
+      background: #0284c7;
+      position: absolute;
+      bottom: 20px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: #fff;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    .calc-metrics {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.5rem;
-      text-align: center;
+      width: 100%;
     }
 
-    .res-box .res-val {
-      font-size: 1.75rem;
+    .calc-metric-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+    }
+
+    .calc-metric-val {
+      font-size: 1.85rem;
       font-weight: 800;
-      color: var(--accent-highlight);
+      color: var(--accent-cyan);
       font-family: var(--font-mono);
     }
 
-    .res-box .res-lbl {
-      font-size: 0.8rem;
-      color: var(--text-muted);
+    .calc-metric-lbl {
+      font-size: 0.75rem;
+      color: var(--text-dim);
       text-transform: uppercase;
+      font-weight: 600;
       letter-spacing: 0.05em;
     }
 
-    .calc-note {
-      font-size: 0.8rem;
-      color: var(--text-dim);
-      margin-top: 1rem;
-      text-align: center;
+    /* Interactive Sample Kit Builder */
+    .sample-section {
+      padding: 6rem 0;
+      border-top: 1px solid var(--border-subtle);
     }
 
-    /* Makeready & Accessories */
-    .accessories-section {
-      padding: 5rem 0;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-
-    .acc-grid {
+    .sample-builder-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 3.5rem;
+      align-items: start;
     }
 
-    .acc-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 1.5rem;
-    }
-
-    .acc-card h4 {
-      font-size: 1.15rem;
-      margin-bottom: 0.5rem;
-      color: var(--text-main);
-    }
-
-    .acc-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    /* Contact / Quote Form */
-    .contact-section {
-      padding: 5rem 0;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 3rem;
-    }
-
-    @media (max-width: 768px) {
-      .contact-grid {
+    @media (max-width: 900px) {
+      .sample-builder-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    .contact-info h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .contact-info p {
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-    }
-
-    .contact-details {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
+    .builder-step {
       margin-bottom: 2rem;
     }
 
-    .contact-item {
+    .builder-step h4 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: var(--text-main);
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      font-size: 0.95rem;
-      color: var(--text-main);
+      gap: 0.6rem;
     }
 
-    .contact-item span {
-      color: var(--accent-highlight);
+    .step-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      color: #000;
+      font-size: 0.8rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pill-checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .pill-check {
+      cursor: pointer;
+      position: relative;
+    }
+
+    .pill-check input {
+      display: none;
+    }
+
+    .pill-content {
+      padding: 0.6rem 1.1rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+      display: block;
+    }
+
+    .pill-check input:checked + .pill-content {
+      background: var(--accent-blue);
+      border-color: var(--accent-cyan);
+      color: #fff;
+      box-shadow: 0 0 14px var(--accent-glow);
     }
 
     .form-box {
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      padding: 2rem;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-ambient);
     }
 
     .form-group {
@@ -528,56 +685,98 @@
       font-size: 0.85rem;
       font-weight: 600;
       color: var(--text-muted);
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.4rem;
     }
 
     .form-group input,
-    .form-group select,
     .form-group textarea {
       width: 100%;
-      background: var(--bg-main);
+      background: var(--bg-base);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
-      padding: 0.75rem;
+      padding: 0.8rem 1rem;
       color: var(--text-main);
       font-family: var(--font-main);
       font-size: 0.95rem;
       outline: none;
-      transition: var(--transition-smooth);
+      transition: all 0.2s ease;
     }
 
     .form-group input:focus,
-    .form-group select:focus,
     .form-group textarea:focus {
-      border-color: var(--accent-highlight);
+      border-color: var(--accent-cyan);
     }
 
     /* Footer */
     footer.site-footer {
-      background: var(--bg-surface);
+      background: #05070a;
       border-top: 1px solid var(--border-subtle);
-      padding: 3rem 0;
+      padding: 4rem 0 2.5rem;
       font-size: 0.85rem;
       color: var(--text-dim);
     }
 
-    .footer-content {
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-brand p {
+      color: var(--text-muted);
+      max-width: 320px;
+      margin-top: 1rem;
+    }
+
+    .footer-col h5 {
+      color: var(--text-main);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .footer-col ul {
+      list-style: none;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-      text-align: center;
+      gap: 0.6rem;
     }
 
-    .cert-badges {
+    .footer-col ul a {
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-col ul a:hover {
+      color: var(--accent-cyan);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 2rem;
       display: flex;
-      gap: 1rem;
+      justify-content: space-between;
+      align-items: center;
       flex-wrap: wrap;
-      justify-content: center;
+      gap: 1rem;
     }
 
-    .cert-badge {
-      background: var(--bg-surface-elevated);
+    .trust-tags {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .trust-tag {
+      background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       padding: 4px 10px;
       border-radius: var(--radius-sm);
@@ -588,53 +787,57 @@
 </head>
 <body>
 
-  <!-- Site Navigation -->
+  <div class="ambient-bg"></div>
+
+  <!-- Header -->
   <header class="site-header">
     <div class="container nav-wrapper">
       <a href="#" class="brand-logo">
-        <span class="logo-badge">MATRIX</span>
-        Engineering
+        <div class="logo-icon">M</div>
+        <span>MATRIX <span style="font-weight: 300; color: var(--text-muted);">Engineering</span></span>
       </a>
       <nav class="main-nav">
         <a href="#products" class="nav-link">Products</a>
-        <a href="#calculator" class="nav-link">Matrix Calculator</a>
-        <a href="#accessories" class="nav-link">Accessories</a>
-        <a href="#contact" class="btn btn-primary">Request Samples</a>
+        <a href="#calculator" class="nav-link">Interactive Sizing</a>
+        <a href="#samples" class="nav-link">Sample Kit</a>
+        <a href="#samples" class="btn btn-primary">Request Trial Pack</a>
       </nav>
     </div>
   </header>
 
   <!-- Hero Section -->
   <section class="hero-section">
-    <div class="container hero-content">
-      <div class="hero-pill">
-        <span>★</span> Precision Creasing Matrix & Die-Cutting Consumables
+    <div class="container">
+      <div class="hero-badge">
+        <div class="pulse-dot"></div>
+        British Made Precision Die-Cutting Solutions
       </div>
-      <h1 class="hero-title">Durable Creasing Solutions for Packaging Converters</h1>
+      <h1 class="hero-title">High-Performance Creasing Matrix for Precision Packaging</h1>
       <p class="hero-subtitle">
-        Engineered for high-speed folding carton and corrugated production. Minimise makeready time, eliminate cracking, and maximize run consistency.
+        Engineered for zero-delamination, rapid makeready times, and flawless crease profiles across folding carton and corrugated converting lines.
       </p>
       <div class="hero-actions">
-        <a href="#calculator" class="btn btn-primary">Launch Size Calculator</a>
-        <a href="#products" class="btn btn-secondary">Explore Product Range</a>
+        <a href="#calculator" class="btn btn-primary">Try Interactive Calculator</a>
+        <a href="#samples" class="btn btn-secondary">Order Free Sample Kit</a>
       </div>
 
-      <div class="stats-bar">
-        <div class="stat-item">
-          <div class="stat-num">60+</div>
-          <div class="stat-lbl">Years Industry Experience</div>
+      <!-- Metrics -->
+      <div class="metrics-bar">
+        <div class="metric-box">
+          <span class="metric-value">1.6M+</span>
+          <span class="metric-label">Impression Life (Exceed)</span>
         </div>
-        <div class="stat-item">
-          <div class="stat-num">1.6M+</div>
-          <div class="stat-lbl">Impressions (Exceed Profile)</div>
+        <div class="metric-box">
+          <span class="metric-value">60+</span>
+          <span class="metric-label">Years Combined R&D</span>
         </div>
-        <div class="stat-item">
-          <div class="stat-num">100%</div>
-          <div class="stat-lbl">Recyclable Base Formulations</div>
+        <div class="metric-box">
+          <span class="metric-value">&lt; 0.01mm</span>
+          <span class="metric-label">Channel Tolerance</span>
         </div>
-        <div class="stat-item">
-          <div class="stat-num">Est. 2009</div>
-          <div class="stat-lbl">In-House Manufacturing</div>
+        <div class="metric-box">
+          <span class="metric-value">100%</span>
+          <span class="metric-label">Recyclable Base Formulation</span>
         </div>
       </div>
     </div>
@@ -643,279 +846,349 @@
   <!-- Product Catalog -->
   <section id="products" class="products-section">
     <div class="container">
-      <div class="section-header">
+      <div class="section-head">
         <span class="section-tag">Engineered Profiles</span>
-        <h2 class="section-title">Core Matrix & Rubber Ranges</h2>
-        <p class="section-desc">Designed with high-tack adhesives, precision-milled channels, and hard-wearing polymers.</p>
+        <h2 class="section-title">Matrix & Tooling Catalog</h2>
+        <p class="section-desc">Designed with high-tack micro-thin adhesives and precision-milled shoulders for flawless high-speed die-cutting.</p>
       </div>
 
       <div class="product-grid">
         <!-- Phoenix+ -->
         <div class="product-card">
           <div>
-            <div class="product-badge">Synthetic Base</div>
+            <div class="product-tag-wrap">
+              <span class="product-badge">Synthetic Base</span>
+              <span style="font-size: 0.75rem; color: var(--accent-emerald); font-weight: 600;">● In Stock</span>
+            </div>
             <h3>Phoenix+</h3>
-            <p>Advanced raw polymer formulation with enhanced adhesive backing. Ideal for high-speed carton converters looking for long run life and clean rule release.</p>
+            <p>Our flagship synthetic matrix combining advanced polymer technology with high-shear adhesive for fast-running folding carton lines.</p>
           </div>
           <div>
-            <div class="product-specs">
-              <div class="spec-row">
-                <span class="spec-label">Substrate:</span>
-                <span class="spec-val">Folding Carton</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-label">Profile:</span>
-                <span class="spec-val">Standard / Chamfered</span>
-              </div>
+            <div class="specs-table">
+              <div class="spec-item"><span class="spec-name">Application:</span><span class="spec-val">Folding Carton</span></div>
+              <div class="spec-item"><span class="spec-name">Base Material:</span><span class="spec-val">Engineered Polymer</span></div>
+              <div class="spec-item"><span class="spec-name">Profile:</span><span class="spec-val">Standard / Chamfered</span></div>
             </div>
-            <a href="#contact" class="btn btn-secondary" style="width: 100%;">Enquire Phoenix+</a>
+            <a href="#samples" class="btn btn-secondary" style="width: 100%;">Select For Trial</a>
           </div>
         </div>
 
         <!-- Phoenix XL -->
         <div class="product-card">
           <div>
-            <div class="product-badge">Heavy Duty</div>
+            <div class="product-tag-wrap">
+              <span class="product-badge">Wide Base</span>
+              <span style="font-size: 0.75rem; color: var(--accent-emerald); font-weight: 600;">● In Stock</span>
+            </div>
             <h3>Phoenix XL</h3>
-            <p>Extended width baseplate designed for high-caliper carton boards and solid board packaging, delivering maximum adherence under demanding press speeds.</p>
+            <p>Extended base plate designed to distribute high platen pressures across heavy calipers, solid board, and micro-flute packaging.</p>
           </div>
           <div>
-            <div class="product-specs">
-              <div class="spec-row">
-                <span class="spec-label">Substrate:</span>
-                <span class="spec-val">Heavy Carton / Corrugated</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-label">Profile:</span>
-                <span class="spec-val">Wide Base Plate</span>
-              </div>
+            <div class="specs-table">
+              <div class="spec-item"><span class="spec-name">Application:</span><span class="spec-val">Heavy Board / Flute</span></div>
+              <div class="spec-item"><span class="spec-name">Base Material:</span><span class="spec-val">Reinforced Polymer</span></div>
+              <div class="spec-item"><span class="spec-name">Base Width:</span><span class="spec-val">Extra Wide Flange</span></div>
             </div>
-            <a href="#contact" class="btn btn-secondary" style="width: 100%;">Enquire Phoenix XL</a>
+            <a href="#samples" class="btn btn-secondary" style="width: 100%;">Select For Trial</a>
           </div>
         </div>
 
         <!-- Ultra SR -->
         <div class="product-card">
           <div>
-            <div class="product-badge">Steel Base</div>
+            <div class="product-tag-wrap">
+              <span class="product-badge">Steel Based</span>
+              <span style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 600;">★ High Durability</span>
+            </div>
             <h3>Ultra SR</h3>
-            <p>High-precision steel-based matrix engineered for extreme durability on abrasive recycled boards and ultra-long die-cutting production runs.</p>
+            <p>Hardened steel baseplate offering maximum resistance against abrasive recycled fibers and long-run packaging runs.</p>
           </div>
           <div>
-            <div class="product-specs">
-              <div class="spec-row">
-                <span class="spec-label">Substrate:</span>
-                <span class="spec-val">Abrasive & Recycled Boards</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-label">Profile:</span>
-                <span class="spec-val">Steel Plate Base</span>
-              </div>
+            <div class="specs-table">
+              <div class="spec-item"><span class="spec-name">Application:</span><span class="spec-val">Recycled / Abrasive</span></div>
+              <div class="spec-item"><span class="spec-name">Base Material:</span><span class="spec-val">High-Tensile Steel</span></div>
+              <div class="spec-item"><span class="spec-name">Durability:</span><span class="spec-val">Extreme Run Lengths</span></div>
             </div>
-            <a href="#contact" class="btn btn-secondary" style="width: 100%;">Enquire Ultra SR</a>
+            <a href="#samples" class="btn btn-secondary" style="width: 100%;">Select For Trial</a>
           </div>
         </div>
 
         <!-- Exceed Rubber -->
         <div class="product-card">
           <div>
-            <div class="product-badge">Ejection Tooling</div>
-            <h3>Exceed Rubber</h3>
-            <p>Premium ejection profile that retains elasticity over 1.6M impressions without micro-fracturing. Eliminates angel hairs and protects cutting knives.</p>
+            <div class="product-tag-wrap">
+              <span class="product-badge">Ejection Tooling</span>
+              <span style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 600;">★ 1.6M Impressions</span>
+            </div>
+            <h3>Exceed Ejection</h3>
+            <p>Premium micro-cellular ejection rubber engineered to prevent angel hair, eliminate fracturing, and maintain consistent press ejection.</p>
           </div>
           <div>
-            <div class="product-specs">
-              <div class="spec-row">
-                <span class="spec-label">Life:</span>
-                <span class="spec-val">1,600,000+ Cuts</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-label">Benefit:</span>
-                <span class="spec-val">Zero Angel Hair</span>
-              </div>
+            <div class="specs-table">
+              <div class="spec-item"><span class="spec-name">Application:</span><span class="spec-val">Die Ejection / Stripping</span></div>
+              <div class="spec-item"><span class="spec-name">Rating:</span><span class="spec-val">1,600,000+ Cycles</span></div>
+              <div class="spec-item"><span class="spec-name">Profiles:</span><span class="spec-val">Flat / Profile Strip</span></div>
             </div>
-            <a href="#contact" class="btn btn-secondary" style="width: 100%;">Enquire Exceed</a>
+            <a href="#samples" class="btn btn-secondary" style="width: 100%;">Select For Trial</a>
+          </div>
+        </div>
+
+        <!-- Smart Formes & PX Plus -->
+        <div class="product-card">
+          <div>
+            <div class="product-tag-wrap">
+              <span class="product-badge">Specialist Range</span>
+              <span style="font-size: 0.75rem; color: var(--accent-emerald); font-weight: 600;">● Custom Specs</span>
+            </div>
+            <h3>Smart Formes & PX</h3>
+            <p>Tailored matrix geometries developed for tight multi-crease layouts, miniature pharmaceutical packaging, and custom die configurations.</p>
+          </div>
+          <div>
+            <div class="specs-table">
+              <div class="spec-item"><span class="spec-name">Application:</span><span class="spec-val">Pharma & Tight Creases</span></div>
+              <div class="spec-item"><span class="spec-name">Option:</span><span class="spec-val">Off-Center / Multi-Crease</span></div>
+              <div class="spec-item"><span class="spec-name">Custom Mill:</span><span class="spec-val">Available on Request</span></div>
+            </div>
+            <a href="#samples" class="btn btn-secondary" style="width: 100%;">Select For Trial</a>
+          </div>
+        </div>
+
+        <!-- Cutting Tools & Makeready -->
+        <div class="product-card">
+          <div>
+            <div class="product-tag-wrap">
+              <span class="product-badge">Workshop Tooling</span>
+              <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">● Accessories</span>
+            </div>
+            <h3>Tooling & Makeready</h3>
+            <p>Precision hand and bench matrix cutters, Speedy-Nick tools, and Super Shim Plus makeready tapes for seamless workshop integration.</p>
+          </div>
+          <div>
+            <div class="specs-table">
+              <div class="spec-item"><span class="spec-name">Cutters:</span><span class="spec-val">Bench & Hand 45°/90°</span></div>
+              <div class="spec-item"><span class="spec-name">Nicking:</span><span class="spec-val">Speedy-Nick Pneumatic</span></div>
+              <div class="spec-item"><span class="spec-name">Tapes:</span><span class="spec-val">Super Shim Plus</span></div>
+            </div>
+            <a href="#samples" class="btn btn-secondary" style="width: 100%;">Select For Trial</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Interactive Matrix Calculator -->
-  <section id="calculator" class="calculator-section">
+  <!-- Interactive Matrix Sizing Tool -->
+  <section id="calculator" class="calc-section">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Technical Utility</span>
+      <div class="section-head">
+        <span class="section-tag">Interactive Engineering</span>
         <h2 class="section-title">Matrix Sizing Calculator</h2>
-        <p class="section-desc">Select your board thickness and rule width to calculate channel depth and width recommendations.</p>
+        <p class="section-desc">Test board calipers and rule widths to simulate cross-section channel geometry in real-time.</p>
       </div>
 
-      <div class="calc-container">
-        <div class="calc-grid">
-          <div class="input-group">
-            <label for="boardCaliper">Board Caliper (mm)</label>
-            <div class="input-wrapper">
-              <input type="number" id="boardCaliper" value="0.45" step="0.05" min="0.1" max="3.0">
-            </div>
+      <div class="calc-shell">
+        <div class="calc-form">
+          <div class="calc-input-group">
+            <label for="caliperRange">
+              <span>Board Caliper Thickness</span>
+              <span class="val-display" id="caliperVal">0.45 mm</span>
+            </label>
+            <input type="range" id="caliperRange" class="range-slider" min="0.20" max="1.50" step="0.05" value="0.45">
           </div>
 
-          <div class="input-group">
-            <label for="creasingRule">Creasing Rule Width</label>
-            <div class="input-wrapper">
-              <select id="creasingRule">
-                <option value="0.71">2 pt (0.71 mm)</option>
-                <option value="1.05">3 pt (1.05 mm)</option>
-                <option value="1.42">4 pt (1.42 mm)</option>
-                <option value="2.13">6 pt (2.13 mm)</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <div class="calc-results">
-          <div class="res-box">
-            <div class="res-val" id="channelDepth">0.40 mm</div>
-            <div class="res-lbl">Channel Depth (A)</div>
-          </div>
-          <div class="res-box">
-            <div class="res-val" id="channelWidth">1.30 mm</div>
-            <div class="res-lbl">Channel Width (B)</div>
-          </div>
-        </div>
-
-        <p class="calc-note">Formula based on standard folding carton calculations: Depth ≈ Board Caliper; Width = (Caliper × 1.5) + Rule Width.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Accessories Section -->
-  <section id="accessories" class="accessories-section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Makeready & Workshop</span>
-        <h2 class="section-title">Essential Tooling</h2>
-        <p class="section-desc">Precision cutting, nicking, and shimming tools to optimize press setup.</p>
-      </div>
-
-      <div class="acc-grid">
-        <div class="acc-card">
-          <h4>Hand & Bench Cutters</h4>
-          <p>Miter and straight-cut matrix cutters delivering clean, burr-free 45-degree and 90-degree joins.</p>
-        </div>
-        <div class="acc-card">
-          <h4>Speedy-Nick Tool</h4>
-          <p>Handheld pneumatic and manual nicking systems for creating clean, uniform nicks across rule profiles.</p>
-        </div>
-        <div class="acc-card">
-          <h4>Super Shim Plus & Profitape</h4>
-          <p>Precision makeready tape for leveling impression pressure without plate distortion.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact & Lead Gen -->
-  <section id="contact" class="contact-section">
-    <div class="container contact-grid">
-      <div class="contact-info">
-        <h3>Contact Matrix Engineering</h3>
-        <p>Talk with our technical team to request sample packs, volume pricing, or custom matrix profiles.</p>
-        
-        <div class="contact-details">
-          <div class="contact-item">
-            <span>☎</span> +44 (0)1624 822960
-          </div>
-          <div class="contact-item">
-            <span>✉</span> sales@creasingmatrix.com
-          </div>
-          <div class="contact-item">
-            <span>⌖</span> Isle of Man, British Isles
-          </div>
-        </div>
-
-        <div class="cert-badges" style="justify-content: flex-start;">
-          <div class="cert-badge">IOM Chamber of Commerce</div>
-          <div class="cert-badge">British Made Quality</div>
-          <div class="cert-badge">IADD Member</div>
-        </div>
-      </div>
-
-      <div class="form-box">
-        <form id="enquiryForm" onsubmit="handleFormSubmit(event)">
-          <div class="form-group">
-            <label for="fullName">Full Name</label>
-            <input type="text" id="fullName" required placeholder="Jane Doe">
-          </div>
-          <div class="form-group">
-            <label for="companyName">Company</label>
-            <input type="text" id="companyName" required placeholder="Packaging Solutions Ltd">
-          </div>
-          <div class="form-group">
-            <label for="email">Work Email</label>
-            <input type="email" id="email" required placeholder="jane@company.com">
-          </div>
-          <div class="form-group">
-            <label for="productInterest">Product / Application</label>
-            <select id="productInterest">
-              <option value="phoenix-plus">Phoenix+ (Standard Folding Carton)</option>
-              <option value="phoenix-xl">Phoenix XL (Heavy Board)</option>
-              <option value="ultra-sr">Ultra SR (Steel Base / Abrasive)</option>
-              <option value="exceed">Exceed Ejection Rubber</option>
-              <option value="tooling">Cutting & Makeready Tools</option>
+          <div class="calc-input-group">
+            <label for="ruleSelect">Creasing Rule Spec</label>
+            <select id="ruleSelect" class="select-custom">
+              <option value="0.71">2 pt (0.71 mm Rule)</option>
+              <option value="1.05">3 pt (1.05 mm Rule)</option>
+              <option value="1.42">4 pt (1.42 mm Rule)</option>
+              <option value="2.13">6 pt (2.13 mm Rule)</option>
             </select>
           </div>
-          <div class="form-group">
-            <label for="notes">Requirements / Board Caliper</label>
-            <textarea id="notes" rows="3" placeholder="Let us know your board specs or sample requirements..."></textarea>
+
+          <div class="calc-input-group">
+            <label for="boardType">Substrate Category</label>
+            <select id="boardType" class="select-custom">
+              <option value="carton">Folding Cartonboard (Standard)</option>
+              <option value="recycled">Recycled / Greyboard (High Abrasive)</option>
+              <option value="flute">Micro-Flute / Corrugated (E / F Flute)</option>
+            </select>
           </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Request</button>
-        </form>
+        </div>
+
+        <!-- Cross Section Visualizer -->
+        <div class="visualizer-card">
+          <div class="cross-section-stage">
+            <div class="diagram-rule" id="diagRule">RULE</div>
+            <div class="diagram-board" id="diagBoard"></div>
+            <div class="diagram-channel" id="diagChannel">CHANNEL</div>
+          </div>
+
+          <div class="calc-metrics">
+            <div class="calc-metric-box">
+              <div class="calc-metric-val" id="resDepth">0.40 mm</div>
+              <div class="calc-metric-lbl">Channel Depth (A)</div>
+            </div>
+            <div class="calc-metric-box">
+              <div class="calc-metric-val" id="resWidth">1.40 mm</div>
+              <div class="calc-metric-lbl">Channel Width (B)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Sample Pack Builder -->
+  <section id="samples" class="sample-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Direct Lead Generator</span>
+        <h2 class="section-title">Request a Tailored Sample Pack</h2>
+        <p class="section-desc">Select the exact specifications and product lines you need for factory testing.</p>
+      </div>
+
+      <div class="sample-builder-grid">
+        <div>
+          <div class="builder-step">
+            <h4><span class="step-num">1</span> Select Product Ranges to Test</h4>
+            <div class="pill-checkbox-group">
+              <label class="pill-check"><input type="checkbox" checked><span class="pill-content">Phoenix+ Standard</span></label>
+              <label class="pill-check"><input type="checkbox"><span class="pill-content">Phoenix XL Wide</span></label>
+              <label class="pill-check"><input type="checkbox"><span class="pill-content">Ultra SR Steel</span></label>
+              <label class="pill-check"><input type="checkbox"><span class="pill-content">Exceed Ejection Rubber</span></label>
+              <label class="pill-check"><input type="checkbox"><span class="pill-content">Smart Formes</span></label>
+            </div>
+          </div>
+
+          <div class="builder-step">
+            <h4><span class="step-num">2</span> Primary Press Substrate</h4>
+            <div class="pill-checkbox-group">
+              <label class="pill-check"><input type="radio" name="sub" checked><span class="pill-content">Virgin Fiber Carton</span></label>
+              <label class="pill-check"><input type="radio" name="sub"><span class="pill-content">Recycled / White Lined Chip</span></label>
+              <label class="pill-check"><input type="radio" name="sub"><span class="pill-content">E / F / N Micro-Flute</span></label>
+              <label class="pill-check"><input type="radio" name="sub"><span class="pill-content">Laminated Packaging</span></label>
+            </div>
+          </div>
+
+          <div style="background: var(--bg-surface); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+            <h4 style="font-size: 1rem; color: var(--accent-cyan); margin-bottom: 0.5rem;">Direct Factory Support</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+              All trial samples are dispatched directly from our Isle of Man production facility. For direct technical inquiries, call <strong>+44 (0)1624 822960</strong>.
+            </p>
+          </div>
+        </div>
+
+        <div class="form-box">
+          <form id="quoteForm" onsubmit="handleSampleSubmit(event)">
+            <div class="form-group">
+              <label for="contactName">Full Name</label>
+              <input type="text" id="contactName" required placeholder="e.g. David Harrison">
+            </div>
+            <div class="form-group">
+              <label for="contactCompany">Company & Packaging Plant</label>
+              <input type="text" id="contactCompany" required placeholder="e.g. Apex Cartonboard Packaging">
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">Work Email Address</label>
+              <input type="email" id="contactEmail" required placeholder="david@apexpackaging.com">
+            </div>
+            <div class="form-group">
+              <label for="shippingAddress">Delivery / Factory Address</label>
+              <textarea id="shippingAddress" rows="2" placeholder="Where should we dispatch your trial pack?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.9rem;">Dispatch Sample Request</button>
+          </form>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="site-footer">
-    <div class="container footer-content">
-      <div>
-        © 2026 Matrix Engineering Limited. All rights reserved. | Company No: 123380C
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="brand-logo">
+            <div class="logo-icon">M</div>
+            <span>MATRIX <span style="font-weight: 300; color: var(--text-muted);">Engineering</span></span>
+          </a>
+          <p>
+            Established July 2009. Precision-engineered creasing matrix and press consumables delivering performance across packaging converters worldwide.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h5>Core Solutions</h5>
+          <ul>
+            <li><a href="#products">Phoenix+ Synthetic</a></li>
+            <li><a href="#products">Phoenix XL Wide</a></li>
+            <li><a href="#products">Ultra SR Steel</a></li>
+            <li><a href="#products">Exceed Rubber</a></li>
+            <li><a href="#products">Smart Formes</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Direct Contact</h5>
+          <ul>
+            <li style="color: var(--text-main);">+44 (0)1624 822960</li>
+            <li><a href="mailto:sales@creasingmatrix.com">sales@creasingmatrix.com</a></li>
+            <li style="color: var(--text-dim);">Isle of Man, British Isles</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Matrix Engineering Limited. Company No: 123380C. All rights reserved.</div>
+        <div class="trust-tags">
+          <span class="trust-tag">British Made</span>
+          <span class="trust-tag">IADD Member</span>
+          <span class="trust-tag">IOM Chamber of Commerce</span>
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- Interactive Scripts -->
   <script>
-    // Matrix Calculator Logic
-    const caliperInput = document.getElementById('boardCaliper');
-    const ruleInput = document.getElementById('creasingRule');
-    const depthOutput = document.getElementById('channelDepth');
-    const widthOutput = document.getElementById('channelWidth');
+    // Real-Time Matrix Sizing Simulation
+    const caliperRange = document.getElementById('caliperRange');
+    const caliperVal = document.getElementById('caliperVal');
+    const ruleSelect = document.getElementById('ruleSelect');
+    const resDepth = document.getElementById('resDepth');
+    const resWidth = document.getElementById('resWidth');
 
-    function calculateMatrix() {
-      const caliper = parseFloat(caliperInput.value) || 0;
-      const rule = parseFloat(ruleInput.value) || 0;
+    const diagRule = document.getElementById('diagRule');
+    const diagBoard = document.getElementById('diagBoard');
+    const diagChannel = document.getElementById('diagChannel');
 
-      if (caliper > 0 && rule > 0) {
-        // Industry formula: Depth ≈ Caliper (rounded to 0.05 step); Width = (Caliper * 1.5) + Rule
-        const depth = (Math.round((caliper * 0.9) * 20) / 20).toFixed(2);
-        const width = (Math.round(((caliper * 1.5) + rule) * 20) / 20).toFixed(2);
+    function updateSimulation() {
+      const caliper = parseFloat(caliperRange.value);
+      const rule = parseFloat(ruleSelect.value);
 
-        depthOutput.textContent = `${depth} mm`;
-        widthOutput.textContent = `${width} mm`;
-      }
+      caliperVal.textContent = `${caliper.toFixed(2)} mm`;
+
+      // Matrix sizing formula
+      const depth = (Math.round((caliper * 0.9) * 20) / 20).toFixed(2);
+      const width = (Math.round(((caliper * 1.5) + rule) * 20) / 20).toFixed(2);
+
+      resDepth.textContent = `${depth} mm`;
+      resWidth.textContent = `${width} mm`;
+
+      // Dynamic visual adjustments
+      diagBoard.style.height = `${Math.max(6, caliper * 20)}px`;
+      diagRule.style.width = `${Math.max(20, rule * 22)}px`;
+      diagChannel.style.width = `${Math.max(50, width * 35)}px`;
     }
 
-    caliperInput.addEventListener('input', calculateMatrix);
-    ruleInput.addEventListener('change', calculateMatrix);
-    calculateMatrix();
+    caliperRange.addEventListener('input', updateSimulation);
+    ruleSelect.addEventListener('change', updateSimulation);
+    updateSimulation();
 
     // Form Handling
-    function handleFormSubmit(e) {
+    function handleSampleSubmit(e) {
       e.preventDefault();
-      alert('Thank you for reaching out! Your sample enquiry has been recorded.');
+      const name = document.getElementById('contactName').value;
+      alert(`Thank you, ${name}! Your customized trial sample kit request has been recorded.`);
       e.target.reset();
     }
   </script>
 </body>
 </html>
-
