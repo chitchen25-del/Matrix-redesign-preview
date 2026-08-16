@@ -82,10 +82,11 @@ nav.site-nav{display:flex;align-items:center;gap:0.2rem;}
 .team-titles h4{font-size:1.15rem;font-weight:800;color:var(--matrix-navy-dark);}
 .team-titles .role{font-size:0.8rem;font-weight:700;color:var(--matrix-red);text-transform:uppercase;letter-spacing:0.04em;}
 .team-bio{font-size:0.9rem;color:var(--text-muted);line-height:1.65;}
+/* PRODUCTS CATALOG */
 .products-layout{padding:clamp(2.5rem,5vw,4.5rem) 0;}
 .prod-grid-large{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2.5rem;}
 @media (max-width:480px){.prod-grid-large{grid-template-columns:1fr;}}
-.prod-item-card{background:transparent;border:none;box-shadow:none;display:flex;flex-direction:column;margin-bottom:1rem;}
+.prod-item-card{background:transparent;border:none;box-shadow:none;display:flex;flex-direction:column;margin-bottom:1rem;cursor:pointer;}
 .prod-img-box{position:relative;width:100%;height:260px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 50%,#ffffff 0%,#f1f5f9 100%);border-radius:var(--radius-lg);margin-bottom:1.25rem;box-shadow:0 12px 30px -8px rgba(24,43,107,0.12),inset 0 1px 2px rgba(255,255,255,0.8);border:1px solid var(--border-subtle);}
 .prod-img-dark-bg{background:radial-gradient(circle at 50% 50%,#1e293b 0%,#0a1329 100%);border:1px solid rgba(255,255,255,0.1);}
 .prod-img-box img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 0.5s cubic-bezier(0.25,1,0.5,1);}
@@ -100,6 +101,7 @@ nav.site-nav{display:flex;align-items:center;gap:0.2rem;}
 .spec-table-compact td{padding:0.5rem 0.75rem;}
 .spec-table-compact td.k{color:var(--text-dim);font-weight:600;}
 .spec-table-compact td.v{text-align:right;font-weight:700;color:var(--matrix-navy-dark);font-family:var(--font-mono);}
+/* DEDICATED PRODUCT DETAIL PAGES */
 .detail-layout{padding:clamp(1.5rem,4vw,3.5rem) 0 clamp(3rem,6vw,5rem);}
 .detail-grid-top{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,3vw,3rem);align-items:start;margin-bottom:clamp(2.5rem,5vw,4rem);}
 @media (max-width:900px){.detail-grid-top{grid-template-columns:1fr;}}
@@ -129,6 +131,7 @@ nav.site-nav{display:flex;align-items:center;gap:0.2rem;}
 .color-swatch-bar{width:50px;height:12px;border-radius:3px;display:block;border:1px solid rgba(0,0,0,0.12);box-shadow:0 1px 3px rgba(0,0,0,0.08);}
 .color-pink{background:#F472B6;} .color-navy{background:#182B6B;} .color-lilac{background:#C084FC;} .color-red{background:#FF2E17;} .color-grey{background:#94A3B8;} .color-yellow{background:#EAB308;} .color-magenta{background:#DB2777;} .color-orange{background:#F97316;} .color-green{background:#10B981;} .color-sky{background:#38BDF8;} .color-lime{background:#84CC16;} .color-mauve{background:#8B5CF6;} .color-silver{background:#E2E8F0;} .color-buff{background:#FDE047;} .color-violet{background:#7C3AED;} .color-white{background:#FFFFFF;border:1.5px solid #CBD5E1;} .color-rose{background:#FB7185;} .color-slate{background:#64748B;} .color-brown{background:#92400E;} .color-black{background:#0F172A;} .color-blue{background:#2563EB;} .color-cream{background:#FDF5E6;}
 .box-yield-badge{display:inline-block;background:var(--bg-slate);color:var(--matrix-navy);font-size:0.78rem;font-weight:800;padding:6px 12px;border-radius:var(--radius-sm);font-family:var(--font-mono);margin-top:0.5rem;}
+/* MISC VIEWS */
 .technical-layout{padding:clamp(2.5rem,5vw,4.5rem) 0;}
 .calc-box-wrap{background:#ffffff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:clamp(1.5rem,4vw,3rem);display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-bottom:3.5rem;}
 @media (max-width:900px){.calc-box-wrap{grid-template-columns:1fr;}}
@@ -146,12 +149,19 @@ nav.site-nav{display:flex;align-items:center;gap:0.2rem;}
 .guide-card .step-badge{font-family:var(--font-mono);font-size:0.78rem;font-weight:800;color:var(--matrix-red);margin-bottom:0.4rem;}
 .guide-card h4{font-size:1.05rem;font-weight:800;color:var(--matrix-navy);margin-bottom:0.4rem;}
 .guide-card p{font-size:0.88rem;color:var(--text-muted);}
+/* ACCESSORIES VIEW UPDATED */
 .acc-layout{padding:clamp(2.5rem,5vw,4.5rem) 0;}
-.acc-cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.75rem;}
-.acc-item-card{background:#ffffff;border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:1.75rem;box-shadow:var(--shadow-card);display:flex;flex-direction:column;justify-content:space-between;}
-.acc-item-card .cat-tag{font-size:0.72rem;font-weight:700;color:var(--matrix-red);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.4rem;display:block;}
-.acc-item-card h3{font-size:1.25rem;font-weight:800;color:var(--matrix-navy);margin-bottom:0.65rem;}
-.acc-item-card p{font-size:0.9rem;color:var(--text-muted);margin-bottom:1.5rem;}
+.acc-cards-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;}
+.acc-detail-card{background:#ffffff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:clamp(1.5rem,4vw,3rem);box-shadow:var(--shadow-card);display:flex;flex-direction:column;gap:1.5rem;}
+.acc-header-flex{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1.5rem;}
+.acc-detail-card h3{font-size:clamp(1.5rem,3vw,1.8rem);font-weight:900;color:var(--matrix-navy);margin-bottom:0.5rem;}
+.acc-tag{display:inline-block;background:rgba(255,46,23,0.1);color:var(--matrix-red);font-size:0.75rem;font-weight:800;padding:4px 10px;border-radius:var(--radius-sm);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:1rem;}
+.acc-detail-card p{font-size:1rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem;}
+.acc-specs-table{width:100%;border-collapse:collapse;font-size:0.9rem;margin-top:1rem;}
+.acc-specs-table th{background:var(--matrix-navy-dark);color:#fff;text-align:left;padding:0.75rem 1rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.05em;}
+.acc-specs-table td{padding:0.75rem 1rem;border-bottom:1px solid var(--border-subtle);color:var(--text-main);font-weight:600;}
+.acc-specs-table tr:last-child td{border-bottom:none;}
+/* PORTAL AND NEWS */
 .news-layout{padding:clamp(2.5rem,5vw,4.5rem) 0;}
 .news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2rem;}
 @media (max-width:480px){.news-grid{grid-template-columns:1fr;}}
@@ -258,11 +268,7 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
           <text x="390" y="232" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="900" font-size="28" fill="#ffffff" letter-spacing="9" text-anchor="middle">ENGINEERING</text>
         </svg>
       </a>
-
-      <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
-        <span></span><span></span><span></span>
-      </button>
-
+      <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle navigation menu"><span></span><span></span><span></span></button>
       <nav class="site-nav" id="siteNav">
         <button class="nav-btn active" id="nav-home" onclick="navigateTo('home')">Home</button>
         <button class="nav-btn" id="nav-about" onclick="navigateTo('about')">About Us</button>
@@ -270,12 +276,9 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
         <button class="nav-btn" id="nav-technical" onclick="navigateTo('technical')">Technical</button>
         <button class="nav-btn" id="nav-accessories" onclick="navigateTo('accessories')">Accessories</button>
         <button class="nav-btn" id="nav-news" onclick="navigateTo('news')">Latest News</button>
-        <button class="nav-btn nav-btn-portal" id="nav-portal" onclick="navigateTo('portal')">
-          <span>Client Hub</span>
-        </button>
+        <button class="nav-btn nav-btn-portal" id="nav-portal" onclick="navigateTo('portal')"><span>Client Hub</span></button>
         <button class="nav-btn" id="nav-contact" onclick="navigateTo('contact')">Contact</button>
       </nav>
-
       <button class="btn-header-cta" onclick="navigateTo('contact')">Request Samples</button>
     </div>
   </header>
@@ -301,22 +304,12 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
       </div>
     </section>
 
-    <!-- Strategic Pillars -->
     <section class="key-pillars-bar">
       <div class="container">
         <div class="pillars-grid">
-          <div class="pillar-card">
-            <h3>Advanced Adhesion Chemistry</h3>
-            <p>Our micro-thin high-shear adhesive layer prevents matrix shift under aggressive platen pressures and leaves zero residue during plate changeover.</p>
-          </div>
-          <div class="pillar-card">
-            <h3>100% In-House Extrusion</h3>
-            <p>Every profile is meticulously designed, tooling fabricated to tight tolerances, then extruded in our state of the art production facility in the isle of man.</p>
-          </div>
-          <div class="pillar-card">
-            <h3>Sustainable & PPWR Ready</h3>
-            <p>Formulated with environmentally conscious polymers that provide long impression runs while being fully recyclable under European packaging mandates.</p>
-          </div>
+          <div class="pillar-card"><h3>Advanced Adhesion Chemistry</h3><p>Our micro-thin high-shear adhesive layer prevents matrix shift under aggressive platen pressures and leaves zero residue during plate changeover.</p></div>
+          <div class="pillar-card"><h3>100% In-House Extrusion</h3><p>Every profile is meticulously designed, tooling fabricated to tight tolerances, then extruded in our state of the art production facility in the isle of man.</p></div>
+          <div class="pillar-card"><h3>Sustainable & PPWR Ready</h3><p>Formulated with environmentally conscious polymers that provide long impression runs while being fully recyclable under European packaging mandates.</p></div>
         </div>
       </div>
     </section>
@@ -342,42 +335,23 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
         </div>
       </div>
 
-      <div class="section-head">
-        <span class="section-eyebrow">The Leadership Team</span>
-        <h2 class="section-title">Meet The Team</h2>
-        <p class="section-desc">A dynamic collection of highly talented engineering, manufacturing, sales, and operations professionals — united to make Matrix Engineering an exceptional partner to do business with.</p>
-      </div>
+      <div class="section-head"><span class="section-eyebrow">The Leadership Team</span><h2 class="section-title">Meet The Team</h2></div>
 
       <div class="team-grid">
         <div class="team-card">
-          <div class="team-header">
-            <div class="team-avatar-placeholder">SK</div>
-            <div class="team-titles"><h4>Stephen Kelly</h4><div class="role">Owner / Director</div></div>
-          </div>
+          <div class="team-header"><div class="team-avatar-placeholder">SK</div><div class="team-titles"><h4>Stephen Kelly</h4><div class="role">Owner / Director</div></div></div>
           <p class="team-bio">Stephen founded Matrix Engineering in July 2009 after recognizing a critical need for higher performance, tighter tolerances, and greater durability in creasing matrix systems. Driven by this ambition, he established our dedicated Isle of Man facility to engineer solutions that reduce press downtime and deliver world-class creasing consistency.</p>
         </div>
-
         <div class="team-card">
-          <div class="team-header">
-            <img src="dave-filson.jpg" alt="Dave Filson" class="team-avatar" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&auto=format&fit=crop&q=80'">
-            <div class="team-titles"><h4>Dave Filson</h4><div class="role">Sales Manager</div></div>
-          </div>
+          <div class="team-header"><img src="dave-filson.jpg" alt="Dave Filson" class="team-avatar" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&auto=format&fit=crop&q=80'"><div class="team-titles"><h4>Dave Filson</h4><div class="role">Sales Manager</div></div></div>
           <p class="team-bio">Dave brings multiple years of proven commercial expertise and deep technical insight to Matrix Engineering. Renowned for his responsive, customer-first approach, Dave works closely with die-makers and folding carton converters worldwide to optimize their matrix specifications, reduce makeready costs, and ensure dependable factory-direct delivery.</p>
         </div>
-
         <div class="team-card">
-          <div class="team-header">
-            <img src="chris-hitchen.jpg" alt="Chris Hitchen" class="team-avatar" onerror="this.src='https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&auto=format&fit=crop&q=80'">
-            <div class="team-titles"><h4>Chris Hitchen</h4><div class="role">Production Manager</div></div>
-          </div>
+          <div class="team-header"><img src="chris-hitchen.jpg" alt="Chris Hitchen" class="team-avatar" onerror="this.src='https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&auto=format&fit=crop&q=80'"><div class="team-titles"><h4>Chris Hitchen</h4><div class="role">Production Manager</div></div></div>
           <p class="team-bio">Chris brings a wealth of high-level industrial engineering expertise, having served as a manufacturing and process engineer for global engineering leaders. Specializing in advanced polymer and rubber extrusion, Chris ensures every matrix profile meets microscopic quality standards.</p>
         </div>
-
         <div class="team-card">
-          <div class="team-header">
-            <img src="gary-cooper.jpg" alt="Gary Cooper" class="team-avatar" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80'">
-            <div class="team-titles"><h4>Gary Cooper</h4><div class="role">Office Manager</div></div>
-          </div>
+          <div class="team-header"><img src="gary-cooper.jpg" alt="Gary Cooper" class="team-avatar" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80'"><div class="team-titles"><h4>Gary Cooper</h4><div class="role">Office Manager</div></div></div>
           <p class="team-bio">Gary manages daily operational infrastructure, logistics, and accounts with precision. Backed by extensive administrative and operational experience across the Isle of Man’s esteemed finance and corporate sectors, Gary ensures that quotations, dispatches, and export compliance flow smoothly for our global packaging partners.</p>
         </div>
       </div>
@@ -399,89 +373,45 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
     <div class="container products-layout">
       <div class="prod-grid-large">
         
-        <!-- PHOENIX+ -->
         <div class="prod-item-card" style="cursor: pointer;" onclick="navigateTo('phoenix-plus')">
-          <div class="prod-img-box">
-            <span class="prod-tag-float">POLYMER BASE</span>
-            <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0341.png" alt="Phoenix Plus" loading="lazy">
-          </div>
+          <div class="prod-img-box"><span class="prod-tag-float">POLYMER BASE</span><img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0341.png" alt="Phoenix Plus" loading="lazy"></div>
           <div class="prod-content-box">
+            <div><h3>PHOENIX+™</h3><p>Our quest to produce the most durable plastic-based matrix possible. Incorporates our latest research into virgin polymers and next-generation adhesives.</p></div>
             <div>
-              <h3>PHOENIX+™</h3>
-              <p>Our quest to produce the most durable plastic-based matrix possible. Incorporates our latest research into virgin polymers and next-generation adhesives.</p>
-            </div>
-            <div>
-              <table class="spec-table-compact">
-                <tr><td class="k">Substrate</td><td class="v">Folding Carton</td></tr>
-                <tr><td class="k">Profile</td><td class="v">Standard, Mini & Off-Centre</td></tr>
-                <tr><td class="k">Base Material</td><td class="v">Virgin Polymer</td></tr>
-              </table>
+              <table class="spec-table-compact"><tr><td class="k">Substrate</td><td class="v">Folding Carton</td></tr><tr><td class="k">Profile</td><td class="v">Standard, Mini & Off-Centre</td></tr><tr><td class="k">Base Material</td><td class="v">Virgin Polymer</td></tr></table>
               <button class="btn-solid-navy" style="width: 100%;" onclick="event.stopPropagation(); navigateTo('phoenix-plus')">View Phoenix+ Details & Chart →</button>
             </div>
           </div>
         </div>
 
-        <!-- ULTRA-SR -->
         <div class="prod-item-card" style="cursor: pointer;" onclick="navigateTo('ultra-sr')">
-          <div class="prod-img-box">
-            <span class="prod-tag-float">STEEL BASE</span>
-            <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0342.png" alt="Ultra SR" loading="lazy">
-          </div>
+          <div class="prod-img-box"><span class="prod-tag-float">POLYESTER BASE</span><img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0342.png" alt="Ultra SR" loading="lazy"></div>
           <div class="prod-content-box">
+            <div><h3>ULTRA-SR™</h3><p>High-precision polyester-based matrix engineered for maximum durability against abrasive recycled fibers. A direct alternative to steel-based products.</p></div>
             <div>
-              <h3>ULTRA-SR™</h3>
-              <p>Advanced polyester base alternative to steel matrix, engineered for extreme durability against abrasive recycled fibers and ultra-long die-cutting runs.</p>
-            </div>
-            <div>
-              <table class="spec-table-compact">
-                <tr><td class="k">Substrate</td><td class="v">Recycled & Greyboard</td></tr>
-                <tr><td class="k">Base Material</td><td class="v">High Impact Polyester</td></tr>
-                <tr><td class="k">Durability</td><td class="v">Extreme Run Life</td></tr>
-              </table>
+              <table class="spec-table-compact"><tr><td class="k">Substrate</td><td class="v">Recycled & Greyboard</td></tr><tr><td class="k">Base Material</td><td class="v">High Impact Polyester</td></tr><tr><td class="k">Advantage</td><td class="v">No Rusting or Perforation</td></tr></table>
               <button class="btn-solid-navy" style="width: 100%;" onclick="event.stopPropagation(); navigateTo('ultra-sr')">View Ultra-SR Details & Chart →</button>
             </div>
           </div>
         </div>
 
-        <!-- EXCEED RUBBER -->
         <div class="prod-item-card" style="cursor: pointer;" onclick="navigateTo('exceed-rubber')">
-          <div class="prod-img-box prod-img-dark-bg">
-            <span class="prod-tag-float" style="background: rgba(255,46,23,0.9);">EJECTION PROFILE</span>
-            <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0340.png" alt="Exceed Rubber" loading="lazy">
-          </div>
+          <div class="prod-img-box prod-img-dark-bg"><span class="prod-tag-float" style="background: rgba(255,46,23,0.9);">EJECTION PROFILE</span><img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0340.png" alt="Exceed Rubber" loading="lazy"></div>
           <div class="prod-content-box">
+            <div><h3>EXCEED™ RUBBER</h3><p>Advanced micro-cellular ejection profile that maintains its exact shape for over 1.6 million impressions without degrading or losing rebound memory.</p></div>
             <div>
-              <h3>EXCEED™ RUBBER</h3>
-              <p>Advanced micro-cellular ejection profile that maintains its exact shape for over 1.6 million impressions without degrading or losing rebound memory.</p>
-            </div>
-            <div>
-              <table class="spec-table-compact">
-                <tr><td class="k">Impression Life</td><td class="v">1,600,000+ Cuts</td></tr>
-                <tr><td class="k">Advantage</td><td class="v">Zero Angel Hair</td></tr>
-                <tr><td class="k">Profile Dimensions</td><td class="v">5.00 & 7.50mm Widths</td></tr>
-              </table>
+              <table class="spec-table-compact"><tr><td class="k">Impression Life</td><td class="v">1,600,000+ Cuts</td></tr><tr><td class="k">Advantage</td><td class="v">Zero Angel Hair</td></tr><tr><td class="k">Profile Dimensions</td><td class="v">5.00 & 7.50mm Widths</td></tr></table>
               <button class="btn-solid-navy" style="width: 100%;" onclick="event.stopPropagation(); navigateTo('exceed-rubber')">View Exceed Rubber Details & Chart →</button>
             </div>
           </div>
         </div>
 
-        <!-- PHOENIX XL -->
         <div class="prod-item-card" style="cursor: pointer;" onclick="navigateTo('phoenix-xl')">
-          <div class="prod-img-box">
-            <span class="prod-tag-float">WIDE BASE</span>
-            <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0345.png" alt="Phoenix XL" loading="lazy">
-          </div>
+          <div class="prod-img-box"><span class="prod-tag-float">WIDE BASE</span><img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0345.png" alt="Phoenix XL" loading="lazy"></div>
           <div class="prod-content-box">
+            <div><h3>PHOENIX XL™</h3><p>The ultimate plastic-based matrix engineered for high-volume conversion on heavy solid boards and micro-flutes.</p></div>
             <div>
-              <h3>PHOENIX XL™</h3>
-              <p>The ultimate plastic-based matrix engineered for high-volume conversion on heavy solid boards and micro-flutes.</p>
-            </div>
-            <div>
-              <table class="spec-table-compact">
-                <tr><td class="k">Substrate</td><td class="v">Heavy Solid Board / Flute</td></tr>
-                <tr><td class="k">Base Type</td><td class="v">12mm & 15mm Flange</td></tr>
-                <tr><td class="k">Platen Grip</td><td class="v">Zero-Shift Extreme Lock</td></tr>
-              </table>
+              <table class="spec-table-compact"><tr><td class="k">Substrate</td><td class="v">Heavy Solid Board / Flute</td></tr><tr><td class="k">Base Type</td><td class="v">12mm & 15mm Flange</td></tr><tr><td class="k">Platen Grip</td><td class="v">Zero-Shift Extreme Lock</td></tr></table>
               <button class="btn-solid-navy" style="width: 100%;" onclick="event.stopPropagation(); navigateTo('phoenix-xl')">View Phoenix XL Details & Chart →</button>
             </div>
           </div>
@@ -513,10 +443,10 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
 
       <div class="section-head"><span class="section-eyebrow">Engineering Advantages</span><h2 class="section-title">Key Performance Features</h2></div>
       <div class="features-card-grid">
-        <div class="feat-card"><div class="feat-icon">✓</div><h4>Clean-Peel Adhesive System</h4><p>New High Quality Adhesive. No need for cleaning the platen.</p></div>
-        <div class="feat-card"><div class="feat-icon">✓</div><h4>Self-Centering Locators</h4><p>Specially designed locators. Self-locating securely in the channel.</p></div>
-        <div class="feat-card"><div class="feat-icon">✓</div><h4>Next-Gen Virgin Polymer</h4><p>High Impact Plastic. The very latest in polymer technology.</p></div>
-        <div class="feat-card"><div class="feat-icon">✓</div><h4>Ultra-Smooth Shoulder Profile</h4><p>Extremely smooth shoulder profile for use on high speed machines.</p></div>
+        <div class="feat-card"><div class="feat-icon">✓</div><h4>Clean-Peel Tape System</h4><p>Bespoke adhesive designed to eliminate creeping on the platen. Clean removal with no need for cleaning.</p></div>
+        <div class="feat-card"><div class="feat-icon">✓</div><h4>Self-Locating Bridges</h4><p>Small in size to fit in tight areas. Thermally bonded—no use of adhesives, leaves no residue.</p></div>
+        <div class="feat-card"><div class="feat-icon">✓</div><h4>Next-Gen Virgin Polymer</h4><p>High Impact Plastic. The very latest in polymer technology for extreme run durability.</p></div>
+        <div class="feat-card"><div class="feat-icon">✓</div><h4>Ultra-Smooth Matrix Shoulder</h4><p>Extremely smooth profile for perfect sheet transfer. Eliminates reworking of matrix shoulders.</p></div>
         <div class="feat-card" style="grid-column: 1 / -1;"><div class="feat-icon">✓</div><h4>Dual-Surface Colour Coding</h4><p>Colour coded for height and printed on both the base and locator for easy identification.</p></div>
       </div>
 
@@ -600,9 +530,9 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-blue"></span><strong>Blue</strong></div></td><td><strong>0.40 mm</strong></td><td>0.5, 0.6, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-white"></span><strong>White</strong></div></td><td><strong>0.45 mm</strong></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-red"></span><strong>Red</strong></div></td><td><strong>0.50 mm</strong></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1 and 2.3</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-silver"></span><strong>Silver</strong></div></td><td><strong>0.55 mm</strong></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1 and 2.3</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-grey"></span><strong>Grey</strong></div></td><td><strong>0.55 mm</strong></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1 and 2.3</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-yellow"></span><strong>Yellow</strong></div></td><td><strong>0.60 mm</strong></td><td>1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.8, 3.0 and 3.2</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-mauve"></span><strong>Mauve</strong></div></td><td><strong>0.65 mm</strong></td><td>1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.8, 3.0 and 3.2</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-magenta"></span><strong>Magenta</strong></div></td><td><strong>0.65 mm</strong></td><td>1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.8, 3.0 and 3.2</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-orange"></span><strong>Orange</strong></div></td><td><strong>0.70 mm</strong></td><td>1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.8, 3.0 and 3.2</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-green"></span><strong>Green</strong></div></td><td><strong>0.80 mm</strong></td><td>1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.8, 3.0 and 3.2</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-sky"></span><strong>Sky</strong></div></td><td><strong>1.00 mm</strong></td><td>2.3, 2.5, 2.7, 2.8, 3.0 and 3.2</td></tr>
@@ -628,11 +558,11 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
               <thead><tr><th>Base Colour</th><th>Height (mm)</th><th>Available Channel Widths (mm)</th></tr></thead>
               <tbody>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-yellow"></span><strong>Yellow</strong></div></td><td><strong>0.60 mm</strong></td><td>3.5*, 4.0# and 4.5#</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-mauve"></span><strong>Mauve</strong></div></td><td><strong>0.65 mm</strong></td><td>3.5*, 4.0# and 4.5#</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-magenta"></span><strong>Magenta</strong></div></td><td><strong>0.65 mm</strong></td><td>3.5*, 4.0# and 4.5#</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-orange"></span><strong>Orange</strong></div></td><td><strong>0.70 mm</strong></td><td>3.5*, 4.0#, 4.5# and 5.0#</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-green"></span><strong>Green</strong></div></td><td><strong>0.80 mm</strong></td><td>3.5*, 4.0#, 4.5# and 5.0#</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-sky"></span><strong>Sky</strong></div></td><td><strong>1.00 mm</strong></td><td>3.5*, 4.0#, 4.5# and 5.0#</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-silver"></span><strong>Silver</strong></div></td><td><strong>1.20 mm</strong></td><td>3.5*, 4.0#, 4.5# and 5.0#</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-grey"></span><strong>Grey</strong></div></td><td><strong>1.20 mm</strong></td><td>3.5*, 4.0#, 4.5# and 5.0#</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-lime"></span><strong>Lime</strong></div></td><td><strong>1.50 mm</strong></td><td>3.5*, 4.0#, 4.5# and 5.0#</td></tr>
               </tbody>
             </table>
@@ -779,7 +709,7 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
       <div class="chart-section-shell">
         <div class="chart-header-row">
           <div><span class="section-eyebrow">Factory Specification</span><h3>Ultra-SR Size & Selection Chart</h3></div>
-          <div class="heritage-tag" style="background: var(--matrix-navy); padding: 8px 14px; border-radius: var(--radius-sm); font-size: 0.8rem; color:var(--bg-white);">Note: An allowance of 0.20 must be considered the same as all other steel based products.</div>
+          <div class="heritage-tag" style="background: var(--matrix-navy); padding: 8px 14px; border-radius: var(--radius-sm); font-size: 0.8rem; color:var(--bg-white);">Note: An allowance of 0.20 must be considered.</div>
         </div>
 
         <div style="margin-bottom: 2.5rem;">
@@ -828,7 +758,7 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
               </tbody>
             </table>
           </div>
-          <div class="box-yield-badge">📦 Contents of box 32 x 750mm strips = <strong>24 Metres</strong> For both Centre and Off-Centre Products</div>
+          <div class="box-yield-badge">📦 Contents of box 32 x 750mm strips = <strong>24 Metres</strong></div>
         </div>
 
         <hr style="border: none; border-top: 1.5px solid var(--border-subtle); margin: 2.5rem 0;">
@@ -851,21 +781,15 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
         <hr style="border: none; border-top: 1.5px solid var(--border-subtle); margin: 2.5rem 0;">
 
         <div>
-          <h4 style="font-size: 1.2rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.75rem;">Ultra SR Size Chart 12mm Double Crease</h4>
+          <h4 style="font-size: 1.2rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.75rem;">Ultra SR 12mm Double Crease</h4>
           <p style="font-size:0.8rem; font-weight:700; color:var(--text-dim); margin-bottom:1rem;">*(Distance Between Rules available in 3.00, 4.00 and 5.00mm)</p>
           <div class="size-table-container">
             <table class="size-table">
               <thead><tr><th>Base Colour</th><th>Height (mm)</th><th>Channel Width (mm)</th></tr></thead>
               <tbody>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-buff"></span><strong>Buff</strong></div></td><td><strong>0.38 mm</strong></td><td style="font-weight:700; color:#334155;">1.0mm D3</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-buff"></span><strong>Buff</strong></div></td><td><strong>0.38 mm</strong></td><td style="font-weight:700; color:#334155;">1.0mm D4</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-buff"></span><strong>Buff</strong></div></td><td><strong>0.38 mm</strong></td><td style="font-weight:700; color:#334155;">1.0mm D5</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-white"></span><strong>White</strong></div></td><td><strong>0.45 mm</strong></td><td style="font-weight:700; color:#334155;">1.3mm D3</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-white"></span><strong>White</strong></div></td><td><strong>0.45 mm</strong></td><td style="font-weight:700; color:#334155;">1.3mm D4</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-white"></span><strong>White</strong></div></td><td><strong>0.45 mm</strong></td><td style="font-weight:700; color:#334155;">1.3mm D5</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-yellow"></span><strong>Yellow</strong></div></td><td><strong>0.50 mm</strong></td><td style="font-weight:700; color:#334155;">1.6mm D3</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-yellow"></span><strong>Yellow</strong></div></td><td><strong>0.50 mm</strong></td><td style="font-weight:700; color:#334155;">1.6mm D4</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-yellow"></span><strong>Yellow</strong></div></td><td><strong>0.50 mm</strong></td><td style="font-weight:700; color:#334155;">1.6mm D5</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-buff"></span><strong>Buff</strong></div></td><td><strong>0.38 mm</strong></td><td style="font-weight:700; color:#334155;">1.0mm D3 / D4 / D5</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-white"></span><strong>White</strong></div></td><td><strong>0.45 mm</strong></td><td style="font-weight:700; color:#334155;">1.3mm D3 / D4 / D5</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-yellow"></span><strong>Yellow</strong></div></td><td><strong>0.50 mm</strong></td><td style="font-weight:700; color:#334155;">1.6mm D3 / D4 / D5</td></tr>
               </tbody>
             </table>
           </div>
@@ -876,7 +800,7 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
     </div>
   </main>
 
-  <!-- ==================== VIEW 3D: EXCEED RUBBER DETAIL (NEW) ==================== -->
+  <!-- ==================== VIEW 3D: EXCEED RUBBER DETAIL ==================== -->
   <main id="view-exceed-rubber" class="page-view">
     <div class="page-hero">
       <div class="container">
@@ -891,7 +815,7 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
         <div class="detail-info-pane">
           <span class="detail-subtitle">Over 40 Years of Extrusion Expertise</span>
           <h1>Zero Degradation for Over 1.6 Million Impressions</h1>
-          <p class="detail-desc-lead">Our Ejection Rubber will maintain its profile for over 1.6 million impressions and will not degrade over time like some rubber products, making this a very cost-effective product which will also shorten make-ready time and reduce angel hair.</p>
+          <p class="detail-desc-lead">Engineered to outperform standard market alternatives, <strong>Exceed™ Rubber</strong> maintains its exact dynamic profile for over 1.6 million impressions. Unlike conventional rubber that degrades, hardens, or loses rebound memory over time, our advanced micro-cellular formulation guarantees consistent sheet ejection—drastically reducing makeready times, virtually eliminating angel hair, and maximizing your press speeds.</p>
           <p class="detail-desc-lead"><strong>Fuelling Next-Generation Production:</strong> Driven by incredible global growth and relentless customer demand, we are thrilled to announce the commissioning of a second state-of-the-art rubber extrusion line at our Isle of Man facility. This major investment guarantees uninterrupted, high-volume supply of our signature Exceed Rubber, and paves the way for an innovative new suite of advanced ejection profiles coming to market very soon.</p>
           <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;"><button class="btn-solid-red" onclick="navigateTo('contact')">Request Exceed Samples</button></div>
         </div>
@@ -923,7 +847,6 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
               <line x1="35" y1="95" x2="35" y2="105" stroke="#EAB308" stroke-width="1.5" />
               <line x1="90" y1="95" x2="90" y2="105" stroke="#EAB308" stroke-width="1.5" />
             </svg>
-            <div style="font-size: 0.72rem; font-weight: 700; color: #cbd5e1; margin-top: 8px;">Cross-Section: 5.00mm Base Width</div>
           </div>
           <div class="size-table-container">
             <table class="size-table">
@@ -952,7 +875,6 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
               <line x1="25" y1="95" x2="25" y2="105" stroke="#EAB308" stroke-width="1.5" />
               <line x1="95" y1="95" x2="95" y2="105" stroke="#EAB308" stroke-width="1.5" />
             </svg>
-            <div style="font-size: 0.72rem; font-weight: 700; color: #cbd5e1; margin-top: 8px;">Cross-Section: 7.50mm Base Width</div>
           </div>
           <div class="size-table-container">
             <table class="size-table">
@@ -1006,6 +928,21 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
           </div>
         </div>
       </div>
+
+      <div class="section-head">
+        <span class="section-eyebrow">Operating Procedure</span>
+        <h2 class="section-title">6-Step Matrix Installation</h2>
+        <p class="section-desc">Follow our standardized process to ensure optimal channel transfer and rule durability.</p>
+      </div>
+
+      <div class="guide-step-grid">
+        <div class="guide-card"><div class="step-badge">STEP 01</div><h4>Clean Plate Surface</h4><p>Thoroughly degrease and dry the cutting plate or counter matrix jacket using standard solvent degreaser.</p></div>
+        <div class="guide-card"><div class="step-badge">STEP 02</div><h4>Cut Matrix to Size</h4><p>Cut the matrix strip cleanly to length using a dedicated 45° or 90° matrix hand/bench cutter.</p></div>
+        <div class="guide-card"><div class="step-badge">STEP 03</div><h4>Locate onto Rule</h4><p>Fit the locator channel bridge firmly over the creasing rule in the die.</p></div>
+        <div class="guide-card"><div class="step-badge">STEP 04</div><h4>Peel Adhesive Backing</h4><p>Peel the protective finger-lift backing tape to expose the high-tack adhesive layer.</p></div>
+        <div class="guide-card"><div class="step-badge">STEP 05</div><h4>Press Impression</h4><p>Cycle the press through one impression under standard pressure to transfer the matrix onto the counter plate.</p></div>
+        <div class="guide-card"><div class="step-badge">STEP 06</div><h4>Remove Locators</h4><p>Remove the plastic locator bridges from the channel. You are now ready for production.</p></div>
+      </div>
     </div>
   </main>
 
@@ -1022,9 +959,57 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
     </div>
     <div class="container acc-layout">
       <div class="acc-cards-grid">
-        <div class="acc-item-card"><div><span class="cat-tag">Make Ready</span><h3>Super Shim Plus & Profitape</h3><p>Micro-calibrated makeready tapes engineered for micro-adjusting cutting plate impression pressure without distorting the sheet.</p></div><button class="btn-solid-navy" onclick="navigateTo('contact')">Enquire Tapes</button></div>
-        <div class="acc-item-card"><div><span class="cat-tag">Cutting Tools</span><h3>Matrix Cutters (Hand & Bench)</h3><p>Precision 45-degree miter and straight 90-degree cutters delivering burr-free joins for tight corners in multi-crease dies.</p></div><button class="btn-solid-navy" onclick="navigateTo('contact')">Enquire Cutters</button></div>
-        <div class="acc-item-card"><div><span class="cat-tag">Nicking Systems</span><h3>Speedy-Nick Tool</h3><p>Handheld pneumatic and manual nicking systems ensuring consistent, clean micro-nicks to keep boxes secure during stripping.</p></div><button class="btn-solid-navy" onclick="navigateTo('contact')">Enquire Nicking Tool</button></div>
+        
+        <!-- Super Shim Plus -->
+        <div class="acc-detail-card">
+          <div class="acc-header-flex">
+            <div><span class="acc-tag">Self Adhesive Shim Tape</span><h3>SUPER SHIM PLUS</h3></div>
+            <button class="btn-solid-navy" onclick="navigateTo('contact')">Enquire Shim Tape</button>
+          </div>
+          <p>Super Shim Plus tape is 8.0mm wide, using a 12mm finger-lift backing for easy and quick use. The adhesive system on this product is especially formulated for this application to our own specification, providing a long-term bond.</p>
+          <p>Super Shim Plus is made from hardened stainless steel, which will not compress and provides great durability.</p>
+          
+          <table class="acc-specs-table" style="margin-top: 1.5rem;">
+            <thead><tr><th>Thickness Range</th><th>Roll Specifications</th></tr></thead>
+            <tbody>
+              <tr><td><strong style="color:var(--matrix-red);">Super Shim Plus 0.03mm</strong> (30 microns)</td><td>Width 8mm / 10 metre rolls</td></tr>
+              <tr><td><strong style="color:var(--matrix-red);">Super Shim Plus 0.05mm</strong> (50 microns)</td><td>Width 8mm / 10 metre rolls</td></tr>
+              <tr><td><strong style="color:var(--matrix-red);">Super Shim Plus 0.10mm</strong> (100 microns)</td><td>Width 8mm / 10 metre rolls</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Profitape -->
+        <div class="acc-detail-card">
+          <div class="acc-header-flex">
+            <div><span class="acc-tag">Patching Tape</span><h3>PROFITAPE</h3></div>
+            <button class="btn-solid-navy" onclick="navigateTo('contact')">Enquire Profitape</button>
+          </div>
+          <p>The self-adhesive precise patching make-ready tape with colour coding for the three thicknesses available, for precise cutting & foil embossing on your cutting and creasing press.</p>
+          
+          <ul style="padding-left: 1.5rem; color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">
+            <li>Super translucent for easy line identification.</li>
+            <li>Extreme hardness for high runs & repeat orders.</li>
+            <li>Self Adhesive - no moistening necessary.</li>
+            <li>Precise sticking to all usual patching sheets with no release.</li>
+          </ul>
+
+          <div style="overflow-x:auto;">
+            <table class="acc-specs-table">
+              <thead><tr><th>Colour Code</th><th>Width x Thickness x Length</th><th>Rolls per pack</th></tr></thead>
+              <tbody>
+                <tr><td><strong style="color:#2563EB;">Blue</strong></td><td>3mm x 30 micron x 35m</td><td>40</td></tr>
+                <tr><td><strong style="color:#2563EB;">Blue</strong></td><td>6mm x 30 micron x 35m</td><td>25</td></tr>
+                <tr><td><strong style="color:var(--matrix-red);">Red</strong></td><td>3mm x 50 micron x 25m</td><td>40</td></tr>
+                <tr><td><strong style="color:var(--matrix-red);">Red</strong></td><td>6mm x 50 micron x 25m</td><td>25</td></tr>
+                <tr><td><strong style="color:#EAB308;">Yellow</strong></td><td>3mm x 80 micron x 18m</td><td>40</td></tr>
+                <tr><td><strong style="color:#EAB308;">Yellow</strong></td><td>6mm x 80 micron x 18m</td><td>25</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="font-size: 0.8rem; font-weight: 800; color: var(--matrix-red); text-align: center; margin-top: 1rem;">12mm and 20mm width are available on request</div>
+        </div>
+
       </div>
     </div>
   </main>
@@ -1210,7 +1195,7 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
         </div>
         <div class="footer-col">
           <h5>Product Lines</h5>
-          <ul><li><a onclick="navigateTo('phoenix-plus')">PHOENIX+™ Synthetic</a></li><li><a onclick="navigateTo('ultra-sr')">ULTRA-SR™ Steel Base</a></li><li><a onclick="navigateTo('phoenix-xl')">PHOENIX XL™ Wide Base</a></li><li><a onclick="navigateTo('exceed-rubber')">EXCEED™ Ejection Rubber</a></li></ul>
+          <ul><li><a onclick="navigateTo('phoenix-plus')">PHOENIX+™ Synthetic</a></li><li><a onclick="navigateTo('ultra-sr')">ULTRA-SR™ Polyester Base</a></li><li><a onclick="navigateTo('phoenix-xl')">PHOENIX XL™ Wide Base</a></li><li><a onclick="navigateTo('exceed-rubber')">EXCEED™ Ejection Rubber</a></li></ul>
         </div>
         <div class="footer-col">
           <h5>Headquarters</h5>
@@ -1431,7 +1416,7 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
       caliperVal.textContent = `${caliper.toFixed(2)} mm`;
       if (caliper > 0 && rule > 0) {
         resDepth.textContent = (Math.round((caliper * 0.9) * 20) / 20).toFixed(2); resWidth.textContent = (Math.round(((caliper * 1.5) + rule) * 20) / 20).toFixed(2);
-        if (bType === 'recycled') resProduct.textContent = 'ULTRA-SR™ (Steel Base)'; else if (caliper > 0.8 || bType === 'solid') resProduct.textContent = 'PHOENIX XL™ (Wide Base)'; else resProduct.textContent = 'PHOENIX+™ (Polymer Base)';
+        if (bType === 'recycled') resProduct.textContent = 'ULTRA-SR™ (Polyester Base)'; else if (caliper > 0.8 || bType === 'solid') resProduct.textContent = 'PHOENIX XL™ (Wide Base)'; else resProduct.textContent = 'PHOENIX+™ (Polymer Base)';
       }
     }
     caliperInput.addEventListener('input', calculateMatrix); ruleInput.addEventListener('change', calculateMatrix); boardType.addEventListener('change', calculateMatrix); calculateMatrix();
