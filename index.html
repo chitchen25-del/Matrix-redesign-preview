@@ -466,56 +466,74 @@
     .team-titles .role { font-size: 0.8rem; font-weight: 700; color: var(--matrix-red); text-transform: uppercase; letter-spacing: 0.04em; }
     .team-bio { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; }
 
-    /* PRODUCTS VIEW */
+    /* PRODUCTS VIEW - PREMIUM FULL-FILL DYNAMIC STYLING */
     .products-layout { padding: clamp(2.5rem, 5vw, 4.5rem) 0; }
-    .prod-grid-large { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+    .prod-grid-large { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
     @media (max-width: 480px) { .prod-grid-large { grid-template-columns: 1fr; } }
     
     .prod-item-card {
-      background: #ffffff;
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-card);
-      overflow: hidden;
+      background: transparent;
+      border: none;
+      box-shadow: none;
       display: flex;
       flex-direction: column;
-      transition: all 0.25s ease;
+      margin-bottom: 1rem;
     }
-    .prod-item-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--matrix-navy); }
     
     .prod-img-box {
-      height: 220px;
       position: relative;
+      width: 100%;
+      height: 260px;
       overflow: hidden;
-      border-bottom: 1px solid var(--border-subtle);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1.25rem;
+      background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f1f5f9 100%);
+      border-radius: var(--radius-lg);
+      margin-bottom: 1.25rem;
+      box-shadow: 0 12px 30px -8px rgba(24, 43, 107, 0.12), inset 0 1px 2px rgba(255,255,255,0.8);
+      border: 1px solid var(--border-subtle);
     }
-    .prod-img-white { background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f1f5f9 100%); }
-    .prod-img-dark { background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0a1329 100%); }
+    .prod-img-dark-bg {
+      background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0a1329 100%);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
     .prod-img-box img {
-      max-width: 92%;
-      max-height: 92%;
-      object-fit: contain;
-      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.12));
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
     }
-    .prod-item-card:hover .prod-img-box img { transform: scale(1.06) translateY(-2px); }
+    .prod-item-card:hover .prod-img-box img {
+      transform: scale(1.04);
+    }
 
     .prod-tag-float {
-      position: absolute; top: 0.85rem; right: 0.85rem;
-      background: rgba(13, 23, 59, 0.85); color: #ffffff; font-size: 0.7rem; font-weight: 800;
-      padding: 3px 8px; border-radius: var(--radius-sm); text-transform: uppercase; font-family: var(--font-mono);
-      z-index: 2;
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(13, 23, 59, 0.85);
+      backdrop-filter: blur(8px);
+      color: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 5px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      letter-spacing: 0.05em;
+      z-index: 10;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-    .prod-content-box { padding: 1.75rem; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
-    .prod-content-box h3 { font-size: 1.35rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.4rem; }
-    .prod-content-box p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.25rem; }
-    .spec-table-compact { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-bottom: 1.5rem; }
+
+    .prod-content-box { padding: 0 0.5rem; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+    .prod-content-box h3 { font-size: 1.4rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.4rem; }
+    .prod-content-box p { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.25rem; line-height: 1.6; }
+    .spec-table-compact { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-bottom: 1.5rem; background: var(--bg-light); border-radius: var(--radius-md); padding: 0.5rem; border: 1px solid var(--border-subtle); }
     .spec-table-compact tr { border-bottom: 1px solid var(--border-subtle); }
-    .spec-table-compact td { padding: 0.4rem 0; }
+    .spec-table-compact tr:last-child { border-bottom: none; }
+    .spec-table-compact td { padding: 0.5rem 0.75rem; }
     .spec-table-compact td.k { color: var(--text-dim); font-weight: 600; }
     .spec-table-compact td.v { text-align: right; font-weight: 700; color: var(--matrix-navy-dark); font-family: var(--font-mono); }
 
@@ -1043,7 +1061,7 @@
     </div>
   </main>
 
-  <!-- ==================== VIEW 3: PRODUCTS PAGE (UPDATED WITH YOUR IMAGES) ==================== -->
+  <!-- ==================== VIEW 3: PRODUCTS PAGE (PREMIUM FULL-FILL DYNAMIC IMAGES) ==================== -->
   <main id="view-products" class="page-view">
     <div class="page-hero">
       <div class="container">
@@ -1060,9 +1078,9 @@
         
         <!-- PHOENIX+ (IMG_0341) -->
         <div class="prod-item-card">
-          <div class="prod-img-box prod-img-white">
+          <div class="prod-img-box">
+            <span class="prod-tag-float">POLYMER BASE</span>
             <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0341.png" alt="Phoenix Plus" loading="lazy">
-            <span class="prod-tag-float">Polymer Base</span>
           </div>
           <div class="prod-content-box">
             <div>
@@ -1083,9 +1101,9 @@
 
         <!-- ULTRA-SR (IMG_0342) -->
         <div class="prod-item-card">
-          <div class="prod-img-box prod-img-white">
+          <div class="prod-img-box">
+            <span class="prod-tag-float">STEEL BASE</span>
             <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0342.png" alt="Ultra SR" loading="lazy">
-            <span class="prod-tag-float">Steel Base</span>
           </div>
           <div class="prod-content-box">
             <div>
@@ -1106,9 +1124,9 @@
 
         <!-- EXCEED RUBBER (IMG_0340) -->
         <div class="prod-item-card">
-          <div class="prod-img-box prod-img-dark">
+          <div class="prod-img-box prod-img-dark-bg">
+            <span class="prod-tag-float" style="background: rgba(255,46,23,0.9);">EJECTION PROFILE</span>
             <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0340.png" alt="Exceed Rubber" loading="lazy">
-            <span class="prod-tag-float">Ejection Profile</span>
           </div>
           <div class="prod-content-box">
             <div>
@@ -1127,10 +1145,11 @@
           </div>
         </div>
 
+        <!-- PHOENIX XL -->
         <div class="prod-item-card">
-          <div class="prod-img-box prod-img-white">
-            <img src="matrix-boxes-stack.jpg" alt="Matrix Engineering Product Packaging" loading="lazy" onerror="this.src='https://i.ebayimg.com/00/s/NzM4WDE2MDA=/z/98AAAOSwqwReh35H/$_57.JPG?set_id=8800005007'">
-            <span class="prod-tag-float">Wide Base</span>
+          <div class="prod-img-box">
+            <span class="prod-tag-float">WIDE BASE</span>
+            <img src="https://i.ebayimg.com/00/s/NzM4WDE2MDA=/z/98AAAOSwqwReh35H/$_57.JPG?set_id=8800005007" alt="Matrix Engineering Product Packaging" loading="lazy">
           </div>
           <div class="prod-content-box">
             <div>
@@ -2357,3 +2376,4 @@ Verification Ref/PO: ${ref || 'None provided'}`;
   </script>
 </body>
 </html>
+
