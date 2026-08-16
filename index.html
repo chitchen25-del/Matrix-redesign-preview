@@ -339,14 +339,16 @@
       .btn-solid-navy, .btn-solid-red, .btn-outline-navy, .btn-green-pay { width: 100%; }
     }
 
-    /* ==================== HERO SECTION WITH YOUTUBE VIDEO BACKGROUND ==================== */
+    /* ==================== HERO SECTION WITH HIGH-CLARITY VIDEO ==================== */
     .hero-main.hero-video-wrap {
       position: relative;
       overflow: hidden;
-      min-height: 620px;
-      padding: clamp(4rem, 7vw, 6.5rem) 0;
+      min-height: 650px;
+      padding: clamp(5rem, 8vw, 8rem) 0;
       border-bottom: 1px solid var(--border-subtle);
-      background-color: var(--matrix-navy-dark);
+      background-color: #0b1329;
+      display: flex;
+      align-items: center;
     }
 
     .video-background-scaler {
@@ -365,100 +367,76 @@
       top: 50%;
       left: 50%;
       width: 100vw;
-      height: 56.25vw; /* 16:9 Aspect Ratio */
+      height: 56.25vw;
       min-height: 100vh;
-      min-width: 177.77vh; /* 16:9 Aspect Ratio */
+      min-width: 177.77vh;
       transform: translate(-50%, -50%);
       pointer-events: none;
       border: none;
-      opacity: 0.42;
+      opacity: 0.85; /* Crystal clear high-visibility video */
+      filter: saturate(1.15) contrast(1.05);
     }
 
+    /* Subtle soft gradient overlay so video details are razor sharp */
     .hero-video-overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(13, 23, 59, 0.88) 0%, rgba(24, 43, 107, 0.72) 100%);
+      background: radial-gradient(circle at center, rgba(13, 23, 59, 0.55) 0%, rgba(10, 18, 44, 0.82) 100%);
       z-index: 1;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 3.5rem;
-      align-items: center;
+    .hero-centered-content {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
     }
-    @media (max-width: 992px) { .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
 
     .hero-badge-pill {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      padding: 0.35rem 0.85rem;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      padding: 0.4rem 1rem;
       border-radius: 999px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--matrix-navy);
-      margin-bottom: 1.25rem;
-      box-shadow: var(--shadow-sm);
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--matrix-navy-dark);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
     }
-    .hero-badge-pill .dot { width: 7px; height: 7px; background: var(--matrix-red); border-radius: 50%; }
+    .hero-badge-pill .dot { width: 8px; height: 8px; background: var(--matrix-red); border-radius: 50%; }
     
     .hero-h1 {
-      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-size: clamp(2.3rem, 5.5vw, 3.8rem);
       font-weight: 900;
       color: #ffffff;
       line-height: 1.12;
       letter-spacing: -0.04em;
-      margin-bottom: 1.15rem;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+      margin-bottom: 1.25rem;
+      text-shadow: 0 3px 14px rgba(0, 0, 0, 0.65), 0 1px 3px rgba(0,0,0,0.8);
     }
     .hero-p { 
-      font-size: clamp(1rem, 2vw, 1.15rem); 
-      color: #e2e8f0; 
-      margin-bottom: 2rem; 
-      line-height: 1.6; 
-      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem); 
+      color: #f1f5f9; 
+      margin-bottom: 2.25rem; 
+      line-height: 1.65; 
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-
-    .hero-media-frame {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: var(--radius-lg);
-      padding: 0.85rem;
-      box-shadow: var(--shadow-card);
-      position: relative;
-    }
-    .hero-media-frame img { width: 100%; height: 360px; object-fit: cover; border-radius: var(--radius-md); display: block; }
-    @media (max-width: 640px) { .hero-media-frame img { height: 240px; } }
-
-    .floating-caption-card {
-      position: absolute;
-      bottom: 1.5rem;
-      left: 1.5rem;
-      right: 1.5rem;
-      background: rgba(13, 23, 59, 0.94);
-      backdrop-filter: blur(12px);
-      color: #ffffff;
-      padding: 1rem 1.25rem;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .floating-caption-card h4 { font-size: 0.92rem; font-weight: 800; }
-    .floating-caption-card p { font-size: 0.75rem; color: #cbd5e1; }
-    @media (max-width: 480px) {
-      .floating-caption-card { position: static; margin-top: 0.75rem; background: var(--matrix-navy-dark); }
+    .hero-actions { 
+      display: flex; 
+      gap: 1.15rem; 
+      justify-content: center;
+      flex-wrap: wrap; 
     }
 
     .key-pillars-bar { padding: clamp(3rem, 5vw, 4.5rem) 0; border-bottom: 1px solid var(--border-subtle); }
@@ -925,10 +903,10 @@
     </div>
   </header>
 
-  <!-- ==================== VIEW 1: HOME PAGE WITH YOUTUBE VIDEO BACKGROUND ==================== -->
+  <!-- ==================== VIEW 1: HOME PAGE WITH HIGH-CLARITY VIDEO ==================== -->
   <main id="view-home" class="page-view active-view">
     <section class="hero-main hero-video-wrap">
-      <!-- Scaled YouTube Video Background Layer -->
+      <!-- High Clarity YouTube Background Video -->
       <div class="video-background-scaler">
         <iframe 
           src="https://www.youtube-nocookie.com/embed/0_iwVZknyQ4?autoplay=1&mute=1&loop=1&playlist=0_iwVZknyQ4&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&enablejsapi=1" 
@@ -938,12 +916,12 @@
         </iframe>
       </div>
 
-      <!-- Video Contrast Overlay -->
+      <!-- Lightened Contrast Overlay -->
       <div class="hero-video-overlay"></div>
 
-      <!-- Foreground Content Layer -->
-      <div class="container hero-grid" style="position: relative; z-index: 2;">
-        <div>
+      <!-- Centered Foreground Hero Content -->
+      <div class="container" style="position: relative; z-index: 2;">
+        <div class="hero-centered-content">
           <div class="hero-badge-pill">
             <div class="dot"></div>
             State-Of-The-Art Creasing Technology • Est. 2009
@@ -956,19 +934,8 @@
           </p>
           <div class="hero-actions">
             <button class="btn-solid-red" onclick="navigateTo('products')">Explore Product Range</button>
-            <button class="btn-solid-navy" style="background: rgba(13, 23, 59, 0.85); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.25);" onclick="navigateTo('portal')">Customer Portal & Orders</button>
-            <button class="btn-outline-navy" style="color: #ffffff; border-color: rgba(255, 255, 255, 0.45); background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px);" onclick="navigateTo('technical')">Matrix Calculator</button>
-          </div>
-        </div>
-
-        <div class="hero-media-frame">
-          <img src="matrix-press-render.jpg" alt="Bobst Die-Cutter and Matrix Cross-Section Render" onerror="this.src='https://image.made-in-china.com/155f0j00GtEvdHMhaIzB/Oyang-Wh-1050ss-Platen-Automatic-Flatbed-Corrugated-Cardboard-Paper-Carton-Box-Die-Cutting-Creasing-Cutter-Machine-with-Stripping-Industrial.jpg'">
-          <div class="floating-caption-card">
-            <div>
-              <h4>Engineered on the Isle of Man</h4>
-              <p>Phoenix+™ & Ultra-SR™ Profiles in Production</p>
-            </div>
-            <span style="font-size: 0.75rem; font-weight: 800; color: var(--matrix-red); text-transform: uppercase;">British Made</span>
+            <button class="btn-solid-navy" style="background: rgba(13, 23, 59, 0.9); backdrop-filter: blur(8px); border: 1.5px solid rgba(255, 255, 255, 0.35);" onclick="navigateTo('portal')">Customer Portal & Orders</button>
+            <button class="btn-outline-navy" style="color: #ffffff; border-color: rgba(255, 255, 255, 0.6); background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(8px);" onclick="navigateTo('technical')">Matrix Calculator</button>
           </div>
         </div>
       </div>
