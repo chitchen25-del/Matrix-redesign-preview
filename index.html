@@ -744,6 +744,16 @@
     .color-green  { background: #10B981; }
     .color-sky    { background: #38BDF8; }
     .color-lime   { background: #84CC16; }
+    .color-mauve  { background: #8B5CF6; }
+    .color-silver { background: #E2E8F0; }
+    .color-buff   { background: #FDE047; }
+    .color-violet { background: #7C3AED; }
+    .color-white  { background: #FFFFFF; border: 1.5px solid #CBD5E1; }
+    .color-rose   { background: #FB7185; }
+    .color-slate  { background: #64748B; }
+    .color-brown  { background: #92400E; }
+    .color-black  { background: #0F172A; }
+    .color-blue   { background: #2563EB; }
 
     .box-yield-badge {
       display: inline-block;
@@ -1319,8 +1329,8 @@
           </div>
         </div>
 
-        <!-- ULTRA-SR (IMG_0342) -->
-        <div class="prod-item-card">
+        <!-- ULTRA-SR (IMG_0342) - CLICK OPENS PRODUCT DETAIL PAGE -->
+        <div class="prod-item-card" style="cursor: pointer;" onclick="navigateTo('ultra-sr')">
           <div class="prod-img-box">
             <span class="prod-tag-float">STEEL BASE</span>
             <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0342.png" alt="Ultra SR" loading="lazy">
@@ -1328,16 +1338,16 @@
           <div class="prod-content-box">
             <div>
               <h3>ULTRA-SR™</h3>
-              <p>High-precision steel-based replacement matrix engineered for maximum durability against abrasive recycled fibers and ultra-long die-cutting runs.</p>
+              <p>High-precision steel-based matrix engineered for maximum durability against abrasive recycled fibers and ultra-long die-cutting runs.</p>
             </div>
             <div>
               <table class="spec-table-compact">
                 <tr><td class="k">Substrate</td><td class="v">Recycled & Greyboard</td></tr>
-                <tr><td class="k">Base Material</td><td class="v">High-Tensile Steel</td></tr>
+                <tr><td class="k">Base Material</td><td class="v">High-Tensile Steel (100 Mic Mylar)</td></tr>
                 <tr><td class="k">Adhesion Type</td><td class="v">Zero Edge-Lift Film</td></tr>
                 <tr><td class="k">Durability</td><td class="v">Extreme Run Life</td></tr>
               </table>
-              <button class="btn-solid-navy" style="width: 100%;" onclick="navigateTo('contact')">Enquire Ultra-SR</button>
+              <button class="btn-solid-navy" style="width: 100%;" onclick="event.stopPropagation(); navigateTo('ultra-sr')">View Ultra-SR Details & Size Chart →</button>
             </div>
           </div>
         </div>
@@ -1872,7 +1882,458 @@
     </div>
   </main>
 
-  <!-- ==================== VIEW 3B: DEDICATED PHOENIX XL PRODUCT PAGE (MOBILE FIT OPTIMIZED) ==================== -->
+  <!-- ==================== VIEW 3C: DEDICATED ULTRA-SR PRODUCT PAGE ==================== -->
+  <main id="view-ultra-sr" class="page-view">
+    <div class="page-hero">
+      <div class="container">
+        <div style="margin-bottom: 1.25rem;">
+          <button onclick="navigateTo('products')" style="background: none; border: none; color: var(--matrix-navy); font-weight: 800; font-size: 0.9rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem;">
+            ← Back to Products Range
+          </button>
+        </div>
+        <div class="section-head" style="margin-bottom: 0; text-align: left; max-width: 100%;">
+          <span class="section-eyebrow">Steel-Based Extreme Durability</span>
+          <h2 class="section-title">ULTRA-SR™</h2>
+          <p class="section-desc" style="max-width: 800px;">High-Tensile Steel Base Creasing Matrix with 100 Mic Mylar Colour-Matched Alignment for Abrasive Boards & Ultra-Long Runs.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container detail-layout">
+      
+      <!-- Top Overview Row -->
+      <div class="detail-grid-top">
+        <div class="detail-gallery-main">
+          <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0342.png" alt="Ultra-SR Steel Base Creasing Matrix Showcase">
+        </div>
+
+        <div class="detail-info-pane">
+          <span class="detail-subtitle">Engineered for Abrasive Recycled Boards</span>
+          <h1>Extreme Run Life with Zero Edge-Lift Durability</h1>
+          <p class="detail-desc-lead">
+            The <strong>Ultra-SR™</strong> represents the benchmark in heavy-duty, steel-based creasing matrix technology. Engineered with a precision-rolled high-tensile steel baseplate and 100 Micron Mylar channel film, Ultra-SR is purpose-built to withstand the punishing friction of abrasive recycled fibres and micro-flute substrates.
+          </p>
+          <p class="detail-desc-lead">
+            Its low-profile design and bevelled outer shoulders prevent edge-lift and board hang-ups under aggressive platen tonnage, ensuring micron-accurate crease depth across multi-million impression packaging runs.
+          </p>
+
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
+            <button class="btn-solid-red" onclick="navigateTo('contact')">Request Ultra-SR Samples</button>
+            <button class="btn-solid-navy" onclick="navigateTo('portal')">Order via Client Portal</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key Features Grid -->
+      <div class="section-head">
+        <span class="section-eyebrow">Engineering Advantages</span>
+        <h2 class="section-title">Key Performance Features</h2>
+        <p class="section-desc">Engineered for maximum hardness, zero edge-lift, and razor-sharp crease registration on demanding die-cutting platens.</p>
+      </div>
+
+      <div class="features-card-grid">
+        <div class="feat-card">
+          <div class="feat-icon">✓</div>
+          <h4>High-Tensile Steel Baseplate</h4>
+          <p>Fabricated from ultra-flat, hardened steel to provide an immovable creasing anvil that eliminates channel deflection and crushing under severe platen pressures.</p>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-icon">✓</div>
+          <h4>100 Mic Mylar Film Construction</h4>
+          <p>Features ultra-durable 100 Micron Mylar channel shoulders that resist abrasive wear and fibre tearing during high-speed folding boxboard processing.</p>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-icon">✓</div>
+          <h4>Full Visual Colour-Coding</h4>
+          <p>Comprehensive colour matching from Mauve (0.38 x 0.5mm) through to Orange (0.90 x 3.0mm) for instantaneous profile identification and fast makeready changes.</p>
+        </div>
+
+        <div class="feat-card">
+          <div class="feat-icon">✓</div>
+          <h4>Zero Edge-Lift Film Layer</h4>
+          <p>Specially coated micro-thin adhesive tape prevents sheet snagging and edge lifting, maintaining flawless board pass-through on automated high-speed carton lines.</p>
+        </div>
+
+        <div class="feat-card" style="grid-column: 1 / -1;">
+          <div class="feat-icon">✓</div>
+          <h4>Centre & Off-Centre Configurations</h4>
+          <p>Supplied in both 7mm Standard Centre and 7mm Off-Centre variants to accommodate tight rule spacings, reverse creases, and complex structural packaging dies.</p>
+        </div>
+      </div>
+
+      <!-- Size Chart Technical Specifications -->
+      <div class="chart-section-shell">
+        <div class="chart-header-row">
+          <div>
+            <span class="section-eyebrow">Factory Specification</span>
+            <h3>Ultra-SR Size & Selection Chart</h3>
+          </div>
+          <div class="heritage-tag" style="background: var(--bg-slate); padding: 8px 14px; border-radius: var(--radius-sm); font-size: 0.8rem;">
+            ● 750mm Standard Strip Length • 100 Mic Mylar
+          </div>
+        </div>
+
+        <!-- 1. 7mm Centre Base Chart -->
+        <div style="margin-bottom: 2.5rem;">
+          <h4 style="font-size: 1.2rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.75rem;">
+            7mm Centre Base (100 Mic Mylar)
+          </h4>
+
+          <div class="tech-diagram-box">
+            <svg width="240" height="42" viewBox="0 0 240 42" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="10,38 30,15 95,15 95,38" fill="#182B6B" />
+              <polygon points="145,38 145,15 210,15 230,38" fill="#182B6B" />
+              <line x1="95" y1="10" x2="145" y2="10" stroke="#0f172a" stroke-width="1.5" />
+              <line x1="95" y1="5" x2="95" y2="15" stroke="#0f172a" stroke-width="1.5" />
+              <line x1="145" y1="5" x2="145" y2="15" stroke="#0f172a" stroke-width="1.5" />
+              <text x="120" y="8" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="900" text-anchor="middle" fill="#0f172a">a (Width)</text>
+              <line x1="105" y1="15" x2="105" y2="38" stroke="#FF2E17" stroke-width="1.5" />
+              <line x1="100" y1="15" x2="110" y2="15" stroke="#FF2E17" stroke-width="1.5" />
+              <line x1="100" y1="38" x2="110" y2="38" stroke="#FF2E17" stroke-width="1.5" />
+              <text x="115" y="30" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="900" fill="#FF2E17">b (Height)</text>
+            </svg>
+            <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-dim); margin-top: 4px;">Profile Cross-Section: 7mm Steel Centre Base</div>
+          </div>
+
+          <div class="size-table-container">
+            <table class="size-table">
+              <thead>
+                <tr>
+                  <th style="width: 140px;">Base Colour</th>
+                  <th style="width: 140px;">Height (mm) [b]</th>
+                  <th style="width: 160px;">Channel Width (mm) [a]</th>
+                  <th>Pt Specification</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-mauve"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Mauve</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.38 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">0.5 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-silver"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Silver</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.38 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">0.8 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-buff"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Buff</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.38 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.0 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-violet"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Violet</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.38 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.2 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-white"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">White</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.45 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.3 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-sky"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Sky</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.45 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.4 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-lime"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Lime</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.45 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.5 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-yellow"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Yellow</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.50 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.6 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-rose"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Rose</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.50 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.7 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-slate"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Slate</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.55 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.9 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-green"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Green</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.60 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">2.0 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-brown"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Brown</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.60 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">2.1 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-red"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Red</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.70 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">2.3 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-black"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Black</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.70 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">2.4 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-blue"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Blue</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.80 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">2.6 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-orange"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Orange</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.90 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">3.0 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">3 / 4 pt</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="box-yield-badge">📦 Standard Steel Packaging: <strong>24 Metres / Box</strong></div>
+        </div>
+
+        <hr style="border: none; border-top: 1.5px solid var(--border-subtle); margin: 2.5rem 0;">
+
+        <!-- 2. 7mm Off-Centre Base Chart -->
+        <div>
+          <h4 style="font-size: 1.2rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.75rem;">
+            7mm Off-Centre Base (100 Mic Mylar)
+          </h4>
+
+          <div class="tech-diagram-box">
+            <svg width="240" height="42" viewBox="0 0 240 42" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="10,38 10,15 55,15 55,38" fill="#182B6B" />
+              <polygon points="105,38 105,15 195,15 230,38" fill="#182B6B" />
+              <line x1="55" y1="10" x2="105" y2="10" stroke="#0f172a" stroke-width="1.5" />
+              <line x1="55" y1="5" x2="55" y2="15" stroke="#0f172a" stroke-width="1.5" />
+              <line x1="105" y1="5" x2="105" y2="15" stroke="#0f172a" stroke-width="1.5" />
+              <text x="80" y="8" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="900" text-anchor="middle" fill="#0f172a">a (Width)</text>
+              <line x1="65" y1="15" x2="65" y2="38" stroke="#FF2E17" stroke-width="1.5" />
+              <line x1="60" y1="15" x2="70" y2="15" stroke="#FF2E17" stroke-width="1.5" />
+              <line x1="60" y1="38" x2="70" y2="38" stroke="#FF2E17" stroke-width="1.5" />
+              <text x="75" y="30" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="900" fill="#FF2E17">b</text>
+            </svg>
+            <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-dim); margin-top: 4px;">Profile Cross-Section: 7mm Steel Off-Centre Channel</div>
+          </div>
+
+          <div class="size-table-container">
+            <table class="size-table">
+              <thead>
+                <tr>
+                  <th style="width: 140px;">Base Colour</th>
+                  <th style="width: 140px;">Height (mm) [b]</th>
+                  <th style="width: 160px;">Channel Width (mm) [a]</th>
+                  <th>Pt Specification</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-silver"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Silver</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.38 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">0.8 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-buff"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Buff</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.38 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.0 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-violet"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Violet</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.38 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.2 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-white"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">White</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.45 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.3 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-sky"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Sky</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.45 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.4 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-lime"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Lime</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.45 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.5 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-yellow"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Yellow</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.50 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.6 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span class="color-swatch-bar color-rose"></span>
+                      <strong style="font-size: 0.82rem; color: var(--matrix-navy);">Rose</strong>
+                    </div>
+                  </td>
+                  <td><strong style="font-family: var(--font-mono); color: var(--matrix-navy);">0.50 mm</strong></td>
+                  <td style="font-weight: 700; color: #334155;">1.7 mm</td>
+                  <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--matrix-red); font-weight: 700;">2 / 3 pt</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="box-yield-badge">📦 Standard Steel Packaging: <strong>24 Metres / Box</strong></div>
+        </div>
+
+      </div>
+
+      <!-- Action Footer -->
+      <div style="text-align: center; background: var(--bg-light); border-radius: var(--radius-lg); padding: 2.5rem 1.25rem; border: 1.5px solid var(--border-subtle);">
+        <h3 style="font-size: 1.5rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.5rem;">Configure Ultra-SR™ for Tough Substrates</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 600px; margin: 0 auto 1.5rem;">
+          Eliminate channel crushing and edge-lift on abrasive greyboard and solid board runs with Matrix Engineering steel matrix tooling.
+        </p>
+        <button class="btn-solid-red" onclick="navigateTo('contact')">Request Technical Recommendation</button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==================== VIEW 3D: DEDICATED PHOENIX XL PRODUCT PAGE (MOBILE FIT OPTIMIZED) ==================== -->
   <main id="view-phoenix-xl" class="page-view">
     <div class="page-hero">
       <div class="container">
@@ -2579,6 +3040,7 @@
             <li><a onclick="navigateTo('about')">About Us</a></li>
             <li><a onclick="navigateTo('products')">Products</a></li>
             <li><a onclick="navigateTo('phoenix-plus')">Phoenix+™ Detail</a></li>
+            <li><a onclick="navigateTo('ultra-sr')">Ultra-SR™ Detail</a></li>
             <li><a onclick="navigateTo('phoenix-xl')">Phoenix XL™ Detail</a></li>
             <li><a onclick="navigateTo('technical')">Technical & Sizing</a></li>
             <li><a onclick="navigateTo('news')">Latest News (PPWR)</a></li>
@@ -2590,8 +3052,8 @@
           <h5>Product Lines</h5>
           <ul>
             <li><a onclick="navigateTo('phoenix-plus')">PHOENIX+™ Synthetic</a></li>
+            <li><a onclick="navigateTo('ultra-sr')">ULTRA-SR™ Steel Base</a></li>
             <li><a onclick="navigateTo('phoenix-xl')">PHOENIX XL™ Wide Base</a></li>
-            <li><a onclick="navigateTo('products')">ULTRA-SR™ Steel Base</a></li>
             <li><a onclick="navigateTo('products')">EXCEED™ Ejection Rubber</a></li>
           </ul>
         </div>
