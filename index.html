@@ -10,12 +10,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --brand-navy: #132448;
-      --brand-navy-dark: #0a1329;
-      --brand-blue: #1d4ed8;
-      --brand-red: #ea2b1f;
-      --brand-red-deep: #c81e13;
-      --brand-slate: #5a6578;
+      --matrix-navy: #182B6B;
+      --matrix-navy-dark: #0d173b;
+      --matrix-red: #FF2E17;
+      --matrix-red-dark: #d6200c;
+      --matrix-grey-dark: #4A4A4A;
+      --matrix-grey-mid: #7B818A;
+      --matrix-grey-light: #A5ABB5;
+      
       --bg-light: #f8fafc;
       --bg-card: #ffffff;
       --text-main: #0f172a;
@@ -29,9 +31,9 @@
       --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
       --container-max: 1240px;
-      --shadow-subtle: 0 4px 20px -2px rgba(19, 36, 72, 0.05);
-      --shadow-premium: 0 20px 40px -15px rgba(19, 36, 72, 0.08), 0 0 1px 1px rgba(19, 36, 72, 0.04);
-      --shadow-hover: 0 25px 50px -12px rgba(19, 36, 72, 0.14);
+      --shadow-subtle: 0 4px 20px -2px rgba(24, 43, 107, 0.05);
+      --shadow-premium: 0 20px 40px -15px rgba(24, 43, 107, 0.08), 0 0 1px 1px rgba(24, 43, 107, 0.04);
+      --shadow-hover: 0 25px 50px -12px rgba(24, 43, 107, 0.14);
     }
 
     * {
@@ -59,9 +61,9 @@
       padding: 0 2rem;
     }
 
-    /* Top Heritage & Utility Bar */
+    /* Top Utility Bar */
     .top-utility-bar {
-      background: var(--brand-navy-dark);
+      background: var(--matrix-navy-dark);
       color: #cbd5e1;
       font-size: 0.8rem;
       padding: 0.5rem 0;
@@ -92,7 +94,7 @@
     }
 
     .heritage-pill span.flag {
-      color: var(--brand-red);
+      color: var(--matrix-red);
     }
 
     .utility-links {
@@ -104,9 +106,6 @@
       color: #94a3b8;
       text-decoration: none;
       transition: color 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
     }
 
     .utility-links a:hover {
@@ -130,7 +129,6 @@
       height: 90px;
     }
 
-    /* Embedded Vector Logo */
     .brand-logo-link {
       display: flex;
       align-items: center;
@@ -138,11 +136,10 @@
     }
 
     .svg-matrix-logo {
-      height: 52px;
+      height: 56px;
       width: auto;
     }
 
-    /* Navigation Links & Dropdowns */
     nav.desktop-nav {
       display: flex;
       align-items: center;
@@ -158,7 +155,7 @@
       align-items: center;
       gap: 0.35rem;
       padding: 0.75rem 1rem;
-      color: var(--brand-navy);
+      color: var(--matrix-navy);
       text-decoration: none;
       font-size: 0.92rem;
       font-weight: 700;
@@ -168,7 +165,7 @@
     }
 
     .nav-link-btn:hover {
-      color: var(--brand-blue);
+      color: var(--matrix-red);
       background-color: var(--bg-light);
     }
 
@@ -224,7 +221,7 @@
     .dropdown-title {
       font-size: 0.88rem;
       font-weight: 700;
-      color: var(--brand-navy);
+      color: var(--matrix-navy);
     }
 
     .dropdown-desc {
@@ -234,7 +231,7 @@
     }
 
     .btn-header-cta {
-      background: var(--brand-red);
+      background: var(--matrix-red);
       color: #ffffff;
       font-size: 0.88rem;
       font-weight: 700;
@@ -242,12 +239,12 @@
       border-radius: var(--radius-sm);
       text-decoration: none;
       transition: all 0.2s ease;
-      box-shadow: 0 2px 8px rgba(234, 43, 31, 0.25);
+      box-shadow: 0 2px 8px rgba(255, 46, 23, 0.25);
     }
 
     .btn-header-cta:hover {
-      background: var(--brand-red-deep);
-      box-shadow: 0 4px 14px rgba(234, 43, 31, 0.35);
+      background: var(--matrix-red-dark);
+      box-shadow: 0 4px 14px rgba(255, 46, 23, 0.35);
     }
 
     /* Hero Section */
@@ -281,7 +278,7 @@
       border-radius: 999px;
       font-size: 0.8rem;
       font-weight: 700;
-      color: var(--brand-navy);
+      color: var(--matrix-navy);
       margin-bottom: 1.5rem;
       box-shadow: var(--shadow-subtle);
     }
@@ -289,21 +286,21 @@
     .hero-pretitle .dot {
       width: 7px;
       height: 7px;
-      background-color: var(--brand-red);
+      background-color: var(--matrix-red);
       border-radius: 50%;
     }
 
     .hero-h1 {
       font-size: clamp(2.3rem, 4vw, 3.25rem);
       font-weight: 900;
-      color: var(--brand-navy-dark);
+      color: var(--matrix-navy-dark);
       line-height: 1.15;
       letter-spacing: -0.035em;
       margin-bottom: 1.25rem;
     }
 
     .hero-h1 span.accent-red {
-      color: var(--brand-red);
+      color: var(--matrix-red);
     }
 
     .hero-p {
@@ -320,8 +317,8 @@
       flex-wrap: wrap;
     }
 
-    .btn-solid-blue {
-      background: var(--brand-navy);
+    .btn-solid-navy {
+      background: var(--matrix-navy);
       color: #ffffff;
       font-weight: 700;
       font-size: 0.95rem;
@@ -331,14 +328,14 @@
       transition: all 0.2s ease;
     }
 
-    .btn-solid-blue:hover {
-      background: var(--brand-blue);
-      box-shadow: 0 4px 14px rgba(29, 78, 216, 0.25);
+    .btn-solid-navy:hover {
+      background: #253a8a;
+      box-shadow: 0 4px 14px rgba(24, 43, 107, 0.25);
     }
 
     .btn-outline-navy {
       background: #ffffff;
-      color: var(--brand-navy);
+      color: var(--matrix-navy);
       border: 1.5px solid var(--border-medium);
       font-weight: 700;
       font-size: 0.95rem;
@@ -349,18 +346,17 @@
     }
 
     .btn-outline-navy:hover {
-      border-color: var(--brand-navy);
+      border-color: var(--matrix-navy);
       background: var(--bg-light);
     }
 
-    /* Hero Showcase Card */
+    /* Hero Spec Card */
     .hero-showcase-panel {
       background: #ffffff;
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-premium);
       padding: 2.25rem;
-      position: relative;
     }
 
     .showcase-header {
@@ -375,7 +371,7 @@
     .showcase-title-wrap h3 {
       font-size: 1.2rem;
       font-weight: 800;
-      color: var(--brand-navy);
+      color: var(--matrix-navy);
     }
 
     .showcase-title-wrap p {
@@ -390,7 +386,7 @@
       border-radius: var(--radius-sm);
       background: var(--bg-light);
       border: 1px solid var(--border-medium);
-      color: var(--brand-navy);
+      color: var(--matrix-navy);
       text-transform: uppercase;
     }
 
@@ -416,26 +412,26 @@
     }
 
     .spec-entry .v {
-      color: var(--brand-navy-dark);
+      color: var(--matrix-navy-dark);
       font-weight: 700;
       font-family: var(--font-mono);
     }
 
-    /* Section Foundations */
+    /* Global Section Foundations */
     .page-section {
       padding: 6rem 0;
     }
 
     .section-headline-group {
       text-align: center;
-      max-width: 700px;
+      max-width: 760px;
       margin: 0 auto 3.5rem;
     }
 
     .section-eyebrow {
       font-size: 0.8rem;
       font-weight: 800;
-      color: var(--brand-red);
+      color: var(--matrix-red);
       text-transform: uppercase;
       letter-spacing: 0.12em;
       margin-bottom: 0.5rem;
@@ -445,7 +441,7 @@
     .section-title {
       font-size: 2.25rem;
       font-weight: 900;
-      color: var(--brand-navy-dark);
+      color: var(--matrix-navy-dark);
       letter-spacing: -0.025em;
       margin-bottom: 0.75rem;
     }
@@ -453,6 +449,86 @@
     .section-subtitle {
       font-size: 1.05rem;
       color: var(--text-muted);
+    }
+
+    /* Meet the Team Styling */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.25rem;
+    }
+
+    .team-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      box-shadow: var(--shadow-subtle);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
+    }
+
+    .team-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--matrix-navy);
+    }
+
+    .team-header {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .team-avatar-wrap {
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2.5px solid var(--matrix-navy);
+      flex-shrink: 0;
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .team-avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .team-avatar-placeholder {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--matrix-navy);
+      font-family: var(--font-mono);
+    }
+
+    .team-names h4 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--matrix-navy-dark);
+      letter-spacing: -0.01em;
+    }
+
+    .team-names .team-role {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--matrix-red);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .team-bio {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      flex-grow: 1;
     }
 
     /* Products Grid */
@@ -477,7 +553,7 @@
     .product-box:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-hover);
-      border-color: var(--brand-navy);
+      border-color: var(--matrix-navy);
     }
 
     .prod-header {
@@ -492,7 +568,7 @@
       padding: 2px 7px;
       border-radius: var(--radius-sm);
       background: var(--bg-light);
-      color: var(--brand-slate);
+      color: var(--matrix-grey-dark);
       border: 1px solid var(--border-subtle);
       margin-bottom: 0.75rem;
       text-transform: uppercase;
@@ -502,7 +578,7 @@
     .prod-header h3 {
       font-size: 1.5rem;
       font-weight: 900;
-      color: var(--brand-navy);
+      color: var(--matrix-navy);
       letter-spacing: -0.02em;
     }
 
@@ -543,7 +619,7 @@
 
     .prod-specs-table td.val {
       text-align: right;
-      color: var(--brand-navy-dark);
+      color: var(--matrix-navy-dark);
       font-weight: 700;
       font-family: var(--font-mono);
     }
@@ -584,7 +660,7 @@
       justify-content: space-between;
       font-size: 0.88rem;
       font-weight: 700;
-      color: var(--brand-navy);
+      color: var(--matrix-navy);
       margin-bottom: 0.45rem;
     }
 
@@ -604,11 +680,11 @@
 
     .calc-input-box input:focus,
     .calc-input-box select:focus {
-      border-color: var(--brand-blue);
+      border-color: var(--matrix-navy);
     }
 
     .calc-result-panel {
-      background: var(--brand-navy-dark);
+      background: var(--matrix-navy-dark);
       color: #ffffff;
       border-radius: var(--radius-md);
       padding: 2.25rem;
@@ -658,8 +734,8 @@
     }
 
     .calc-tip-box {
-      background: rgba(234, 43, 31, 0.15);
-      border-left: 3px solid var(--brand-red);
+      background: rgba(255, 46, 23, 0.15);
+      border-left: 3px solid var(--matrix-red);
       padding: 0.85rem 1rem;
       font-size: 0.85rem;
       color: #f8fafc;
@@ -684,14 +760,14 @@
       font-family: var(--font-mono);
       font-size: 0.8rem;
       font-weight: 800;
-      color: var(--brand-red);
+      color: var(--matrix-red);
       margin-bottom: 0.5rem;
     }
 
     .step-card h4 {
       font-size: 1.1rem;
       font-weight: 800;
-      color: var(--brand-navy);
+      color: var(--matrix-navy);
       margin-bottom: 0.5rem;
     }
 
@@ -718,7 +794,7 @@
     .acc-card h4 {
       font-size: 1.2rem;
       font-weight: 800;
-      color: var(--brand-navy);
+      color: var(--matrix-navy);
       margin-bottom: 0.5rem;
     }
 
@@ -731,7 +807,7 @@
     .acc-tag {
       font-size: 0.75rem;
       font-weight: 700;
-      color: var(--brand-blue);
+      color: var(--matrix-navy);
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
@@ -750,7 +826,7 @@
     }
 
     .contact-card-info {
-      background: var(--brand-navy-dark);
+      background: var(--matrix-navy-dark);
       color: #ffffff;
       border-radius: var(--radius-lg);
       padding: 2.75rem;
@@ -820,7 +896,7 @@
       display: block;
       font-size: 0.85rem;
       font-weight: 700;
-      color: var(--brand-navy);
+      color: var(--matrix-navy);
       margin-bottom: 0.35rem;
     }
 
@@ -842,12 +918,12 @@
     .form-group input:focus,
     .form-group select:focus,
     .form-group textarea:focus {
-      border-color: var(--brand-blue);
+      border-color: var(--matrix-navy);
     }
 
     /* Footer */
     footer.site-footer {
-      background: var(--brand-navy-dark);
+      background: var(--matrix-navy-dark);
       color: #ffffff;
       padding-top: 4.5rem;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -920,7 +996,7 @@
       <div class="heritage-badge-wrap">
         <span class="heritage-pill"><span class="flag">★</span> British Made Quality</span>
         <span style="opacity: 0.4;">|</span>
-        <span class="heritage-pill">Isle of Man Manufacturing</span>
+        <span class="heritage-pill">Isle of Man Manufacturing Facility</span>
       </div>
       <div class="utility-links">
         <a href="tel:+441624822960">Tel: +44 (0)1624 822960</a>
@@ -932,40 +1008,40 @@
   <!-- Header with Structured Navigation -->
   <header class="site-header">
     <div class="container nav-inner">
-      <!-- Authentic Matrix Engineering Vector Logo -->
+      <!-- Authentic Matrix Engineering Vector Logo with Exact Colors -->
       <a href="#home" class="brand-logo-link" aria-label="Matrix Engineering Homepage">
         <svg class="svg-matrix-logo" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg">
-          <!-- Top Creasing Matrix Channel Roof (Grey) -->
-          <polygon points="120,70 380,25 380,70" fill="#4b5563" />
-          <polygon points="400,70 400,25 660,70" fill="#4b5563" />
+          <!-- Top Matrix Roof (Dark Grey #4A4A4A) -->
+          <polygon points="120,70 380,25 380,70" fill="#4A4A4A" />
+          <polygon points="400,70 400,25 660,70" fill="#4A4A4A" />
 
-          <!-- Letter M -->
-          <polygon points="120,80 185,80 205,135 225,80 290,80 290,155 240,155 240,115 218,155 192,155 170,115 170,155 120,155" fill="#132448" />
+          <!-- Letter M (Royal Navy #182B6B) -->
+          <polygon points="120,80 185,80 205,135 225,80 290,80 290,155 240,155 240,115 218,155 192,155 170,115 170,155 120,155" fill="#182B6B" />
 
-          <!-- Letter A (Two Tone) -->
-          <polygon points="305,155 350,80 370,80 345,155" fill="#6b7280" />
-          <polygon points="360,80 405,155 380,155 365,125 335,125 350,95" fill="#9ca3af" />
+          <!-- Letter A (Two Tone Grey #7B818A and #A5ABB5) -->
+          <polygon points="305,155 350,80 370,80 345,155" fill="#7B818A" />
+          <polygon points="360,80 405,155 380,155 365,125 335,125 350,95" fill="#A5ABB5" />
 
-          <!-- Letter T (Crease Blade Styling in Red) -->
-          <path d="M 400,80 L 460,80 L 460,100 L 440,100 L 440,145 C 440,155 420,155 420,145 L 420,100 L 400,100 Z" fill="#ea2b1f" />
+          <!-- Letter T (Crease Blade in Vivid Red #FF2E17) -->
+          <path d="M 400,80 L 460,80 L 460,100 L 440,100 L 440,145 C 440,155 420,155 420,145 L 420,100 L 400,100 Z" fill="#FF2E17" />
 
-          <!-- Letter R -->
-          <path d="M 465,80 L 515,80 C 535,80 545,90 545,105 C 545,118 535,125 520,128 L 545,155 L 515,155 L 495,130 L 495,155 L 465,155 Z M 495,98 L 495,115 L 512,115 C 518,115 522,110 522,106 C 522,102 518,98 512,98 Z" fill="#132448" />
+          <!-- Letter R (Royal Navy #182B6B) -->
+          <path d="M 465,80 L 515,80 C 535,80 545,90 545,105 C 545,118 535,125 520,128 L 545,155 L 515,155 L 495,130 L 495,155 L 465,155 Z M 495,98 L 495,115 L 512,115 C 518,115 522,110 522,106 C 522,102 518,98 512,98 Z" fill="#182B6B" />
 
-          <!-- Letter I -->
-          <rect x="555" y="80" width="30" height="75" fill="#132448" />
+          <!-- Letter I (Royal Navy #182B6B) -->
+          <rect x="555" y="80" width="30" height="75" fill="#182B6B" />
 
-          <!-- Letter X -->
-          <polygon points="595,80 625,80 660,155 630,155" fill="#132448" />
-          <polygon points="630,80 660,80 595,155 565,155" fill="#132448" />
+          <!-- Letter X (Royal Navy #182B6B) -->
+          <polygon points="595,80 625,80 660,155 630,155" fill="#182B6B" />
+          <polygon points="630,80 660,80 595,155 565,155" fill="#182B6B" />
 
-          <!-- Red Mid-Banner -->
-          <polygon points="120,165 640,165 660,195 120,195" fill="#ea2b1f" />
+          <!-- Red Mid-Banner Bar (#FF2E17) -->
+          <polygon points="120,165 640,165 660,195 120,195" fill="#FF2E17" />
 
-          <!-- Blue Bottom Arrow Banner -->
-          <polygon points="120,205 660,205 680,240 120,240" fill="#132448" />
+          <!-- Royal Navy Bottom Arrow Banner (#182B6B) -->
+          <polygon points="120,205 660,205 680,240 120,240" fill="#182B6B" />
 
-          <!-- "ENGINEERING" Text in Banner -->
+          <!-- "ENGINEERING" Text -->
           <text x="390" y="232" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="900" font-size="28" fill="#ffffff" letter-spacing="9" text-anchor="middle">ENGINEERING</text>
         </svg>
       </a>
@@ -1071,7 +1147,7 @@
           Designed and manufactured in-house on the Isle of Man. We develop high-durability creasing matrix and ejection rubber formulations tailored for high-speed folding carton and solid board converting.
         </p>
         <div class="hero-btn-row">
-          <a href="#calculator" class="btn-solid-blue">Open Size Calculator</a>
+          <a href="#calculator" class="btn-solid-navy">Open Size Calculator</a>
           <a href="#products" class="btn-outline-navy">View Product Ranges</a>
         </div>
       </div>
@@ -1108,34 +1184,80 @@
     </div>
   </section>
 
-  <!-- About Us Section -->
+  <!-- About Us Section & Meet The Team -->
   <section id="about" class="page-section" style="border-bottom: 1px solid var(--border-subtle);">
     <div class="container">
       <div class="section-headline-group">
-        <span class="section-eyebrow">Company Profile</span>
-        <h2 class="section-title">Over 60 Years of Industry Expertise</h2>
+        <span class="section-eyebrow">Leadership & Expertise</span>
+        <h2 class="section-title">Meet The Team</h2>
         <p class="section-subtitle">
-          Established in July 2009, Matrix Engineering Limited is a leading manufacturer of high-quality creasing matrix for use in the global folding carton and packaging industries.
+          A dynamic collection of highly talented engineering, manufacturing, sales, and operations professionals — united on the Isle of Man to make Matrix Engineering an exceptional partner to do business with.
         </p>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
-        <div style="background: var(--bg-light); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 2rem;">
-          <h4 style="font-size: 1.25rem; font-weight: 800; color: var(--brand-navy); margin-bottom: 0.75rem;">In-House Manufacturing</h4>
-          <p style="color: var(--text-muted); font-size: 0.95rem;">
-            Designed and manufactured completely in-house on the Isle of Man, our bespoke production lines utilize precision raw materials and adhesive chemistry to ensure run-to-run consistency.
+      <!-- Team Members Grid -->
+      <div class="team-grid">
+        <!-- Stephen Kelly -->
+        <div class="team-card">
+          <div class="team-header">
+            <div class="team-avatar-wrap">
+              <div class="team-avatar-placeholder">SK</div>
+            </div>
+            <div class="team-names">
+              <h4>Stephen Kelly</h4>
+              <div class="team-role">Owner / Director</div>
+            </div>
+          </div>
+          <p class="team-bio">
+            Stephen founded Matrix Engineering in July 2009 after identifying a crucial need for superior performance, durability, and tighter tolerances in creasing matrix systems. With that ambition as his driving force, he built a state-of-the-art manufacturing facility on the Isle of Man to engineer solutions that eliminate press downtime and deliver world-class creasing accuracy.
           </p>
         </div>
-        <div style="background: var(--bg-light); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 2rem;">
-          <h4 style="font-size: 1.25rem; font-weight: 800; color: var(--brand-navy); margin-bottom: 0.75rem;">Sustainable & Recyclable</h4>
-          <p style="color: var(--text-muted); font-size: 0.95rem;">
-            Cost-effective, highly efficient, and environmentally conscious. Our synthetic matrix formulations are 100% fully recyclable and engineered to shorten press makeready.
+
+        <!-- Dave Filson -->
+        <div class="team-card">
+          <div class="team-header">
+            <div class="team-avatar-wrap">
+              <img src="dave-filson.jpg" alt="Dave Filson - Sales Manager" onerror="this.parentElement.innerHTML='<div class=\'team-avatar-placeholder\'>DF</div>'">
+            </div>
+            <div class="team-names">
+              <h4>Dave Filson</h4>
+              <div class="team-role">Sales Manager</div>
+            </div>
+          </div>
+          <p class="team-bio">
+            Dave brings multiple years of proven commercial expertise and deep technical insight to Matrix Engineering. Renowned for his responsive, customer-first approach, Dave works closely with die-makers and folding carton converters worldwide to optimize their matrix specifications, reduce press makeready costs, and ensure dependable factory-direct delivery.
           </p>
         </div>
-        <div style="background: var(--bg-light); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 2rem;">
-          <h4 style="font-size: 1.25rem; font-weight: 800; color: var(--brand-navy); margin-bottom: 0.75rem;">Global Export Reach</h4>
-          <p style="color: var(--text-muted); font-size: 0.95rem;">
-            Supplying die-makers and folding carton converters across the UK, Europe, and international markets directly from our Balthane Industrial Estate facility.
+
+        <!-- Chris Hitchen -->
+        <div class="team-card">
+          <div class="team-header">
+            <div class="team-avatar-wrap">
+              <img src="chris-hitchen.jpg" alt="Chris Hitchen - Production Manager" onerror="this.parentElement.innerHTML='<div class=\'team-avatar-placeholder\'>CH</div>'">
+            </div>
+            <div class="team-names">
+              <h4>Chris Hitchen</h4>
+              <div class="team-role">Production Manager</div>
+            </div>
+          </div>
+          <p class="team-bio">
+            Chris brings a wealth of high-level industrial engineering expertise, having served as manufacturing and process engineer for global giants including <strong>TE Connectivity Ltd</strong>, <strong>AFL Telecommunications</strong>, and <strong>Volution Group PLC</strong>. Specializing in advanced polymer and rubber extrusion, Chris ensures every matrix profile meets microscopic quality standards.
+          </p>
+        </div>
+
+        <!-- Gary Cooper -->
+        <div class="team-card">
+          <div class="team-header">
+            <div class="team-avatar-wrap">
+              <img src="gary-cooper.jpg" alt="Gary Cooper - Office Manager" onerror="this.parentElement.innerHTML='<div class=\'team-avatar-placeholder\'>GC</div>'">
+            </div>
+            <div class="team-names">
+              <h4>Gary Cooper</h4>
+              <div class="team-role">Office Manager</div>
+            </div>
+          </div>
+          <p class="team-bio">
+            Gary manages daily operational infrastructure, logistics, and customer accounts with precision. Backed by extensive administrative and operational experience across the Isle of Man’s esteemed finance and corporate sectors, Gary ensures that quotations, dispatches, and export compliance flow smoothly for our global packaging partners.
           </p>
         </div>
       </div>
@@ -1174,7 +1296,7 @@
                 <td class="val">Standard & Chamfered</td>
               </tr>
             </table>
-            <a href="#contact" class="btn-solid-blue" style="text-align: center;">Enquire Phoenix+</a>
+            <a href="#contact" class="btn-solid-navy" style="text-align: center;">Enquire Phoenix+</a>
           </div>
         </div>
 
@@ -1200,7 +1322,7 @@
                 <td class="val">Extra Wide Flange</td>
               </tr>
             </table>
-            <a href="#contact" class="btn-solid-blue" style="text-align: center;">Enquire Phoenix XL</a>
+            <a href="#contact" class="btn-solid-navy" style="text-align: center;">Enquire Phoenix XL</a>
           </div>
         </div>
 
@@ -1226,7 +1348,7 @@
                 <td class="val">Extended Run Life</td>
               </tr>
             </table>
-            <a href="#contact" class="btn-solid-blue" style="text-align: center;">Enquire Ultra-SR</a>
+            <a href="#contact" class="btn-solid-navy" style="text-align: center;">Enquire Ultra-SR</a>
           </div>
         </div>
 
@@ -1252,7 +1374,7 @@
                 <td class="val">Flat & Profile Strip</td>
               </tr>
             </table>
-            <a href="#contact" class="btn-solid-blue" style="text-align: center;">Enquire Exceed Rubber</a>
+            <a href="#contact" class="btn-solid-navy" style="text-align: center;">Enquire Exceed Rubber</a>
           </div>
         </div>
       </div>
@@ -1273,7 +1395,7 @@
           <div class="calc-input-box">
             <label for="boardCaliper">
               <span>Board Caliper (mm)</span>
-              <span id="caliperVal" style="color: var(--brand-blue); font-family: var(--font-mono);">0.45 mm</span>
+              <span id="caliperVal" style="color: var(--matrix-navy); font-family: var(--font-mono);">0.45 mm</span>
             </label>
             <input type="number" id="boardCaliper" value="0.45" step="0.05" min="0.10" max="3.00">
           </div>
@@ -1380,19 +1502,19 @@
           <span class="acc-tag">Make Ready</span>
           <h4>Super Shim Plus & Profitape</h4>
           <p>Precision makeready tapes engineered for micro-adjusting cutting plate pressure without sheet distortion.</p>
-          <a href="#contact" style="font-weight: 700; color: var(--brand-navy); font-size: 0.85rem; text-decoration: none;">Enquire Tapes →</a>
+          <a href="#contact" style="font-weight: 700; color: var(--matrix-navy); font-size: 0.85rem; text-decoration: none;">Enquire Tapes →</a>
         </div>
         <div class="acc-card">
           <span class="acc-tag">Cutting Tools</span>
           <h4>Matrix Cutters (Hand & Bench)</h4>
           <p>Precision 45-degree miter and straight 90-degree cutters delivering burr-free matrix joins for tight die corners.</p>
-          <a href="#contact" style="font-weight: 700; color: var(--brand-navy); font-size: 0.85rem; text-decoration: none;">Enquire Cutters →</a>
+          <a href="#contact" style="font-weight: 700; color: var(--matrix-navy); font-size: 0.85rem; text-decoration: none;">Enquire Cutters →</a>
         </div>
         <div class="acc-card">
           <span class="acc-tag">Nicking Tool</span>
           <h4>Speedy-Nick Tool</h4>
           <p>Pneumatic handheld nicking device ensuring consistent, clean micro-nicks across rule profiles to prevent box breaks.</p>
-          <a href="#contact" style="font-weight: 700; color: var(--brand-navy); font-size: 0.85rem; text-decoration: none;">Enquire Nicking Tool →</a>
+          <a href="#contact" style="font-weight: 700; color: var(--matrix-navy); font-size: 0.85rem; text-decoration: none;">Enquire Nicking Tool →</a>
         </div>
       </div>
     </div>
@@ -1404,7 +1526,7 @@
       <div class="contact-layout">
         <div class="contact-card-info">
           <div>
-            <span style="font-size: 0.8rem; font-weight: 800; color: var(--brand-red); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem;">Direct Factory Support</span>
+            <span style="font-size: 0.8rem; font-weight: 800; color: var(--matrix-red); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem;">Direct Factory Support</span>
             <h3>Matrix Engineering Ltd</h3>
             <p>Reach out to our technical team for product trials, volume distributor pricing, or bespoke matrix channel profiling.</p>
 
@@ -1430,7 +1552,7 @@
         </div>
 
         <div class="contact-form-box">
-          <h3 style="font-size: 1.5rem; font-weight: 900; color: var(--brand-navy); margin-bottom: 0.5rem;">Request a Sample Trial Pack</h3>
+          <h3 style="font-size: 1.5rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.5rem;">Request a Sample Trial Pack</h3>
           <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.75rem;">Let us know your board calipers and current setup to receive a customized test box.</p>
 
           <form id="contactForm" onsubmit="handleForm(event)">
@@ -1460,7 +1582,7 @@
               <label for="fMessage">Application Details / Board Thickness</label>
               <textarea id="fMessage" rows="3" placeholder="Specify your typical board calipers or current challenges..."></textarea>
             </div>
-            <button type="submit" class="btn-solid-blue" style="width: 100%; border: none; cursor: pointer; padding: 0.9rem; font-size: 1rem;">Submit Sample Request</button>
+            <button type="submit" class="btn-solid-navy" style="width: 100%; border: none; cursor: pointer; padding: 0.9rem; font-size: 1rem;">Submit Sample Request</button>
           </form>
         </div>
       </div>
