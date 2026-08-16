@@ -1409,14 +1409,14 @@
                       <option value="PX Plus">PX Plus</option>
                       <option value="Phoenix+">Phoenix+</option>
                       <option value="Phoenix XL">Phoenix XL</option>
-                      <option value="Ultra SR">Ultra SR</option>
+                      <option value="Ultra SR">Ultra SR (100 Mic Mylar)</option>
                       <option value="Exceed">Exceed Rubber</option>
                       <option value="Smart Formes">Smart Formes</option>
                     </select>
                   </div>
                   <div>
                     <label>Size / Spec</label>
-                    <select id="lineSizeSelect" required></select>
+                    <select id="lineSizeSelect" onchange="handleSizeSpecChange()" required></select>
                   </div>
                   <div>
                     <label>Pt</label>
@@ -1640,7 +1640,7 @@
     let activeClientName = '';
     let queuedLineItems = [];
 
-    // Product Specifications Mapping
+    // Product Specifications Mapping (Aligned with Official Matrix Engineering Charts)
     const PRODUCT_SPECS_MAP = {
       'PX Plus': [
         '0.30 x 0.80', '0.30 x 1.00', '0.30 x 1.20',
@@ -1657,15 +1657,32 @@
         '0.70 x 1.90', '0.80 x 2.10'
       ],
       'Ultra SR': [
-        'Yellow 1.60',
-        'Green 1.60',
-        'Orange 1.60',
-        'Blue 1.60',
-        'Red 1.60',
-        'White 1.60',
-        'Black 1.60',
-        'Silver 1.60',
-        'Custom Spec'
+        '-- 7mm Centre --',
+        'Mauve 0.38 x 0.5mm',
+        'Silver 0.38 x 0.8mm',
+        'Buff 0.38 x 1.0mm',
+        'Violet 0.38 x 1.2mm',
+        'White 0.45 x 1.3mm',
+        'Sky 0.45 x 1.4mm',
+        'Lime 0.45 x 1.5mm',
+        'Yellow 0.50 x 1.6mm',
+        'Rose 0.50 x 1.7mm',
+        'Slate 0.55 x 1.9mm',
+        'Green 0.60 x 2.0mm',
+        'Brown 0.60 x 2.1mm',
+        'Red 0.70 x 2.3mm',
+        'Black 0.70 x 2.4mm',
+        'Blue 0.80 x 2.6mm',
+        'Orange 0.90 x 3.0mm',
+        '-- 7mm Off-Centre --',
+        'Off-Centre Silver 0.38 x 0.8mm',
+        'Off-Centre Buff 0.38 x 1.0mm',
+        'Off-Centre Violet 0.38 x 1.2mm',
+        'Off-Centre White 0.45 x 1.3mm',
+        'Off-Centre Sky 0.45 x 1.4mm',
+        'Off-Centre Lime 0.45 x 1.5mm',
+        'Off-Centre Yellow 0.50 x 1.6mm',
+        'Off-Centre Rose 0.50 x 1.7mm'
       ],
       'Phoenix XL': [
         '0.50 x 1.70', '0.50 x 1.90', '0.60 x 1.90', '0.60 x 2.10',
@@ -1683,9 +1700,9 @@
       ]
     };
 
-    // Amount (m) lengths based on packaging format
+    // Amount (m) lengths based strictly on packaging format
     const LENGTHS_MAP = {
-      'Box': ['24m', '36m', '50m', 'Custom'],
+      'Box': ['24m', '36m', '50m'],
       'Reel': ['36m', '45m', '60m']
     };
 
@@ -1695,7 +1712,7 @@
       const lengths = LENGTHS_MAP[unitType] || LENGTHS_MAP['Box'];
       
       metersSelect.innerHTML = lengths.map(len => `<option value="${len}">${len}</option>`).join('');
-      metersSelect.value = (unitType === 'Box') ? '36m' : '36m';
+      metersSelect.value = (unitType === 'Box') ? '24m' : '36m';
     }
 
     function handleRangeChange() {
@@ -1705,14 +1722,32 @@
       
       const specs = PRODUCT_SPECS_MAP[range] || PRODUCT_SPECS_MAP['PX Plus'];
       
-      // Formatting options nicely
       if (range === 'Ultra SR') {
-        sizeSelect.innerHTML = specs.map(s => `<option value="${s}">${s}</option>`).join('');
+        sizeSelect.innerHTML = specs.map(s => {
+          if (s.startsWith('--')) return `<option disabled>${s}</option>`;
+          return `<option value="${s}">${s}</option>`;
+        }).join('');
+        // Automatically default to White 0.45 x 1.3mm
+        sizeSelect.value = 'White 0.45 x 1.3mm';
       } else {
         sizeSelect.innerHTML = specs.map(s => `<option value="${s}">${s}${s.includes('Custom') || s.includes('Strip') ? '' : ' mm'}</option>`).join('');
       }
 
-      if (range === 'Exceed') {
+      handleSizeSpecChange();
+    }
+
+    function handleSizeSpecChange() {
+      const range = document.getElementById('lineRange').value;
+      const size = document.getElementById('lineSizeSelect').value;
+      const ptSelect = document.getElementById('linePt');
+
+      if (range === 'Ultra SR') {
+        if (size.includes('Orange')) {
+          ptSelect.value = '3 / 4 pt';
+        } else {
+          ptSelect.value = '2 / 3 pt';
+        }
+      } else if (range === 'Exceed') {
         ptSelect.value = 'Profile Strip';
       } else {
         if (ptSelect.value === 'Profile Strip') ptSelect.value = '2 / 3 pt';
@@ -1863,7 +1898,7 @@
 
         let html = '';
         orders.forEach(ord => {
-          const stage = ord.stage || 'RECEIVED';
+          const stage = ord.stage || 'Received';
           let stageClass = 'stage-received';
           if (stage.toUpperCase().includes('EXTRU') || stage.toUpperCase().includes('BOND') || stage.toUpperCase().includes('MILL')) stageClass = 'stage-production';
           if (stage.toUpperCase().includes('SHIP') || stage.toUpperCase().includes('DISPATCH')) stageClass = 'stage-shipped';
@@ -1927,8 +1962,8 @@
       const meters = document.getElementById('lineMeters').value;
       const qty = parseInt(document.getElementById('lineQty').value, 10);
 
-      if (!size) {
-        alert('Please select a specification size.');
+      if (!size || size.startsWith('--')) {
+        alert('Please select a valid specification.');
         return;
       }
       if (isNaN(qty) || qty < 10) {
