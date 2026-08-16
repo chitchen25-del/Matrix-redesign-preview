@@ -591,7 +591,7 @@
     .news-card-content h3 { font-size: 1.25rem; font-weight: 800; color: var(--matrix-navy-dark); line-height: 1.35; margin-bottom: 0.75rem; }
     .news-card-content p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem; }
 
-    /* ==================== CUSTOMER PORTAL & LIVE ORDER SYSTEM ==================== */
+    /* ==================== CUSTOMER PORTAL & ADMIN SYSTEM ==================== */
     .portal-layout { padding: clamp(2.5rem, 5vw, 4.5rem) 0; }
     
     .portal-login-shell {
@@ -1563,7 +1563,7 @@
       <form onsubmit="handleVerifyAdminPass(event)" style="text-align: left;">
         <div class="form-field">
           <label>Admin Passcode</label>
-          <input type="password" id="adminMasterPass" required placeholder="Enter passcode (matrix2026)">
+          <input type="password" id="adminMasterPass" required placeholder="Enter passcode">
         </div>
         <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
           <button type="submit" class="btn-solid-navy" style="flex: 1;">Unlock Desk</button>
@@ -2060,7 +2060,6 @@
       const email = document.getElementById('reqEmail').value.trim();
       const ref = document.getElementById('reqRef').value.trim();
 
-      // Log request in Supabase as Pending
       if (supabaseClient) {
         try {
           await supabaseClient
@@ -2076,7 +2075,6 @@
         }
       }
 
-      // Email notification to sales desk
       const subject = encodeURIComponent(`Client Portal Access Request: ${comp}`);
       const body = encodeURIComponent(
         `A customer has requested login details for the Matrix Engineering Client Hub:%0D%0A%0D%0A` +
@@ -2103,7 +2101,7 @@
     function handleVerifyAdminPass(e) {
       e.preventDefault();
       const pass = document.getElementById('adminMasterPass').value.trim();
-      if (pass === 'matrix2026') {
+      if (pass === 'Buster26') {
         closeAdminLoginModal();
         document.getElementById('portalLoginGateway').style.display = 'none';
         document.getElementById('portalDashboard').style.display = 'none';
