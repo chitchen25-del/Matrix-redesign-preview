@@ -117,6 +117,7 @@ async function loadLiveNews() {
               <div class="news-date">${post.date_text}</div>
               <h3>${post.title}</h3>
               <p style="white-space: pre-wrap;">${post.content}</p>
+              ${post.pdf_url ? `<a href="${post.pdf_url}" target="_blank" class="btn-outline-navy" style="width: 100%; min-height: 40px; font-size: 0.85rem; margin-top: 1rem;">Download Attached PDF</a>` : ''}
             </div>
           </div>
         </article>
@@ -134,13 +135,58 @@ async function handlePublishNews(e) {
   const cat = document.getElementById('newsCategory').value;
   const img = document.getElementById('newsImage').value;
   const content = document.getElementById('newsContent').value;
+  const fileInput = document.getElementById('newsPdfFile');
+  
+  let pdfUrl = null;
+
   if (supabaseClient) {
     try {
-      await supabaseClient.from('news_posts').insert([{ title: title, date_text: date, category: cat, image_url: img, content: content }]);
-      alert('News Published!'); 
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      submitBtn.textContent = 'Publishing...';
+      submitBtn.disabled = true;
+
+      if (fileInput && fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        const fileExt = file.name.split('.').pop();
+        const fileName = `news-${Date.now()}.${fileExt}`;
+        
+        const { data: uploadData, error: uploadError } = await supabaseClient.storage
+          .from('documents')
+          .upload(`news-files/${fileName}`, file);
+          
+        if (uploadError) throw uploadError;
+        
+        const { data: publicUrlData } = supabaseClient.storage
+          .from('documents')
+          .getPublicUrl(`news-files/${fileName}`);
+          
+        pdfUrl = publicUrlData.publicUrl;
+      }
+
+      const { error: dbError } = await supabaseClient.from('news_posts').insert([{ 
+        title: title, 
+        date_text: date, 
+        category: cat, 
+        image_url: img, 
+        content: content,
+        pdf_url: pdfUrl 
+      }]);
+      
+      if (dbError) throw dbError;
+
+      alert('News Published Successfully!'); 
       e.target.reset(); 
       loadLiveNews();
-    } catch(err) { alert('Failed to publish: ' + err.message); }
+      
+    } catch(err) { 
+      alert('Failed to publish: ' + err.message); 
+    } finally {
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      submitBtn.textContent = 'Publish Post to Website';
+      submitBtn.disabled = false;
+    }
+  } else {
+    alert('Database connection is currently offline.');
   }
 }
 
