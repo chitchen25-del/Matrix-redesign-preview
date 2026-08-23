@@ -77,11 +77,11 @@ nav.site-nav{display:flex;align-items:center;gap:0.2rem;}
 .team-card{background:#ffffff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:1.85rem;box-shadow:var(--shadow-card);display:flex;flex-direction:column;transition:transform 0.25s ease,box-shadow 0.25s ease;}
 .team-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:var(--matrix-navy);}
 .team-header{display:flex;align-items:center;gap:1.15rem;margin-bottom:1.25rem;}
-.team-avatar{width:70px;height:70px;border-radius:50%;object-fit:cover;object-position:center;border:2.5px solid var(--matrix-navy);background:var(--bg-slate);flex-shrink:0;}
+.team-avatar,.team-avatar-placeholder{width:70px;height:70px;border-radius:50%;object-fit:cover;object-position:center;border:2.5px solid var(--matrix-navy);background:var(--bg-slate);flex-shrink:0;}
+.team-avatar-placeholder{display:flex;align-items:center;justify-content:center;font-size:1.35rem;font-weight:800;color:var(--matrix-navy);font-family:var(--font-mono);}
 .team-titles h4{font-size:1.15rem;font-weight:800;color:var(--matrix-navy-dark);}
 .team-titles .role{font-size:0.8rem;font-weight:700;color:var(--matrix-red);text-transform:uppercase;letter-spacing:0.04em;}
 .team-bio{font-size:0.9rem;color:var(--text-muted);line-height:1.65;}
-/* PRODUCTS CATALOG */
 .products-layout{padding:clamp(2.5rem,5vw,4.5rem) 0;}
 .prod-grid-large{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2.5rem;}
 @media (max-width:480px){.prod-grid-large{grid-template-columns:1fr;}}
@@ -100,7 +100,6 @@ nav.site-nav{display:flex;align-items:center;gap:0.2rem;}
 .spec-table-compact td{padding:0.5rem 0.75rem;}
 .spec-table-compact td.k{color:var(--text-dim);font-weight:600;}
 .spec-table-compact td.v{text-align:right;font-weight:700;color:var(--matrix-navy-dark);font-family:var(--font-mono);}
-/* DEDICATED PRODUCT DETAIL PAGES */
 .detail-layout{padding:clamp(1.5rem,4vw,3.5rem) 0 clamp(3rem,6vw,5rem);}
 .detail-grid-top{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,3vw,3rem);align-items:start;margin-bottom:clamp(2.5rem,5vw,4rem);}
 @media (max-width:900px){.detail-grid-top{grid-template-columns:1fr;}}
@@ -164,7 +163,7 @@ nav.site-nav{display:flex;align-items:center;gap:0.2rem;}
 .news-layout{padding:clamp(2.5rem,5vw,4.5rem) 0;}
 .news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2rem;}
 @media (max-width:480px){.news-grid{grid-template-columns:1fr;}}
-.news-card{background:#ffffff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow:hidden;display:flex;flex-direction:column;transition:all 0.25s ease;}
+.news-card{background:#ffffff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow:hidden;display:flex;flex-direction:column;transition:all 0.2s ease;}
 .news-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:var(--matrix-navy);}
 .news-card-img{height:210px;position:relative;overflow:hidden;background:var(--bg-slate);}
 .news-card-img img{width:100%;height:100%;object-fit:cover;}
@@ -964,6 +963,7 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
           <a href="brochure.html" target="_blank" class="btn-outline-navy" style="color: #fff; border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.05);">View Web Version</a>
         </div>
       </div>
+
     </div>
   </main>
 
@@ -1031,17 +1031,25 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
     <div class="page-hero">
       <div class="container">
         <div class="section-head" style="margin-bottom: 0;">
-          <span class="section-eyebrow">Industry Innovation & Regulation</span>
-          <h2 class="section-title">Latest News & PPWR Compliance</h2>
-          <p class="section-desc">How Matrix Engineering is leading the transition to sustainable packaging consumables under the new EU Packaging & Packaging Waste Regulation.</p>
+          <span class="section-eyebrow">Company Announcements</span>
+          <h2 class="section-title">Latest News</h2>
+          <p class="section-desc">Updates, expansions, and compliance milestones from the Matrix Engineering facility.</p>
         </div>
       </div>
     </div>
     <div class="container news-layout">
-      <div class="news-grid">
+      <div class="news-grid" id="liveNewsGrid">
         <article class="news-card">
-          <div class="news-card-img"><img src="https://www.thimm.com/fileadmin/_processed_/c/2/csm_faltkarton-klein-kaufen-kaufen-thimm_5d701ced62.jpg" alt="Recycled Cardboard Packaging Boxes"><span class="news-badge">Regulatory Milestone</span></div>
-          <div class="news-card-content"><div><div class="news-date">August 2026 • Sustainability Report</div><h3>Matrix Engineering Achieves Full PPWR 2026 Compliance</h3><p>Matrix Engineering confirms 100% compliance across our synthetic and steel matrix ranges with zero hazardous chemicals.</p></div><button class="btn-outline-navy" style="width: 100%; min-height: 40px; font-size: 0.85rem;" onclick="navigateTo('contact')">Read Regulatory Whitepaper</button></div>
+          <div class="news-card-img"><img src="https://www.thimm.com/fileadmin/_processed_/c/2/csm_faltkarton-klein-kaufen-kaufen-thimm_5d701ced62.jpg" alt="Packaging Box"><span class="news-badge">Regulatory Milestone</span></div>
+          <div class="news-card-content"><div><div class="news-date">August 2026</div><h3>Full PPWR 2026 Compliance</h3><p>Matrix Engineering confirms 100% compliance across our synthetic and steel matrix ranges with zero hazardous chemicals.</p></div></div>
+        </article>
+        <article class="news-card">
+          <div class="news-card-img"><img src="https://www.coexpan.com/wp-content/uploads/2025/05/DSC0476.webp" alt="Extrusion Facility"><span class="news-badge" style="background: var(--matrix-navy);">Facility Upgrade</span></div>
+          <div class="news-card-content"><div><div class="news-date">July 2026</div><h3>Closed-Loop Polymer Recovery</h3><p>Our Ballasalla plant has implemented closed-loop post-industrial polymer recovery. All off-cuts are re-granulated into zero-waste secondary cycles.</p></div></div>
+        </article>
+        <article class="news-card">
+          <div class="news-card-img"><img src="matrix-boxes-stack.jpg" alt="Matrix Engineering Boxes" onerror="this.src='https://i.ebayimg.com/00/s/NzM4WDE2MDA=/z/98AAAOSwqwReh35H/$_57.JPG?set_id=8800005007'"><span class="news-badge">Innovation</span></div>
+          <div class="news-card-content"><div><div class="news-date">June 2026</div><h3>PFAS-Free Adhesive Backing</h3><p>Meeting the stringent hazardous chemical restrictions of PPWR Article 5 ahead of deadlines with our new clean-peel formulations.</p></div></div>
         </article>
       </div>
     </div>
@@ -1135,10 +1143,22 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
           <div style="background: var(--bg-light); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.5rem;">
             <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.5rem;">Issue Client Access PIN</h4>
             <form onsubmit="handleAdminCreateUser(event)">
-              <div class="form-field"><label>Company Legal Name</label><input type="text" id="adminNewCompany" required placeholder="Exact Company Name"></div>
-              <div class="form-field"><label>Primary Contact Email</label><input type="email" id="adminNewEmail" required placeholder="buyer@client.com"></div>
-              <div class="form-field"><label>Assign Access PIN</label><input type="text" id="adminNewPIN" required value="MX2026" placeholder="e.g. MX2026"></div>
+              <div class="form-field"><label>Company Name</label><input type="text" id="adminNewCompany" required placeholder="Exact Company Name"></div>
+              <div class="form-field"><label>Contact Email</label><input type="email" id="adminNewEmail" required placeholder="buyer@client.com"></div>
+              <div class="form-field"><label>Access PIN</label><input type="text" id="adminNewPIN" required value="MX2026" placeholder="e.g. MX2026"></div>
               <button type="submit" class="btn-solid-navy" style="width: 100%; min-height: 42px; font-size: 0.9rem;">Save & Authorize Access</button>
+            </form>
+            
+            <!-- LIVE NEWS PUBLISHER FORM -->
+            <hr style="border:none; border-top:1px solid var(--border-subtle); margin:2rem 0;">
+            <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.5rem;">Publish News Update</h4>
+            <form onsubmit="handlePublishNews(event)">
+               <div class="form-field"><label>Headline</label><input type="text" id="newsTitle" required placeholder="e.g. New Equipment Installed"></div>
+               <div class="form-field"><label>Date</label><input type="text" id="newsDate" required placeholder="e.g. August 2026"></div>
+               <div class="form-field"><label>Category Tag</label><input type="text" id="newsCategory" required placeholder="e.g. Facility Upgrade"></div>
+               <div class="form-field"><label>Image URL (Optional)</label><input type="url" id="newsImage" placeholder="https://image-link.jpg"></div>
+               <div class="form-field"><label>Content</label><textarea id="newsContent" required placeholder="Write the update here..."></textarea></div>
+               <button type="submit" class="btn-solid-red" style="width: 100%;">Publish Post to Website</button>
             </form>
           </div>
           <div>
@@ -1285,7 +1305,33 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
     }
 
     window.addEventListener('popstate', () => { navigateTo(window.location.hash.replace('#', '') || 'home'); });
-    window.addEventListener('DOMContentLoaded', () => { navigateTo(window.location.hash.replace('#', '') || 'home'); handleRangeChange(); handleUnitTypeChange(); });
+    window.addEventListener('DOMContentLoaded', () => { navigateTo(window.location.hash.replace('#', '') || 'home'); handleRangeChange(); handleUnitTypeChange(); loadLiveNews(); });
+
+    async function loadLiveNews() {
+      const grid = document.getElementById('liveNewsGrid');
+      if (!supabaseClient) return;
+      try {
+        const { data, error } = await supabaseClient.from('news_posts').select('*').order('created_at', { ascending: false });
+        if (!error && data && data.length > 0) {
+          grid.innerHTML = data.map(post => `<article class="news-card"><div class="news-card-img"><img src="${post.image_url || 'https://www.coexpan.com/wp-content/uploads/2025/05/DSC0476.webp'}" alt="News Image"><span class="news-badge" style="background:var(--matrix-navy);">${post.category}</span></div><div class="news-card-content"><div><div class="news-date">${post.date_text}</div><h3>${post.title}</h3><p style="white-space: pre-wrap;">${post.content}</p></div></div></article>`).join('');
+        }
+      } catch (err) {}
+    }
+
+    async function handlePublishNews(e) {
+      e.preventDefault();
+      const title = document.getElementById('newsTitle').value;
+      const date = document.getElementById('newsDate').value;
+      const cat = document.getElementById('newsCategory').value;
+      const img = document.getElementById('newsImage').value;
+      const content = document.getElementById('newsContent').value;
+      if (supabaseClient) {
+        try {
+          await supabaseClient.from('news_posts').insert([{ title: title, date_text: date, category: cat, image_url: img, content: content }]);
+          alert('News Published!'); e.target.reset(); loadLiveNews();
+        } catch(err) { alert('Failed to publish: ' + err.message); }
+      }
+    }
 
     async function handlePortalLogin(e) {
       e.preventDefault();
