@@ -129,7 +129,6 @@ nav.site-nav{display:flex;align-items:center;gap:0.2rem;}
 .color-swatch-bar{width:50px;height:12px;border-radius:3px;display:block;border:1px solid rgba(0,0,0,0.12);box-shadow:0 1px 3px rgba(0,0,0,0.08);}
 .color-pink{background:#F472B6;} .color-navy{background:#182B6B;} .color-lilac{background:#C084FC;} .color-red{background:#FF2E17;} .color-grey{background:#94A3B8;} .color-yellow{background:#EAB308;} .color-magenta{background:#DB2777;} .color-orange{background:#F97316;} .color-green{background:#10B981;} .color-sky{background:#38BDF8;} .color-lime{background:#84CC16;} .color-mauve{background:#8B5CF6;} .color-silver{background:#E2E8F0;} .color-buff{background:#FDE047;} .color-violet{background:#7C3AED;} .color-white{background:#FFFFFF;border:1.5px solid #CBD5E1;} .color-rose{background:#FB7185;} .color-slate{background:#64748B;} .color-brown{background:#92400E;} .color-black{background:#0F172A;} .color-blue{background:#2563EB;} .color-cream{background:#FDF5E6;}
 .box-yield-badge{display:inline-block;background:var(--bg-slate);color:var(--matrix-navy);font-size:0.78rem;font-weight:800;padding:6px 12px;border-radius:var(--radius-sm);font-family:var(--font-mono);margin-top:0.5rem;}
-/* MISC VIEWS */
 .technical-layout{padding:clamp(2.5rem,5vw,4.5rem) 0;}
 .calc-box-wrap{background:#ffffff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:clamp(1.5rem,4vw,3rem);display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-bottom:3.5rem;}
 @media (max-width:900px){.calc-box-wrap{grid-template-columns:1fr;}}
@@ -147,7 +146,6 @@ nav.site-nav{display:flex;align-items:center;gap:0.2rem;}
 .guide-card .step-badge{font-family:var(--font-mono);font-size:0.78rem;font-weight:800;color:var(--matrix-red);margin-bottom:0.4rem;}
 .guide-card h4{font-size:1.05rem;font-weight:800;color:var(--matrix-navy);margin-bottom:0.4rem;}
 .guide-card p{font-size:0.88rem;color:var(--text-muted);}
-/* ACCESSORIES VIEW UPDATED */
 .acc-layout{padding:clamp(2.5rem,5vw,4.5rem) 0;}
 .acc-cards-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;}
 .acc-detail-card{background:#ffffff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:clamp(1.5rem,4vw,3rem);box-shadow:var(--shadow-card);display:flex;flex-direction:column;gap:1.5rem;}
@@ -159,11 +157,10 @@ nav.site-nav{display:flex;align-items:center;gap:0.2rem;}
 .acc-specs-table th{background:var(--matrix-navy-dark);color:#fff;text-align:left;padding:0.75rem 1rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.05em;}
 .acc-specs-table td{padding:0.75rem 1rem;border-bottom:1px solid var(--border-subtle);color:var(--text-main);font-weight:600;}
 .acc-specs-table tr:last-child td{border-bottom:none;}
-/* PORTAL AND NEWS */
 .news-layout{padding:clamp(2.5rem,5vw,4.5rem) 0;}
 .news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2rem;}
 @media (max-width:480px){.news-grid{grid-template-columns:1fr;}}
-.news-card{background:#ffffff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow:hidden;display:flex;flex-direction:column;transition:all 0.2s ease;}
+.news-card{background:#ffffff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow:hidden;display:flex;flex-direction:column;transition:all 0.25s ease;}
 .news-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:var(--matrix-navy);}
 .news-card-img{height:210px;position:relative;overflow:hidden;background:var(--bg-slate);}
 .news-card-img img{width:100%;height:100%;object-fit:cover;}
@@ -180,22 +177,31 @@ nav.site-nav{display:flex;align-items:center;gap:0.2rem;}
 .portal-tabs-nav{display:flex;gap:1rem;border-bottom:2px solid var(--border-subtle);margin-bottom:2rem;}
 .portal-tab-btn{padding:0.75rem 1.25rem;font-weight:800;font-size:0.95rem;color:var(--text-muted);border:none;background:transparent;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all 0.2s;}
 .portal-tab-btn.active-tab{color:var(--matrix-navy);border-bottom-color:var(--matrix-red);}
+/* JOB CARD UPGRADES */
 .factory-order-card{background:#ffffff;border:1.5px solid var(--border-medium);border-radius:var(--radius-md);padding:1.5rem;margin-bottom:1.5rem;box-shadow:var(--shadow-sm);}
-.factory-card-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;border-bottom:1px solid var(--border-subtle);padding-bottom:0.85rem;margin-bottom:1rem;}
+.factory-card-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.85rem;}
 .wo-title-badge{font-family:var(--font-mono);font-weight:900;font-size:1.15rem;color:var(--matrix-navy);}
-.stage-pill{font-family:var(--font-mono);font-size:0.75rem;font-weight:800;padding:3px 10px;border-radius:var(--radius-sm);text-transform:uppercase;letter-spacing:0.05em;}
-.stage-received{background:rgba(24,43,107,0.1);color:var(--matrix-navy);border-left:3px solid var(--matrix-navy);}
-.stage-production{background:rgba(255,46,23,0.1);color:var(--matrix-red);border-left:3px solid var(--matrix-red);}
-.stage-shipped{background:rgba(16,185,129,0.1);color:var(--matrix-green-dark);border-left:3px solid var(--matrix-green);}
+.stage-pill{font-family:var(--font-mono);font-size:0.75rem;font-weight:800;padding:4px 12px;border-radius:999px;text-transform:uppercase;letter-spacing:0.05em;}
+.stage-received{background:var(--matrix-navy);color:#ffffff;}
+.stage-production{background:var(--matrix-red);color:#ffffff;}
+.stage-shipped{background:var(--matrix-green);color:#ffffff;}
+.job-progress-track{width:100%;height:6px;background:var(--border-subtle);border-radius:3px;margin:0 0 1.25rem 0;overflow:hidden;}
+.job-progress-fill{height:100%;border-radius:3px;transition:width 0.4s ease;}
+.fill-received{width:25%;background:var(--matrix-navy);}
+.fill-production{width:65%;background:var(--matrix-red);}
+.fill-shipped{width:100%;background:var(--matrix-green);}
+/* SUMMARY CARD UPGRADES */
 .new-order-panel{background:var(--bg-light);border:1.5px solid var(--border-subtle);border-radius:var(--radius-lg);padding:clamp(1.5rem,3vw,2.25rem);}
 .order-form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;margin-bottom:1.25rem;}
 .item-builder-box{background:#ffffff;border:1.5px solid var(--border-medium);border-radius:var(--radius-md);padding:1.25rem;margin-bottom:1.25rem;}
 .item-builder-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:0.85rem;align-items:end;}
 .item-builder-grid label{font-size:0.75rem;font-weight:800;color:var(--matrix-navy);text-transform:uppercase;margin-bottom:4px;display:block;}
 .item-builder-grid input,.item-builder-grid select{width:100%;padding:0.65rem 0.75rem;border:1.5px solid var(--border-medium);border-radius:var(--radius-sm);font-weight:700;font-size:0.9rem;background:#fff;}
-.line-items-preview-table{width:100%;border-collapse:collapse;font-size:0.88rem;margin-top:1rem;background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-sm);}
-.line-items-preview-table th{background:var(--bg-slate);padding:0.65rem 0.85rem;text-align:left;font-weight:800;color:var(--matrix-navy);border-bottom:1px solid var(--border-subtle);}
+.line-items-preview-table{width:100%;border-collapse:collapse;font-size:0.88rem;margin-top:1rem;background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-sm);overflow:hidden;}
+.line-items-preview-table th{background:var(--matrix-navy-dark);padding:0.75rem 0.85rem;text-align:left;font-weight:800;color:#ffffff;border-bottom:none;}
 .line-items-preview-table td{padding:0.75rem 0.85rem;border-bottom:1px solid var(--border-subtle);font-weight:600;}
+@keyframes rowFlash{0%{background-color:rgba(16,185,129,0.3);}100%{background-color:transparent;}}
+.row-flash{animation:rowFlash 1.2s ease-out forwards;}
 .modal-backdrop{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(13,23,59,0.8);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:2000;padding:1.5rem;}
 .modal-card{background:#ffffff;border-radius:var(--radius-lg);max-width:580px;width:100%;padding:2.25rem;box-shadow:var(--shadow-hover);text-align:center;animation:fadeIn 0.25s ease-out;}
 .admin-data-table{width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:1rem;background:#fff;}
@@ -963,7 +969,6 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
           <a href="brochure.html" target="_blank" class="btn-outline-navy" style="color: #fff; border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.05);">View Web Version</a>
         </div>
       </div>
-
     </div>
   </main>
 
@@ -1038,9 +1043,30 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
       </div>
     </div>
     <div class="container news-layout">
-      <!-- UPDATED NEWS GRID CONTAINER -->
-      <div class="news-grid" id="liveNewsGrid" style="display: flex; flex-direction: column; gap: 1.25rem; max-width: 800px; margin: 0 auto;">
-        <div style="text-align: center; color: var(--text-muted); width: 100%;">Loading news documents...</div>
+      <div class="news-grid" id="liveNewsGrid">
+        <!-- FIRST ARTICLE: INCLUDES THE COMPLIANT STAMP OVERLAY -->
+        <article class="news-card">
+          <div class="news-card-img" style="position: relative;">
+            <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/image_19.png" alt="PPWR Compliance" onerror="this.src='https://www.thimm.com/fileadmin/_processed_/c/2/csm_faltkarton-klein-kaufen-kaufen-thimm_5d701ced62.jpg'">
+            <!-- CSS Stamp -->
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-15deg); color: #FF2E17; border: 4px solid #FF2E17; font-size: 1.8rem; font-weight: 900; padding: 0.2rem 1rem; text-transform: uppercase; letter-spacing: 0.1em; border-radius: 8px; background: rgba(255, 255, 255, 0.85); box-shadow: 0 4px 10px rgba(0,0,0,0.15); pointer-events: none;">COMPLIANT</div>
+            <span class="news-badge">Regulatory Milestone</span>
+          </div>
+          <div class="news-card-content">
+            <div><div class="news-date">August 2026</div><h3>Full PPWR 2026 Compliance</h3><p>Matrix Engineering confirms 100% compliance across our synthetic and steel matrix ranges with zero hazardous chemicals.</p></div>
+            <button class="btn-outline-navy" style="width: 100%; min-height: 40px; font-size: 0.85rem;" onclick="navigateTo('contact')">Read Regulatory Whitepaper</button>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-card-img"><img src="https://www.coexpan.com/wp-content/uploads/2025/05/DSC0476.webp" alt="Extrusion Facility"><span class="news-badge" style="background: var(--matrix-navy);">Facility Upgrade</span></div>
+          <div class="news-card-content"><div><div class="news-date">July 2026</div><h3>Closed-Loop Polymer Recovery</h3><p>Our Ballasalla plant has implemented closed-loop post-industrial polymer recovery. All off-cuts are re-granulated into zero-waste secondary cycles.</p></div></div>
+        </article>
+        
+        <article class="news-card">
+          <div class="news-card-img"><img src="matrix-boxes-stack.jpg" alt="Matrix Engineering Boxes" onerror="this.src='https://i.ebayimg.com/00/s/NzM4WDE2MDA=/z/98AAAOSwqwReh35H/$_57.JPG?set_id=8800005007'"><span class="news-badge">Innovation</span></div>
+          <div class="news-card-content"><div><div class="news-date">June 2026</div><h3>PFAS-Free Adhesive Backing</h3><p>Meeting the stringent hazardous chemical restrictions of PPWR Article 5 ahead of deadlines with our new clean-peel formulations.</p></div></div>
+        </article>
       </div>
     </div>
   </main>
@@ -1138,20 +1164,16 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
               <div class="form-field"><label>Access PIN</label><input type="text" id="adminNewPIN" required value="MX2026" placeholder="e.g. MX2026"></div>
               <button type="submit" class="btn-solid-navy" style="width: 100%; min-height: 42px; font-size: 0.9rem;">Save & Authorize Access</button>
             </form>
-            
             <hr style="border:none; border-top:1px solid var(--border-subtle); margin:2rem 0;">
-            <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.5rem;">Publish PDF News Update</h4>
-            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">Upload a PDF to publish it directly to the Latest News page.</p>
-            <div class="form-field">
-              <label for="pdf-title">News Title</label>
-              <input type="text" id="pdf-title" required placeholder="e.g. August PPWR Update">
-            </div>
-            <div class="form-field">
-              <label for="pdf-file">Select PDF File</label>
-              <input type="file" id="pdf-file" accept="application/pdf" required style="padding: 7px; background: #fff;">
-            </div>
-            <button onclick="uploadPDFNews()" class="btn-solid-red" style="width: 100%;">Publish PDF to Website</button>
-            <p id="upload-status" style="margin-top: 15px; font-weight: bold; font-size: 0.9rem; text-align: center;"></p>
+            <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.5rem;">Publish News Update</h4>
+            <form onsubmit="handlePublishNews(event)">
+               <div class="form-field"><label>Headline</label><input type="text" id="newsTitle" required placeholder="e.g. New Equipment Installed"></div>
+               <div class="form-field"><label>Date</label><input type="text" id="newsDate" required placeholder="e.g. August 2026"></div>
+               <div class="form-field"><label>Category Tag</label><input type="text" id="newsCategory" required placeholder="e.g. Facility Upgrade"></div>
+               <div class="form-field"><label>Image URL (Optional)</label><input type="url" id="newsImage" placeholder="https://image-link.jpg"></div>
+               <div class="form-field"><label>Content</label><textarea id="newsContent" required placeholder="Write the update here..."></textarea></div>
+               <button type="submit" class="btn-solid-red" style="width: 100%;">Publish Post to Website</button>
+            </form>
           </div>
           <div>
             <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.5rem;">Authorized Clients</h4>
@@ -1299,98 +1321,29 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
     window.addEventListener('popstate', () => { navigateTo(window.location.hash.replace('#', '') || 'home'); });
     window.addEventListener('DOMContentLoaded', () => { navigateTo(window.location.hash.replace('#', '') || 'home'); handleRangeChange(); handleUnitTypeChange(); loadLiveNews(); });
 
-    // --- UPDATED ELEGANT NEWS RENDERER ---
     async function loadLiveNews() {
       const grid = document.getElementById('liveNewsGrid');
-      if (!supabaseClient) {
-        grid.innerHTML = '<p>Database not connected.</p>';
-        return;
-      }
+      if (!supabaseClient) return;
       try {
-        const { data, error } = await supabaseClient
-          .from('news')
-          .select('*')
-          .order('created_at', { ascending: false });
-
-        if (error) throw error;
-
-        if (data.length === 0) {
-          grid.innerHTML = '<p style="text-align:center; width:100%;">No news updates yet.</p>';
-          return;
+        const { data, error } = await supabaseClient.from('news_posts').select('*').order('created_at', { ascending: false });
+        if (!error && data && data.length > 0) {
+          grid.innerHTML = data.map(post => `<article class="news-card"><div class="news-card-img"><img src="${post.image_url || 'https://www.coexpan.com/wp-content/uploads/2025/05/DSC0476.webp'}" alt="News Image"><span class="news-badge" style="background:var(--matrix-navy);">${post.category}</span></div><div class="news-card-content"><div><div class="news-date">${post.date_text}</div><h3>${post.title}</h3><p style="white-space: pre-wrap;">${post.content}</p></div></div></article>`).join('');
         }
-
-        let html = '';
-        data.forEach(item => {
-          const dateStr = item.created_at ? new Date(item.created_at).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }) : 'August 2026';
-          
-          html += `
-            <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 1.75rem 2rem; box-shadow: var(--shadow-card); transition: transform 0.2s ease, border-color 0.2s ease;">
-              <div style="font-size: 0.75rem; color: var(--matrix-red); font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem;">${dateStr} • Official Release</div>
-              <h3 style="margin: 0;">
-                <a href="${item.content}" target="_blank" style="color: var(--matrix-navy); text-decoration: none; font-size: 1.25rem; font-weight: 900; line-height: 1.4; display: inline-flex; align-items: center; gap: 0.5rem; transition: color 0.2s;">
-                  ${item.title} <span style="font-size: 1rem; color: var(--matrix-red);">→</span>
-                </a>
-              </h3>
-            </div>
-          `;
-        });
-
-        grid.innerHTML = html;
-
-      } catch (error) {
-        grid.innerHTML = `<p style="color: red; width: 100%; text-align: center;">Failed to load news: ${error.message}</p>`;
-      }
+      } catch (err) {}
     }
 
-    // --- PDF UPLOAD LOGIC ---
-    async function uploadPDFNews() {
-      const titleInput = document.getElementById('pdf-title').value;
-      const fileInput = document.getElementById('pdf-file').files[0];
-      const statusText = document.getElementById('upload-status');
-
-      if (!titleInput || !fileInput) {
-        statusText.innerText = "Please enter a title and select a PDF file.";
-        statusText.style.color = "var(--matrix-red)";
-        return;
-      }
-
-      statusText.innerText = "Uploading... please wait.";
-      statusText.style.color = "var(--matrix-navy)";
-
-      const cleanTitle = titleInput.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
-      const fileName = `${Date.now()}-${cleanTitle}.pdf`;
-
-      try {
-        const { data: uploadData, error: uploadError } = await supabaseClient.storage
-          .from('news-pdfs')
-          .upload(fileName, fileInput);
-
-        if (uploadError) throw uploadError;
-
-        const { data: publicUrlData } = supabaseClient.storage
-          .from('news-pdfs')
-          .getPublicUrl(fileName);
-          
-        const pdfUrl = publicUrlData.publicUrl;
-
-        const { data: dbData, error: dbError } = await supabaseClient
-          .from('news') 
-          .insert([
-            { title: titleInput, content: pdfUrl } 
-          ]);
-
-        if (dbError) throw dbError;
-
-        statusText.innerText = "Success! Your PDF is live.";
-        statusText.style.color = "var(--matrix-green)";
-        document.getElementById('pdf-title').value = '';
-        document.getElementById('pdf-file').value = '';
-        
-        loadLiveNews();
-
-      } catch (error) {
-        statusText.innerText = "Error: " + error.message;
-        statusText.style.color = "var(--matrix-red)";
+    async function handlePublishNews(e) {
+      e.preventDefault();
+      const title = document.getElementById('newsTitle').value;
+      const date = document.getElementById('newsDate').value;
+      const cat = document.getElementById('newsCategory').value;
+      const img = document.getElementById('newsImage').value;
+      const content = document.getElementById('newsContent').value;
+      if (supabaseClient) {
+        try {
+          await supabaseClient.from('news_posts').insert([{ title: title, date_text: date, category: cat, image_url: img, content: content }]);
+          alert('News Published!'); e.target.reset(); loadLiveNews();
+        } catch(err) { alert('Failed to publish: ' + err.message); }
       }
     }
 
@@ -1442,12 +1395,12 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
         }
         let html = '';
         orders.forEach(ord => {
-          const stage = ord.stage || 'Received'; let stageClass = 'stage-received';
-          if (stage.toUpperCase().includes('EXTRU') || stage.toUpperCase().includes('BOND') || stage.toUpperCase().includes('MILL')) stageClass = 'stage-production';
-          if (stage.toUpperCase().includes('SHIP') || stage.toUpperCase().includes('DISPATCH')) stageClass = 'stage-shipped';
+          const stage = ord.stage || 'Received'; let stageClass = 'stage-received'; let progressClass = 'fill-received';
+          if (stage.toUpperCase().includes('EXTRU') || stage.toUpperCase().includes('BOND') || stage.toUpperCase().includes('MILL') || stage.toUpperCase().includes('PROD')) { stageClass = 'stage-production'; progressClass = 'fill-production'; }
+          if (stage.toUpperCase().includes('SHIP') || stage.toUpperCase().includes('DISPATCH')) { stageClass = 'stage-shipped'; progressClass = 'fill-shipped'; }
           const itemsCount = ord.line_items ? ord.line_items.length : 0; let totalBoxes = 0;
           if (ord.line_items) { ord.line_items.forEach(li => { totalBoxes += (parseFloat(li.qty) || 0); }); }
-          html += `<div class="factory-order-card"><div class="factory-card-header"><div><span class="wo-title-badge">${ord.id || ord.reference || 'WO-0000'}</span><span style="color:var(--text-muted);font-size:0.88rem;margin-left:0.5rem;">${ord.customer || activeClientName}</span></div><div style="display:flex;align-items:center;gap:0.75rem;"><span class="stage-pill ${stageClass}">${stage}</span><span style="font-size:0.85rem;color:var(--text-dim);font-weight:700;font-family:var(--font-mono);">${itemsCount} lines • ${totalBoxes} boxes</span></div></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;font-size:0.85rem;margin-bottom:1rem;"><div><span style="color:var(--text-dim);font-weight:700;">Order Date:</span> <strong>${ord.order_date || 'In Queue'}</strong></div><div><span style="color:var(--text-dim);font-weight:700;">Requested Due:</span> <strong>${ord.due_date || 'Standard'}</strong></div><div><span style="color:var(--text-dim);font-weight:700;">Shipping Ref:</span> <strong>${ord.shipped_date ? 'Dispatched ' + ord.shipped_date : 'Awaiting Freight'}</strong></div></div>${ord.line_items && ord.line_items.length > 0 ? `<table class="line-items-preview-table"><thead><tr><th>Product Description</th><th>Quantity (Boxes/Units)</th><th>Status</th></tr></thead><tbody>${ord.line_items.map(li => `<tr><td><strong>${li.description || 'Matrix Profile'}</strong></td><td style="font-family:var(--font-mono);font-weight:800;">${li.qty} Boxes</td><td><span style="color:var(--matrix-green);font-weight:700;">● Production Tracked</span></td></tr>`).join('')}</tbody></table>` : '<p style="font-size:0.85rem;color:var(--text-dim);">Specifications logged in workshop tracker.</p>'}</div>`;
+          html += `<div class="factory-order-card"><div class="factory-card-header"><div><span class="wo-title-badge">${ord.id || ord.reference || 'WO-0000'}</span><span style="color:var(--text-muted);font-size:0.88rem;margin-left:0.5rem;">${ord.customer || activeClientName}</span></div><div style="display:flex;align-items:center;gap:0.75rem;"><span class="stage-pill ${stageClass}">${stage}</span><span style="font-size:0.85rem;color:var(--text-dim);font-weight:700;font-family:var(--font-mono);">${itemsCount} lines • ${totalBoxes} boxes</span></div></div><div class="job-progress-track"><div class="job-progress-fill ${progressClass}"></div></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;font-size:0.85rem;margin-bottom:1rem;"><div><span style="color:var(--text-dim);font-weight:700;">Order Date:</span> <strong>${ord.order_date || 'In Queue'}</strong></div><div><span style="color:var(--text-dim);font-weight:700;">Requested Due:</span> <strong>${ord.due_date || 'Standard'}</strong></div><div><span style="color:var(--text-dim);font-weight:700;">Shipping Ref:</span> <strong>${ord.shipped_date ? 'Dispatched ' + ord.shipped_date : 'Awaiting Freight'}</strong></div></div>${ord.line_items && ord.line_items.length > 0 ? `<table class="line-items-preview-table"><thead><tr><th>Product Description</th><th>Quantity (Boxes/Units)</th><th>Status</th></tr></thead><tbody>${ord.line_items.map(li => `<tr><td><strong>${li.description || 'Matrix Profile'}</strong></td><td style="font-family:var(--font-mono);font-weight:800;">${li.qty} Boxes</td><td><span style="color:var(--matrix-green);font-weight:700;">● Production Tracked</span></td></tr>`).join('')}</tbody></table>` : '<p style="font-size:0.85rem;color:var(--text-dim);">Specifications logged in workshop tracker.</p>'}</div>`;
         });
         listContainer.innerHTML = html;
       } catch (err) {}
@@ -1467,7 +1420,10 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
     function renderQueuedLineItems() {
       const tbody = document.getElementById('lineItemsTableBody');
       if (queuedLineItems.length === 0) { tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--text-dim);padding:1rem;">No lines added yet.</td></tr>`; return; }
-      tbody.innerHTML = queuedLineItems.map((item, idx) => `<tr><td><strong>${item.range} ${item.size}</strong></td><td>${item.pt}</td><td>${item.meters} / ${item.unitType}</td><td style="font-family:var(--font-mono);font-weight:800;color:var(--matrix-navy);">${item.qty} Boxes</td><td style="text-align:right;"><button type="button" onclick="removeQueuedItem(${idx})" style="color:var(--matrix-red);border:none;background:none;font-weight:800;cursor:pointer;">Remove</button></td></tr>`).join('');
+      tbody.innerHTML = queuedLineItems.map((item, idx) => {
+        let flashClass = (idx === queuedLineItems.length - 1) ? 'row-flash' : '';
+        return `<tr class="${flashClass}"><td><strong>${item.range} ${item.size}</strong></td><td>${item.pt}</td><td>${item.meters} / ${item.unitType}</td><td style="font-family:var(--font-mono);font-weight:800;color:var(--matrix-navy);">${item.qty} Boxes</td><td style="text-align:right;"><button type="button" onclick="removeQueuedItem(${idx})" style="color:var(--matrix-red);border:none;background:none;font-weight:800;cursor:pointer;">Remove</button></td></tr>`;
+      }).join('');
     }
 
     async function handlePlaceNewOrder(e) {
