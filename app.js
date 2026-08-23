@@ -107,45 +107,18 @@ async function loadLiveNews() {
     const { data, error } = await supabaseClient.from('news_posts').select('*').order('created_at', { ascending: false });
     if (!error && data && data.length > 0) {
       grid.innerHTML = data.map(post => {
-        // DYNAMIC PDF TITLE UN-SLUGGING LOGIC
-        let beautifulBtnText = "Download Attached PDF";
-        if (post.pdf_url) {
-          try {
-            // Get the raw filename from the URL
-            const urlParts = post.pdf_url.split('/');
-            const rawFileName = decodeURIComponent(urlParts[urlParts.length - 1]);
-            
-            // Isolate the original name (remove the prepended timestamp)
-            const namePart = rawFileName.includes('---') ? rawFileName.split('---').slice(1).join('---') : rawFileName;
-            
-            // Remove the .pdf extension
-            const nameWithoutExt = namePart.replace(/\.[^/.]+$/, "");
-            
-            // Replace hyphens and underscores with spaces
-            const unsluggedName = nameWithoutExt.replace(/[-_]/g, ' ');
-            
-            // Capitalize the first letter of each word
-            const capitalizedName = unsluggedName.replace(/\b\w/g, letter => letter.toUpperCase());
-            
-            beautifulBtnText = `Download: ${capitalizedName}`;
-          } catch (e) {
-            // Fallback just in case parsing fails
-            beautifulBtnText = "Download Attached PDF";
-          }
-        }
-
         return `
         <article class="news-card">
           <div class="news-card-img">
-            <img src="${post.image_url || 'https://www.coexpan.com/wp-content/uploads/2025/05/DSC0476.webp'}" alt="News Image">
-            <span class="news-badge" style="background:var(--matrix-navy);">${post.category}</span>
+            <img src="${post.image_url || 'https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/ppwr-compliant.png'}" alt="News Image" onerror="this.src='https://www.coexpan.com/wp-content/uploads/2025/05/DSC0476.webp'">
+            <span class="news-badge" style="background:var(--matrix-navy);">${post.category || 'News'}</span>
           </div>
           <div class="news-card-content">
             <div>
               <div class="news-date">${post.date_text}</div>
               <h3>${post.title}</h3>
-              <p style="white-space: pre-wrap;">${post.content}</p>
-              ${post.pdf_url ? `<a href="${post.pdf_url}" target="_blank" class="btn-outline-navy" style="width: 100%; min-height: 40px; font-size: 0.85rem; margin-top: 1rem;">📄 ${beautifulBtnText}</a>` : ''}
+              ${post.content ? `<p style="white-space: pre-wrap;">${post.content}</p>` : ''}
+              ${post.pdf_url ? `<a href="${post.pdf_url}" target="_blank" class="btn-outline-navy" style="width: 100%; min-height: 40px; font-size: 0.85rem; margin-top: 1rem;">📄 Download Document</a>` : ''}
             </div>
           </div>
         </article>
@@ -156,59 +129,67 @@ async function loadLiveNews() {
   }
 }
 
-async function handlePublishNews(e) {
+async function handlePdfToNewsUpload(e) {
   e.preventDefault();
-  const title = document.getElementById('newsTitle').value;
-  const date = document.getElementById('newsDate').value;
-  const cat = document.getElementById('newsCategory').value;
-  const img = document.getElementById('newsImage').value;
-  const content = document.getElementById('newsContent').value;
-  const fileInput = document.getElementById('newsPdfFile');
+  const fileInput = document.getElementById('newsOnlyPdfFile');
   
-  let pdfUrl = null;
+  if (!fileInput || fileInput.files.length === 0) {
+    alert("Please select a PDF file.");
+    return;
+  }
+
+  const file = fileInput.files[0];
 
   if (supabaseClient) {
     try {
       const submitBtn = e.target.querySelector('button[type="submit"]');
-      submitBtn.textContent = 'Publishing...';
+      submitBtn.textContent = 'Uploading & Publishing...';
       submitBtn.disabled = true;
 
-      // 1. UPLOAD PDF AND PRESERVE NAME
-      if (fileInput && fileInput.files.length > 0) {
-        const file = fileInput.files[0];
-        
-        // Sanitize the original file name so it's safe for a URL (keep letters, numbers, dashes, underscores)
-        const safeOriginalName = file.name.replace(/[^a-zA-Z0-9.\-_]/g, '_');
-        
-        // Append a timestamp and our unique '---' separator so we can un-slug it later
-        const fileName = `${Date.now()}---${safeOriginalName}`;
-        
-        const { data: uploadData, error: uploadError } = await supabaseClient.storage
-          .from('NEWS-PDFS')
-          .upload(`news-files/${fileName}`, file);
-          
-        if (uploadError) throw uploadError;
-        
-        const { data: publicUrlData } = supabaseClient.storage
-          .from('NEWS-PDFS')
-          .getPublicUrl(`news-files/${fileName}`);
-          
-        pdfUrl = publicUrlData.publicUrl;
-      }
+      // 1. EXTRACT AND FORMAT THE TITLE FROM THE PDF FILENAME
+      const rawName = file.name;
+      // Remove the .pdf extension
+      const nameWithoutExt = rawName.replace(/\.[^/.]+$/, "");
+      // Replace hyphens and underscores with spaces
+      const unsluggedName = nameWithoutExt.replace(/[-_]/g, ' ');
+      // Capitalize the first letter of each word to make a beautiful title
+      const beautifulTitle = unsluggedName.replace(/\b\w/g, letter => letter.toUpperCase());
 
-      // 2. SAVE POST
+      // 2. UPLOAD PDF TO SUPABASE
+      // Sanitize the original file name so it's safe for a URL (keep letters, numbers, dashes, underscores)
+      const safeOriginalName = rawName.replace(/[^a-zA-Z0-9.\-_]/g, '_');
+      const fileName = `${Date.now()}---${safeOriginalName}`;
+      
+      const { data: uploadData, error: uploadError } = await supabaseClient.storage
+        .from('NEWS-PDFS')
+        .upload(`news-files/${fileName}`, file);
+        
+      if (uploadError) throw uploadError;
+      
+      const { data: publicUrlData } = supabaseClient.storage
+        .from('NEWS-PDFS')
+        .getPublicUrl(`news-files/${fileName}`);
+        
+      const pdfUrl = publicUrlData.publicUrl;
+
+      // 3. GENERATE CURRENT DATE STRING
+      const dateObj = new Date();
+      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      const dateText = `${monthNames[dateObj.getMonth()]} ${dateObj.getFullYear()}`;
+
+      // 4. SAVE THE AUTOMATIC POST TO THE DATABASE
       const { error: dbError } = await supabaseClient.from('news_posts').insert([{ 
-        title: title, 
-        date_text: date, 
-        category: cat, 
-        image_url: img, 
-        content: content,
+        title: beautifulTitle, 
+        date_text: dateText, 
+        category: 'Document', 
+        image_url: '', 
+        content: 'New technical document available for download.',
         pdf_url: pdfUrl 
       }]);
       
       if (dbError) throw dbError;
 
-      alert('News Published Successfully!'); 
+      alert('PDF Published to News Successfully!'); 
       e.target.reset(); 
       loadLiveNews();
       
@@ -216,7 +197,7 @@ async function handlePublishNews(e) {
       alert('Failed to publish: ' + err.message); 
     } finally {
       const submitBtn = e.target.querySelector('button[type="submit"]');
-      submitBtn.textContent = 'Publish Post to Website';
+      submitBtn.textContent = 'Upload & Publish to Website';
       submitBtn.disabled = false;
     }
   } else {
