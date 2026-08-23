@@ -1038,19 +1038,9 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
       </div>
     </div>
     <div class="container news-layout">
+      <!-- UPDATE: The liveNewsGrid now fetches from the 'news' table instead of 'news_posts' -->
       <div class="news-grid" id="liveNewsGrid">
-        <article class="news-card">
-          <div class="news-card-img"><img src="https://www.thimm.com/fileadmin/_processed_/c/2/csm_faltkarton-klein-kaufen-kaufen-thimm_5d701ced62.jpg" alt="Packaging Box"><span class="news-badge">Regulatory Milestone</span></div>
-          <div class="news-card-content"><div><div class="news-date">August 2026</div><h3>Full PPWR 2026 Compliance</h3><p>Matrix Engineering confirms 100% compliance across our synthetic and steel matrix ranges with zero hazardous chemicals.</p></div></div>
-        </article>
-        <article class="news-card">
-          <div class="news-card-img"><img src="https://www.coexpan.com/wp-content/uploads/2025/05/DSC0476.webp" alt="Extrusion Facility"><span class="news-badge" style="background: var(--matrix-navy);">Facility Upgrade</span></div>
-          <div class="news-card-content"><div><div class="news-date">July 2026</div><h3>Closed-Loop Polymer Recovery</h3><p>Our Ballasalla plant has implemented closed-loop post-industrial polymer recovery. All off-cuts are re-granulated into zero-waste secondary cycles.</p></div></div>
-        </article>
-        <article class="news-card">
-          <div class="news-card-img"><img src="matrix-boxes-stack.jpg" alt="Matrix Engineering Boxes" onerror="this.src='https://i.ebayimg.com/00/s/NzM4WDE2MDA=/z/98AAAOSwqwReh35H/$_57.JPG?set_id=8800005007'"><span class="news-badge">Innovation</span></div>
-          <div class="news-card-content"><div><div class="news-date">June 2026</div><h3>PFAS-Free Adhesive Backing</h3><p>Meeting the stringent hazardous chemical restrictions of PPWR Article 5 ahead of deadlines with our new clean-peel formulations.</p></div></div>
-        </article>
+        <div style="text-align: center; color: var(--text-muted); width: 100%;">Loading news documents...</div>
       </div>
     </div>
   </main>
@@ -1149,17 +1139,20 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
               <button type="submit" class="btn-solid-navy" style="width: 100%; min-height: 42px; font-size: 0.9rem;">Save & Authorize Access</button>
             </form>
             
-            <!-- LIVE NEWS PUBLISHER FORM -->
+            <!-- UPDATE: Replaced the old text-based news form with the PDF uploader -->
             <hr style="border:none; border-top:1px solid var(--border-subtle); margin:2rem 0;">
-            <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.5rem;">Publish News Update</h4>
-            <form onsubmit="handlePublishNews(event)">
-               <div class="form-field"><label>Headline</label><input type="text" id="newsTitle" required placeholder="e.g. New Equipment Installed"></div>
-               <div class="form-field"><label>Date</label><input type="text" id="newsDate" required placeholder="e.g. August 2026"></div>
-               <div class="form-field"><label>Category Tag</label><input type="text" id="newsCategory" required placeholder="e.g. Facility Upgrade"></div>
-               <div class="form-field"><label>Image URL (Optional)</label><input type="url" id="newsImage" placeholder="https://image-link.jpg"></div>
-               <div class="form-field"><label>Content</label><textarea id="newsContent" required placeholder="Write the update here..."></textarea></div>
-               <button type="submit" class="btn-solid-red" style="width: 100%;">Publish Post to Website</button>
-            </form>
+            <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.5rem;">Publish PDF News Update</h4>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">Upload a PDF to publish it directly to the Latest News page.</p>
+            <div class="form-field">
+              <label for="pdf-title">News Title</label>
+              <input type="text" id="pdf-title" required placeholder="e.g. August PPWR Update">
+            </div>
+            <div class="form-field">
+              <label for="pdf-file">Select PDF File</label>
+              <input type="file" id="pdf-file" accept="application/pdf" required style="padding: 7px; background: #fff;">
+            </div>
+            <button onclick="uploadPDFNews()" class="btn-solid-red" style="width: 100%;">Publish PDF to Website</button>
+            <p id="upload-status" style="margin-top: 15px; font-weight: bold; font-size: 0.9rem; text-align: center;"></p>
           </div>
           <div>
             <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.5rem;">Authorized Clients</h4>
@@ -1307,29 +1300,109 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
     window.addEventListener('popstate', () => { navigateTo(window.location.hash.replace('#', '') || 'home'); });
     window.addEventListener('DOMContentLoaded', () => { navigateTo(window.location.hash.replace('#', '') || 'home'); handleRangeChange(); handleUnitTypeChange(); loadLiveNews(); });
 
+    // UPDATE: New function to fetch PDFs from the database and display them on the News page
     async function loadLiveNews() {
       const grid = document.getElementById('liveNewsGrid');
-      if (!supabaseClient) return;
+      if (!supabaseClient) {
+        grid.innerHTML = '<p>Database not connected.</p>';
+        return;
+      }
       try {
-        const { data, error } = await supabaseClient.from('news_posts').select('*').order('created_at', { ascending: false });
-        if (!error && data && data.length > 0) {
-          grid.innerHTML = data.map(post => `<article class="news-card"><div class="news-card-img"><img src="${post.image_url || 'https://www.coexpan.com/wp-content/uploads/2025/05/DSC0476.webp'}" alt="News Image"><span class="news-badge" style="background:var(--matrix-navy);">${post.category}</span></div><div class="news-card-content"><div><div class="news-date">${post.date_text}</div><h3>${post.title}</h3><p style="white-space: pre-wrap;">${post.content}</p></div></div></article>`).join('');
+        // Fetch everything from the 'news' table, ordered by newest first
+        const { data, error } = await supabaseClient
+          .from('news')
+          .select('*')
+          .order('created_at', { ascending: false });
+
+        if (error) throw error;
+
+        // If the table is empty
+        if (data.length === 0) {
+          grid.innerHTML = '<p style="text-align:center; width:100%;">No news updates yet.</p>';
+          return;
         }
-      } catch (err) {}
+
+        // Loop through the database rows and create a clean card for each PDF
+        let html = '';
+        data.forEach(item => {
+          // Format the date if it exists, otherwise use a fallback
+          const dateStr = item.created_at ? new Date(item.created_at).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }) : 'Recent Update';
+          
+          html += `
+            <article class="news-card" style="min-height: auto;">
+              <div class="news-card-content" style="padding: 1.5rem; justify-content: center; align-items: center; text-align: center; gap: 1rem;">
+                <div style="font-size: 2.5rem; color: var(--matrix-red);">📄</div>
+                <div>
+                  <div class="news-date">${dateStr}</div>
+                  <h3 style="margin-bottom: 0;">${item.title}</h3>
+                </div>
+                <a href="${item.content}" target="_blank" class="btn-outline-navy" style="width: 100%; margin-top: 1rem;">View Document</a>
+              </div>
+            </article>
+          `;
+        });
+
+        grid.innerHTML = html;
+
+      } catch (error) {
+        grid.innerHTML = `<p style="color: red; width: 100%; text-align: center;">Failed to load news: ${error.message}</p>`;
+      }
     }
 
-    async function handlePublishNews(e) {
-      e.preventDefault();
-      const title = document.getElementById('newsTitle').value;
-      const date = document.getElementById('newsDate').value;
-      const cat = document.getElementById('newsCategory').value;
-      const img = document.getElementById('newsImage').value;
-      const content = document.getElementById('newsContent').value;
-      if (supabaseClient) {
-        try {
-          await supabaseClient.from('news_posts').insert([{ title: title, date_text: date, category: cat, image_url: img, content: content }]);
-          alert('News Published!'); e.target.reset(); loadLiveNews();
-        } catch(err) { alert('Failed to publish: ' + err.message); }
+    // UPDATE: New function to upload PDFs to the storage bucket
+    async function uploadPDFNews() {
+      const titleInput = document.getElementById('pdf-title').value;
+      const fileInput = document.getElementById('pdf-file').files[0];
+      const statusText = document.getElementById('upload-status');
+
+      if (!titleInput || !fileInput) {
+        statusText.innerText = "Please enter a title and select a PDF file.";
+        statusText.style.color = "var(--matrix-red)";
+        return;
+      }
+
+      statusText.innerText = "Uploading... please wait.";
+      statusText.style.color = "var(--matrix-navy)";
+
+      // Create a clean file name
+      const cleanTitle = titleInput.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
+      const fileName = `${Date.now()}-${cleanTitle}.pdf`;
+
+      try {
+        // 1. Upload to Supabase Storage Bucket ('news-pdfs')
+        const { data: uploadData, error: uploadError } = await supabaseClient.storage
+          .from('news-pdfs')
+          .upload(fileName, fileInput);
+
+        if (uploadError) throw uploadError;
+
+        // 2. Get the permanent public link for the PDF
+        const { data: publicUrlData } = supabaseClient.storage
+          .from('news-pdfs')
+          .getPublicUrl(fileName);
+          
+        const pdfUrl = publicUrlData.publicUrl;
+
+        // 3. Save the Title and Link to your 'news' database table
+        const { data: dbData, error: dbError } = await supabaseClient
+          .from('news') 
+          .insert([
+            { title: titleInput, content: pdfUrl } 
+          ]);
+
+        if (dbError) throw dbError;
+
+        statusText.innerText = "Success! Your PDF is live.";
+        statusText.style.color = "var(--matrix-green)";
+        document.getElementById('pdf-title').value = '';
+        document.getElementById('pdf-file').value = '';
+        
+        // Refresh the public news page
+        loadLiveNews();
+
+      } catch (error) {
+        statusText.innerText = "Error: " + error.message;
+        statusText.style.color = "var(--matrix-red)";
       }
     }
 
