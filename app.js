@@ -151,13 +151,13 @@ async function handlePublishNews(e) {
         const fileName = `news-${Date.now()}.${fileExt}`;
         
         const { data: uploadData, error: uploadError } = await supabaseClient.storage
-          .from('documents')
+          .from('NEWS-PDFS')
           .upload(`news-files/${fileName}`, file);
           
         if (uploadError) throw uploadError;
         
         const { data: publicUrlData } = supabaseClient.storage
-          .from('documents')
+          .from('NEWS-PDFS')
           .getPublicUrl(`news-files/${fileName}`);
           
         pdfUrl = publicUrlData.publicUrl;
