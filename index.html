@@ -13,7 +13,7 @@
   <!-- External Supabase Database Client -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   
-  <!-- Link to your new separated CSS and JavaScript files -->
+  <!-- Link to CSS and JavaScript files -->
   <link rel="stylesheet" href="style.css">
   <script src="app.js" defer></script>
 </head>
@@ -182,7 +182,7 @@
           <div class="prod-content-box">
             <div><h3>ULTRA-SR™</h3><p>High-precision polyester-based matrix engineered for maximum durability against abrasive recycled fibers. A direct alternative to steel-based products.</p></div>
             <div>
-              <table class="spec-table-compact"><tr><td class="k">Substrate</td><td class="v">Recycled & Greyboard</td></tr><tr><td class="k">Base Material</td><td class="v">High Impact Polyester</td></tr><tr><td class="k">Advantage</td><td class="v">No Rusting or Perforation</td></tr></table>
+              <table class="spec-table-compact"><tr><td class="k">Substrate</td><td class="rec">Recycled & Greyboard</td></tr><tr><td class="k">Base Material</td><td class="v">High Impact Polyester</td></tr><tr><td class="k">Advantage</td><td class="v">No Rusting or Perforation</td></tr></table>
               <button class="btn-solid-navy" style="width: 100%;" onclick="event.stopPropagation(); navigateTo('ultra-sr')">View Ultra-SR Details & Chart →</button>
             </div>
           </div>
@@ -824,36 +824,14 @@
       <div class="container">
         <div class="section-head" style="margin-bottom: 0;">
           <span class="section-eyebrow">Company Announcements</span>
-          <h2 class="section-title">Latest News</h2>
-          <p class="section-desc">Updates, expansions, and compliance milestones from the Matrix Engineering facility.</p>
+          <h2 class="section-title">Latest News & Technical Files</h2>
+          <p class="section-desc">Technical releases, regulatory whitepapers, and updates from the Matrix Engineering facility.</p>
         </div>
       </div>
     </div>
     <div class="container news-layout">
       <div class="news-grid" id="liveNewsGrid">
-        
-        <article class="news-card">
-          <div class="news-card-img" style="position: relative;">
-            <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/ppwr-compliant.png" alt="PPWR Compliance" onerror="this.src='https://www.thimm.com/fileadmin/_processed_/c/2/csm_faltkarton-klein-kaufen-kaufen-thimm_5d701ced62.jpg'">
-            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-15deg); color: #FF2E17; border: 4px solid #FF2E17; font-size: 1.8rem; font-weight: 900; padding: 0.2rem 1rem; text-transform: uppercase; letter-spacing: 0.1em; border-radius: 8px; background: rgba(255, 255, 255, 0.85); box-shadow: 0 4px 10px rgba(0,0,0,0.15); pointer-events: none;">COMPLIANT</div>
-            <span class="news-badge">Regulatory Milestone</span>
-          </div>
-          <div class="news-card-content">
-            <div><div class="news-date">August 2026</div><h3>Full PPWR 2026 Compliance</h3><p>Matrix Engineering confirms 100% compliance across our synthetic and steel matrix ranges with zero hazardous chemicals.</p></div>
-            <button class="btn-outline-navy" style="width: 100%; min-height: 40px; font-size: 0.85rem;" onclick="navigateTo('contact')">Read Regulatory Whitepaper</button>
-          </div>
-        </article>
-
-        <article class="news-card">
-          <div class="news-card-img"><img src="https://www.coexpan.com/wp-content/uploads/2025/05/DSC0476.webp" alt="Extrusion Facility"><span class="news-badge" style="background: var(--matrix-navy);">Facility Upgrade</span></div>
-          <div class="news-card-content"><div><div class="news-date">July 2026</div><h3>Closed-Loop Polymer Recovery</h3><p>Our Ballasalla plant has implemented closed-loop post-industrial polymer recovery. All off-cuts are re-granulated into zero-waste secondary cycles.</p></div></div>
-        </article>
-        
-        <article class="news-card">
-          <div class="news-card-img"><img src="matrix-boxes-stack.jpg" alt="Matrix Engineering Boxes" onerror="this.src='https://i.ebayimg.com/00/s/NzM4WDE2MDA=/z/98AAAOSwqwReh35H/$_57.JPG?set_id=8800005007'"><span class="news-badge">Innovation</span></div>
-          <div class="news-card-content"><div><div class="news-date">June 2026</div><h3>PFAS-Free Adhesive Backing</h3><p>Meeting the stringent hazardous chemical restrictions of PPWR Article 5 ahead of deadlines with our new clean-peel formulations.</p></div></div>
-        </article>
-
+        <div style="text-align: center; padding: 2rem; color: var(--text-muted); grid-column: 1 / -1;">Loading latest publications...</div>
       </div>
     </div>
   </main>
@@ -956,9 +934,10 @@
               <button type="submit" class="btn-solid-navy" style="width: 100%; min-height: 42px; font-size: 0.9rem;">Save & Authorize Access</button>
             </form>
             
-            <!-- PUBLISH PDF TO NEWS FORM -->
+            <!-- SINGLE PDF UPLOAD TO NEWS -->
             <hr style="border:none; border-top:1px solid var(--border-subtle); margin:2rem 0;">
-            <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.5rem;">Publish PDF to Latest News</h4>
+            <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.35rem;">Publish PDF to Latest News</h4>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">The file name will automatically be formatted into the headline.</p>
             <form onsubmit="handlePdfToNewsUpload(event)">
                <div class="form-field">
                  <label>Select PDF Document</label>
