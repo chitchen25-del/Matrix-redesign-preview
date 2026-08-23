@@ -1,71 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Matrix Engineering - Expanding Extrusion Capacity</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;900&display=swap" rel="stylesheet">
-<style>
-  body { font-family: 'Plus Jakarta Sans', sans-serif; color: #0f172a; line-height: 1.7; margin: 0; padding: 50px; background: #fff; }
-  .document { max-width: 800px; margin: 0 auto; }
-  .header { border-bottom: 3px solid #182B6B; padding-bottom: 25px; margin-bottom: 40px; display: flex; justify-content: space-between; align-items: center; }
-  .logo svg { height: 45px; width: auto; }
-  .meta { text-align: right; }
-  .eyebrow { font-size: 0.75rem; font-weight: 900; color: #FF2E17; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; display: block; }
-  .date { color: #64748b; font-weight: 700; font-size: 0.85rem; }
-  h1 { color: #182B6B; font-size: 2.2rem; font-weight: 900; margin: 0 0 25px 0; line-height: 1.25; }
-  .hero-img { width: 100%; height: 340px; object-fit: cover; border-radius: 8px; margin-bottom: 35px; box-shadow: 0 10px 25px rgba(0,0,0,0.12); }
-  h2 { color: #182B6B; font-size: 1.5rem; font-weight: 900; margin-top: 40px; margin-bottom: 15px; }
-  p { font-size: 1.02rem; color: #475569; margin-bottom: 20px; }
-  .highlight-box { background: #f8fafc; border-left: 4px solid #182B6B; padding: 25px; border-radius: 0 8px 8px 0; margin: 30px 0; }
-  .footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid #cbd5e1; text-align: center; font-size: 0.85rem; color: #64748b; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Migraine Awareness Month Promotion | The Natural Healing Clinic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #f3f1ef;
+            --card-bg: #ffffff;
+            --text-main: #095d28;
+            --primary-sage: #0d9b46;
+            --gold-accent: #10d358;
+            --secondary-sand: #d1dcd4;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px;
+        }
+
+        .flyer-container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--secondary-sand);
+            box-shadow: 0 25px 60px rgba(9, 93, 40, 0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .flyer-header {
+            text-align: center;
+            padding: 3.5rem 3rem 2rem 3rem;
+            background: white;
+            border-bottom: 1px solid var(--secondary-sand);
+        }
+
+        .flyer-logo {
+            height: 65px;
+            object-fit: contain;
+            margin-bottom: 1.5rem;
+        }
+
+        .flyer-eyebrow {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--primary-sage);
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .flyer-header h1 {
+            font-size: 2.8rem;
+            color: var(--text-main);
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .flyer-header p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.05rem;
+            color: #555;
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .flyer-hero-image {
+            position: relative;
+            height: 340px;
+            background: linear-gradient(rgba(9, 93, 40, 0.3), rgba(9, 93, 40, 0.5)), url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            color: white;
+        }
+
+        .discount-badge {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem 3rem;
+            border-radius: 12px;
+            border: 1px solid var(--gold-accent);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .discount-badge span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-main);
+            display: block;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .discount-badge h2 {
+            font-size: 3.2rem;
+            color: var(--primary-sage);
+            font-weight: 600;
+            line-height: 1;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .flyer-body {
+            padding: 3rem;
+            background: var(--card-bg);
+            text-align: center;
+        }
+
+        .flyer-body h3 {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .flyer-body p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .highlight-box {
+            background: var(--bg-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--secondary-sand);
+            text-align: left;
+        }
+
+        .highlight-box strong {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        .highlight-box span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.5;
+            display: block;
+        }
+
+        .flyer-footer {
+            background: var(--text-main);
+            color: white;
+            padding: 2.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .footer-left strong {
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .footer-left span {
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+
+        .footer-right {
+            text-align: right;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .flyer-container { box-shadow: none; border: none; }
+        }
+    </style>
 </head>
 <body>
-  <div class="document">
-    <div class="header">
-      <div class="logo">
-        <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="120,70 380,25 380,70" fill="#4A4A4A" />
-          <polygon points="400,70 400,25 660,70" fill="#4A4A4A" />
-          <polygon points="120,80 185,80 205,135 225,80 290,80 290,155 240,155 240,115 218,155 192,155 170,115 170,155 120,155" fill="#182B6B" />
-          <polygon points="305,155 350,80 370,80 345,155" fill="#7B818A" />
-          <polygon points="360,80 405,155 380,155 365,125 335,125 350,95" fill="#A5ABB5" />
-          <path d="M 400,80 L 460,80 L 460,100 L 440,100 L 440,145 C 440,155 420,155 420,145 L 420,100 L 400,100 Z" fill="#FF2E17" />
-          <path d="M 465,80 L 515,80 C 535,80 545,90 545,105 C 545,118 535,125 520,128 L 545,155 L 515,155 L 495,130 L 495,155 L 465,155 Z M 495,98 L 495,115 L 512,115 C 518,115 522,110 522,106 C 522,102 518,98 512,98 Z" fill="#182B6B" />
-          <rect x="555" y="80" width="30" height="75" fill="#182B6B" />
-          <polygon points="595,80 625,80 660,155 630,155" fill="#182B6B" />
-          <polygon points="630,80 660,80 595,155 565,155" fill="#182B6B" />
-          <polygon points="120,165 640,165 660,195 120,195" fill="#FF2E17" />
-          <polygon points="120,205 660,205 680,240 120,240" fill="#182B6B" />
-          <text x="390" y="232" font-family="sans-serif" font-weight="900" font-size="28" fill="#182B6B" letter-spacing="9" text-anchor="middle">ENGINEERING</text>
-        </svg>
-      </div>
-      <div class="meta">
-        <span class="eyebrow">Facility Update</span>
-        <div class="date">August 2026</div>
-      </div>
+
+    <div class="flyer-container">
+        <div class="flyer-header">
+            <img src="./logo.png" alt="The Natural Healing Clinic" class="flyer-logo">
+            <span class="flyer-eyebrow">UK Migraine Awareness Week Promotion</span>
+            <h1>Find Relief From Chronic Headaches & Migraines</h1>
+            <p>Targeted myofascial release, Bowen therapy, and specialist cranial tension relief designed to calm your nervous system and reduce attack frequency.</p>
+        </div>
+
+        <div class="flyer-hero-image">
+            <div class="discount-badge">
+                <span>Special September Offer</span>
+                <h2>15% OFF</h2>
+                <span style="font-size: 0.85rem; margin-top: 0.4rem; color: #444; font-weight: 600;">All Migraine-Associated Bookings Throughout September</span>
+            </div>
+        </div>
+
+        <div class="flyer-body">
+            <h3>Root-Cause Relief Tailored For You</h3>
+            <p>Migraines are often driven by deep-seated muscular tension, cranial restriction, and nervous system overload. Our specialized clinical sessions focus on releasing tight fascial patterns in the neck, shoulders, and jaw to restore vital balance.</p>
+
+            <div class="highlights-grid">
+                <div class="highlight-box">
+                    <strong>Neck & Jaw Release</strong>
+                    <span>Eases restrictions at the base of the skull where many migraines originate.</span>
+                </div>
+                <div class="highlight-box">
+                    <strong>Nervous System Reset</strong>
+                    <span>Calms the sympathetic nervous system to reduce stress-induced triggers.</span>
+                </div>
+                <div class="highlight-box">
+                    <strong>Lasting Results</strong>
+                    <span>Evidence-informed therapies focused on quick, sustainable recovery.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="flyer-footer">
+            <div class="footer-left">
+                <strong>The Natural Healing Clinic</strong>
+                <span>Led by Clare Kelly | Isle of Man</span>
+            </div>
+            <div class="footer-right">
+                <span>Book online: nhc.co.im</span><br>
+                <span>Tel: 07624 202 121</span>
+            </div>
+        </div>
     </div>
 
-    <h1>Scaling for Global Demand: Commissioning Our Second Rubber Extrusion Line</h1>
-
-    <!-- Heavy Industrial Rubber Extruder Machinery Photo -->
-    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&auto=format&fit=crop&q=80" alt="Industrial Rubber Extrusion Machinery" class="hero-img">
-
-    <p>Driven by extraordinary global growth and an unyielding commitment to our conversion partners, Matrix Engineering is thrilled to announce a major operational expansion at our Ballasalla manufacturing facility on the Isle of Man. We have officially commissioned our second state-of-the-art micro-cellular rubber extrusion line.</p>
-
-    <div class="highlight-box">
-      <p style="margin:0; font-weight:700; color:#182B6B;">"This strategic investment immediately doubles our production capacity for Exceed Rubber, ensuring seamless, uninterrupted factory-direct supply chains for our global network of die-makers and carton converters."</p>
-    </div>
-
-    <h2>Uncompromised Quality at Scale</h2>
-    <p>As packaging converters face tighter deadlines and higher press speeds, the reliability of ejection material is more critical than ever. Our signature Exceed Rubber is engineered to maintain structural integrity across more than 1.6 million impressions without degradation. This secondary extrusion line not only secures our current output capability but also lays the technical foundation for an upcoming suite of specialized profiles launching later this year.</p>
-
-    <h2>The British Manufacturing Advantage</h2>
-    <p>By keeping 100% of our extrusion tooling, polymer compounding, and quality assurance in-house on the Isle of Man, Matrix Engineering maintains absolute control over microscopic tolerances. Our partners can continue to rely on rapid lead times, zero supply chain friction, and world-class British manufacturing standards.</p>
-
-    <div class="footer">
-      <strong>Matrix Engineering Ltd.</strong> • Unit 7a, Parkway, Balthane Industrial Estate, Ballasalla, Isle of Man, IM9 2AQ
-    </div>
-  </div>
 </body>
 </html>
