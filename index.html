@@ -1,240 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Matrix Engineering | Precision Creasing Matrix & Die-Cutting Systems</title>
-<meta name="description" content="State-of-the-art creasing matrix, ejection rubber, and makeready tooling manufactured in the Isle of Man, British Isles.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<style>
-:root{--matrix-navy:#182B6B;--matrix-navy-dark:#0d173b;--matrix-navy-light:#253a8a;--matrix-red:#FF2E17;--matrix-red-dark:#d6200c;--matrix-green:#10b981;--matrix-green-dark:#059669;--matrix-grey-dark:#4A4A4A;--matrix-grey-mid:#7B818A;--matrix-grey-light:#A5ABB5;--bg-white:#ffffff;--bg-light:#f8fafc;--bg-slate:#f1f5f9;--text-main:#0f172a;--text-muted:#475569;--text-dim:#94a3b8;--border-subtle:#e2e8f0;--border-medium:#cbd5e1;--radius-sm:4px;--radius-md:8px;--radius-lg:16px;--font-main:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;--font-mono:'JetBrains Mono',monospace;--container-max:1240px;--shadow-sm:0 2px 4px rgba(0,0,0,0.03);--shadow-card:0 10px 30px -5px rgba(24,43,107,0.06),0 0 1px 1px rgba(24,43,107,0.04);--shadow-hover:0 20px 40px -10px rgba(24,43,107,0.12);}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:var(--font-main);background-color:var(--bg-white);color:var(--text-main);line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;}
-.container{width:100%;max-width:var(--container-max);margin:0 auto;padding:0 1.5rem;}
-@media (max-width:640px){.container{padding:0 1.25rem;}}
-.top-bar{background:var(--matrix-navy-dark);color:#cbd5e1;font-size:0.8rem;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.08);position:relative;z-index:10;}
-.top-bar-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;}
-.heritage-badges{display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;}
-.heritage-tag{display:inline-flex;align-items:center;gap:0.35rem;color:#ffffff;font-weight:600;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.04em;}
-.heritage-tag span.flag{color:var(--matrix-red);}
-.contact-fast-links{display:flex;gap:1.25rem;font-size:0.75rem;}
-.contact-fast-links a{color:#94a3b8;text-decoration:none;transition:color 0.2s;}
-.contact-fast-links a:hover{color:#ffffff;}
-@media (max-width:768px){.contact-fast-links{display:none;}.top-bar{padding:0.4rem 0;}}
-header.site-header{background:#ffffff;border-bottom:1px solid var(--border-subtle);position:sticky;top:0;z-index:1000;box-shadow:var(--shadow-sm);}
-.nav-wrapper{display:flex;align-items:center;justify-content:space-between;height:80px;}
-.brand-logo-link{display:flex;align-items:center;text-decoration:none;cursor:pointer;}
-.svg-matrix-logo{height:48px;width:auto;}
-@media (max-width:640px){.svg-matrix-logo{height:38px;}.nav-wrapper{height:68px;}}
-nav.site-nav{display:flex;align-items:center;gap:0.2rem;}
-.nav-btn{padding:0.6rem 0.85rem;color:var(--matrix-navy);text-decoration:none;font-size:0.9rem;font-weight:700;border-radius:var(--radius-sm);transition:all 0.2s ease;cursor:pointer;border:none;background:transparent;white-space:nowrap;}
-.nav-btn:hover{color:var(--matrix-red);background-color:var(--bg-light);}
-.nav-btn.active{color:var(--matrix-red);background-color:rgba(255,46,23,0.06);}
-.nav-btn-portal{color:var(--matrix-navy);border:1.5px solid var(--matrix-navy);background:transparent;border-radius:var(--radius-sm);display:inline-flex;align-items:center;gap:0.4rem;}
-.nav-btn-portal:hover{background:var(--matrix-navy);color:#fff!important;}
-.nav-btn-portal.active{background:var(--matrix-navy);color:#fff;}
-.btn-header-cta{background:var(--matrix-red);color:#ffffff;font-size:0.85rem;font-weight:700;padding:0.6rem 1.15rem;border-radius:var(--radius-sm);text-decoration:none;transition:all 0.2s ease;box-shadow:0 2px 8px rgba(255,46,23,0.25);cursor:pointer;border:none;white-space:nowrap;}
-.btn-header-cta:hover{background:var(--matrix-red-dark);box-shadow:0 4px 14px rgba(255,46,23,0.35);}
-.mobile-menu-toggle{display:none;background:transparent;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px;z-index:1100;}
-.mobile-menu-toggle span{display:block;width:24px;height:2.5px;background-color:var(--matrix-navy);border-radius:2px;transition:all 0.3s ease;}
-.mobile-menu-toggle.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
-.mobile-menu-toggle.open span:nth-child(2){opacity:0;}
-.mobile-menu-toggle.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
-@media (max-width:1040px){.mobile-menu-toggle{display:flex;}nav.site-nav{position:fixed;top:68px;left:0;right:0;background:#ffffff;border-bottom:1px solid var(--border-subtle);box-shadow:0 15px 30px rgba(0,0,0,0.1);flex-direction:column;align-items:stretch;padding:1.25rem 1.5rem;gap:0.5rem;transform:translateY(-120%);opacity:0;visibility:hidden;transition:all 0.3s cubic-bezier(0.16,1,0.3,1);z-index:999;}nav.site-nav.mobile-active{transform:translateY(0);opacity:1;visibility:visible;}.nav-btn{text-align:left;padding:0.85rem 1rem;font-size:1.05rem;width:100%;}.btn-header-cta{display:none;}}
-.page-view{display:none;animation:fadeIn 0.3s cubic-bezier(0.16,1,0.3,1) forwards;flex-grow:1;}
-.page-view.active-view{display:block;}
-@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
-.section-head{text-align:center;max-width:800px;margin:0 auto 3rem;}
-.section-eyebrow{font-size:0.78rem;font-weight:800;color:var(--matrix-red);text-transform:uppercase;letter-spacing:0.14em;margin-bottom:0.4rem;display:block;}
-.section-title{font-size:clamp(1.8rem,3.5vw,2.35rem);font-weight:900;color:var(--matrix-navy-dark);letter-spacing:-0.03em;margin-bottom:0.65rem;line-height:1.2;}
-.section-desc{font-size:clamp(0.95rem,2vw,1.08rem);color:var(--text-muted);line-height:1.55;}
-.page-hero{background:linear-gradient(180deg,#f8fafc 0%,#ffffff 100%);padding:clamp(2rem,4vw,3.5rem) 0;border-bottom:1px solid var(--border-subtle);}
-.btn-solid-navy{background:var(--matrix-navy);color:#ffffff;font-weight:700;font-size:0.95rem;padding:0.85rem 1.6rem;border-radius:var(--radius-sm);text-decoration:none;transition:all 0.2s ease;cursor:pointer;border:none;display:inline-flex;align-items:center;justify-content:center;min-height:48px;}
-.btn-solid-navy:hover{background:var(--matrix-navy-light);box-shadow:0 4px 14px rgba(24,43,107,0.25);}
-.btn-solid-red{background:var(--matrix-red);color:#ffffff;font-weight:700;font-size:0.95rem;padding:0.85rem 1.6rem;border-radius:var(--radius-sm);text-decoration:none;transition:all 0.2s ease;cursor:pointer;border:none;display:inline-flex;align-items:center;justify-content:center;min-height:48px;}
-.btn-solid-red:hover{background:var(--matrix-red-dark);box-shadow:0 4px 14px rgba(255,46,23,0.3);}
-.btn-outline-navy{background:#ffffff;color:var(--matrix-navy);border:1.5px solid var(--border-medium);font-weight:700;font-size:0.95rem;padding:0.85rem 1.6rem;border-radius:var(--radius-sm);text-decoration:none;transition:all 0.2s ease;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;min-height:48px;}
-.btn-outline-navy:hover{border-color:var(--matrix-navy);background:var(--bg-light);}
-@media (max-width:640px){.btn-solid-navy,.btn-solid-red,.btn-outline-navy{width:100%;}}
-.hero-main.hero-video-wrap{position:relative;overflow:hidden;min-height:650px;padding:clamp(5rem,8vw,8rem) 0;border-bottom:1px solid var(--border-subtle);background-color:#0b1329;display:flex;align-items:center;}
-.video-background-scaler{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;z-index:0;pointer-events:none;}
-.video-background-scaler iframe{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100vh;min-width:177.77vh;transform:translate(-50%,-50%);pointer-events:none;border:none;opacity:0.85;filter:saturate(1.15) contrast(1.05);}
-.hero-video-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at center,rgba(13,23,59,0.55) 0%,rgba(10,18,44,0.82) 100%);z-index:1;}
-.hero-centered-content{position:relative;z-index:2;max-width:860px;margin:0 auto;text-align:center;}
-.hero-badge-pill{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.6);padding:0.4rem 1rem;border-radius:999px;font-size:0.82rem;font-weight:800;color:var(--matrix-navy-dark);margin-bottom:1.5rem;box-shadow:0 4px 15px rgba(0,0,0,0.25);}
-.hero-badge-pill .dot{width:8px;height:8px;background:var(--matrix-red);border-radius:50%;}
-.hero-h1{font-size:clamp(2.3rem,5.5vw,3.8rem);font-weight:900;color:#ffffff;line-height:1.12;letter-spacing:-0.04em;margin-bottom:1.25rem;text-shadow:0 3px 14px rgba(0,0,0,0.65),0 1px 3px rgba(0,0,0,0.8);}
-.hero-p{font-size:clamp(1.05rem,2.2vw,1.25rem);color:#f1f5f9;margin-bottom:2.25rem;line-height:1.65;text-shadow:0 2px 8px rgba(0,0,0,0.7);max-width:760px;margin-left:auto;margin-right:auto;}
-.hero-actions{display:flex;gap:1.15rem;justify-content:center;flex-wrap:wrap;}
-.key-pillars-bar{padding:clamp(3rem,5vw,4.5rem) 0;border-bottom:1px solid var(--border-subtle);}
-.pillars-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.75rem;}
-.pillar-card{background:var(--bg-light);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:1.75rem;}
-.pillar-card h3{font-size:1.2rem;font-weight:800;color:var(--matrix-navy);margin-bottom:0.65rem;}
-.pillar-card p{color:var(--text-muted);font-size:0.92rem;}
-.about-lead-card{background:var(--bg-light);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:clamp(1.75rem,4vw,3rem);margin-bottom:3.5rem;}
-.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;}
-.team-card{background:#ffffff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:1.85rem;box-shadow:var(--shadow-card);display:flex;flex-direction:column;transition:transform 0.25s ease,box-shadow 0.25s ease;}
-.team-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:var(--matrix-navy);}
-.team-header{display:flex;align-items:center;gap:1.15rem;margin-bottom:1.25rem;}
-.team-avatar,.team-avatar-placeholder{width:70px;height:70px;border-radius:50%;object-fit:cover;object-position:center;border:2.5px solid var(--matrix-navy);background:var(--bg-slate);flex-shrink:0;}
-.team-avatar-placeholder{display:flex;align-items:center;justify-content:center;font-size:1.35rem;font-weight:800;color:var(--matrix-navy);font-family:var(--font-mono);}
-.team-titles h4{font-size:1.15rem;font-weight:800;color:var(--matrix-navy-dark);}
-.team-titles .role{font-size:0.8rem;font-weight:700;color:var(--matrix-red);text-transform:uppercase;letter-spacing:0.04em;}
-.team-bio{font-size:0.9rem;color:var(--text-muted);line-height:1.65;}
-.products-layout{padding:clamp(2.5rem,5vw,4.5rem) 0;}
-.prod-grid-large{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2.5rem;}
-@media (max-width:480px){.prod-grid-large{grid-template-columns:1fr;}}
-.prod-item-card{background:transparent;border:none;box-shadow:none;display:flex;flex-direction:column;margin-bottom:1rem;cursor:pointer;}
-.prod-img-box{position:relative;width:100%;height:260px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 50%,#ffffff 0%,#f1f5f9 100%);border-radius:var(--radius-lg);margin-bottom:1.25rem;box-shadow:0 12px 30px -8px rgba(24,43,107,0.12),inset 0 1px 2px rgba(255,255,255,0.8);border:1px solid var(--border-subtle);}
-.prod-img-dark-bg{background:radial-gradient(circle at 50% 50%,#1e293b 0%,#0a1329 100%);border:1px solid rgba(255,255,255,0.1);}
-.prod-img-box img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 0.5s cubic-bezier(0.25,1,0.5,1);}
-.prod-item-card:hover .prod-img-box img{transform:scale(1.04);}
-.prod-tag-float{position:absolute;top:12px;right:12px;background:rgba(13,23,59,0.85);backdrop-filter:blur(8px);color:#ffffff;font-size:0.72rem;font-weight:800;padding:5px 12px;border-radius:20px;text-transform:uppercase;font-family:var(--font-mono);letter-spacing:0.05em;z-index:10;box-shadow:0 4px 12px rgba(0,0,0,0.2);}
-.prod-content-box{padding:0 0.5rem;display:flex;flex-direction:column;flex-grow:1;justify-content:space-between;}
-.prod-content-box h3{font-size:1.4rem;font-weight:900;color:var(--matrix-navy);margin-bottom:0.4rem;}
-.prod-content-box p{color:var(--text-muted);font-size:0.92rem;margin-bottom:1.25rem;line-height:1.6;}
-.spec-table-compact{width:100%;border-collapse:collapse;font-size:0.85rem;margin-bottom:1.5rem;background:var(--bg-light);border-radius:var(--radius-md);padding:0.5rem;border:1px solid var(--border-subtle);}
-.spec-table-compact tr{border-bottom:1px solid var(--border-subtle);}
-.spec-table-compact tr:last-child{border-bottom:none;}
-.spec-table-compact td{padding:0.5rem 0.75rem;}
-.spec-table-compact td.k{color:var(--text-dim);font-weight:600;}
-.spec-table-compact td.v{text-align:right;font-weight:700;color:var(--matrix-navy-dark);font-family:var(--font-mono);}
-.detail-layout{padding:clamp(1.5rem,4vw,3.5rem) 0 clamp(3rem,6vw,5rem);}
-.detail-grid-top{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,3vw,3rem);align-items:start;margin-bottom:clamp(2.5rem,5vw,4rem);}
-@media (max-width:900px){.detail-grid-top{grid-template-columns:1fr;}}
-.detail-gallery-main{width:100%;height:clamp(240px,35vw,380px);border-radius:var(--radius-lg);overflow:hidden;background:radial-gradient(circle at 50% 50%,#ffffff 0%,#f1f5f9 100%);border:1.5px solid var(--border-subtle);box-shadow:var(--shadow-card);display:flex;align-items:center;justify-content:center;}
-.detail-gallery-main.dark-hero{background:radial-gradient(circle at 50% 50%,#1e293b 0%,#0a1329 100%);}
-.detail-gallery-main img{width:100%;height:100%;object-fit:cover;}
-.detail-info-pane{padding:0;}
-@media (max-width:640px){.detail-info-pane{padding:0 0.5rem;}}
-.detail-info-pane h1{font-size:clamp(1.85rem,4vw,2.5rem);font-weight:900;color:var(--matrix-navy);letter-spacing:-0.03em;line-height:1.15;margin-bottom:0.5rem;}
-.detail-subtitle{font-size:0.95rem;font-weight:800;color:var(--matrix-red);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1rem;display:block;}
-.detail-desc-lead{font-size:clamp(0.92rem,1.8vw,1rem);color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem;}
-.features-card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin-bottom:clamp(2.5rem,5vw,4rem);}
-.feat-card{background:var(--bg-light);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:clamp(1.2rem,2.5vw,1.5rem);box-shadow:var(--shadow-sm);transition:transform 0.2s ease,border-color 0.2s ease;}
-.feat-card:hover{transform:translateY(-3px);border-color:var(--matrix-navy);}
-.feat-card .feat-icon{width:32px;height:32px;border-radius:50%;background:rgba(24,43,107,0.1);color:var(--matrix-navy);display:flex;align-items:center;justify-content:center;font-weight:900;margin-bottom:0.75rem;}
-.feat-card h4{font-size:1rem;font-weight:800;color:var(--matrix-navy);margin-bottom:0.35rem;}
-.feat-card p{font-size:0.88rem;color:var(--text-muted);line-height:1.55;}
-.chart-section-shell{background:#ffffff;border:1.5px solid var(--border-subtle);border-radius:var(--radius-lg);padding:clamp(1.25rem,3vw,2.5rem);box-shadow:var(--shadow-card);margin-bottom:3rem;overflow:hidden;}
-.chart-header-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;border-bottom:2px solid var(--matrix-navy);padding-bottom:1rem;margin-bottom:1.75rem;}
-.chart-header-row h3{font-size:clamp(1.25rem,3vw,1.5rem);font-weight:900;color:var(--matrix-navy);}
-.tech-diagram-box{background:var(--bg-light);border:1px solid var(--border-medium);border-radius:var(--radius-md);padding:1rem 1.5rem;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:1.5rem;overflow-x:auto;}
-.size-table-container{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:1rem;}
-.size-table{width:100%;min-width:480px;border-collapse:collapse;font-size:0.9rem;}
-.size-table th{background:var(--bg-slate);color:var(--matrix-navy);font-weight:800;text-align:left;padding:0.75rem 0.85rem;border-bottom:2px solid var(--border-medium);font-size:0.8rem;text-transform:uppercase;letter-spacing:0.05em;white-space:nowrap;}
-.size-table td{padding:0.85rem;border-bottom:1px solid var(--border-subtle);vertical-align:middle;}
-.size-table tr:hover td{background:rgba(248,250,252,0.8);}
-.color-swatch-bar{width:50px;height:12px;border-radius:3px;display:block;border:1px solid rgba(0,0,0,0.12);box-shadow:0 1px 3px rgba(0,0,0,0.08);}
-.color-pink{background:#F472B6;} .color-navy{background:#182B6B;} .color-lilac{background:#C084FC;} .color-red{background:#FF2E17;} .color-grey{background:#94A3B8;} .color-yellow{background:#EAB308;} .color-magenta{background:#DB2777;} .color-orange{background:#F97316;} .color-green{background:#10B981;} .color-sky{background:#38BDF8;} .color-lime{background:#84CC16;} .color-mauve{background:#8B5CF6;} .color-silver{background:#E2E8F0;} .color-buff{background:#FDE047;} .color-violet{background:#7C3AED;} .color-white{background:#FFFFFF;border:1.5px solid #CBD5E1;} .color-rose{background:#FB7185;} .color-slate{background:#64748B;} .color-brown{background:#92400E;} .color-black{background:#0F172A;} .color-blue{background:#2563EB;} .color-cream{background:#FDF5E6;}
-.box-yield-badge{display:inline-block;background:var(--bg-slate);color:var(--matrix-navy);font-size:0.78rem;font-weight:800;padding:6px 12px;border-radius:var(--radius-sm);font-family:var(--font-mono);margin-top:0.5rem;}
-.technical-layout{padding:clamp(2.5rem,5vw,4.5rem) 0;}
-.calc-box-wrap{background:#ffffff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:clamp(1.5rem,4vw,3rem);display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-bottom:3.5rem;}
-@media (max-width:900px){.calc-box-wrap{grid-template-columns:1fr;}}
-.calc-input-group{margin-bottom:1.35rem;}
-.calc-input-group label{display:flex;justify-content:space-between;font-size:0.88rem;font-weight:700;color:var(--matrix-navy);margin-bottom:0.45rem;}
-.calc-input-group input,.calc-input-group select{width:100%;padding:0.8rem 1rem;border:1.5px solid var(--border-medium);border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:1rem;color:var(--text-main);background:#ffffff;outline:none;min-height:48px;}
-.calc-output-panel{background:var(--matrix-navy-dark);color:#ffffff;border-radius:var(--radius-md);padding:1.85rem;display:flex;flex-direction:column;justify-content:space-between;gap:1.5rem;}
-.calc-output-panel h4{font-size:0.82rem;font-weight:800;color:#94a3b8;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1.25rem;}
-.res-metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-.res-metric-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-sm);padding:1.15rem 0.75rem;text-align:center;}
-.res-metric-card .num{font-size:clamp(1.8rem,4vw,2.2rem);font-weight:900;color:#ffffff;font-family:var(--font-mono);}
-.res-metric-card .lbl{font-size:0.72rem;color:#94a3b8;text-transform:uppercase;font-weight:700;letter-spacing:0.05em;margin-top:0.25rem;}
-.guide-step-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
-.guide-card{background:var(--bg-light);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:1.65rem;}
-.guide-card .step-badge{font-family:var(--font-mono);font-size:0.78rem;font-weight:800;color:var(--matrix-red);margin-bottom:0.4rem;}
-.guide-card h4{font-size:1.05rem;font-weight:800;color:var(--matrix-navy);margin-bottom:0.4rem;}
-.guide-card p{font-size:0.88rem;color:var(--text-muted);}
-.acc-layout{padding:clamp(2.5rem,5vw,4.5rem) 0;}
-.acc-cards-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;}
-.acc-detail-card{background:#ffffff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:clamp(1.5rem,4vw,3rem);box-shadow:var(--shadow-card);display:flex;flex-direction:column;gap:1.5rem;}
-.acc-header-flex{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1.5rem;}
-.acc-detail-card h3{font-size:clamp(1.5rem,3vw,1.8rem);font-weight:900;color:var(--matrix-navy);margin-bottom:0.5rem;}
-.acc-tag{display:inline-block;background:rgba(255,46,23,0.1);color:var(--matrix-red);font-size:0.75rem;font-weight:800;padding:4px 10px;border-radius:var(--radius-sm);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:1rem;}
-.acc-detail-card p{font-size:1rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem;}
-.acc-specs-table{width:100%;border-collapse:collapse;font-size:0.9rem;margin-top:1rem;}
-.acc-specs-table th{background:var(--matrix-navy-dark);color:#fff;text-align:left;padding:0.75rem 1rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.05em;}
-.acc-specs-table td{padding:0.75rem 1rem;border-bottom:1px solid var(--border-subtle);color:var(--text-main);font-weight:600;}
-.acc-specs-table tr:last-child td{border-bottom:none;}
-.news-layout{padding:clamp(2.5rem,5vw,4.5rem) 0;}
-.news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2rem;}
-@media (max-width:480px){.news-grid{grid-template-columns:1fr;}}
-.news-card{background:#ffffff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow:hidden;display:flex;flex-direction:column;transition:all 0.25s ease;}
-.news-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:var(--matrix-navy);}
-.news-card-img{height:210px;position:relative;overflow:hidden;background:var(--bg-slate);}
-.news-card-img img{width:100%;height:100%;object-fit:cover;}
-.news-badge{position:absolute;top:1rem;left:1rem;background:var(--matrix-green);color:#fff;font-size:0.72rem;font-weight:800;padding:3px 9px;border-radius:var(--radius-sm);text-transform:uppercase;letter-spacing:0.04em;}
-.news-card-content{padding:1.85rem;display:flex;flex-direction:column;flex-grow:1;justify-content:space-between;}
-.news-date{font-size:0.75rem;color:var(--text-dim);font-weight:700;margin-bottom:0.5rem;text-transform:uppercase;}
-.news-card-content h3{font-size:1.25rem;font-weight:800;color:var(--matrix-navy-dark);line-height:1.35;margin-bottom:0.75rem;}
-.news-card-content p{font-size:0.9rem;color:var(--text-muted);line-height:1.6;margin-bottom:1.5rem;}
-.portal-layout{padding:clamp(2.5rem,5vw,4.5rem) 0;}
-.portal-login-shell{max-width:480px;margin:0 auto;background:#ffffff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:2.5rem;box-shadow:var(--shadow-card);text-align:center;}
-.portal-login-shell h3{font-size:1.5rem;font-weight:900;color:var(--matrix-navy-dark);margin-bottom:0.5rem;}
-.portal-login-shell p{font-size:0.9rem;color:var(--text-muted);margin-bottom:1.75rem;}
-.portal-dashboard-card{background:#ffffff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:clamp(1.5rem,4vw,2.5rem);margin-bottom:2.5rem;}
-.portal-tabs-nav{display:flex;gap:1rem;border-bottom:2px solid var(--border-subtle);margin-bottom:2rem;}
-.portal-tab-btn{padding:0.75rem 1.25rem;font-weight:800;font-size:0.95rem;color:var(--text-muted);border:none;background:transparent;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all 0.2s;}
-.portal-tab-btn.active-tab{color:var(--matrix-navy);border-bottom-color:var(--matrix-red);}
-/* JOB CARD UPGRADES */
-.factory-order-card{background:#ffffff;border:1.5px solid var(--border-medium);border-radius:var(--radius-md);padding:1.5rem;margin-bottom:1.5rem;box-shadow:var(--shadow-sm);}
-.factory-card-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.85rem;}
-.wo-title-badge{font-family:var(--font-mono);font-weight:900;font-size:1.15rem;color:var(--matrix-navy);}
-.stage-pill{font-family:var(--font-mono);font-size:0.75rem;font-weight:800;padding:4px 12px;border-radius:999px;text-transform:uppercase;letter-spacing:0.05em;}
-.stage-received{background:var(--matrix-navy);color:#ffffff;}
-.stage-production{background:var(--matrix-red);color:#ffffff;}
-.stage-shipped{background:var(--matrix-green);color:#ffffff;}
-.job-progress-track{width:100%;height:6px;background:var(--border-subtle);border-radius:3px;margin:0 0 1.25rem 0;overflow:hidden;}
-.job-progress-fill{height:100%;border-radius:3px;transition:width 0.4s ease;}
-.fill-received{width:25%;background:var(--matrix-navy);}
-.fill-production{width:65%;background:var(--matrix-red);}
-.fill-shipped{width:100%;background:var(--matrix-green);}
-/* SUMMARY CARD UPGRADES */
-.new-order-panel{background:var(--bg-light);border:1.5px solid var(--border-subtle);border-radius:var(--radius-lg);padding:clamp(1.5rem,3vw,2.25rem);}
-.order-form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;margin-bottom:1.25rem;}
-.item-builder-box{background:#ffffff;border:1.5px solid var(--border-medium);border-radius:var(--radius-md);padding:1.25rem;margin-bottom:1.25rem;}
-.item-builder-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:0.85rem;align-items:end;}
-.item-builder-grid label{font-size:0.75rem;font-weight:800;color:var(--matrix-navy);text-transform:uppercase;margin-bottom:4px;display:block;}
-.item-builder-grid input,.item-builder-grid select{width:100%;padding:0.65rem 0.75rem;border:1.5px solid var(--border-medium);border-radius:var(--radius-sm);font-weight:700;font-size:0.9rem;background:#fff;}
-.line-items-preview-table{width:100%;border-collapse:collapse;font-size:0.88rem;margin-top:1rem;background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-sm);overflow:hidden;}
-.line-items-preview-table th{background:var(--matrix-navy-dark);padding:0.75rem 0.85rem;text-align:left;font-weight:800;color:#ffffff;border-bottom:none;}
-.line-items-preview-table td{padding:0.75rem 0.85rem;border-bottom:1px solid var(--border-subtle);font-weight:600;}
-@keyframes rowFlash{0%{background-color:rgba(16,185,129,0.3);}100%{background-color:transparent;}}
-.row-flash{animation:rowFlash 1.2s ease-out forwards;}
-.modal-backdrop{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(13,23,59,0.8);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:2000;padding:1.5rem;}
-.modal-card{background:#ffffff;border-radius:var(--radius-lg);max-width:580px;width:100%;padding:2.25rem;box-shadow:var(--shadow-hover);text-align:center;animation:fadeIn 0.25s ease-out;}
-.admin-data-table{width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:1rem;background:#fff;}
-.admin-data-table th{background:var(--matrix-navy-dark);color:#fff;padding:0.75rem;text-align:left;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;}
-.admin-data-table td{padding:0.75rem;border-bottom:1px solid var(--border-subtle);}
-.contact-layout{padding:clamp(2.5rem,5vw,4.5rem) 0;}
-.contact-grid-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;}
-@media (max-width:900px){.contact-grid-wrap{grid-template-columns:1fr;}}
-.contact-info-panel{background:var(--matrix-navy-dark);color:#ffffff;border-radius:var(--radius-lg);padding:clamp(1.85rem,4vw,3rem);display:flex;flex-direction:column;justify-content:space-between;gap:2rem;}
-.contact-info-panel h3{font-size:1.75rem;font-weight:900;margin-bottom:0.75rem;}
-.contact-info-panel p{color:#94a3b8;}
-.contact-data-list{display:flex;flex-direction:column;gap:1.35rem;}
-.contact-data-item .lbl{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;color:#64748b;font-weight:700;}
-.contact-data-item .val{font-size:1.05rem;font-weight:700;color:#ffffff;margin-top:0.2rem;}
-.contact-data-item .val a{color:#ffffff;text-decoration:none;}
-.contact-form-shell{background:#ffffff;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:clamp(1.75rem,4vw,3rem);box-shadow:var(--shadow-card);}
-.form-field{margin-bottom:1.25rem;}
-.form-field label{display:block;font-size:0.85rem;font-weight:700;color:var(--matrix-navy);margin-bottom:0.35rem;}
-.form-field input,.form-field select,.form-field textarea{width:100%;padding:0.8rem 1rem;border:1.5px solid var(--border-medium);border-radius:var(--radius-sm);font-family:var(--font-main);font-size:0.95rem;outline:none;min-height:48px;}
-.form-field textarea{min-height:90px;}
-footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:clamp(3rem,5vw,4.5rem);border-top:1px solid rgba(255,255,255,0.08);font-size:0.9rem;margin-top:auto;}
-.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.08);}
-@media (max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;}}
-@media (max-width:550px){.footer-grid{grid-template-columns:1fr;}}
-.footer-col h5{font-size:0.88rem;font-weight:800;color:#ffffff;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1.15rem;}
-.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.65rem;}
-.footer-col ul a{color:#94a3b8;text-decoration:none;cursor:pointer;}
-.footer-col ul a:hover{color:#ffffff;}
-.footer-bottom{padding:1.75rem 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.78rem;color:#64748b;}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Matrix Engineering | Precision Creasing Matrix & Die-Cutting Systems</title>
+  <meta name="description" content="State-of-the-art creasing matrix, ejection rubber, and makeready tooling manufactured in the Isle of Man, British Isles.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- External Supabase Database Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  
+  <!-- Link to your new separated CSS and JavaScript files -->
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
 </head>
 <body>
 
+  <!-- ========== TOP BAR & NAVIGATION ========== -->
   <div class="top-bar">
     <div class="container top-bar-inner">
       <div class="heritage-badges">
@@ -285,6 +70,7 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
     </div>
   </header>
 
+  <!-- ========== VIEW: HOME ========== -->
   <main id="view-home" class="page-view active-view">
     <section class="hero-main hero-video-wrap">
       <div class="video-background-scaler">
@@ -316,6 +102,7 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
     </section>
   </main>
 
+  <!-- ========== VIEW: ABOUT US ========== -->
   <main id="view-about" class="page-view">
     <div class="page-hero">
       <div class="container">
@@ -373,6 +160,7 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
     </div>
   </main>
 
+  <!-- ========== VIEW: PRODUCTS CATALOG ========== -->
   <main id="view-products" class="page-view">
     <div class="page-hero">
       <div class="container">
@@ -433,6 +221,7 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
     </div>
   </main>
 
+  <!-- ========== VIEW: PHOENIX+ DETAIL ========== -->
   <main id="view-phoenix-plus" class="page-view">
     <div class="page-hero">
       <div class="container">
@@ -486,7 +275,7 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-white"></span><strong>White</strong></div></td><td><strong>0.45 mm</strong></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8 and 1.9</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-red"></span><strong>Red</strong></div></td><td><strong>0.50 mm</strong></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1 and 2.3</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-silver"></span><strong>Silver</strong></div></td><td><strong>0.55 mm</strong></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1 and 2.3</td></tr>
-                <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-yellow"></span><strong>Yellow</strong></div></td><td><strong>0.60 mm</strong></td><td>1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1, 2.3 and 2.5</td></tr>
+                <tr><td><div style="display:flex;gap:8px;"><span class="colorswatch-bar color-yellow"></span><strong>Yellow</strong></div></td><td><strong>0.60 mm</strong></td><td>1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1, 2.3 and 2.5</td></tr>
                 <tr><td><div style="display:flex;gap:8px;"><span class="color-swatch-bar color-orange"></span><strong>Orange</strong></div></td><td><strong>0.70 mm</strong></td><td>1.5, 1.6, 1.7, 1.9, 2.1, 2.3 and 2.5</td></tr>
               </tbody>
             </table>
@@ -614,6 +403,7 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
     </div>
   </main>
 
+  <!-- ========== VIEW: PHOENIX XL DETAIL ========== -->
   <main id="view-phoenix-xl" class="page-view">
     <div class="page-hero">
       <div class="container">
@@ -688,6 +478,7 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
     </div>
   </main>
 
+  <!-- ========== VIEW: ULTRA-SR DETAIL ========== -->
   <main id="view-ultra-sr" class="page-view">
     <div class="page-hero">
       <div class="container">
@@ -810,6 +601,7 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
     </div>
   </main>
 
+  <!-- ========== VIEW: EXCEED RUBBER DETAIL ========== -->
   <main id="view-exceed-rubber" class="page-view">
     <div class="page-hero">
       <div class="container">
@@ -904,6 +696,7 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
     </div>
   </main>
 
+  <!-- ========== VIEW: TECHNICAL SUPPORT ========== -->
   <main id="view-technical" class="page-view">
     <div class="page-hero">
       <div class="container">
@@ -972,6 +765,7 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
     </div>
   </main>
 
+  <!-- ========== VIEW: ACCESSORIES ========== -->
   <main id="view-accessories" class="page-view">
     <div class="page-hero">
       <div class="container">
@@ -1032,6 +826,7 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
     </div>
   </main>
 
+  <!-- ========== VIEW: LATEST NEWS ========== -->
   <main id="view-news" class="page-view">
     <div class="page-hero">
       <div class="container">
@@ -1044,11 +839,10 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
     </div>
     <div class="container news-layout">
       <div class="news-grid" id="liveNewsGrid">
-        <!-- FIRST ARTICLE: INCLUDES THE COMPLIANT STAMP OVERLAY -->
+        
         <article class="news-card">
           <div class="news-card-img" style="position: relative;">
-            <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/image_19.png" alt="PPWR Compliance" onerror="this.src='https://www.thimm.com/fileadmin/_processed_/c/2/csm_faltkarton-klein-kaufen-kaufen-thimm_5d701ced62.jpg'">
-            <!-- CSS Stamp -->
+            <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/ppwr-compliant.png" alt="PPWR Compliance" onerror="this.src='https://www.thimm.com/fileadmin/_processed_/c/2/csm_faltkarton-klein-kaufen-kaufen-thimm_5d701ced62.jpg'">
             <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-15deg); color: #FF2E17; border: 4px solid #FF2E17; font-size: 1.8rem; font-weight: 900; padding: 0.2rem 1rem; text-transform: uppercase; letter-spacing: 0.1em; border-radius: 8px; background: rgba(255, 255, 255, 0.85); box-shadow: 0 4px 10px rgba(0,0,0,0.15); pointer-events: none;">COMPLIANT</div>
             <span class="news-badge">Regulatory Milestone</span>
           </div>
@@ -1067,10 +861,12 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
           <div class="news-card-img"><img src="matrix-boxes-stack.jpg" alt="Matrix Engineering Boxes" onerror="this.src='https://i.ebayimg.com/00/s/NzM4WDE2MDA=/z/98AAAOSwqwReh35H/$_57.JPG?set_id=8800005007'"><span class="news-badge">Innovation</span></div>
           <div class="news-card-content"><div><div class="news-date">June 2026</div><h3>PFAS-Free Adhesive Backing</h3><p>Meeting the stringent hazardous chemical restrictions of PPWR Article 5 ahead of deadlines with our new clean-peel formulations.</p></div></div>
         </article>
+
       </div>
     </div>
   </main>
 
+  <!-- ========== VIEW: CUSTOMER PORTAL & ADMIN ========== -->
   <main id="view-portal" class="page-view">
     <div class="page-hero">
       <div class="container">
@@ -1159,11 +955,12 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
           <div style="background: var(--bg-light); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.5rem;">
             <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.5rem;">Issue Client Access PIN</h4>
             <form onsubmit="handleAdminCreateUser(event)">
-              <div class="form-field"><label>Company Name</label><input type="text" id="adminNewCompany" required placeholder="Exact Company Name"></div>
-              <div class="form-field"><label>Contact Email</label><input type="email" id="adminNewEmail" required placeholder="buyer@client.com"></div>
-              <div class="form-field"><label>Access PIN</label><input type="text" id="adminNewPIN" required value="MX2026" placeholder="e.g. MX2026"></div>
+              <div class="form-field"><label>Company Legal Name</label><input type="text" id="adminNewCompany" required placeholder="Exact Company Name"></div>
+              <div class="form-field"><label>Primary Contact Email</label><input type="email" id="adminNewEmail" required placeholder="buyer@client.com"></div>
+              <div class="form-field"><label>Assign Access PIN</label><input type="text" id="adminNewPIN" required value="MX2026" placeholder="e.g. MX2026"></div>
               <button type="submit" class="btn-solid-navy" style="width: 100%; min-height: 42px; font-size: 0.9rem;">Save & Authorize Access</button>
             </form>
+            
             <hr style="border:none; border-top:1px solid var(--border-subtle); margin:2rem 0;">
             <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.5rem;">Publish News Update</h4>
             <form onsubmit="handlePublishNews(event)">
@@ -1189,6 +986,7 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
     </div>
   </main>
 
+  <!-- ========== MODALS ========== -->
   <div id="requestAccessModal" class="modal-backdrop">
     <div class="modal-card">
       <h3 style="font-size: 1.4rem; font-weight: 900; color: var(--matrix-navy); margin-bottom: 0.5rem;">Request Client Portal Access</h3>
@@ -1219,6 +1017,7 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
     </div>
   </div>
 
+  <!-- ========== FOOTER ========== -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
@@ -1244,249 +1043,5 @@ footer.site-footer{background:var(--matrix-navy-dark);color:#ffffff;padding-top:
     </div>
   </footer>
 
-  <script>
-    const SUPABASE_URL = 'https://bjoneyilyyvoemeiojzl.supabase.co';
-    const SUPABASE_ANON_KEY = 'sb_publishable_ZVnaPefnAgf4KfrBFkCmzw_3GfhiAnY';
-    const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
-    let activeClientName = '', queuedLineItems = [];
-
-    const PRODUCT_SPECS_MAP = {
-      'PX Plus': ['0.30 x 0.80', '0.30 x 1.00', '0.30 x 1.20', '0.40 x 1.00', '0.40 x 1.20', '0.40 x 1.30', '0.40 x 1.50', '0.50 x 1.30', '0.50 x 1.40', '0.50 x 1.50', '0.50 x 1.70', '0.60 x 1.50', '0.60 x 1.70', '0.60 x 1.90', '0.70 x 1.90', '0.80 x 2.10'],
-      'Phoenix+': ['-- 7mm Mini Centre --', '0.30 x 0.80 (Pink)', '0.30 x 1.00 (Pink)', '0.30 x 1.20 (Pink)', '0.30 x 1.40 (Pink)', '0.40 x 1.00 (Navy)', '0.40 x 1.20 (Navy)', '0.40 x 1.30 (Navy)', '0.40 x 1.50 (Navy)', '0.45 x 1.30 (Lilac)', '0.45 x 1.40 (Lilac)', '0.45 x 1.50 (Lilac)', '0.50 x 1.30 (Red)', '0.50 x 1.40 (Red)', '0.50 x 1.50 (Red)', '0.50 x 1.70 (Red)', '0.55 x 1.40 (Grey)', '0.55 x 1.50 (Grey)', '0.55 x 1.70 (Grey)', '0.60 x 1.50 (Yellow)', '0.60 x 1.70 (Yellow)', '0.60 x 1.90 (Yellow)', '0.70 x 1.90 (Orange)', '0.70 x 2.10 (Orange)', '-- 7mm Off-Centre --', 'Off-Centre 0.30 x 1.00 (Pink)', 'Off-Centre 0.40 x 1.20 (Navy)', 'Off-Centre 0.50 x 1.50 (Red)', '-- 10mm Standard Centre --', '10mm 0.40 x 1.30 (Navy)', '10mm 0.50 x 1.50 (Red)', '10mm 0.60 x 1.70 (Yellow)', '10mm 0.80 x 2.10 (Green)'],
-      'Ultra SR': ['-- 7mm Centre --', 'Mauve 0.38 x 0.5mm', 'Silver 0.38 x 0.8mm', 'Buff 0.38 x 1.0mm', 'Violet 0.38 x 1.2mm', 'White 0.45 x 1.3mm', 'Sky 0.45 x 1.4mm', 'Lime 0.45 x 1.5mm', 'Yellow 0.50 x 1.6mm', 'Rose 0.50 x 1.7mm', 'Slate 0.55 x 1.9mm', 'Green 0.60 x 2.0mm', 'Brown 0.60 x 2.1mm', 'Red 0.70 x 2.3mm', 'Black 0.70 x 2.4mm', 'Blue 0.80 x 2.6mm', 'Orange 0.90 x 3.0mm', '-- 7mm Off-Centre --', 'Off-Centre Silver 0.38 x 0.8mm', 'Off-Centre Buff 0.38 x 1.0mm', 'Off-Centre Violet 0.38 x 1.2mm', 'Off-Centre White 0.45 x 1.3mm', 'Off-Centre Sky 0.45 x 1.4mm', 'Off-Centre Lime 0.45 x 1.5mm', 'Off-Centre Yellow 0.50 x 1.6mm', 'Off-Centre Rose 0.50 x 1.7mm', '-- 12mm Centre --', 'Grey 1.30mm (3.80)', 'Black 1.50mm (5.00)', 'Cream 1.70mm (6.00)', '-- 12mm Double --', 'Buff 0.38mm D3/D4/D5', 'White 0.45mm D3/D4/D5', 'Yellow 0.50mm D3/D4/D5'],
-      'Phoenix XL': ['-- 12mm Standard Base --', '0.40 x 1.30 (Navy)', '0.40 x 1.40 (Navy)', '0.40 x 1.50 (Navy)', '0.40 x 1.60 (Navy)', '0.40 x 1.70 (Navy)', '0.50 x 1.30 (Red)', '0.50 x 1.40 (Red)', '0.50 x 1.50 (Red)', '0.50 x 1.60 (Red)', '0.50 x 1.70 (Red)', '0.50 x 1.90 (Red)', '0.60 x 1.50 (Yellow)', '0.60 x 1.70 (Yellow)', '0.60 x 1.90 (Yellow)', '0.60 x 2.10 (Yellow)', '0.60 x 2.30 (Yellow)', '0.60 x 2.50 (Yellow)', '0.60 x 2.70 (Yellow)', '0.60 x 3.00 (Yellow)', '0.60 x 3.20 (Yellow)', '0.70 x 2.10 (Orange)', '0.70 x 2.30 (Orange)', '0.70 x 2.50 (Orange)', '0.70 x 2.70 (Orange)', '0.70 x 3.00 (Orange)', '0.70 x 3.20 (Orange)', '0.80 x 2.10 (Green)', '0.80 x 2.30 (Green)', '0.80 x 2.50 (Green)', '0.80 x 2.70 (Green)', '0.80 x 3.00 (Green)', '0.80 x 3.20 (Green)', '1.00 x 2.10 (Sky)', '1.00 x 2.30 (Sky)', '1.00 x 2.50 (Sky)', '1.00 x 2.70 (Sky)', '1.00 x 3.00 (Sky)', '1.00 x 3.20 (Sky)', '-- 15mm Extra-Wide Base --', '0.60 x 3.50 (Yellow)', '0.60 x 4.00 (Yellow)', '0.60 x 4.50 (Yellow)', '0.60 x 5.00 (Yellow)', '0.70 x 3.50 (Orange)', '0.70 x 4.00 (Orange)', '0.70 x 4.50 (Orange)', '0.70 x 5.00 (Orange)', '0.80 x 3.50 (Green)', '0.80 x 4.00 (Green)', '0.80 x 4.50 (Green)', '0.80 x 5.00 (Green)', '1.00 x 3.50 (Sky)', '1.00 x 4.00 (Sky)', '1.00 x 4.50 (Sky)', '1.00 x 5.00 (Sky)'],
-      'Exceed': ['-- 5.00mm Base Width --', '7.00 x 5.00 (White)', '7.25 x 5.00 (White)', '-- 7.50mm Base Width --', '7.00 x 7.50 (White)', '7.25 x 7.50 (White)'],
-      'Smart Formes': ['0.40 x 1.30', '0.40 x 1.50', '0.50 x 1.50', '0.50 x 1.70', '0.60 x 1.70', '0.60 x 1.90', '0.70 x 1.90']
-    };
-
-    const LENGTHS_MAP = { 'Box': ['24m', '21m', '20.25m', '18m', '15m', '36m', '50m', '34m', '60m'], 'Reel': ['36m', '45m', '60m'] };
-
-    function handleUnitTypeChange() {
-      const unitType = document.getElementById('lineUnitType').value;
-      const metersSelect = document.getElementById('lineMeters');
-      const lengths = LENGTHS_MAP[unitType] || LENGTHS_MAP['Box'];
-      metersSelect.innerHTML = lengths.map(len => `<option value="${len}">${len}</option>`).join('');
-      metersSelect.value = (unitType === 'Box') ? '24m' : '36m';
-    }
-
-    function handleRangeChange() {
-      const range = document.getElementById('lineRange').value;
-      const sizeSelect = document.getElementById('lineSizeSelect');
-      const specs = PRODUCT_SPECS_MAP[range] || PRODUCT_SPECS_MAP['PX Plus'];
-      if (['Ultra SR', 'Phoenix XL', 'Phoenix+', 'Exceed'].includes(range)) {
-        sizeSelect.innerHTML = specs.map(s => {
-          if (s.startsWith('--')) return `<option disabled>${s}</option>`;
-          return `<option value="${s}">${s}</option>`;
-        }).join('');
-        if (range === 'Ultra SR') sizeSelect.value = 'Mauve 0.38 x 0.5mm';
-        else if (range === 'Phoenix XL') sizeSelect.value = '0.40 x 1.30 (Navy)';
-        else if (range === 'Phoenix+') sizeSelect.value = '0.30 x 0.80 (Pink)';
-        else if (range === 'Exceed') sizeSelect.value = '7.00 x 5.00 (White)';
-      } else {
-        sizeSelect.innerHTML = specs.map(s => `<option value="${s}">${s}${s.includes('Custom') || s.includes('Strip') ? '' : ' mm'}</option>`).join('');
-      }
-      handleSizeSpecChange();
-    }
-
-    function handleSizeSpecChange() {
-      const range = document.getElementById('lineRange').value;
-      const size = document.getElementById('lineSizeSelect').value;
-      const ptSelect = document.getElementById('linePt');
-      if (range === 'Ultra SR') {
-        if (size.includes('Orange')) ptSelect.value = '3 / 4 pt'; else ptSelect.value = '2 / 3 pt';
-      } else if (range === 'Exceed') { ptSelect.value = 'Profile Strip';
-      } else if (range === 'Phoenix XL') {
-        if (size.includes('15mm') || size.includes('3.50') || size.includes('4.00') || size.includes('5.00')) ptSelect.value = '3 / 4 pt'; else ptSelect.value = '2 / 3 pt';
-      } else {
-        if (ptSelect.value === 'Profile Strip') ptSelect.value = '2 / 3 pt';
-      }
-    }
-
-    const menuToggle = document.getElementById('menuToggle');
-    const siteNav = document.getElementById('siteNav');
-    menuToggle.addEventListener('click', () => { menuToggle.classList.toggle('open'); siteNav.classList.toggle('mobile-active'); });
-
-    function navigateTo(pageId) {
-      menuToggle.classList.remove('open'); siteNav.classList.remove('mobile-active');
-      document.querySelectorAll('.page-view').forEach(view => view.classList.remove('active-view'));
-      const targetView = document.getElementById(`view-${pageId}`);
-      if (targetView) targetView.classList.add('active-view');
-      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-      const targetBtn = document.getElementById(`nav-${pageId}`);
-      if (targetBtn) targetBtn.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      history.pushState(null, '', `#${pageId}`);
-    }
-
-    window.addEventListener('popstate', () => { navigateTo(window.location.hash.replace('#', '') || 'home'); });
-    window.addEventListener('DOMContentLoaded', () => { navigateTo(window.location.hash.replace('#', '') || 'home'); handleRangeChange(); handleUnitTypeChange(); loadLiveNews(); });
-
-    async function loadLiveNews() {
-      const grid = document.getElementById('liveNewsGrid');
-      if (!supabaseClient) return;
-      try {
-        const { data, error } = await supabaseClient.from('news_posts').select('*').order('created_at', { ascending: false });
-        if (!error && data && data.length > 0) {
-          grid.innerHTML = data.map(post => `<article class="news-card"><div class="news-card-img"><img src="${post.image_url || 'https://www.coexpan.com/wp-content/uploads/2025/05/DSC0476.webp'}" alt="News Image"><span class="news-badge" style="background:var(--matrix-navy);">${post.category}</span></div><div class="news-card-content"><div><div class="news-date">${post.date_text}</div><h3>${post.title}</h3><p style="white-space: pre-wrap;">${post.content}</p></div></div></article>`).join('');
-        }
-      } catch (err) {}
-    }
-
-    async function handlePublishNews(e) {
-      e.preventDefault();
-      const title = document.getElementById('newsTitle').value;
-      const date = document.getElementById('newsDate').value;
-      const cat = document.getElementById('newsCategory').value;
-      const img = document.getElementById('newsImage').value;
-      const content = document.getElementById('newsContent').value;
-      if (supabaseClient) {
-        try {
-          await supabaseClient.from('news_posts').insert([{ title: title, date_text: date, category: cat, image_url: img, content: content }]);
-          alert('News Published!'); e.target.reset(); loadLiveNews();
-        } catch(err) { alert('Failed to publish: ' + err.message); }
-      }
-    }
-
-    async function handlePortalLogin(e) {
-      e.preventDefault();
-      const user = document.getElementById('portalUser').value.trim(), pass = document.getElementById('portalPass').value.trim();
-      if (!user || !pass) return;
-      if (supabaseClient) {
-        try {
-          const { data: userRec, error } = await supabaseClient.from('portal_users').select('*').ilike('company_name', user).eq('access_pin', pass).eq('status', 'Active').limit(1);
-          if (!error && userRec && userRec.length > 0) { loginSuccess(userRec[0].company_name); return; }
-        } catch (err) {}
-      }
-      if ((user.toLowerCase().includes('jkk') && pass === 'MX2026') || (user.toLowerCase().includes('sim') && pass === 'MX2026') || (user.toLowerCase() === 'test' && pass === 'test')) { loginSuccess(user); } else { alert('Authentication Failed.'); }
-    }
-
-    function loginSuccess(companyName) {
-      activeClientName = companyName; document.getElementById('currentClientTitle').textContent = companyName; document.getElementById('newOrderCustomer').value = companyName;
-      document.getElementById('portalLoginGateway').style.display = 'none'; document.getElementById('portalDashboard').style.display = 'block';
-      const defaultDue = new Date(); defaultDue.setDate(defaultDue.getDate() + 7); document.getElementById('newOrderDueDate').value = defaultDue.toISOString().split('T')[0];
-      fetchClientOrdersFromSupabase();
-    }
-
-    function handlePortalLogout() {
-      activeClientName = ''; document.getElementById('portalDashboard').style.display = 'none'; document.getElementById('portalLoginGateway').style.display = 'block';
-      document.getElementById('portalUser').value = ''; document.getElementById('portalPass').value = '';
-    }
-
-    function switchPortalTab(tab) {
-      if (tab === 'active') {
-        document.getElementById('tabBtnActive').classList.add('active-tab'); document.getElementById('tabBtnNew').classList.remove('active-tab');
-        document.getElementById('tabContentActive').style.display = 'block'; document.getElementById('tabContentNew').style.display = 'none'; fetchClientOrdersFromSupabase();
-      } else {
-        document.getElementById('tabBtnNew').classList.add('active-tab'); document.getElementById('tabBtnActive').classList.remove('active-tab');
-        document.getElementById('tabContentNew').style.display = 'block'; document.getElementById('tabContentActive').style.display = 'none';
-      }
-    }
-
-    async function fetchClientOrdersFromSupabase() {
-      const listContainer = document.getElementById('activeOrdersList');
-      listContainer.innerHTML = `<div style="text-align:center;padding:2rem;color:var(--text-muted);">Loading production records...</div>`;
-      try {
-        if (!supabaseClient) throw new Error('Supabase client not loaded');
-        const { data: orders, error } = await supabaseClient.from('orders').select('*, line_items(*)').ilike('customer', `%${activeClientName}%`).eq('deleted', false).order('order_date', { ascending: false });
-        if (error) throw error;
-        if (!orders || orders.length === 0) {
-          listContainer.innerHTML = `<div style="background:var(--bg-light);border:1.5px dashed var(--border-medium);border-radius:var(--radius-md);padding:2.5rem;text-align:center;"><h4 style="color:var(--matrix-navy);font-size:1.1rem;margin-bottom:0.5rem;">No Active Production Runs</h4><button class="btn-solid-navy" onclick="switchPortalTab('new')">+ Place New Production Order</button></div>`;
-          return;
-        }
-        let html = '';
-        orders.forEach(ord => {
-          const stage = ord.stage || 'Received'; let stageClass = 'stage-received'; let progressClass = 'fill-received';
-          if (stage.toUpperCase().includes('EXTRU') || stage.toUpperCase().includes('BOND') || stage.toUpperCase().includes('MILL') || stage.toUpperCase().includes('PROD')) { stageClass = 'stage-production'; progressClass = 'fill-production'; }
-          if (stage.toUpperCase().includes('SHIP') || stage.toUpperCase().includes('DISPATCH')) { stageClass = 'stage-shipped'; progressClass = 'fill-shipped'; }
-          const itemsCount = ord.line_items ? ord.line_items.length : 0; let totalBoxes = 0;
-          if (ord.line_items) { ord.line_items.forEach(li => { totalBoxes += (parseFloat(li.qty) || 0); }); }
-          html += `<div class="factory-order-card"><div class="factory-card-header"><div><span class="wo-title-badge">${ord.id || ord.reference || 'WO-0000'}</span><span style="color:var(--text-muted);font-size:0.88rem;margin-left:0.5rem;">${ord.customer || activeClientName}</span></div><div style="display:flex;align-items:center;gap:0.75rem;"><span class="stage-pill ${stageClass}">${stage}</span><span style="font-size:0.85rem;color:var(--text-dim);font-weight:700;font-family:var(--font-mono);">${itemsCount} lines • ${totalBoxes} boxes</span></div></div><div class="job-progress-track"><div class="job-progress-fill ${progressClass}"></div></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;font-size:0.85rem;margin-bottom:1rem;"><div><span style="color:var(--text-dim);font-weight:700;">Order Date:</span> <strong>${ord.order_date || 'In Queue'}</strong></div><div><span style="color:var(--text-dim);font-weight:700;">Requested Due:</span> <strong>${ord.due_date || 'Standard'}</strong></div><div><span style="color:var(--text-dim);font-weight:700;">Shipping Ref:</span> <strong>${ord.shipped_date ? 'Dispatched ' + ord.shipped_date : 'Awaiting Freight'}</strong></div></div>${ord.line_items && ord.line_items.length > 0 ? `<table class="line-items-preview-table"><thead><tr><th>Product Description</th><th>Quantity (Boxes/Units)</th><th>Status</th></tr></thead><tbody>${ord.line_items.map(li => `<tr><td><strong>${li.description || 'Matrix Profile'}</strong></td><td style="font-family:var(--font-mono);font-weight:800;">${li.qty} Boxes</td><td><span style="color:var(--matrix-green);font-weight:700;">● Production Tracked</span></td></tr>`).join('')}</tbody></table>` : '<p style="font-size:0.85rem;color:var(--text-dim);">Specifications logged in workshop tracker.</p>'}</div>`;
-        });
-        listContainer.innerHTML = html;
-      } catch (err) {}
-    }
-
-    function handleAddLineItemToQueue() {
-      const range = document.getElementById('lineRange').value, size = document.getElementById('lineSizeSelect').value, pt = document.getElementById('linePt').value, unitType = document.getElementById('lineUnitType').value, meters = document.getElementById('lineMeters').value, qty = parseInt(document.getElementById('lineQty').value, 10);
-      if (!size || size.startsWith('--')) { alert('Please select a valid specification.'); return; }
-      if (isNaN(qty) || qty < 10) { alert('Minimum order quantity is 10 boxes per specification.'); return; }
-      const itemDesc = (['Ultra SR','Phoenix XL','Phoenix+','Exceed'].includes(range)) ? `${range} ${size} (${pt}) - ${meters} ${unitType}` : `${range} ${size} mm (${pt}) - ${meters} ${unitType}`;
-      queuedLineItems.push({ description: itemDesc, range: range, size: size, pt: pt, unitType: unitType, meters: meters, qty: qty });
-      renderQueuedLineItems(); document.getElementById('lineQty').value = '10';
-    }
-
-    function removeQueuedItem(index) { queuedLineItems.splice(index, 1); renderQueuedLineItems(); }
-
-    function renderQueuedLineItems() {
-      const tbody = document.getElementById('lineItemsTableBody');
-      if (queuedLineItems.length === 0) { tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--text-dim);padding:1rem;">No lines added yet.</td></tr>`; return; }
-      tbody.innerHTML = queuedLineItems.map((item, idx) => {
-        let flashClass = (idx === queuedLineItems.length - 1) ? 'row-flash' : '';
-        return `<tr class="${flashClass}"><td><strong>${item.range} ${item.size}</strong></td><td>${item.pt}</td><td>${item.meters} / ${item.unitType}</td><td style="font-family:var(--font-mono);font-weight:800;color:var(--matrix-navy);">${item.qty} Boxes</td><td style="text-align:right;"><button type="button" onclick="removeQueuedItem(${idx})" style="color:var(--matrix-red);border:none;background:none;font-weight:800;cursor:pointer;">Remove</button></td></tr>`;
-      }).join('');
-    }
-
-    async function handlePlaceNewOrder(e) {
-      e.preventDefault();
-      if (queuedLineItems.length === 0) { alert('Please add at least one product line item.'); return; }
-      const customer = activeClientName, ref = document.getElementById('newOrderRef').value.trim(), dueDate = document.getElementById('newOrderDueDate').value, address = document.getElementById('newOrderAddress').value.trim(), notes = document.getElementById('newOrderNotes').value.trim(), orderDate = new Date().toISOString().split('T')[0], woGeneratedId = 'WO-' + Math.floor(1000 + Math.random() * 9000);
-      if (supabaseClient) {
-        try {
-          const { data: newOrder, error: orderErr } = await supabaseClient.from('orders').insert([{ id: woGeneratedId, customer: customer, reference: ref, order_date: orderDate, due_date: dueDate, address: address, notes: notes, stage: 'Received', currency: 'GBP', priority: 0, deleted: false }]).select();
-          if (orderErr) { alert('Database write failed: ' + orderErr.message); return; }
-          if (newOrder && newOrder[0]) {
-            const linesToInsert = queuedLineItems.map((item, index) => ({ id: `${woGeneratedId}-L${index + 1}`, order_id: woGeneratedId, description: item.description, qty: Number(item.qty), unit_price: 0, from_other_stock: 0, deleted: false }));
-            await supabaseClient.from('line_items').insert(linesToInsert);
-          }
-        } catch (err) { alert('Network/Database error: ' + err.message); return; }
-      }
-      const emailSubject = `New Production Order: ${woGeneratedId} - ${customer}`;
-      const lineSummaryText = queuedLineItems.map(i => `  • ${i.description} | Quantity: ${i.qty} Boxes`).join('\n');
-      const emailBodyRaw = `NEW ORDER GENERATED VIA CLIENT PORTAL\n--------------------------------------------------\nWork Order ID : ${woGeneratedId}\nCustomer      : ${customer}\nPO Reference  : ${ref}\nOrder Date    : ${orderDate}\nDue Date      : ${dueDate}\nDelivery Bay  : ${address || 'Standard Plant Address'}\n\nPRODUCT LINE SPECIFICATIONS:\n${lineSummaryText}\n\nCUSTOMER NOTES:\n${notes || 'No special instructions provided.'}\n--------------------------------------------------`;
-      const hiddenLink = document.createElement('a'); hiddenLink.href = `mailto:sales@creasingmatrix.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBodyRaw)}`; hiddenLink.style.display = 'none'; document.body.appendChild(hiddenLink); hiddenLink.click(); document.body.removeChild(hiddenLink);
-      queuedLineItems = []; renderQueuedLineItems(); document.getElementById('newOrderRef').value = ''; document.getElementById('newOrderAddress').value = ''; document.getElementById('newOrderNotes').value = ''; document.getElementById('orderConfirmationModal').style.display = 'flex';
-    }
-
-    function closeOrderModal() { document.getElementById('orderConfirmationModal').style.display = 'none'; switchPortalTab('active'); }
-    function openRequestAccessModal() { document.getElementById('requestAccessModal').style.display = 'flex'; }
-    function closeRequestAccessModal() { document.getElementById('requestAccessModal').style.display = 'none'; }
-    async function handleSubmitAccessRequest(e) {
-      e.preventDefault(); const comp = document.getElementById('reqCompany').value.trim(), email = document.getElementById('reqEmail').value.trim(), ref = document.getElementById('reqRef').value.trim();
-      if (supabaseClient) { try { await supabaseClient.from('portal_users').insert([{ company_name: comp, contact_email: email, access_pin: 'PENDING', status: 'Pending' }]); } catch (err) {} }
-      const subject = `Client Portal Access Request: ${comp}`; const body = `A customer has requested login access to the Matrix Engineering Client Hub:\n\nCompany Name       : ${comp}\nContact Email      : ${email}\nVerification Ref/PO: ${ref || 'None provided'}`;
-      window.location.href = `mailto:sales@creasingmatrix.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`; closeRequestAccessModal(); alert('Thank you! Your request has been logged.');
-    }
-    function openAdminLoginModal() { document.getElementById('adminLoginModal').style.display = 'flex'; }
-    function closeAdminLoginModal() { document.getElementById('adminLoginModal').style.display = 'none'; document.getElementById('adminMasterPass').value = ''; }
-    function handleVerifyAdminPass(e) {
-      e.preventDefault(); const pass = document.getElementById('adminMasterPass').value.trim();
-      if (pass.toLowerCase() === 'buster26') { closeAdminLoginModal(); document.getElementById('portalLoginGateway').style.display = 'none'; document.getElementById('portalDashboard').style.display = 'none'; document.getElementById('portalAdminConsole').style.display = 'block'; loadAdminPortalUsers(); } else { alert('Access Denied.'); }
-    }
-    function closeAdminConsole() { document.getElementById('portalAdminConsole').style.display = 'none'; document.getElementById('portalLoginGateway').style.display = 'block'; }
-    async function loadAdminPortalUsers() {
-      const tbody = document.getElementById('adminUserTableBody'); tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-dim); padding: 1rem;">Loading user database...</td></tr>`;
-      if (supabaseClient) {
-        try {
-          const { data: users, error } = await supabaseClient.from('portal_users').select('*').order('created_at', { ascending: false });
-          if (!error && users && users.length > 0) { tbody.innerHTML = users.map(u => `<tr><td><strong>${u.company_name}</strong></td><td>${u.contact_email}</td><td><code style="font-family: var(--font-mono); font-weight: 800; color: var(--matrix-red);">${u.access_pin}</code></td><td><span style="font-weight: 800; color: ${u.status === 'Active' ? 'var(--matrix-green)' : 'var(--matrix-red)'};">● ${u.status}</span></td><td>${u.status === 'Pending' ? `<button class="btn-solid-navy" style="min-height: 28px; padding: 2px 8px; font-size: 0.75rem;" onclick="handleAdminApprove('${u.id}', '${u.company_name}', '${u.contact_email}')">Approve PIN</button>` : `<button style="border: 1px solid var(--border-medium); background: none; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 700; padding: 2px 6px; cursor: pointer;" onclick="handleAdminRevoke('${u.id}')">Revoke</button>`}</td></tr>`).join(''); return; }
-        } catch (err) {}
-      }
-      tbody.innerHTML = `<tr><td><strong>JKK Development & Solutions CC</strong></td><td>purchasing@jkkdev.com</td><td><code>MX2026</code></td><td><span style="color:var(--matrix-green); font-weight:800;">● Active</span></td><td>-</td></tr>`;
-    }
-    async function handleAdminCreateUser(e) { e.preventDefault(); const comp = document.getElementById('adminNewCompany').value.trim(), email = document.getElementById('adminNewEmail').value.trim(), pin = document.getElementById('adminNewPIN').value.trim(); if (supabaseClient) { try { await supabaseClient.from('portal_users').insert([{ company_name: comp, contact_email: email, access_pin: pin, status: 'Active' }]); alert(`Success.`); document.getElementById('adminNewCompany').value = ''; document.getElementById('adminNewEmail').value = ''; loadAdminPortalUsers(); } catch (err) {} } }
-    async function handleAdminApprove(id, comp, email) { const pin = prompt(`Enter Access PIN to assign for ${comp}:`, 'MX2026'); if (!pin) return; if (supabaseClient) { try { await supabaseClient.from('portal_users').update({ access_pin: pin, status: 'Active' }).eq('id', id); loadAdminPortalUsers(); } catch (err) {} } }
-    async function handleAdminRevoke(id) { if (!confirm('Revoke access for this client?')) return; if (supabaseClient) { try { await supabaseClient.from('portal_users').update({ status: 'Revoked' }).eq('id', id); loadAdminPortalUsers(); } catch (err) {} } }
-
-    const caliperInput = document.getElementById('boardCaliper'), caliperVal = document.getElementById('caliperVal'), ruleInput = document.getElementById('creasingRule'), boardType = document.getElementById('boardType'), resDepth = document.getElementById('resDepth'), resWidth = document.getElementById('resWidth'), resProduct = document.getElementById('resProduct');
-    function calculateMatrix() {
-      const caliper = parseFloat(caliperInput.value) || 0, rule = parseFloat(ruleInput.value) || 0, bType = boardType.value;
-      caliperVal.textContent = `${caliper.toFixed(2)} mm`;
-      if (caliper > 0 && rule > 0) {
-        resDepth.textContent = (Math.round((caliper * 0.9) * 20) / 20).toFixed(2); resWidth.textContent = (Math.round(((caliper * 1.5) + rule) * 20) / 20).toFixed(2);
-        if (bType === 'recycled') resProduct.textContent = 'ULTRA-SR™ (Polyester Base)'; else if (caliper > 0.8 || bType === 'solid') resProduct.textContent = 'PHOENIX XL™ (Wide Base)'; else resProduct.textContent = 'PHOENIX+™ (Polymer Base)';
-      }
-    }
-    caliperInput.addEventListener('input', calculateMatrix); ruleInput.addEventListener('change', calculateMatrix); boardType.addEventListener('change', calculateMatrix); calculateMatrix();
-  </script>
 </body>
 </html>
