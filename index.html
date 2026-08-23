@@ -956,20 +956,15 @@
               <button type="submit" class="btn-solid-navy" style="width: 100%; min-height: 42px; font-size: 0.9rem;">Save & Authorize Access</button>
             </form>
             
-            <!-- LIVE NEWS PUBLISHER FORM -->
+            <!-- PUBLISH PDF TO NEWS FORM -->
             <hr style="border:none; border-top:1px solid var(--border-subtle); margin:2rem 0;">
-            <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.5rem;">Publish News Update</h4>
-            <form onsubmit="handlePublishNews(event)">
-               <div class="form-field"><label>Headline</label><input type="text" id="newsTitle" required placeholder="e.g. New Equipment Installed"></div>
-               <div class="form-field"><label>Date</label><input type="text" id="newsDate" required placeholder="e.g. August 2026"></div>
-               <div class="form-field"><label>Category Tag</label><input type="text" id="newsCategory" required placeholder="e.g. Facility Upgrade"></div>
-               <div class="form-field"><label>Image URL (Optional)</label><input type="url" id="newsImage" placeholder="https://image-link.jpg"></div>
+            <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.5rem;">Publish PDF to Latest News</h4>
+            <form onsubmit="handlePdfToNewsUpload(event)">
                <div class="form-field">
-                 <label>Attach PDF (Optional)</label>
-                 <input type="file" id="newsPdfFile" accept="application/pdf" style="width: 100%; background: #ffffff; border: 1px solid var(--border-medium); border-radius: var(--radius-sm); padding: 0.45rem;">
+                 <label>Select PDF Document</label>
+                 <input type="file" id="newsOnlyPdfFile" accept="application/pdf" required style="width: 100%; background: #ffffff; border: 1px solid var(--border-medium); border-radius: var(--radius-sm); padding: 0.45rem;">
                </div>
-               <div class="form-field"><label>Content</label><textarea id="newsContent" required placeholder="Write the update here..."></textarea></div>
-               <button type="submit" class="btn-solid-red" style="width: 100%;">Publish Post to Website</button>
+               <button type="submit" class="btn-solid-red" style="width: 100%;">Upload & Publish to Website</button>
             </form>
           </div>
           <div>
