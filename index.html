@@ -148,8 +148,6 @@
           </div>
           <p class="team-bio">Chris brings a wealth of high-level industrial engineering expertise, having served as a manufacturing and process engineer for global engineering leaders. Specializing in advanced polymer and rubber extrusion, Chris ensures every matrix profile meets microscopic quality standards.</p>
         </div>
-        
-        <!-- Gary Cooper Card Removed -->
       </div>
     </div>
   </main>
@@ -966,6 +964,10 @@
                <div class="form-field"><label>Date</label><input type="text" id="newsDate" required placeholder="e.g. August 2026"></div>
                <div class="form-field"><label>Category Tag</label><input type="text" id="newsCategory" required placeholder="e.g. Facility Upgrade"></div>
                <div class="form-field"><label>Image URL (Optional)</label><input type="url" id="newsImage" placeholder="https://image-link.jpg"></div>
+               <div class="form-field">
+                 <label>Attach PDF (Optional)</label>
+                 <input type="file" id="newsPdfFile" accept="application/pdf" style="width: 100%; background: #ffffff; border: 1px solid var(--border-medium); border-radius: var(--radius-sm); padding: 0.45rem;">
+               </div>
                <div class="form-field"><label>Content</label><textarea id="newsContent" required placeholder="Write the update here..."></textarea></div>
                <button type="submit" class="btn-solid-red" style="width: 100%;">Publish Post to Website</button>
             </form>
