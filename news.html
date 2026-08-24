@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matrix Expands Second Extrusion Line</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --matrix-navy: #182B6B;
+    --matrix-red: #FF2E17;
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --bg-light: #f8fafc;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  body { 
+    font-family: 'Plus Jakarta Sans', sans-serif; 
+    color: var(--text-main); 
+    line-height: 1.7; 
+    background: #e2e8f0; /* Darker background for the web view */
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  /* The physical "A4 Paper" wrapper */
+  .document-page {
+    background: #ffffff;
+    width: 210mm;
+    min-height: 297mm;
+    padding: 25mm 20mm;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: relative;
+  }
+
+  @media print {
+    @page { size: A4 portrait; margin: 0; }
+    body { background: none; padding: 0; }
+    .document-page { box-shadow: none; margin: 0; width: 100%; height: auto; }
+  }
+
+  /* Header & Logo */
+  .header { border-bottom: 3px solid var(--matrix-navy); padding-bottom: 15px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: flex-end; }
+  .logo-svg { height: 40px; }
+  .release-tag { font-size: 0.8rem; font-weight: 800; color: var(--matrix-red); text-transform: uppercase; letter-spacing: 0.1em; }
+
+  /* Typography */
+  h1 { font-size: 2.2rem; font-weight: 900; color: var(--matrix-navy); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 15px; }
+  .meta-date { font-size: 0.9rem; font-weight: 700; color: var(--text-muted); margin-bottom: 25px; border-left: 3px solid var(--matrix-red); padding-left: 10px; }
+  h2 { font-size: 1.4rem; font-weight: 800; color: var(--matrix-navy); margin: 30px 0 10px; }
+  p { margin-bottom: 15px; color: #334155; }
+  
+  /* Image Styling */
+  .hero-image-container { width: 100%; height: 280px; background: var(--bg-light); border-radius: 8px; overflow: hidden; margin-bottom: 25px; border: 1px solid #cbd5e1; }
+  
+  /* 
+    ========================================================================
+    CHANGE THE IMAGE HERE: 
+    Make sure your picture is named exactly what is inside the src="" below 
+    and saved in the exact same folder as this HTML file!
+    ========================================================================
+  */
+  .hero-image-container img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Callouts & Lists */
+  ul { margin-bottom: 20px; padding-left: 20px; }
+  li { margin-bottom: 8px; color: #334155; }
+  li strong { color: var(--matrix-navy); }
+  
+  .quote-box { background: var(--bg-light); border-left: 4px solid var(--matrix-navy); padding: 15px 20px; margin: 25px 0; font-style: italic; font-weight: 600; color: var(--matrix-navy); }
+
+  /* Footer */
+  .footer { margin-top: 40px; padding-top: 15px; border-top: 1px solid #cbd5e1; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-align: center; }
+</style>
+</head>
+<body>
+
+  <div class="document-page">
+    
+    <div class="header">
+      <!-- Matrix Logo -->
+      <svg class="logo-svg" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="120,70 380,25 380,70" fill="#4A4A4A" />
+        <polygon points="400,70 400,25 660,70" fill="#4A4A4A" />
+        <polygon points="120,80 185,80 205,135 225,80 290,80 290,155 240,155 240,115 218,155 192,155 170,115 170,155 120,155" fill="#182B6B" />
+        <polygon points="305,155 350,80 370,80 345,155" fill="#7B818A" />
+        <polygon points="360,80 405,155 380,155 365,125 335,125 350,95" fill="#A5ABB5" />
+        <path d="M 400,80 L 460,80 L 460,100 L 440,100 L 440,145 C 440,155 420,155 420,145 L 420,100 L 400,100 Z" fill="#FF2E17" />
+        <path d="M 465,80 L 515,80 C 535,80 545,90 545,105 C 545,118 535,125 520,128 L 545,155 L 515,155 L 495,130 L 495,155 L 465,155 Z M 495,98 L 495,115 L 512,115 C 518,115 522,110 522,106 C 522,102 518,98 512,98 Z" fill="#182B6B" />
+        <rect x="555" y="80" width="30" height="75" fill="#182B6B" />
+        <polygon points="595,80 625,80 660,155 630,155" fill="#182B6B" />
+        <polygon points="630,80 660,80 595,155 565,155" fill="#182B6B" />
+        <polygon points="120,165 640,165 660,195 120,195" fill="#FF2E17" />
+        <polygon points="120,205 660,205 680,240 120,240" fill="#182B6B" />
+        <text x="390" y="232" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="28" fill="#ffffff" letter-spacing="9" text-anchor="middle">ENGINEERING</text>
+      </svg>
+      <div class="release-tag">Official Company Update</div>
+    </div>
+
+    <h1>Matrix Engineering Powers Global Growth with Commissioning of Second Advanced Rubber Extrusion Line</h1>
+    <div class="meta-date">BALLASALLA, ISLE OF MAN — August 24, 2026</div>
+
+    <!-- YOUR CUSTOM PHOTO GOES HERE -->
+    <div class="hero-image-container">
+      <img src="factory.jpg" alt="Matrix Engineering Expansion" onerror="this.src='https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&q=80'">
+    </div>
+
+    <p>Driven by record international demand and continuous global expansion across the folding carton and die-cutting sectors, Matrix Engineering is thrilled to announce the successful implementation and commissioning of our second state-of-the-art rubber profile extrusion line at our Isle of Man manufacturing facility.</p>
+
+    <h2>Scaling Capacity to Meet Surging Global Demand</h2>
+    <p>Over the past two years, packaging converters and tooling houses across the globe have increasingly turned to Matrix Engineering’s signature <strong>Exceed™ Rubber</strong> line. Engineered to maintain its dynamic profile and elasticity over 1.6 million impressions without degradation or angel hair, the Exceed™ range has rapidly set a new standard for pressroom durability.</p>
+
+    <p>To support this accelerating worldwide adoption, our substantial investment in a second dedicated extrusion line significantly expands our daily production capacity. This milestone guarantees:</p>
+    <ul>
+      <li><strong>Shorter Lead Times:</strong> Expedited order turnarounds for high-volume container shipments worldwide.</li>
+      <li><strong>Factory-Direct Reliability:</strong> Uninterrupted supply chain security directly from our British Isles manufacturing hub.</li>
+      <li><strong>Microscopic Tolerances:</strong> Advanced digital inline monitoring to ensure every millimetre of rubber meets rigorous shore hardness and profile consistency standards.</li>
+    </ul>
+
+    <h2>Pioneering the Next Generation of Profiles</h2>
+    <p>This expansion is about far more than just scaling volume—it fuels our relentless commitment to product innovation. Equipped with advanced multi-zone temperature controls and high-precision die-tooling capabilities, this new line empowers our in-house engineering and R&D teams to work hard on accelerating development for a brand-new suite of cutting-edge profiles.</p>
+    <p>We will be bringing custom geometries, bespoke converter solutions, and new sustainable formulations to market in the near future.</p>
+
+    <div class="quote-box">
+      "This second extrusion line is a direct testament to the trust our global partners place in Matrix Engineering products every day. By reinvesting in our Isle of Man production infrastructure, we are ensuring our converting partners have the dependable, high-precision tools they need."
+    </div>
+
+    <p>With our production capacity doubled, a rich pipeline of breakthrough profile products nearing launch, and our international client base expanding rapidly, <strong>the future at Matrix Engineering has never looked brighter.</strong></p>
+
+    <div class="footer">
+      Matrix Engineering Ltd • Balthane Industrial Estate, Isle of Man, IM9 2AQ<br>
+      sales@creasingmatrix.com • +44 (0)1624 822960 • www.creasingmatrix.com
+    </div>
+
+  </div>
+
+</body>
+</html>
