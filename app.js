@@ -99,73 +99,18 @@ window.addEventListener('DOMContentLoaded', () => {
   loadLiveNews(); 
 });
 
-// ==================== LIVE NEWS PUBLISHER (DIRECT STORAGE & DATABASE) ====================
+// ==================== LIVE NEWS PUBLISHER ====================
 async function loadLiveNews() {
   const grid = document.getElementById('liveNewsGrid');
   if (!supabaseClient) return;
-
   try {
-    // 1. Fetch directly from the Supabase Storage bucket 'NEWS-PDFS'
-    const { data: files, error: storageError } = await supabaseClient.storage.from('NEWS-PDFS').list('', {
-      limit: 100,
-      sortBy: { column: 'created_at', order: 'desc' }
-    });
-
-    if (!storageError && files && files.length > 0) {
-      // Filter out system placeholders if any
-      const validFiles = files.filter(f => f.name !== '.emptyFolderPlaceholder' && !f.name.endsWith('/'));
-
-      if (validFiles.length > 0) {
-        grid.innerHTML = validFiles.map(file => {
-          // Get the direct public URL for this PDF
-          const { data: urlData } = supabaseClient.storage.from('NEWS-PDFS').getPublicUrl(file.name);
-          const pdfUrl = urlData.publicUrl;
-
-          // Extract and format the beautiful title from the file name
-          let cleanName = file.name;
-          if (cleanName.includes('---')) {
-            cleanName = cleanName.split('---').slice(1).join('---');
-          }
-          cleanName = cleanName.replace(/\.[^/.]+$/, ""); // strip .pdf
-          cleanName = cleanName.replace(/[-_]/g, ' '); // replace dashes & underscores with space
-          const beautifulTitle = cleanName.replace(/\b\w/g, c => c.toUpperCase()); // Capitalize words
-
-          // Format Date
-          const createdDate = file.created_at ? new Date(file.created_at) : new Date();
-          const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-          const dateString = `${monthNames[createdDate.getMonth()]} ${createdDate.getFullYear()}`;
-
-          return `
-            <article class="news-card">
-              <div class="news-card-img">
-                <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/ppwr-compliant.png" alt="PDF Release">
-                <span class="news-badge" style="background:var(--matrix-navy);">Technical Document</span>
-              </div>
-              <div class="news-card-content">
-                <div>
-                  <div class="news-date">${dateString}</div>
-                  <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--matrix-navy-dark);">${beautifulTitle}</h3>
-                  <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Official technical release documentation from Matrix Engineering.</p>
-                </div>
-                <a href="${pdfUrl}" target="_blank" class="btn-solid-red" style="text-decoration: none; text-align: center; width: 100%; min-height: 40px; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1.25rem;">
-                  📄 View / Download PDF
-                </a>
-              </div>
-            </article>
-          `;
-        }).join('');
-        return;
-      }
-    }
-
-    // 2. Fallback: Check 'news_posts' SQL table if storage list is empty
-    const { data: posts, error: dbError } = await supabaseClient.from('news_posts').select('*').order('created_at', { ascending: false });
-    if (!dbError && posts && posts.length > 0) {
-      grid.innerHTML = posts.map(post => `
+    const { data, error } = await supabaseClient.from('news_posts').select('*').order('created_at', { ascending: false });
+    if (!error && data && data.length > 0) {
+      grid.innerHTML = data.map(post => `
         <article class="news-card">
           <div class="news-card-img">
-            <img src="${post.image_url || 'https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/ppwr-compliant.png'}" alt="News Image">
-            <span class="news-badge" style="background:var(--matrix-navy);">${post.category || 'Announcement'}</span>
+            <img src="${post.image_url || 'https://www.coexpan.com/wp-content/uploads/2025/05/DSC0476.webp'}" alt="News Image">
+            <span class="news-badge" style="background:var(--matrix-navy);">${post.category}</span>
           </div>
           <div class="news-card-content">
             <div>
@@ -173,88 +118,57 @@ async function loadLiveNews() {
               <h3>${post.title}</h3>
               <p style="white-space: pre-wrap;">${post.content}</p>
             </div>
-            ${post.pdf_url ? `<a href="${post.pdf_url}" target="_blank" class="btn-solid-red" style="text-decoration:none; text-align:center; width:100%; min-height:40px; display:inline-flex; align-items:center; justify-content:center; gap:0.5rem; margin-top:1rem;">📄 View PDF</a>` : ''}
           </div>
         </article>
       `).join('');
-    } else {
-      grid.innerHTML = `<div style="text-align:center; padding:3rem; color:var(--text-muted); grid-column:1/-1;">No news publications found. Upload a PDF from the Admin Desk to publish.</div>`;
     }
   } catch (err) {
-    console.error("Error loading news:", err);
+    console.warn("News logic not deployed on remote yet");
   }
 }
 
-async function handlePdfToNewsUpload(e) {
+async function handlePublishNews(e) {
   e.preventDefault();
-  const fileInput = document.getElementById('newsOnlyPdfFile');
+  const title = document.getElementById('newsTitle').value;
+  const date = document.getElementById('newsDate').value;
+  const cat = document.getElementById('newsCategory').value;
+  const img = document.getElementById('newsImage').value;
+  let content = document.getElementById('newsContent').value;
   
-  if (!fileInput || fileInput.files.length === 0) {
-    alert("Please select a PDF file.");
-    return;
-  }
-
-  const file = fileInput.files[0];
+  // Grab the PDF file from the new input box
+  const pdfInput = document.getElementById('newsPdf');
+  const pdfFile = pdfInput ? pdfInput.files[0] : null;
+  
+  const submitBtn = e.target.querySelector('button[type="submit"]');
+  submitBtn.textContent = 'Publishing...';
+  submitBtn.disabled = true;
 
   if (supabaseClient) {
-    const submitBtn = e.target.querySelector('button[type="submit"]');
     try {
-      submitBtn.textContent = 'Uploading & Publishing...';
-      submitBtn.disabled = true;
-
-      // 1. Build sanitized unique file name
-      const safeOriginalName = file.name.replace(/[^a-zA-Z0-9.\-_]/g, '_');
-      const uniqueFileName = `${Date.now()}---${safeOriginalName}`;
-      
-      // 2. Upload directly to the root of 'NEWS-PDFS' bucket
-      const { data: uploadData, error: uploadError } = await supabaseClient.storage
-        .from('NEWS-PDFS')
-        .upload(uniqueFileName, file, {
-          cacheControl: '3600',
-          upsert: true
-        });
+      // If a PDF is attached, upload it to the "news-pdfs" bucket
+      if (pdfFile) {
+        const fileName = `${Date.now()}-${pdfFile.name.replace(/[^a-zA-Z0-9.\-_]/g, '')}`;
+        const { error: uploadError } = await supabaseClient.storage.from('news-pdfs').upload(fileName, pdfFile);
+        if (uploadError) throw uploadError;
         
-      if (uploadError) throw uploadError;
-
-      // 3. Extract clean title
-      let cleanName = file.name.replace(/\.[^/.]+$/, "");
-      cleanName = cleanName.replace(/[-_]/g, ' ');
-      const beautifulTitle = cleanName.replace(/\b\w/g, c => c.toUpperCase());
-
-      // 4. Get URL & optionally record in news_posts table
-      const { data: publicUrlData } = supabaseClient.storage.from('NEWS-PDFS').getPublicUrl(uniqueFileName);
-      const pdfUrl = publicUrlData ? publicUrlData.publicUrl : '';
-
-      const dateObj = new Date();
-      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-      const dateText = `${monthNames[dateObj.getMonth()]} ${dateObj.getFullYear()}`;
-
-      try {
-        await supabaseClient.from('news_posts').insert([{ 
-          title: beautifulTitle, 
-          date_text: dateText, 
-          category: 'Technical Document', 
-          image_url: 'https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/ppwr-compliant.png', 
-          content: 'Official technical documentation published by Matrix Engineering.',
-          pdf_url: pdfUrl 
-        }]);
-      } catch (tableErr) {
-        // Even if SQL table doesn't exist, storage list handles it
+        // Get the public download link for the PDF
+        const { data: publicUrlData } = supabaseClient.storage.from('news-pdfs').getPublicUrl(fileName);
+        const pdfUrl = publicUrlData.publicUrl;
+        
+        // Magically append a styled download button directly into the content!
+        content += `\n\n<a href="${pdfUrl}" target="_blank" style="display:inline-block; margin-top:10px; padding:8px 16px; background:var(--matrix-red); color:#fff; font-weight:700; border-radius:4px; text-decoration:none; font-size:0.85rem; box-shadow: 0 4px 10px rgba(255,46,23,0.3);">📄 Download Attached PDF</a>`;
       }
 
-      alert(`Success! "${beautifulTitle}" has been uploaded and published to Latest News.`); 
+      await supabaseClient.from('news_posts').insert([{ title: title, date_text: date, category: cat, image_url: img, content: content }]);
+      alert('News Published Successfully!'); 
       e.target.reset(); 
       loadLiveNews();
-      
     } catch(err) { 
-      console.error(err);
-      alert('Upload failed: ' + (err.message || 'Please check Supabase storage settings')); 
+      alert('Failed to publish: ' + err.message); 
     } finally {
-      submitBtn.textContent = 'Upload & Publish to Website';
+      submitBtn.textContent = 'Publish Post to Website';
       submitBtn.disabled = false;
     }
-  } else {
-    alert('Database connection is offline.');
   }
 }
 
@@ -489,7 +403,7 @@ async function handleSubmitAccessRequest(e) {
   
   if (supabaseClient) { 
     try { await supabaseClient.from('portal_users').insert([{ company_name: comp, contact_email: email, access_pin: 'PENDING', status: 'Pending' }]); } catch (err) {} 
-  } 
+  }
   
   const subject = `Client Portal Access Request: ${comp}`; 
   const body = `A customer has requested login access to the Matrix Engineering Client Hub:\n\nCompany Name       : ${comp}\nContact Email      : ${email}\nVerification Ref/PO: ${ref || 'None provided'}`;
