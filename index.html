@@ -832,28 +832,7 @@
     <div class="container news-layout">
       <div class="news-grid" id="liveNewsGrid">
         
-        <article class="news-card">
-          <div class="news-card-img" style="position: relative;">
-            <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/ppwr-compliant.png" alt="PPWR Compliance" onerror="this.src='https://www.thimm.com/fileadmin/_processed_/c/2/csm_faltkarton-klein-kaufen-kaufen-thimm_5d701ced62.jpg'">
-            <!-- CSS Stamp -->
-            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-15deg); color: #FF2E17; border: 4px solid #FF2E17; font-size: 1.8rem; font-weight: 900; padding: 0.2rem 1rem; text-transform: uppercase; letter-spacing: 0.1em; border-radius: 8px; background: rgba(255, 255, 255, 0.85); box-shadow: 0 4px 10px rgba(0,0,0,0.15); pointer-events: none;">COMPLIANT</div>
-            <span class="news-badge">Regulatory Milestone</span>
-          </div>
-          <div class="news-card-content">
-            <div><div class="news-date">August 2026</div><h3>Full PPWR 2026 Compliance</h3><p>Matrix Engineering confirms 100% compliance across our synthetic and steel matrix ranges with zero hazardous chemicals.</p></div>
-            <button class="btn-outline-navy" style="width: 100%; min-height: 40px; font-size: 0.85rem;" onclick="navigateTo('contact')">Read Regulatory Whitepaper</button>
-          </div>
-        </article>
-
-        <article class="news-card">
-          <div class="news-card-img"><img src="https://www.coexpan.com/wp-content/uploads/2025/05/DSC0476.webp" alt="Extrusion Facility"><span class="news-badge" style="background: var(--matrix-navy);">Facility Upgrade</span></div>
-          <div class="news-card-content"><div><div class="news-date">July 2026</div><h3>Closed-Loop Polymer Recovery</h3><p>Our Ballasalla plant has implemented closed-loop post-industrial polymer recovery. All off-cuts are re-granulated into zero-waste secondary cycles.</p></div></div>
-        </article>
-        
-        <article class="news-card">
-          <div class="news-card-img"><img src="matrix-boxes-stack.jpg" alt="Matrix Engineering Boxes" onerror="this.src='https://i.ebayimg.com/00/s/NzM4WDE2MDA=/z/98AAAOSwqwReh35H/$_57.JPG?set_id=8800005007'"><span class="news-badge">Innovation</span></div>
-          <div class="news-card-content"><div><div class="news-date">June 2026</div><h3>PFAS-Free Adhesive Backing</h3><p>Meeting the stringent hazardous chemical restrictions of PPWR Article 5 ahead of deadlines with our new clean-peel formulations.</p></div></div>
-        </article>
+        <!-- The live news posts injected via Javascript will display here! -->
 
       </div>
     </div>
@@ -872,7 +851,6 @@
     </div>
 
     <div class="container portal-layout">
-      <!-- 1. LOGIN GATEWAY -->
       <div id="portalLoginGateway" class="portal-login-shell">
         <div style="width: 48px; height: 48px; background: var(--bg-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; color: var(--matrix-navy); font-size: 1.25rem; font-weight: 800; border: 1.5px solid var(--border-medium);">🔒</div>
         <h3>Client Portal Login</h3>
@@ -888,7 +866,6 @@
         </div>
       </div>
 
-      <!-- 2. AUTHENTICATED PORTAL DASHBOARD -->
       <div id="portalDashboard" class="portal-dashboard-card" style="display: none;">
         <div class="portal-header-bar">
           <div class="client-profile-info">
@@ -940,7 +917,6 @@
         </div>
       </div>
 
-      <!-- 3. ADMIN MANAGEMENT CONSOLE DASHBOARD -->
       <div id="portalAdminConsole" class="portal-dashboard-card" style="display: none;">
         <div class="portal-header-bar">
           <div class="client-profile-info">
@@ -959,13 +935,17 @@
               <button type="submit" class="btn-solid-navy" style="width: 100%; min-height: 42px; font-size: 0.9rem;">Save & Authorize Access</button>
             </form>
             
-            <!-- LIVE NEWS PUBLISHER FORM - UPDATED -->
+            <!-- LIVE NEWS PUBLISHER FORM - ULTRA SIMPLE -->
             <hr style="border:none; border-top:1px solid var(--border-subtle); margin:2rem 0;">
             <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.5rem;">Publish News Update</h4>
             <form onsubmit="handlePublishNews(event)">
                <div class="form-field">
-                 <label>Select PDF Document</label>
+                 <label>1. Select PDF Document (Required)</label>
                  <input type="file" id="newsPdf" accept="application/pdf" required style="padding: 0.5rem; border-style: dashed; width: 100%;">
+               </div>
+               <div class="form-field">
+                 <label>2. Custom Cover Photo (Optional)</label>
+                 <input type="file" id="newsImage" accept="image/*" style="padding: 0.5rem; border-style: dashed; width: 100%;">
                </div>
                <button type="submit" class="btn-solid-red" style="width: 100%;">Upload & Publish</button>
             </form>
