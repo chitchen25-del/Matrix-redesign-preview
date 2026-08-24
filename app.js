@@ -109,14 +109,14 @@ async function loadLiveNews() {
       grid.innerHTML = data.map(post => `
         <article class="news-card">
           <div class="news-card-img">
-            <img src="${post.image_url || 'https://www.coexpan.com/wp-content/uploads/2025/05/DSC0476.webp'}" alt="News Image">
+            <img src="${post.image_url || 'https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/ppwr-compliant.png'}" alt="News Image">
             <span class="news-badge" style="background:var(--matrix-navy);">${post.category}</span>
           </div>
           <div class="news-card-content">
             <div>
               <div class="news-date">${post.date_text}</div>
               <h3>${post.title}</h3>
-              <p style="white-space: pre-wrap;">${post.content}</p>
+              ${post.content}
             </div>
           </div>
         </article>
@@ -129,44 +129,51 @@ async function loadLiveNews() {
 
 async function handlePublishNews(e) {
   e.preventDefault();
-  const title = document.getElementById('newsTitle').value;
-  const date = document.getElementById('newsDate').value;
-  const cat = document.getElementById('newsCategory').value;
-  const img = document.getElementById('newsImage').value;
-  let content = document.getElementById('newsContent').value;
   
-  // Grab the PDF file from the new input box
   const pdfInput = document.getElementById('newsPdf');
-  const pdfFile = pdfInput ? pdfInput.files[0] : null;
+  const pdfFile = pdfInput.files[0];
   
+  if (!pdfFile) { alert('Please select a PDF first.'); return; }
+
   const submitBtn = e.target.querySelector('button[type="submit"]');
   submitBtn.textContent = 'Publishing...';
   submitBtn.disabled = true;
 
   if (supabaseClient) {
     try {
-      // If a PDF is attached, upload it to the "news-pdfs" bucket
-      if (pdfFile) {
-        const fileName = `${Date.now()}-${pdfFile.name.replace(/[^a-zA-Z0-9.\-_]/g, '')}`;
-        const { error: uploadError } = await supabaseClient.storage.from('news-pdfs').upload(fileName, pdfFile);
-        if (uploadError) throw uploadError;
-        
-        // Get the public download link for the PDF
-        const { data: publicUrlData } = supabaseClient.storage.from('news-pdfs').getPublicUrl(fileName);
-        const pdfUrl = publicUrlData.publicUrl;
-        
-        // Magically append a styled download button directly into the content!
-        content += `\n\n<a href="${pdfUrl}" target="_blank" style="display:inline-block; margin-top:10px; padding:8px 16px; background:var(--matrix-red); color:#fff; font-weight:700; border-radius:4px; text-decoration:none; font-size:0.85rem; box-shadow: 0 4px 10px rgba(255,46,23,0.3);">📄 Download Attached PDF</a>`;
-      }
+      // 1. Generate beautiful title from filename (e.g. "August-Pricing.pdf" -> "August Pricing")
+      let rawName = pdfFile.name.replace(/\.pdf$/i, ''); 
+      let beautifulTitle = rawName.replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 
-      await supabaseClient.from('news_posts').insert([{ title: title, date_text: date, category: cat, image_url: img, content: content }]);
-      alert('News Published Successfully!'); 
+      // 2. Upload to Supabase Bucket
+      const fileName = `${Date.now()}-${pdfFile.name.replace(/[^a-zA-Z0-9.\-_]/g, '')}`;
+      const { error: uploadError } = await supabaseClient.storage.from('news-pdfs').upload(fileName, pdfFile);
+      if (uploadError) throw uploadError;
+      
+      // 3. Get Public URL
+      const { data: publicUrlData } = supabaseClient.storage.from('news-pdfs').getPublicUrl(fileName);
+      const pdfUrl = publicUrlData.publicUrl;
+      
+      // 4. Auto-generate the date and the download button HTML
+      const dateText = new Date().toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+      const contentHtml = `<a href="${pdfUrl}" target="_blank" style="display:inline-flex; align-items:center; gap:0.5rem; margin-top:10px; padding:10px 18px; background:var(--matrix-red); color:#fff; font-weight:700; border-radius:4px; text-decoration:none; font-size:0.9rem; box-shadow: 0 4px 10px rgba(255,46,23,0.3);">📄 Download PDF Document</a>`;
+
+      // 5. Insert directly into database
+      await supabaseClient.from('news_posts').insert([{ 
+        title: beautifulTitle, 
+        date_text: dateText, 
+        category: 'PDF Document', 
+        image_url: 'https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/ppwr-compliant.png',
+        content: contentHtml 
+      }]);
+      
+      alert('PDF Published to News!'); 
       e.target.reset(); 
       loadLiveNews();
     } catch(err) { 
       alert('Failed to publish: ' + err.message); 
     } finally {
-      submitBtn.textContent = 'Publish Post to Website';
+      submitBtn.textContent = 'Upload & Publish';
       submitBtn.disabled = false;
     }
   }
