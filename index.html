@@ -739,7 +739,6 @@
         <div class="guide-card"><div class="step-badge">STEP 06</div><h4>Remove Locators</h4><p>Remove the plastic locator bridges from the channel. You are now ready for production.</p></div>
       </div>
 
-      <!-- ==================== NEW: TECHNICAL BROCHURE DOWNLOAD SECTION ==================== -->
       <div class="section-head" style="margin-top: 4rem;">
         <span class="section-eyebrow">Complete Documentation</span>
         <h2 class="section-title">Technical Specification Brochure</h2>
@@ -755,8 +754,6 @@
           <a href="brochure.html" target="_blank" class="btn-outline-navy" style="color: #fff; border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.05);">View Web Version</a>
         </div>
       </div>
-      <!-- ============================================================================== -->
-
     </div>
   </main>
 
@@ -951,7 +948,9 @@
           </div>
         </div>
         <div style="display: grid; grid-template-columns: 1fr 1.6fr; gap: 2rem;">
+          
           <div style="background: var(--bg-light); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.5rem;">
+            <!-- CREATE USER FORM -->
             <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.5rem;">Issue Client Access PIN</h4>
             <form onsubmit="handleAdminCreateUser(event)">
               <div class="form-field"><label>Company Legal Name</label><input type="text" id="adminNewCompany" required placeholder="Exact Company Name"></div>
@@ -960,21 +959,18 @@
               <button type="submit" class="btn-solid-navy" style="width: 100%; min-height: 42px; font-size: 0.9rem;">Save & Authorize Access</button>
             </form>
             
+            <!-- LIVE NEWS PUBLISHER FORM - UPDATED -->
             <hr style="border:none; border-top:1px solid var(--border-subtle); margin:2rem 0;">
             <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.5rem;">Publish News Update</h4>
             <form onsubmit="handlePublishNews(event)">
-               <div class="form-field"><label>Headline</label><input type="text" id="newsTitle" required placeholder="e.g. New Equipment Installed"></div>
-               <div class="form-field"><label>Date</label><input type="text" id="newsDate" required placeholder="e.g. August 2026"></div>
-               <div class="form-field"><label>Category Tag</label><input type="text" id="newsCategory" required placeholder="e.g. Facility Upgrade"></div>
-               <div class="form-field"><label>Image URL (Optional)</label><input type="url" id="newsImage" placeholder="https://image-link.jpg"></div>
-               
-               <!-- NEW: PDF UPLOAD BUTTON -->
-               <div class="form-field"><label>Attach PDF Document (Optional)</label><input type="file" id="newsPdf" accept="application/pdf" style="padding: 0.5rem; border-style: dashed;"></div>
-               
-               <div class="form-field"><label>Content</label><textarea id="newsContent" required placeholder="Write the update here..."></textarea></div>
-               <button type="submit" class="btn-solid-red" style="width: 100%;">Publish Post to Website</button>
+               <div class="form-field">
+                 <label>Select PDF Document</label>
+                 <input type="file" id="newsPdf" accept="application/pdf" required style="padding: 0.5rem; border-style: dashed; width: 100%;">
+               </div>
+               <button type="submit" class="btn-solid-red" style="width: 100%;">Upload & Publish</button>
             </form>
           </div>
+
           <div>
             <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--matrix-navy); margin-bottom: 0.5rem;">Authorized Clients</h4>
             <div style="overflow-x: auto;">
