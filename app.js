@@ -109,7 +109,7 @@ async function loadLiveNews() {
       grid.innerHTML = data.map(post => `
         <article class="news-card">
           <div class="news-card-img">
-            <img src="${post.image_url || 'https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/ppwr-compliant.png'}" alt="News Image">
+            <img src="${post.image_url}" alt="News Image">
             <span class="news-badge" style="background:var(--matrix-navy);">${post.category}</span>
           </div>
           <div class="news-card-content">
@@ -133,6 +133,10 @@ async function handlePublishNews(e) {
   const pdfInput = document.getElementById('newsPdf');
   const pdfFile = pdfInput.files[0];
   
+  // Grab the newly added custom image file
+  const imgInput = document.getElementById('newsImage');
+  const imgFile = imgInput ? imgInput.files[0] : null;
+  
   if (!pdfFile) { alert('Please select a PDF first.'); return; }
 
   const submitBtn = e.target.querySelector('button[type="submit"]');
@@ -141,29 +145,40 @@ async function handlePublishNews(e) {
 
   if (supabaseClient) {
     try {
-      // 1. Generate beautiful title from filename (e.g. "August-Pricing.pdf" -> "August Pricing")
+      // 1. Generate beautiful title from filename
       let rawName = pdfFile.name.replace(/\.pdf$/i, ''); 
       let beautifulTitle = rawName.replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 
-      // 2. Upload to Supabase Bucket
-      const fileName = `${Date.now()}-${pdfFile.name.replace(/[^a-zA-Z0-9.\-_]/g, '')}`;
-      const { error: uploadError } = await supabaseClient.storage.from('news-pdfs').upload(fileName, pdfFile);
+      // 2. Upload PDF to Supabase Bucket
+      const pdfName = `pdf-${Date.now()}-${pdfFile.name.replace(/[^a-zA-Z0-9.\-_]/g, '')}`;
+      const { error: uploadError } = await supabaseClient.storage.from('news-pdfs').upload(pdfName, pdfFile);
       if (uploadError) throw uploadError;
       
-      // 3. Get Public URL
-      const { data: publicUrlData } = supabaseClient.storage.from('news-pdfs').getPublicUrl(fileName);
+      // 3. Get Public URL for PDF
+      const { data: publicUrlData } = supabaseClient.storage.from('news-pdfs').getPublicUrl(pdfName);
       const pdfUrl = publicUrlData.publicUrl;
       
-      // 4. Auto-generate the date and the download button HTML
+      // 4. Handle Custom Cover Photo Upload (Fallback to stock image if none provided)
+      let finalImageUrl = 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&auto=format&fit=crop&q=80';
+      if (imgFile) {
+        const imgName = `img-${Date.now()}-${imgFile.name.replace(/[^a-zA-Z0-9.\-_]/g, '')}`;
+        const { error: imgError } = await supabaseClient.storage.from('news-pdfs').upload(imgName, imgFile);
+        if (imgError) throw imgError;
+        
+        const { data: imgUrlData } = supabaseClient.storage.from('news-pdfs').getPublicUrl(imgName);
+        finalImageUrl = imgUrlData.publicUrl;
+      }
+      
+      // 5. Auto-generate the date and the download button HTML
       const dateText = new Date().toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
       const contentHtml = `<a href="${pdfUrl}" target="_blank" style="display:inline-flex; align-items:center; gap:0.5rem; margin-top:10px; padding:10px 18px; background:var(--matrix-red); color:#fff; font-weight:700; border-radius:4px; text-decoration:none; font-size:0.9rem; box-shadow: 0 4px 10px rgba(255,46,23,0.3);">📄 Download PDF Document</a>`;
 
-      // 5. Insert directly into database
+      // 6. Insert directly into database
       await supabaseClient.from('news_posts').insert([{ 
         title: beautifulTitle, 
         date_text: dateText, 
         category: 'PDF Document', 
-        image_url: 'https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/ppwr-compliant.png',
+        image_url: finalImageUrl,
         content: contentHtml 
       }]);
       
