@@ -17,10 +17,11 @@
    file, changes a variable, or calls the API directly, they still only get
    their own company's rows — because the rule lives in Postgres, not here.
 
-   The staff admin console and the news publisher have been removed from the
-   public site entirely. Creating client logins and publishing documents are
-   staff jobs and belong in the production system behind proper accounts, not
-   on a public web page behind a JavaScript string comparison.
+   The staff admin console and the news publisher are staff-only screens,
+   reached by signing in with a Matrix account on the same form as everyone
+   else. The database reports who is staff and re-checks every action they
+   take. What was wrong before was the JavaScript passcode in front of them,
+   not the screens themselves.
    ========================================================================= */
 
 const SUPABASE_URL = 'https://bjoneyilyyvoemeiojzl.supabase.co';
@@ -87,7 +88,7 @@ window.addEventListener('popstate', () =>
   navigateTo(window.location.hash.replace('#', '') || 'home'));
 
 /* ---------------------------------------------------------------------
-   NEWS — public, read-only. Publishing happens in the factory system.
+   NEWS — public, read-only. Staff publish from the admin screen below.
 --------------------------------------------------------------------- */
 async function loadLiveNews() {
   const grid = document.getElementById('liveNewsGrid');
@@ -98,26 +99,42 @@ async function loadLiveNews() {
       .order('created_at', { ascending: false });
     if (error) throw error;
     if (!data || !data.length) { grid.innerHTML = emptyNews('No announcements yet.'); return; }
-    grid.innerHTML = data.map(post => `
+    grid.innerHTML = data.map(post => {
+      const pdf = pdfLinkFor(post);
+      return `
       <article class="news-card">
         <div class="news-card-img">
-          <img src="${esc(post.image_url)}" alt="" loading="lazy">
+          <img src="${esc(post.image_url || '')}" alt="" loading="lazy">
           <span class="news-badge">${esc(post.category || 'Update')}</span>
         </div>
         <div class="news-card-content">
           <div>
             <div class="news-date">${esc(post.date_text || '')}</div>
             <h3>${esc(post.title || '')}</h3>
-            ${post.content || ''}
           </div>
+          ${pdf ? `<a class="news-pdf-link" href="${esc(pdf)}" target="_blank" rel="noopener noreferrer">Download the PDF</a>` : ''}
         </div>
-      </article>`).join('');
+      </article>`;
+    }).join('');
   } catch (err) {
     grid.innerHTML = emptyNews('News could not be loaded. Please try again shortly.');
   }
 }
 function emptyNews(msg) {
   return `<div class="empty-state"><p>${esc(msg)}</p></div>`;
+}
+
+/* The PDF button is built here from a URL, never taken from the database as
+   markup. New posts carry pdf_url; the four original posts stored a whole <a>
+   tag in `content`, so the href is lifted out of that and re-rendered. Only
+   https links are accepted, so a stored javascript: URL cannot become a link. */
+function pdfLinkFor(post) {
+  if (post.pdf_url) return httpsOnly(post.pdf_url);
+  const m = /href="([^"]+)"/i.exec(post.content || '');
+  return m ? httpsOnly(m[1]) : '';
+}
+function httpsOnly(u) {
+  return /^https:\/\//i.test(String(u ?? '')) ? String(u) : '';
 }
 // Anything coming back from the database is treated as text, not markup.
 function esc(s) {
@@ -459,6 +476,90 @@ async function handleLinkAccount(e) {
 }
 
 /* ---------------------------------------------------------------------
+   NEWS PUBLISHER — staff only
+
+   Two files go up to the news-pdfs bucket: the PDF, and optionally a cover
+   photo. The headline is the PDF's own file name with the extension taken
+   off — nothing is typed, so whatever staff name the file is what the site
+   shows. The headline box is filled in on selection and left read-only so
+   that is visible before anyone commits to it.
+
+   The row is written by portal_publish_news, which re-checks staff status
+   inside the database, and both the upload and the insert are staff-only at
+   the policy level. Revealing this form in the browser achieves nothing on
+   its own, which is the whole point — there is no passcode here to find.
+--------------------------------------------------------------------- */
+const NEWS_BUCKET = 'news-pdfs';
+
+// "Matrix Expands Second Extrusion Line.pdf" -> "Matrix Expands Second Extrusion Line"
+// Only the extension goes; spacing and capitalisation are left exactly as typed.
+function newsTitleFromFileName(name) {
+  return String(name || '').replace(/\.[^.\\/]+$/, '').trim();
+}
+
+// Storage keys have to survive being put in a URL. The headline does not come
+// from this, so stripping it back to safe characters costs nothing.
+function storageKeyFor(prefix, file) {
+  const clean = String(file.name || 'file').replace(/[^A-Za-z0-9._-]+/g, '');
+  return `${prefix}-${Date.now()}-${clean}`.slice(0, 120);
+}
+
+function handleNewsPdfPick() {
+  const f = document.getElementById('newsPdf').files[0];
+  document.getElementById('newsHeadline').value = f ? newsTitleFromFileName(f.name) : '';
+}
+
+async function handlePublishNews(e) {
+  e.preventDefault();
+  const note = document.getElementById('newsPublishNote');
+  const pdf = document.getElementById('newsPdf').files[0];
+  const photo = document.getElementById('newsPhoto').files[0];   // optional
+  note.className = 'form-note'; note.textContent = '';
+
+  if (!pdf) { note.textContent = 'Choose a PDF to publish.'; return; }
+  const title = newsTitleFromFileName(pdf.name);
+  if (!title) { note.textContent = 'The PDF needs a file name — that becomes the headline.'; return; }
+
+  const btn = e.target.querySelector('button[type="submit"]');
+  btn.disabled = true; btn.textContent = 'Publishing…';
+  try {
+    const pdfKey = storageKeyFor('pdf', pdf);
+    let r = await sb.storage.from(NEWS_BUCKET)
+      .upload(pdfKey, pdf, { contentType: 'application/pdf' });
+    if (r.error) throw r.error;
+
+    let imageUrl = '';
+    if (photo) {
+      const imgKey = storageKeyFor('img', photo);
+      r = await sb.storage.from(NEWS_BUCKET)
+        .upload(imgKey, photo, { contentType: photo.type || 'image/jpeg' });
+      if (r.error) throw r.error;
+      imageUrl = sb.storage.from(NEWS_BUCKET).getPublicUrl(imgKey).data.publicUrl;
+    }
+
+    const { error } = await sb.rpc('portal_publish_news', {
+      p_title: title,
+      p_pdf_url: sb.storage.from(NEWS_BUCKET).getPublicUrl(pdfKey).data.publicUrl,
+      p_image_url: imageUrl,
+    });
+    if (error) throw error;
+
+    note.className = 'form-note ok';
+    note.textContent = `Published \u201c${title}\u201d.`;
+    e.target.reset();
+    document.getElementById('newsHeadline').value = '';
+    loadLiveNews();
+  } catch (err) {
+    // The database returns a plain reason (e.g. "staff only"), which is more
+    // use to the person standing there than a generic failure.
+    note.textContent = 'Could not publish that. ' +
+      (err && err.message ? String(err.message).replace(/^.*?:\s*/, '') : 'Please try again.');
+  } finally {
+    btn.disabled = false; btn.textContent = 'Publish to Latest news';
+  }
+}
+
+/* ---------------------------------------------------------------------
    ENQUIRIES — plain mailto. No database write, so nothing to secure.
 --------------------------------------------------------------------- */
 function handleEnquiry(e) {
@@ -520,6 +621,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
 Object.assign(window, {
   handlePortalLogin, handlePortalLogout, switchPortalTab,
+  handlePublishNews, handleNewsPdfPick,
   handleRangeChange, handleUnitTypeChange, handleAddLineItemToQueue,
   removeQueuedItem, handlePlaceNewOrder, closeOrderModal, handleEnquiry,
   loadAccounts, setAccountStatus, handleLinkAccount,

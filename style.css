@@ -144,7 +144,7 @@ nav.site-nav { display: flex; align-items: center; gap: 0.2rem; }
 .spec-table-compact tr:last-child { border-bottom: none; }
 .spec-table-compact td { padding: 0.5rem 0.75rem; }
 .spec-table-compact td.k { color: var(--text-dim); font-weight: 600; }
-.spec-table-compact td.v { text-align: right; font-weight: 700; color: var(--matrix-navy-dark); font-family: var(--font-mono); }
+.spec-table-compact td.v { text-align: right; font-weight: 700; color: var(--matrix-navy-dark); }
 
 /* PRODUCT DETAILS */
 .detail-layout { padding: clamp(1.5rem, 4vw, 3.5rem) 0 clamp(3rem, 6vw, 5rem); }
@@ -478,3 +478,24 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
 .form-note.ok { color: var(--matrix-green); }
 .ok-tick { color: var(--matrix-green); font-weight: 700; font-size: .82rem; }
 .warn-txt { color: var(--matrix-red); font-weight: 700; font-size: .82rem; }
+
+/* News publisher — staff only, inside the admin screen. The headline field is
+   filled from the PDF's file name and left read-only, so what gets published
+   is never retyped and staff can see it before they commit. */
+.admin-news { margin-top: 1.5rem; }
+.news-upload-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 640px) { .news-upload-grid { grid-template-columns: 1fr; } }
+.admin-news input[type="file"] { width: 100%; padding: .65rem; background: #fff;
+  border: 1.5px dashed var(--border-medium); border-radius: var(--radius-sm);
+  font-size: .85rem; font-family: inherit; color: var(--text-muted); cursor: pointer; }
+.admin-news input[type="file"]:hover { border-color: var(--matrix-navy); }
+.admin-news input[readonly] { background: var(--bg-slate); color: var(--matrix-navy-dark);
+  font-weight: 700; cursor: default; }
+.admin-news .opt { font-weight: 400; color: var(--text-dim); }
+
+/* The PDF button on a news card. Built by app.js from a URL, not stored markup. */
+.news-pdf-link { display: inline-flex; align-items: center; gap: .5rem; margin-top: 1rem;
+  padding: .6rem 1.1rem; background: var(--matrix-red); color: #fff; font-weight: 700;
+  font-size: .88rem; border-radius: var(--radius-sm); text-decoration: none;
+  box-shadow: 0 4px 10px rgba(255,46,23,.25); transition: background .2s ease; }
+.news-pdf-link:hover { background: var(--matrix-red-dark); }

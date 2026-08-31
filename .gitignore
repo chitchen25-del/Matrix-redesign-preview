@@ -1,0 +1,52 @@
+# Matrix Engineering — redesign preview
+#
+# This site has no build step: index.html, style.css, app.js, brochure.html and
+# the product/team images are the deliverable and MUST stay tracked. Nothing
+# here should ever match those. What follows is guarding against things that
+# arrive by accident — local tooling, OS junk, and credentials.
+
+# --- Credentials. Nothing in this list should ever exist in this repo. -------
+# The Supabase publishable key in app.js is deliberate and safe (RLS enforces
+# access; see CLAUDE.md). A service-role key, a .env, or a service-account JSON
+# is not — those grant access on their own and must never be committed.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+secrets.json
+service-account*.json
+credentials*.json
+supabase/.temp/
+.supabase/
+
+# --- Local tooling, if anyone ever adds a build or the Supabase CLI ---------
+node_modules/
+package-lock.json.bak
+npm-debug.log*
+yarn-error.log*
+.cache/
+dist/
+build/
+
+# --- Editors and IDEs -------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.claude/settings.local.json
+
+# --- macOS ------------------------------------------------------------------
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# --- Scratch ----------------------------------------------------------------
+*.log
+*.orig
+*.rej
