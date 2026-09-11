@@ -784,3 +784,11 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
   padding-top: 1.25rem; border-top: 1px solid var(--border-subtle);
 }
 .first-order-foot a { color: var(--matrix-navy); font-weight: 700; }
+
+/* Sales panel: the note under the client list explaining what sales cannot do
+   sits quietly rather than reading as an error. */
+.admin-help.sales-foot {
+  margin-top: 1rem; padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  font-size: .82rem; color: var(--text-dim);
+}

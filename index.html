@@ -964,6 +964,46 @@
       </div>
     </div>
 
+    <div id="portalSales" class="portal-dashboard-card" style="display:none">
+      <div class="portal-header-bar">
+        <div class="client-profile-info">
+          <h3>Client accounts</h3>
+          <p>Sales. You can invite clients and see who has access.</p>
+        </div>
+        <button class="btn-ghost-sm" onclick="handlePortalLogout()">Sign out</button>
+      </div>
+
+      <div class="admin-split">
+        <div class="admin-panel">
+          <h4>Invite a client</h4>
+          <p class="admin-help">They get an email with a link, choose their own password,
+            and their account is live straight away. Put the company name exactly as it
+            appears on their orders — the spelling is what connects them to their order
+            history.</p>
+          <form onsubmit="handleInviteClient(event)">
+            <div class="form-field"><label for="inviteCompany">Company name</label>
+              <input type="text" id="inviteCompany" required placeholder="Exactly as on their orders"></div>
+            <div class="form-field"><label for="inviteEmail">Their email</label>
+              <input type="email" id="inviteEmail" required placeholder="buyer@customer.com"></div>
+            <p class="form-note" id="inviteNote" role="alert"></p>
+            <button type="submit" class="btn-solid-navy full">Send the invitation</button>
+          </form>
+        </div>
+
+        <div class="admin-panel wide">
+          <h4>Who has access</h4>
+          <div class="size-table-container">
+            <table class="size-table">
+              <thead><tr><th>Company</th><th>Contact</th><th>Invitation</th><th>Status</th></tr></thead>
+              <tbody id="salesClientsBody"></tbody>
+            </table>
+          </div>
+          <p class="admin-help sales-foot">Need an account revoked? That stays with the
+            Matrix office — ask and they will sort it.</p>
+        </div>
+      </div>
+    </div>
+
     <div id="portalDashboard" class="portal-dashboard-card" style="display:none">
       <div class="portal-header-bar">
         <div class="client-profile-info">

@@ -236,11 +236,12 @@ async function handlePortalLogin(e) {
 }
 
 let isStaff = false;
+let isSales = false;
 
 /* Exactly one of the four portal panels is ever on screen. Keeping that in
    one place stops the display flags drifting apart as panels get added. */
 const PORTAL_PANELS = ['portalLoginGateway', 'portalSetPassword', 'portalPending',
-                       'portalAdmin', 'portalDashboard'];
+                       'portalAdmin', 'portalSales', 'portalDashboard'];
 function showPortalPanel(id) {
   PORTAL_PANELS.forEach(p => {
     const el = document.getElementById(p);
@@ -263,17 +264,26 @@ async function enterPortal() {
   // One call asks the database who this is. The page never decides — staff
   // status and company both come back from the signed-in account, so
   // editing anything in here changes nothing about what you can see.
-  const { data: who, error } = await sb.rpc('portal_whoami');
+  const { data: who, error } = await sb.rpc('portal_role');
   if (error) {
     document.getElementById('portalLoginError').textContent =
       'Could not verify your account. Please try again shortly.';
     await sb.auth.signOut(); session = null; return;
   }
   isStaff = !!(who && who.staff);
+  isSales = !!(who && who.sales);
 
   if (isStaff) {
     showPortalPanel('portalAdmin');
     await loadAccounts();
+    return;
+  }
+
+  // Sales before company: if Mark is ever also linked to a company for testing,
+  // the sales panel is what he is here for.
+  if (isSales) {
+    showPortalPanel('portalSales');
+    await loadSalesClients();
     return;
   }
 
@@ -440,9 +450,81 @@ document.addEventListener('keydown', e => {
   if (overlay && overlay.classList.contains('open')) closeWelcome();
 });
 
+/* ---------------------------------------------------------------------
+   SALES — invite clients
+
+   The invitation goes through the invite-client Edge Function, because
+   sending one needs the service-role key and that never comes near this
+   file. The function checks with the database who is asking, and the
+   function it calls to link the account checks again before it writes.
+--------------------------------------------------------------------- */
+async function handleInviteClient(e) {
+  e.preventDefault();
+  const note = document.getElementById('inviteNote');
+  const company = document.getElementById('inviteCompany').value.trim();
+  const email = document.getElementById('inviteEmail').value.trim();
+  note.className = 'form-note'; note.textContent = '';
+  if (!sb) { note.textContent = 'Cannot reach the server. Please try again shortly.'; return; }
+
+  const btn = e.target.querySelector('button[type="submit"]');
+  btn.disabled = true; btn.textContent = 'Sending…';
+  try {
+    const { data, error } = await sb.functions.invoke('invite-client', {
+      body: {
+        email, company,
+        // Where the invitation link brings them back to. Sent from here so it
+        // works the same in preview and on the live domain.
+        redirectTo: window.location.origin + window.location.pathname,
+      },
+    });
+    if (error || !data || data.error) {
+      note.textContent = (data && data.error) || 'That invitation could not be sent.';
+      return;
+    }
+    note.className = 'form-note ok';
+    note.textContent = data.message || `Invitation sent to ${email}.`;
+    e.target.reset();
+    await loadSalesClients();
+  } catch (err) {
+    note.textContent = 'That invitation could not be sent. Please try again shortly.';
+  } finally {
+    btn.disabled = false; btn.textContent = 'Send the invitation';
+  }
+}
+
+async function loadSalesClients() {
+  const body = document.getElementById('salesClientsBody');
+  body.innerHTML = '<tr><td colspan="4" class="table-empty">Loading…</td></tr>';
+  const { data, error } = await sb.rpc('portal_sales_list_clients');
+  if (error) {
+    body.innerHTML = '<tr><td colspan="4" class="table-empty">Could not load the client list.</td></tr>';
+    return;
+  }
+  if (!data || !data.length) {
+    body.innerHTML = '<tr><td colspan="4" class="table-empty">No clients invited yet.</td></tr>';
+    return;
+  }
+  body.innerHTML = data.map(c => {
+    const active = c.status === 'Active';
+    const cls = active ? 'ok-tick' : (c.status === 'Pending' ? 'pending-txt' : 'warn-txt');
+    // "Invited" and "accepted" are different things, and the gap between them
+    // is exactly what a salesperson wants to see.
+    const invite = !c.linked ? '<span class="warn-txt">Not invited</span>'
+                 : c.accepted ? '<span class="ok-tick">Accepted</span>'
+                 : '<span class="pending-txt">Sent, not accepted</span>';
+    return `
+    <tr>
+      <td><strong>${esc(c.company_name)}</strong></td>
+      <td>${esc(c.contact_email || '—')}</td>
+      <td>${invite}</td>
+      <td><span class="${cls}">${esc(c.status || 'Unknown')}</span></td>
+    </tr>`;
+  }).join('');
+}
+
 async function handlePortalLogout() {
   if (sb) await sb.auth.signOut();
-  session = null; myCompany = ''; isStaff = false; queuedLineItems = [];
+  session = null; myCompany = ''; isStaff = false; isSales = false; queuedLineItems = [];
   showPortalPanel('portalLoginGateway');
   switchAuthPane('signin');
   document.getElementById('portalEmail').value = '';
@@ -916,6 +998,7 @@ Object.assign(window, {
   handlePortalLogin, handlePortalLogout, switchPortalTab,
   switchAuthPane, handlePasswordReset, handleSetPassword,
   closeWelcome, replayWelcome,
+  handleInviteClient, loadSalesClients,
   handlePublishNews, handleNewsPdfPick,
   handleRangeChange, handleUnitTypeChange, handleAddLineItemToQueue,
   removeQueuedItem, handlePlaceNewOrder, closeOrderModal, handleEnquiry,
