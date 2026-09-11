@@ -8,9 +8,64 @@
   <meta name="theme-color" content="#182B6B">
   <link rel="canonical" href="https://www.creasingmatrix.com/">
 
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Matrix Engineering Ltd">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:url" content="https://www.creasingmatrix.com/">
   <meta property="og:title" content="Matrix Engineering — Creasing Matrix &amp; Ejection Rubber">
   <meta property="og:description" content="Extruded in our own facility on the Isle of Man. Phoenix+, Phoenix XL, Ultra-SR and Exceed Rubber.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Matrix Engineering — creasing matrix and ejection rubber, made on the Isle of Man.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Matrix Engineering — Creasing Matrix &amp; Ejection Rubber">
+  <meta name="twitter:description" content="Extruded in our own facility on the Isle of Man. Phoenix+, Phoenix XL, Ultra-SR and Exceed Rubber.">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Matrix Engineering Ltd",
+    "url": "https://www.creasingmatrix.com/",
+    "logo": "https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/apple-touch-icon.png",
+    "description": "Manufacturer of creasing matrix and ejection rubber for folding carton converters and die-makers, extruded on the Isle of Man.",
+    "foundingDate": "2009-07",
+    "email": "sales@creasingmatrix.com",
+    "telephone": "+44-1624-822960",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Unit 7a, Parkway, Balthane Industrial Estate",
+      "addressLocality": "Ballasalla",
+      "addressRegion": "Isle of Man",
+      "postalCode": "IM9 2AQ"
+    },
+    "identifier": "123380C",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Creasing matrix and ejection rubber",
+      "itemListElement": [
+        { "@type": "Product", "name": "Phoenix+",
+          "description": "Polymer-base creasing matrix, the standard range.",
+          "category": "Creasing matrix", "brand": { "@type": "Brand", "name": "Matrix Engineering" } },
+        { "@type": "Product", "name": "Phoenix XL",
+          "description": "Wide-base creasing matrix for heavier board and longer runs.",
+          "category": "Creasing matrix", "brand": { "@type": "Brand", "name": "Matrix Engineering" } },
+        { "@type": "Product", "name": "Ultra-SR",
+          "description": "Polyester-base creasing matrix on 100 micron Mylar film, colour coded by thickness.",
+          "category": "Creasing matrix", "brand": { "@type": "Brand", "name": "Matrix Engineering" } },
+        { "@type": "Product", "name": "Exceed Rubber",
+          "description": "Micro-cellular ejection rubber in 7.00mm and 7.25mm profiles.",
+          "category": "Ejection rubber", "brand": { "@type": "Brand", "name": "Matrix Engineering" } }
+      ]
+    }
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -559,7 +614,7 @@
       <h3>Full technical guide</h3>
       <p>Every colour-coded sizing chart for Phoenix+, Phoenix XL, Ultra-SR and Exceed Rubber, plus accessories, in one printable document.</p>
       <div class="brochure-actions">
-        <a href="Matrix-Technical-Brochure.pdf" download class="btn-solid-red">Download the PDF</a>
+        <a href="MatrixTechnicalBrochure.pdf" download class="btn-solid-red">Download the PDF</a>
         <a href="brochure.html" class="btn-glass ghost">View in the browser</a>
       </div>
     </div>
@@ -712,16 +767,137 @@
   </div>
 
   <div class="container portal-layout">
-    <div id="portalLoginGateway" class="portal-login-shell">
-      <h3>Sign in</h3>
-      <p>Use the email address and password we set up for your account.</p>
-      <form onsubmit="handlePortalLogin(event)">
-        <div class="form-field"><label for="portalEmail">Email</label><input type="email" id="portalEmail" required autocomplete="username"></div>
-        <div class="form-field"><label for="portalPass">Password</label><input type="password" id="portalPass" required autocomplete="current-password"></div>
-        <p class="form-error" id="portalLoginError" role="alert"></p>
-        <button type="submit" class="btn-solid-navy full">Sign in</button>
-      </form>
-      <p class="login-foot">No account yet? <button type="button" class="link-btn" onclick="navigateTo('contact')">Ask us to set one up</button></p>
+    <div id="portalLoginGateway" class="portal-gateway">
+
+      <div class="hub-welcome">
+        <span class="section-eyebrow">Account holders</span>
+        <h3>A direct line into our production system</h3>
+        <p class="hub-lede">The client hub is not a contact form, and it is not open to
+          sign-up. It is set up for you by your Matrix account manager once your account is
+          open — because an order placed here lands straight on the same production system
+          the shop floor works from, under the same work order number we use internally.</p>
+
+        <ul class="hub-benefits">
+          <li>
+            <span class="hub-tick" aria-hidden="true">✓</span>
+            <div><strong>Order from the real size list</strong>
+              Every size we actually extrude — Phoenix+, Phoenix XL, Ultra-SR and Exceed
+              Rubber — pulled from the factory's own product list, so nothing gets ordered
+              that we cannot make.</div>
+          </li>
+          <li>
+            <span class="hub-tick" aria-hidden="true">✓</span>
+            <div><strong>Watch it move</strong>
+              Received, manufacturing, packing, shipped. The same four stages we see,
+              updating as your order goes through.</div>
+          </li>
+          <li>
+            <span class="hub-tick" aria-hidden="true">✓</span>
+            <div><strong>Your order history in one place</strong>
+              Every line, every quantity, every reference you gave us — there to reorder
+              from rather than dug out of an email thread.</div>
+          </li>
+          <li>
+            <span class="hub-tick" aria-hidden="true">✓</span>
+            <div><strong>Your account only</strong>
+              Access is enforced on our server, not in your browser. You see your company's
+              orders and nothing else.</div>
+          </li>
+        </ul>
+
+        <h4 class="hub-steps-head">How you get access</h4>
+        <ol class="hub-steps">
+          <li><span class="hub-step-n">1</span>
+            <div><strong>Your account manager sets it up</strong>
+              Once your account is open with us, ask whoever you deal with at Matrix and
+              they will arrange your access.</div></li>
+          <li><span class="hub-step-n">2</span>
+            <div><strong>We email you an invitation</strong>
+              Follow the link, choose your own password — we never see it — and your
+              account is live.</div></li>
+          <li><span class="hub-step-n">3</span>
+            <div><strong>Order and track</strong>
+              Sign in and your orders are there.</div></li>
+        </ol>
+
+        <p class="hub-foot">Already order from us by email or phone? Nothing changes —
+          the hub sits alongside it. Not an account holder yet?
+          <button type="button" class="link-btn" onclick="navigateTo('contact')">Talk to us about opening one</button>.</p>
+      </div>
+
+      <div class="portal-login-shell">
+        <div id="authPaneSignIn">
+          <span class="auth-badge">Invitation only</span>
+          <h3>Sign in</h3>
+          <p>Use the email address we sent your invitation to.</p>
+          <form onsubmit="handlePortalLogin(event)">
+            <div class="form-field"><label for="portalEmail">Email</label><input type="email" id="portalEmail" required autocomplete="username"></div>
+            <div class="form-field"><label for="portalPass">Password</label><input type="password" id="portalPass" required autocomplete="current-password"></div>
+            <p class="form-error" id="portalLoginError" role="alert"></p>
+            <button type="submit" class="btn-solid-navy full">Sign in</button>
+          </form>
+          <p class="login-foot">
+            <button type="button" class="link-btn" onclick="switchAuthPane('reset')">Forgotten your password?</button></p>
+          <p class="login-foot muted">Access is arranged by your Matrix account manager.
+            <button type="button" class="link-btn" onclick="navigateTo('contact')">Get in touch</button></p>
+        </div>
+
+        <div id="authPaneReset" style="display:none">
+          <h3>Reset your password</h3>
+          <p>We will email a link to set a new one. It only works for an address that
+            already has hub access.</p>
+          <form onsubmit="handlePasswordReset(event)">
+            <div class="form-field"><label for="resetEmail">Email</label>
+              <input type="email" id="resetEmail" required autocomplete="username"></div>
+            <p class="form-note" id="resetNote" role="alert"></p>
+            <button type="submit" class="btn-solid-navy full">Send the link</button>
+          </form>
+          <p class="login-foot">
+            <button type="button" class="link-btn" onclick="switchAuthPane('signin')">Back to sign in</button></p>
+        </div>
+      </div>
+    </div>
+
+    <div id="portalSetPassword" class="portal-pending-card" style="display:none">
+      <div class="pending-mark" aria-hidden="true">✓</div>
+      <h3>Welcome to the client hub</h3>
+      <p class="pending-lede">Your invitation has been accepted for
+        <strong id="setPassEmail" class="mono"></strong>. Choose a password and you are in.
+        We never see it, and you can change it whenever you like.</p>
+
+      <div class="pending-next">
+        <form onsubmit="handleSetPassword(event)">
+          <div class="form-field"><label for="setPass">New password</label>
+            <input type="password" id="setPass" required autocomplete="new-password"
+                   minlength="8" aria-describedby="setPassHint">
+            <span class="field-hint" id="setPassHint">At least 8 characters.</span></div>
+          <div class="form-field"><label for="setPass2">Confirm password</label>
+            <input type="password" id="setPass2" required autocomplete="new-password"></div>
+          <p class="form-note" id="setPassNote" role="alert"></p>
+          <button type="submit" class="btn-solid-red full">Set my password</button>
+        </form>
+      </div>
+
+      <p class="pending-foot">Trouble with the link? Call
+        <a href="tel:+441624822960">+44 (0)1624 822960</a> and we will send a fresh one.</p>
+    </div>
+
+    <div id="portalPending" class="portal-pending-card" style="display:none">
+      <div class="pending-mark" aria-hidden="true">✓</div>
+      <h3>Your login is ready</h3>
+      <p class="pending-lede">Signed in as <strong id="pendingEmail" class="mono"></strong>.
+        Your account manager still has to connect this login to your company before your
+        orders appear — that is the step that keeps one customer from seeing another's.</p>
+
+      <div class="pending-next">
+        <h4>What happens next</h4>
+        <p>We will finish connecting your account and email you when it is live, usually
+          the same working day. Nothing else is needed from you.</p>
+      </div>
+
+      <p class="pending-foot">Anything urgent, call
+        <a href="tel:+441624822960">+44 (0)1624 822960</a>.
+        <button type="button" class="link-btn" onclick="handlePortalLogout()">Sign out</button></p>
     </div>
 
 
@@ -737,9 +913,10 @@
       <div class="admin-split">
         <div class="admin-panel">
           <h4>Give a customer access</h4>
-          <p class="admin-help">They sign up on the login page first, then you link
-            their email to the company name exactly as it appears on their orders.
-            The spelling has to match or their portal will look empty.</p>
+          <p class="admin-help">Invite the client by email first, then link that address to
+            the company name exactly as it appears on their orders. The spelling has to
+            match or their hub will look empty. There is no public sign-up — an address
+            only gets access because someone here gave it.</p>
           <form onsubmit="handleLinkAccount(event)">
             <div class="form-field"><label for="adminLinkEmail">Their email</label>
               <input type="email" id="adminLinkEmail" required placeholder="buyer@customer.com"></div>

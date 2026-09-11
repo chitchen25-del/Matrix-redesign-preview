@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- The site is a single document with hash routing, so there is one indexable
+     URL. Fragment URLs are deliberately not listed: a crawler treats
+     https://www.creasingmatrix.com/#products as the same URL as the root, and
+     listing them adds nothing. If the product pages are ever split into real
+     files, list them here. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.creasingmatrix.com/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.creasingmatrix.com/brochure.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>

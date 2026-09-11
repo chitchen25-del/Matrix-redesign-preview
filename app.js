@@ -36,6 +36,11 @@ let session = null;         // the signed-in Supabase user, or null
 let myCompany = '';         // resolved from the database, never from the page
 let queuedLineItems = [];
 
+// Read before anything else runs. navigateTo() rewrites the fragment on the
+// first render, so an invitation or reset token has to be captured here or it
+// is gone by the time the boot handler looks for it.
+const ARRIVED_FROM_EMAIL = authTokenInUrl();
+
 /* ---------------------------------------------------------------------
    PRODUCT CATALOGUE
    Generated from the production system's own product list rather than
@@ -62,6 +67,62 @@ function buildLineDescription({ range, size, pt, unit, metres }) {
 /* ---------------------------------------------------------------------
    NAVIGATION
 --------------------------------------------------------------------- */
+
+/* Each view gets its own title and description. The site is one document with
+   hash routing, so this does not create separate search results — a crawler
+   sees the head as it was served. What it does do is make the browser tab,
+   the back button, a bookmark and a shared #link say what the page actually
+   is, instead of the site name twelve times over. */
+const SITE_NAME = 'Matrix Engineering';
+const PAGE_META = {
+  home: ['Creasing Matrix & Ejection Rubber, Isle of Man',
+    'Creasing matrix, ejection rubber and makeready tooling, extruded in our own facility on the Isle of Man and supplied to carton converters worldwide.'],
+  about: ['About us',
+    'Extruding creasing matrix on the Isle of Man since 2009, supplying folding carton converters and die-makers worldwide.'],
+  products: ['Products',
+    'Phoenix+, Phoenix XL, Ultra-SR creasing matrix and Exceed ejection rubber, with the full colour-coded sizing for each range.'],
+  'phoenix-plus': ['Phoenix+ creasing matrix',
+    'Our standard polymer-base creasing matrix, and the one most presses run. Full size range from 0.20 x 0.80mm upwards.'],
+  'phoenix-xl': ['Phoenix XL creasing matrix',
+    'A wider base for heavier board and longer runs, where a standard footprint moves under load.'],
+  'ultra-sr': ['Ultra-SR creasing matrix',
+    'Polyester-base matrix on 100 micron Mylar film, colour coded by thickness, for recycled and abrasive boards.'],
+  'exceed-rubber': ['Exceed ejection rubber',
+    'Micro-cellular ejection rubber in 7.00mm and 7.25mm profiles, supplied in 24m and 60m boxes.'],
+  technical: ['Technical guidance',
+    'Matrix sizing for board caliper and rule thickness, fitting guidance, and the full printable technical brochure.'],
+  accessories: ['Accessories',
+    'Shim, patching tape and makeready consumables for the die shop.'],
+  news: ['Latest news',
+    'Announcements and technical bulletins from Matrix Engineering.'],
+  contact: ['Contact us',
+    'Ballasalla, Isle of Man. Call +44 (0)1624 822960 or email sales@creasingmatrix.com for samples and enquiries.'],
+  portal: ['Client hub',
+    'Account holders can place orders and follow them through manufacture, packing and shipping.'],
+};
+
+function setMeta(name, attr, value) {
+  const el = document.querySelector(`meta[${attr}="${name}"]`);
+  if (el) el.setAttribute('content', value);
+}
+
+function applyPageMeta(pageId) {
+  const meta = PAGE_META[pageId] || PAGE_META.home;
+  const title = pageId === 'home'
+    ? `${SITE_NAME} | ${meta[0]}`
+    : `${meta[0]} | ${SITE_NAME}`;
+  document.title = title;
+  setMeta('description', 'name', meta[1]);
+  setMeta('og:title', 'property', title);
+  setMeta('og:description', 'property', meta[1]);
+  setMeta('twitter:title', 'name', title);
+  setMeta('twitter:description', 'name', meta[1]);
+
+  const url = 'https://www.creasingmatrix.com/' + (pageId === 'home' ? '' : `#${pageId}`);
+  const canon = document.querySelector('link[rel="canonical"]');
+  if (canon) canon.setAttribute('href', url);
+  setMeta('og:url', 'property', url);
+}
 const menuToggle = document.getElementById('menuToggle');
 const siteNav = document.getElementById('siteNav');
 
@@ -76,7 +137,11 @@ function navigateTo(pageId) {
   siteNav.classList.remove('mobile-active');
   document.querySelectorAll('.page-view').forEach(v => v.classList.remove('active-view'));
   const target = document.getElementById(`view-${pageId}`);
+  // An unknown id falls back to home, so the metadata has to fall back with it
+  // rather than describing a page that is not on screen.
+  const shown = target ? pageId : 'home';
   (target || document.getElementById('view-home')).classList.add('active-view');
+  applyPageMeta(shown);
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   const btn = document.getElementById(`nav-${pageId}`);
   if (btn) btn.classList.add('active');
@@ -172,6 +237,28 @@ async function handlePortalLogin(e) {
 
 let isStaff = false;
 
+/* Exactly one of the four portal panels is ever on screen. Keeping that in
+   one place stops the display flags drifting apart as panels get added. */
+const PORTAL_PANELS = ['portalLoginGateway', 'portalSetPassword', 'portalPending',
+                       'portalAdmin', 'portalDashboard'];
+function showPortalPanel(id) {
+  PORTAL_PANELS.forEach(p => {
+    const el = document.getElementById(p);
+    // Cleared rather than set to 'block' — the gateway is a grid, and an
+    // inline display:block would flatten it into a single column.
+    if (el) el.style.display = (p === id) ? '' : 'none';
+  });
+}
+
+function switchAuthPane(pane) {
+  const reset = pane === 'reset';
+  document.getElementById('authPaneSignIn').style.display = reset ? 'none' : 'block';
+  document.getElementById('authPaneReset').style.display = reset ? 'block' : 'none';
+  document.getElementById('portalLoginError').textContent = '';
+  const note = document.getElementById('resetNote');
+  note.className = 'form-note'; note.textContent = '';
+}
+
 async function enterPortal() {
   // One call asks the database who this is. The page never decides — staff
   // status and company both come back from the signed-in account, so
@@ -185,23 +272,26 @@ async function enterPortal() {
   isStaff = !!(who && who.staff);
 
   if (isStaff) {
-    document.getElementById('portalLoginGateway').style.display = 'none';
-    document.getElementById('portalDashboard').style.display = 'none';
-    document.getElementById('portalAdmin').style.display = 'block';
+    showPortalPanel('portalAdmin');
     await loadAccounts();
     return;
   }
 
+  // Signed in, but not yet linked to a company. This is the normal state for
+  // anyone who has just created a login, so it gets a real panel explaining
+  // what happens next rather than an error and a silent sign-out. They stay
+  // signed in and still see nothing — my_company() returns no company, so
+  // row-level security returns no rows.
   if (!who || !who.company) {
-    document.getElementById('portalLoginError').textContent =
-      'This account is not linked to a company yet. Contact us and we will set it up.';
-    await sb.auth.signOut(); session = null; return;
+    const email = (session && session.user && session.user.email) || '';
+    document.getElementById('pendingEmail').textContent = email;
+    showPortalPanel('portalPending');
+    return;
   }
   myCompany = who.company;
   document.getElementById('currentClientTitle').textContent = myCompany;
   document.getElementById('newOrderCustomer').value = myCompany;
-  document.getElementById('portalLoginGateway').style.display = 'none';
-  document.getElementById('portalDashboard').style.display = 'block';
+  showPortalPanel('portalDashboard');
 
   const due = new Date();
   due.setDate(due.getDate() + 14);
@@ -209,12 +299,99 @@ async function enterPortal() {
   await fetchMyOrders();
 }
 
+/* ---------------------------------------------------------------------
+   INVITATIONS — there is deliberately no public sign-up
+
+   The hub is invitation only. Nobody can create their own login: an account
+   exists because someone at Matrix invited that address, and it is linked to
+   a company here before it shows anything. signUp is never called from this
+   file, so there is no route in from the outside even for someone editing it.
+
+   An invitation email lands the client back on this page carrying a token in
+   the URL fragment. Supabase's client picks that up and establishes the
+   session; all this code does is notice the arrival, put them on the portal
+   page rather than the home view, and ask for a password. The same applies to
+   a reset link, which is the only self-service action an existing account has.
+--------------------------------------------------------------------- */
+
+// The site uses the fragment for its own routing (#products, #portal), so an
+// arriving token has to be told apart from a page name before navigateTo runs
+// and falls back to home.
+function authTokenInUrl() {
+  const h = String(window.location.hash || '');
+  if (!/access_token=|type=(invite|recovery|signup)|error_description=/.test(h)) return null;
+  const p = new URLSearchParams(h.replace(/^#/, ''));
+  return { type: p.get('type') || '', error: p.get('error_description') || '' };
+}
+
+function showSetPassword() {
+  const email = (session && session.user && session.user.email) || '';
+  document.getElementById('setPassEmail').textContent = email;
+  showPortalPanel('portalSetPassword');
+}
+
+async function handleSetPassword(e) {
+  e.preventDefault();
+  const note = document.getElementById('setPassNote');
+  const pass = document.getElementById('setPass').value;
+  const pass2 = document.getElementById('setPass2').value;
+
+  note.className = 'form-note'; note.textContent = '';
+  if (!sb) { note.textContent = 'Cannot reach the server. Please try again shortly.'; return; }
+  if (pass.length < 8) { note.textContent = 'Please use a password of at least 8 characters.'; return; }
+  if (pass !== pass2) { note.textContent = 'Those two passwords do not match.'; return; }
+
+  const btn = e.target.querySelector('button[type="submit"]');
+  btn.disabled = true; btn.textContent = 'Saving…';
+  try {
+    const { error } = await sb.auth.updateUser({ password: pass });
+    if (error) {
+      // Usually an expired link, which is worth saying plainly — the fix is a
+      // fresh invitation, not a different password.
+      note.textContent = 'That did not save. Your invitation link may have expired — ' +
+        'call us and we will send a new one.';
+      return;
+    }
+    e.target.reset();
+    const { data } = await sb.auth.getSession();
+    session = (data && data.session) || session;
+    await enterPortal();
+  } finally {
+    btn.disabled = false; btn.textContent = 'Set my password';
+  }
+}
+
+/* The one thing an account holder can do unaided. The reply is the same
+   whether or not the address has access, so this cannot be used to find out
+   who our customers are. */
+async function handlePasswordReset(e) {
+  e.preventDefault();
+  const note = document.getElementById('resetNote');
+  const email = document.getElementById('resetEmail').value.trim();
+  note.className = 'form-note'; note.textContent = '';
+  if (!sb) { note.textContent = 'Cannot reach the server. Please try again shortly.'; return; }
+
+  const btn = e.target.querySelector('button[type="submit"]');
+  btn.disabled = true; btn.textContent = 'Sending…';
+  try {
+    await sb.auth.resetPasswordForEmail(email, {
+      redirectTo: window.location.origin + window.location.pathname,
+    });
+  } catch (err) {
+    /* deliberately ignored — see the note below */
+  } finally {
+    btn.disabled = false; btn.textContent = 'Send the link';
+    note.className = 'form-note ok';
+    note.textContent = 'If that address has hub access, the link is on its way.';
+    e.target.reset();
+  }
+}
+
 async function handlePortalLogout() {
   if (sb) await sb.auth.signOut();
   session = null; myCompany = ''; isStaff = false; queuedLineItems = [];
-  document.getElementById('portalDashboard').style.display = 'none';
-  document.getElementById('portalAdmin').style.display = 'none';
-  document.getElementById('portalLoginGateway').style.display = 'block';
+  showPortalPanel('portalLoginGateway');
+  switchAuthPane('signin');
   document.getElementById('portalEmail').value = '';
   document.getElementById('portalPass').value = '';
 }
@@ -254,13 +431,37 @@ async function fetchMyOrders() {
   }
 }
 
-// Stages mirror the factory system's own vocabulary so a customer sees the
-// same words the shop floor does.
+/* ---------------------------------------------------------------------
+   ORDER STAGES — a vocabulary shared with the production system
+
+   orders.stage is free text. Nothing in the database constrains it, so these
+   four names are a convention between this site and Matrix Sync, not
+   something either side can rely on the other to honour. In use at the time
+   of writing: Received, Manufacturing, Shipped. Packing is tracked here but
+   nothing writes it yet.
+
+   Matching is on the whole name, not a prefix. The previous version compared
+   the first four characters, so anything production renamed fell through to
+   index 0 and the customer was told their order was still at Received while
+   it was being packed. An unrecognised stage is now shown exactly as recorded
+   with no step marked, because showing nothing is honest and showing the
+   wrong thing is not.
+
+   Adding a name below is a deliberate act: check with production what the
+   stage actually means before mapping it, since mapping it wrongly tells a
+   customer their order shipped when it has not.
+--------------------------------------------------------------------- */
 const STAGE_STEPS = ['Received', 'Manufacturing', 'Packing', 'Shipped'];
+
+function stageIndex(stage) {
+  const key = String(stage || '').toLowerCase().trim().replace(/\s+/g, ' ');
+  return STAGE_STEPS.findIndex(s => s.toLowerCase() === key);
+}
+
 function renderOrderCard(ord) {
   const stage = ord.stage || 'Received';
-  const idx = Math.max(0, STAGE_STEPS.findIndex(s =>
-    stage.toLowerCase().startsWith(s.toLowerCase().slice(0, 4))));
+  const idx = stageIndex(stage);          // -1 when production uses a name we do not know
+  const known = idx >= 0;
   const lines = ord.line_items || [];
   const items = lines.reduce((t, li) => t + (Number(li.qty) || 0), 0);
 
@@ -271,15 +472,19 @@ function renderOrderCard(ord) {
           <span class="wo-title-badge">${esc(ord.id)}</span>
           ${ord.reference ? `<span class="wo-ref">Your ref ${esc(ord.reference)}</span>` : ''}
         </div>
-        <span class="stage-pill stage-step-${idx}">${esc(stage)}</span>
+        <span class="stage-pill ${known ? `stage-step-${idx}` : 'stage-unknown'}">${esc(stage)}</span>
       </div>
 
-      <ol class="stage-track" aria-label="Order progress">
+      <ol class="stage-track${known ? '' : ' stage-track-unknown'}"
+          aria-label="${known ? 'Order progress' : 'Order progress — current stage not tracked'}">
         ${STAGE_STEPS.map((s, i) => `
-          <li class="${i < idx ? 'passed' : i === idx ? 'current' : ''}">
+          <li class="${known ? (i < idx ? 'passed' : i === idx ? 'current' : '') : ''}">
             <span class="dot"></span><span class="lbl">${s}</span>
           </li>`).join('')}
       </ol>
+      ${known ? '' : `
+        <p class="stage-note">Shown above exactly as production recorded it. Call us on
+          <a href="tel:+441624822960">+44 (0)1624 822960</a> if you need more detail.</p>`}
 
       <div class="order-meta-row">
         <div><span>Ordered</span><strong>${esc(ord.order_date || '—')}</strong></div>
@@ -436,18 +641,26 @@ async function loadAccounts() {
   const { data, error } = await sb.rpc('portal_list_accounts');
   if (error) { body.innerHTML = '<tr><td colspan="5" class="table-empty">Could not load accounts.</td></tr>'; return; }
   if (!data || !data.length) { body.innerHTML = '<tr><td colspan="5" class="table-empty">No client accounts yet.</td></tr>'; return; }
-  body.innerHTML = data.map(a => `
+  // portal_users.status is not a two-value column — Pending rows exist, and
+  // my_company() only resolves a company for Active ones. Showing Pending as
+  // "Revoked" made an account that had never been switched on look like one
+  // that had been switched off.
+  body.innerHTML = data.map(a => {
+    const active = a.status === 'Active';
+    const cls = active ? 'ok-tick' : (a.status === 'Pending' ? 'pending-txt' : 'warn-txt');
+    return `
     <tr>
       <td><strong>${esc(a.company_name)}</strong></td>
       <td>${esc(a.contact_email || '—')}</td>
-      <td>${a.linked ? '<span class="ok-tick">Signed up</span>' : '<span class="warn-txt">No login yet</span>'}</td>
-      <td>${a.status === 'Active' ? '<span class="ok-tick">Active</span>' : '<span class="warn-txt">Revoked</span>'}</td>
+      <td>${a.linked ? '<span class="ok-tick">Has a login</span>' : '<span class="warn-txt">Not invited yet</span>'}</td>
+      <td><span class="${cls}">${esc(a.status || 'Unknown')}</span></td>
       <td class="row-action">
-        <button type="button" onclick="setAccountStatus(${a.id}, '${a.status === 'Active' ? 'Revoked' : 'Active'}')">
-          ${a.status === 'Active' ? 'Revoke' : 'Restore'}
+        <button type="button" onclick="setAccountStatus('${esc(a.id)}', '${esc(active ? 'Revoked' : 'Active')}')">
+          ${active ? 'Revoke' : 'Make active'}
         </button>
       </td>
-    </tr>`).join('');
+    </tr>`;
+  }).join('');
 }
 
 async function setAccountStatus(id, status) {
@@ -600,7 +813,10 @@ function calculateMatrix() {
    BOOT
 --------------------------------------------------------------------- */
 window.addEventListener('DOMContentLoaded', async () => {
-  navigateTo(window.location.hash.replace('#', '') || 'home');
+  // Someone following an invitation or a reset link is landing on the site for
+  // a specific reason, so they go to the hub rather than the home page.
+  navigateTo(ARRIVED_FROM_EMAIL ? 'portal'
+           : (window.location.hash.replace('#', '') || 'home'));
   populateRanges();
   renderQueue();
   loadLiveNews();
@@ -615,12 +831,25 @@ window.addEventListener('DOMContentLoaded', async () => {
   // on every visit.
   if (sb) {
     const { data } = await sb.auth.getSession();
-    if (data && data.session) { session = data.session; await enterPortal(); }
+    if (data && data.session) {
+      session = data.session;
+      // Arriving on an invitation or reset link: set a password first, then
+      // carry on into whichever panel the database says they belong in.
+      if (ARRIVED_FROM_EMAIL && !ARRIVED_FROM_EMAIL.error) showSetPassword();
+      else await enterPortal();
+    } else if (ARRIVED_FROM_EMAIL) {
+      // The link carried a token but no session came of it — expired, already
+      // used, or tampered with. All three need the same thing: a new one.
+      switchAuthPane('signin');
+      document.getElementById('portalLoginError').textContent =
+        'That link has expired or has already been used. Call us and we will send a new one.';
+    }
   }
 });
 
 Object.assign(window, {
   handlePortalLogin, handlePortalLogout, switchPortalTab,
+  switchAuthPane, handlePasswordReset, handleSetPassword,
   handlePublishNews, handleNewsPdfPick,
   handleRangeChange, handleUnitTypeChange, handleAddLineItemToQueue,
   removeQueuedItem, handlePlaceNewOrder, closeOrderModal, handleEnquiry,

@@ -499,3 +499,171 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
   font-size: .88rem; border-radius: var(--radius-sm); text-decoration: none;
   box-shadow: 0 4px 10px rgba(255,46,23,.25); transition: background .2s ease; }
 .news-pdf-link:hover { background: var(--matrix-red-dark); }
+
+/* =========================================================================
+   CLIENT HUB ONBOARDING — appended after ADDITIONS, so these rules win.
+   Covers the signed-out gateway (welcome + sign in / create a login) and the
+   pending panel shown to a login that is not linked to a company yet.
+   ========================================================================= */
+
+.portal-gateway {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 900px) {
+  .portal-gateway { grid-template-columns: 1fr; gap: 2.25rem; }
+}
+
+/* --- left: the welcome --- */
+.hub-welcome h3 {
+  font-size: clamp(1.5rem, 3vw, 1.9rem); font-weight: 900;
+  color: var(--matrix-navy-dark); line-height: 1.2; margin-bottom: 0.75rem;
+}
+.hub-lede {
+  font-size: 1rem; color: var(--text-muted); margin-bottom: 2rem;
+  max-width: 46ch;
+}
+
+.hub-benefits { list-style: none; display: grid; gap: 1.15rem; margin-bottom: 2.5rem; }
+.hub-benefits li { display: flex; gap: 0.85rem; align-items: flex-start; }
+.hub-benefits strong {
+  display: block; font-size: 0.95rem; font-weight: 800;
+  color: var(--matrix-navy-dark); margin-bottom: 0.15rem;
+}
+.hub-benefits div { font-size: 0.88rem; color: var(--text-muted); line-height: 1.55; }
+.hub-tick {
+  flex: 0 0 22px; height: 22px; margin-top: 2px;
+  display: grid; place-items: center;
+  background: var(--matrix-green); color: #fff;
+  border-radius: 50%; font-size: 0.72rem; font-weight: 800;
+}
+
+.hub-steps-head {
+  font-size: 0.8rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--matrix-navy);
+  padding-top: 1.75rem; border-top: 1px solid var(--border-subtle);
+  margin-bottom: 1.25rem;
+}
+.hub-steps { list-style: none; display: grid; gap: 1.1rem; counter-reset: none; }
+.hub-steps li { display: flex; gap: 0.85rem; align-items: flex-start; }
+.hub-steps strong {
+  display: block; font-size: 0.95rem; font-weight: 800;
+  color: var(--matrix-navy-dark); margin-bottom: 0.15rem;
+}
+.hub-steps div { font-size: 0.88rem; color: var(--text-muted); line-height: 1.55; }
+.hub-step-n {
+  flex: 0 0 28px; height: 28px; display: grid; place-items: center;
+  background: var(--matrix-navy); color: #fff; border-radius: 50%;
+  font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700;
+}
+
+.hub-foot {
+  font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;
+  margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-subtle);
+}
+
+/* --- right: the auth card --- */
+.portal-gateway .portal-login-shell {
+  max-width: none; margin: 0; width: 100%;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  position: sticky; top: 104px;
+}
+@media (max-width: 900px) {
+  .portal-gateway .portal-login-shell { position: static; }
+}
+
+.auth-badge {
+  display: inline-block; font-size: 0.68rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--matrix-navy); background: var(--bg-slate);
+  border-radius: 999px; padding: 0.3rem 0.75rem; margin-bottom: 0.9rem;
+}
+
+.login-foot.muted {
+  margin-top: 0.6rem; padding-top: 0.9rem;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.8rem; color: var(--text-dim); line-height: 1.55;
+}
+
+#portalSetPassword .pending-next { margin-bottom: 1.25rem; }
+#portalSetPassword .pending-next .form-field { margin-bottom: 1rem; }
+
+.field-hint {
+  display: block; font-size: 0.75rem; color: var(--text-dim);
+  margin-top: 0.3rem; font-weight: 500;
+}
+
+/* --- pending: signed in, not linked yet --- */
+.portal-pending-card {
+  max-width: 640px; margin: 0 auto; text-align: center;
+  background: #ffffff; border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-card);
+  padding: clamp(2rem, 5vw, 3rem);
+}
+.pending-mark {
+  width: 56px; height: 56px; margin: 0 auto 1.25rem;
+  display: grid; place-items: center; border-radius: 50%;
+  background: var(--matrix-green); color: #ffffff;
+  font-size: 1.6rem; font-weight: 800;
+}
+.portal-pending-card h3 {
+  font-size: 1.5rem; font-weight: 900;
+  color: var(--matrix-navy-dark); margin-bottom: 0.65rem;
+}
+.pending-lede {
+  font-size: 0.92rem; color: var(--text-muted); line-height: 1.65;
+  max-width: 48ch; margin: 0 auto;
+}
+.pending-next {
+  text-align: left; background: var(--bg-light);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+  padding: 1.5rem; margin: 1.75rem 0 1.25rem;
+}
+.pending-next h4 {
+  font-size: 0.78rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--matrix-navy); margin-bottom: 0.6rem;
+}
+.pending-next p {
+  font-size: 0.88rem; color: var(--text-muted);
+  line-height: 1.6; margin-bottom: 1.15rem;
+}
+.pending-foot { font-size: 0.83rem; color: var(--text-muted); }
+.pending-foot a { color: var(--matrix-navy); font-weight: 700; }
+
+/* .portal-layout is `container portal-layout`, but its padding shorthand set
+   the horizontal value to 0, cancelling .container's side padding — the whole
+   Client hub page ran flush to the screen edge on narrow viewports. */
+.container.portal-layout { padding-left: 1.5rem; padding-right: 1.5rem; }
+@media (max-width: 640px) {
+  .container.portal-layout { padding-left: 1.25rem; padding-right: 1.25rem; }
+}
+
+/* =========================================================================
+   UNKNOWN ORDER STAGE
+   When production uses a stage name the site does not track, the pill shows
+   the real value and the track is left deliberately unmarked — no step is
+   claimed as reached. Amber rather than red: it is not an error, it just
+   means we will not guess on the customer's behalf.
+   ========================================================================= */
+.stage-pill.stage-unknown {
+  background: #fef3c7; color: #92400e;
+  box-shadow: inset 0 0 0 1px #fcd34d;
+}
+.stage-track-unknown { opacity: 0.55; }
+.stage-track-unknown .dot { background: var(--border-medium); }
+.stage-note {
+  font-size: 0.78rem; color: var(--text-muted); line-height: 1.55;
+  margin: -0.5rem 0 1.25rem;
+  padding: 0.65rem 0.85rem;
+  background: var(--bg-light); border-left: 3px solid #fcd34d;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+.stage-note a { color: var(--matrix-navy); font-weight: 700; }
+
+/* portal_users.status has a third value, Pending — an account set up but never
+   switched on. Amber keeps it visibly distinct from a Revoked one. */
+.pending-txt { color: #b45309; font-weight: 700; font-size: .82rem; }
