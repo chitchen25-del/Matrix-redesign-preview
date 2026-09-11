@@ -1020,6 +1020,42 @@
   </div>
 </main>
 
+<div id="welcomeOverlay" class="modal-backdrop welcome-backdrop">
+  <div class="welcome-card" role="dialog" aria-modal="true" aria-labelledby="welcomeHeading">
+
+    <!-- A cross-section of the thing we make: the rule comes down, the board
+         is pressed into the channel, and the crease stays. One moment, once. -->
+    <svg class="crease-anim" viewBox="0 0 320 140" role="img"
+         aria-label="A creasing rule pressing board into a matrix channel to form a crease">
+      <g class="ca-rule">
+        <rect x="156" y="0" width="8" height="88" rx="2" fill="var(--matrix-red)"/>
+        <rect x="150" y="0" width="20" height="10" rx="3" fill="var(--matrix-red-dark)"/>
+      </g>
+      <path class="ca-board ca-board-flat" d="M40 74 H280"
+            stroke="var(--matrix-grey-mid)" stroke-width="7" stroke-linecap="round" fill="none"/>
+      <path class="ca-board ca-board-creased" d="M40 74 H146 L160 94 L174 74 H280"
+            stroke="var(--matrix-grey-dark)" stroke-width="7" stroke-linecap="round" fill="none"/>
+      <path d="M40 86 H140 Q146 86 146 92 V104 Q146 110 140 110 H40 Z" fill="var(--matrix-navy)"/>
+      <path d="M280 86 H180 Q174 86 174 92 V104 Q174 110 180 110 H280 Z" fill="var(--matrix-navy)"/>
+      <rect x="40" y="112" width="240" height="6" rx="3" fill="var(--matrix-navy-dark)"/>
+    </svg>
+
+    <h3 id="welcomeHeading">Welcome to the Matrix family</h3>
+    <p class="welcome-company" id="welcomeCompany"></p>
+
+    <ul class="welcome-points">
+      <li>Order from the sizes we actually extrude, not a generic list.</li>
+      <li>Follow every order through manufacture, packing and shipping.</li>
+      <li>Everything you have ordered stays here to reorder from.</li>
+    </ul>
+
+    <div class="welcome-actions">
+      <button type="button" class="btn-solid-red" onclick="closeWelcome('order')">Place your first order</button>
+      <button type="button" class="link-btn" onclick="closeWelcome()">Have a look around first</button>
+    </div>
+  </div>
+</div>
+
 <div id="orderConfirmationModal" class="modal-backdrop">
   <div class="modal-card">
     <div class="modal-tick">✓</div>

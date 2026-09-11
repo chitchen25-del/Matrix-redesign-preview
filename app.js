@@ -292,6 +292,7 @@ async function enterPortal() {
   document.getElementById('currentClientTitle').textContent = myCompany;
   document.getElementById('newOrderCustomer').value = myCompany;
   showPortalPanel('portalDashboard');
+  maybeWelcome();
 
   const due = new Date();
   due.setDate(due.getDate() + 14);
@@ -387,6 +388,58 @@ async function handlePasswordReset(e) {
   }
 }
 
+/* ---------------------------------------------------------------------
+   WELCOME — shown once, on a client's first sign-in
+
+   Kept in the browser rather than the database: which greeting somebody has
+   seen is not the production system's business, and recording it there would
+   mean a schema change for a nicety. The trade is that it shows again on a
+   new device, which is a small price and arguably rather nice.
+--------------------------------------------------------------------- */
+function welcomeKey() {
+  const id = session && session.user && session.user.id;
+  return id ? `mx-welcomed-${id}` : null;
+}
+
+function maybeWelcome() {
+  const key = welcomeKey();
+  if (!key) return;
+  let seen = false;
+  try { seen = localStorage.getItem(key) === '1'; } catch (e) { /* private mode */ }
+  if (!seen) showWelcome();
+}
+
+function showWelcome() {
+  document.getElementById('welcomeCompany').textContent = myCompany;
+  const overlay = document.getElementById('welcomeOverlay');
+  overlay.classList.add('open');
+  // Focus the card so the greeting is announced and Escape has something to
+  // close, rather than leaving focus behind the overlay.
+  const card = overlay.querySelector('.welcome-card');
+  if (card) { card.setAttribute('tabindex', '-1'); card.focus(); }
+}
+
+function closeWelcome(then) {
+  document.getElementById('welcomeOverlay').classList.remove('open');
+  const key = welcomeKey();
+  if (key) { try { localStorage.setItem(key, '1'); } catch (e) { /* private mode */ } }
+  if (then === 'order') switchPortalTab('new');
+}
+
+// For showing the greeting to someone without having to clear site data:
+// run replayWelcome() in the console while signed in.
+function replayWelcome() {
+  const key = welcomeKey();
+  if (key) { try { localStorage.removeItem(key); } catch (e) {} }
+  showWelcome();
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  const overlay = document.getElementById('welcomeOverlay');
+  if (overlay && overlay.classList.contains('open')) closeWelcome();
+});
+
 async function handlePortalLogout() {
   if (sb) await sb.auth.signOut();
   session = null; myCompany = ''; isStaff = false; queuedLineItems = [];
@@ -417,11 +470,23 @@ async function fetchMyOrders() {
     if (error) throw error;
 
     if (!orders || !orders.length) {
+      // An empty screen is an invitation, not a dead end — say what to do and
+      // what will happen, rather than reporting that nothing is here.
       list.innerHTML = `
-        <div class="empty-state">
-          <h4>No orders on the system yet</h4>
-          <p>When you place an order it will appear here, and update as it moves through production.</p>
-          <button class="btn-solid-navy" onclick="switchPortalTab('new')">Place your first order</button>
+        <div class="first-order-panel">
+          <h4>Your first order starts here</h4>
+          <p>Pick a range, a size and a quantity, and it goes straight onto our
+             production system under its own work order number. You will see it
+             move through manufacture, packing and shipping on this screen.</p>
+          <ol class="first-order-steps">
+            <li><strong>Build the order</strong> from the sizes we extrude.</li>
+            <li><strong>Send it</strong> and we log it against your account.</li>
+            <li><strong>Watch it</strong> through to despatch.</li>
+          </ol>
+          <button class="btn-solid-red" onclick="switchPortalTab('new')">Place your first order</button>
+          <p class="first-order-foot">Would rather talk it through? Call
+            <a href="tel:+441624822960">+44 (0)1624 822960</a> or email
+            <a href="mailto:sales@creasingmatrix.com">sales@creasingmatrix.com</a>.</p>
         </div>`;
       return;
     }
@@ -850,6 +915,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 Object.assign(window, {
   handlePortalLogin, handlePortalLogout, switchPortalTab,
   switchAuthPane, handlePasswordReset, handleSetPassword,
+  closeWelcome, replayWelcome,
   handlePublishNews, handleNewsPdfPick,
   handleRangeChange, handleUnitTypeChange, handleAddLineItemToQueue,
   removeQueuedItem, handlePlaceNewOrder, closeOrderModal, handleEnquiry,

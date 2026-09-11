@@ -667,3 +667,120 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
 /* portal_users.status has a third value, Pending — an account set up but never
    switched on. Amber keeps it visibly distinct from a Revoked one. */
 .pending-txt { color: #b45309; font-weight: 700; font-size: .82rem; }
+
+/* =========================================================================
+   WELCOME MOMENT
+   Shown once, on a client's first sign-in. The animation is a cross-section
+   of the job itself — rule descends, board is pressed into the channel, the
+   crease stays. One orchestrated moment rather than effects scattered about;
+   everything around it stays quiet.
+   ========================================================================= */
+.welcome-backdrop { display: none; }
+.welcome-backdrop.open { display: flex; }
+
+.welcome-card {
+  background: #fff; border-radius: var(--radius-lg);
+  max-width: 520px; width: 100%;
+  padding: clamp(1.75rem, 4vw, 2.5rem);
+  box-shadow: var(--shadow-hover); text-align: center;
+  animation: welcomeRise .45s cubic-bezier(.2,.7,.3,1) both;
+}
+@keyframes welcomeRise {
+  from { opacity: 0; transform: translateY(14px) scale(.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+.crease-anim { width: 100%; max-width: 300px; height: auto; display: block; margin: 0 auto 1.5rem; }
+
+/* The rule comes down, holds while the crease forms, then lifts away. */
+.crease-anim .ca-rule { animation: caRule 2.2s cubic-bezier(.45,.05,.3,1) .25s both; }
+@keyframes caRule {
+  0%   { transform: translateY(-96px); }
+  38%  { transform: translateY(0); }
+  62%  { transform: translateY(0); }
+  100% { transform: translateY(-96px); }
+}
+/* Flat board gives way to creased board at the moment of contact. */
+.crease-anim .ca-board-creased { opacity: 0; animation: caOn  2.2s linear .25s both; }
+.crease-anim .ca-board-flat    { opacity: 1; animation: caOff 2.2s linear .25s both; }
+@keyframes caOn  { 0%,37% { opacity: 0; } 44%,100% { opacity: 1; } }
+@keyframes caOff { 0%,37% { opacity: 1; } 44%,100% { opacity: 0; } }
+
+.welcome-card h3 {
+  font-size: clamp(1.35rem, 4vw, 1.7rem); font-weight: 900;
+  color: var(--matrix-navy-dark); line-height: 1.2; margin-bottom: .35rem;
+  text-wrap: balance;
+  animation: welcomeFade .5s ease-out 1.05s both;
+}
+.welcome-company {
+  font-family: var(--font-mono); font-size: .82rem; font-weight: 700;
+  color: var(--matrix-red); margin-bottom: 1.5rem;
+  animation: welcomeFade .5s ease-out 1.2s both;
+}
+@keyframes welcomeFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+.welcome-points {
+  list-style: none; text-align: left; display: grid; gap: .7rem;
+  margin: 0 auto 1.75rem; max-width: 40ch;
+  animation: welcomeFade .5s ease-out 1.35s both;
+}
+.welcome-points li {
+  position: relative; padding-left: 1.5rem;
+  font-size: .89rem; color: var(--text-muted); line-height: 1.55;
+}
+.welcome-points li::before {
+  content: ""; position: absolute; left: 0; top: .55em;
+  width: 9px; height: 3px; border-radius: 2px; background: var(--matrix-red);
+}
+
+.welcome-actions {
+  display: flex; flex-direction: column; align-items: center; gap: .85rem;
+  animation: welcomeFade .5s ease-out 1.5s both;
+}
+.welcome-actions .btn-solid-red { width: 100%; max-width: 300px; }
+
+/* Anyone who has asked for less motion gets the finished picture, not the
+   performance — the crease is already made when the card appears. */
+@media (prefers-reduced-motion: reduce) {
+  .welcome-card,
+  .welcome-card h3, .welcome-company, .welcome-points, .welcome-actions { animation: none; }
+  .crease-anim .ca-rule { animation: none; transform: translateY(-96px); }
+  .crease-anim .ca-board-creased { animation: none; opacity: 1; }
+  .crease-anim .ca-board-flat    { animation: none; opacity: 0; }
+}
+
+/* First-run orders screen. The generic empty state stays for error cases;
+   this one is for a client who simply has not ordered yet. */
+.first-order-panel {
+  background: var(--bg-light); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg); padding: clamp(1.5rem, 4vw, 2.25rem);
+  text-align: center;
+}
+.first-order-panel h4 {
+  font-size: 1.25rem; font-weight: 900; color: var(--matrix-navy-dark);
+  margin-bottom: .6rem;
+}
+.first-order-panel > p {
+  font-size: .92rem; color: var(--text-muted); line-height: 1.6;
+  max-width: 52ch; margin: 0 auto 1.5rem;
+}
+.first-order-steps {
+  list-style: none; counter-reset: fo; text-align: left;
+  display: grid; gap: .75rem; max-width: 34ch; margin: 0 auto 1.75rem;
+}
+.first-order-steps li {
+  counter-increment: fo; position: relative; padding-left: 2.1rem;
+  font-size: .88rem; color: var(--text-muted); line-height: 1.5;
+}
+.first-order-steps li::before {
+  content: counter(fo); position: absolute; left: 0; top: -1px;
+  width: 24px; height: 24px; display: grid; place-items: center;
+  background: var(--matrix-navy); color: #fff; border-radius: 50%;
+  font-family: var(--font-mono); font-size: .72rem; font-weight: 700;
+}
+.first-order-steps strong { color: var(--matrix-navy-dark); font-weight: 800; }
+.first-order-foot {
+  font-size: .82rem; color: var(--text-dim); margin-top: 1.25rem;
+  padding-top: 1.25rem; border-top: 1px solid var(--border-subtle);
+}
+.first-order-foot a { color: var(--matrix-navy); font-weight: 700; }
