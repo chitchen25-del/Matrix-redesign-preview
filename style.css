@@ -172,8 +172,8 @@ nav.site-nav { display: flex; align-items: center; gap: 0.2rem; }
 /* HERO SECTIONS */
 .hero-main.hero-video-wrap { position: relative; overflow: hidden; min-height: 650px; padding: clamp(5rem, 8vw, 8rem) 0; border-bottom: 1px solid var(--border-subtle); background-color: #0b1329; display: flex; align-items: center; }
 .video-background-scaler { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 0; pointer-events: none; }
-.video-background-scaler iframe { position: absolute; top: 50%; left: 50%; width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.77vh; transform: translate(-50%, -50%); pointer-events: none; border: none; opacity: 0.85; filter: saturate(1.15) contrast(1.05); }
-.hero-video-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, rgba(13,23,59,0.55) 0%, rgba(10,18,44,0.82) 100%); z-index: 1; }
+.video-background-scaler iframe { position: absolute; top: 50%; left: 50%; width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.77vh; transform: translate(-50%, -50%); pointer-events: none; border: none; opacity: 1; filter: saturate(1.15) contrast(1.05); }
+.hero-video-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, rgba(13,23,59,0.28) 0%, rgba(10,18,44,0.68) 100%); z-index: 1; }
 .hero-centered-content { position: relative; z-index: 2; max-width: 860px; margin: 0 auto; text-align: center; }
 .hero-badge-pill { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.6); padding: 0.4rem 1rem; border-radius: 999px; font-size: 0.82rem; font-weight: 800; color: var(--matrix-navy-dark); margin-bottom: 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.25); }
 .hero-badge-pill .dot { width: 8px; height: 8px; background: var(--matrix-red); border-radius: 50%; }
@@ -1313,8 +1313,11 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
 @media (max-width: 920px) { .hero-copy .hero-p { margin-left: auto; margin-right: auto; } }
 
 .hero-tool {
-  background: rgba(10, 17, 41, .82);
-  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  /* Deliberately see-through. The panel sits over the footage rather than
+     blanking it out — the blur keeps the figures legible while the video
+     still reads behind. */
+  background: rgba(10, 17, 41, .52);
+  backdrop-filter: blur(20px) saturate(1.2); -webkit-backdrop-filter: blur(20px) saturate(1.2);
   border: 1px solid rgba(255,255,255,.14);
   border-radius: var(--radius-lg);
   padding: clamp(1.25rem, 3vw, 1.75rem);
@@ -1379,3 +1382,85 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
   color: #94a3b8; text-align: left; padding: 0;
 }
 .tool-more:hover { color: #fff; }
+
+/* On a phone the hero stacks, so the panel would otherwise fill the screen and
+   the footage never gets seen. More height, and the panel sized to its content
+   rather than the full column width. */
+@media (max-width: 920px) {
+  .hero-main.hero-video-wrap { min-height: 760px; }
+  .hero-tool { max-width: 420px; margin: 0 auto; }
+}
+
+/* Without backdrop-filter the panel is just 52% tint over moving footage, and
+   the readout would sit on whatever colour happened to be behind it. Browsers
+   that cannot blur get an opaque panel instead — less handsome, still legible. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .hero-tool { background: rgba(10, 17, 41, .93); }
+}
+
+/* Data sheet download on each product page. Competitors lead with download
+   libraries; a die-maker specifying a job expects a sheet per product. */
+.datasheet-link {
+  display: flex; align-items: center; gap: .85rem;
+  margin: 1.25rem 0; padding: .85rem 1rem;
+  background: var(--bg-light); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md); text-decoration: none;
+  transition: border-color .18s ease, background .18s ease;
+}
+.datasheet-link:hover { border-color: var(--matrix-navy); background: #fff; }
+.ds-ico {
+  flex: 0 0 auto; background: var(--matrix-red); color: #fff;
+  font-family: var(--font-mono); font-size: .64rem; font-weight: 700;
+  letter-spacing: .06em; padding: .35rem .5rem; border-radius: var(--radius-sm);
+}
+.datasheet-link strong {
+  display: block; font-size: .88rem; font-weight: 800; color: var(--matrix-navy-dark);
+}
+.datasheet-link em {
+  display: block; font-style: normal; font-size: .76rem; color: var(--text-dim); margin-top: .1rem;
+}
+
+/* =========================================================================
+   ORDER TRACKING STRIP (home)
+   Replaces three generic claims with the one thing neither competitor can
+   offer: an order you can watch move through the factory. The stage list
+   reuses the hub's own vocabulary rather than inventing marketing names.
+   ========================================================================= */
+.track-strip { padding: clamp(3rem, 6vw, 5rem) 0; background: var(--bg-light); border-bottom: 1px solid var(--border-subtle); }
+.track-strip-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem); align-items: center;
+}
+@media (max-width: 860px) { .track-strip-inner { grid-template-columns: 1fr; gap: 2rem; } }
+.track-copy p { font-size: .95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem; max-width: 46ch; }
+.track-note { font-size: .87rem !important; color: var(--text-dim) !important; }
+.track-copy .btn-solid-navy { margin-top: .5rem; }
+
+.track-demo {
+  list-style: none; background: #fff; border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-card);
+  padding: clamp(1.25rem, 3vw, 1.75rem); display: grid; gap: 0;
+}
+.track-demo li {
+  display: grid; grid-template-columns: 22px 1fr; gap: .9rem;
+  padding: .85rem 0; position: relative;
+}
+.track-demo li:not(:last-child)::after {
+  content: ""; position: absolute; left: 10px; top: 30px; bottom: -4px;
+  width: 2px; background: var(--border-subtle);
+}
+.track-demo li.td-done::after { background: var(--matrix-navy); }
+.td-dot {
+  width: 22px; height: 22px; border-radius: 50%; z-index: 1;
+  border: 2px solid var(--border-medium); background: #fff;
+}
+.td-done .td-dot { background: var(--matrix-navy); border-color: var(--matrix-navy); }
+.td-now .td-dot {
+  background: var(--matrix-red); border-color: var(--matrix-red);
+  box-shadow: 0 0 0 4px rgba(255,46,23,.18);
+}
+.track-demo strong {
+  display: block; font-size: .92rem; font-weight: 800; color: var(--matrix-navy-dark);
+}
+.track-demo div { font-size: .82rem; color: var(--text-muted); line-height: 1.5; }
+.track-demo li:not(.td-done):not(.td-now) strong { color: var(--text-dim); }
