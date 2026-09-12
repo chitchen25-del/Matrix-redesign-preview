@@ -1639,3 +1639,42 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
   padding: .45rem .7rem; border-radius: var(--radius-sm); white-space: nowrap;
 }
 @media (max-width: 560px) { .wallchart { flex-wrap: wrap; } .wc-badge { margin-left: 0; } }
+
+/* =========================================================================
+   THE SIZE, DRAWN
+   The calculator answers in numbers; this shows the geometry those numbers
+   describe, redrawn as the slider moves. Same section language as the fault
+   diagrams, so the site speaks one drawing dialect throughout.
+   ========================================================================= */
+.profile-draw {
+  width: 100%; height: auto; display: block;
+  --pd-navy: #2E4A9E; --pd-red: #FF2E17; --pd-board: #94A3B8;
+  --pd-plate: #060B1E; --pd-dim: #94A3B8;
+}
+.tool-draw {
+  background: rgba(0,0,0,.28); border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--radius-md); padding: .5rem .6rem; margin-bottom: .85rem;
+}
+.calc-draw {
+  background: rgba(0,0,0,.3); border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--radius-md); padding: .75rem; margin-top: 1.1rem;
+}
+/* On the light Technical panel the drawing needs the darker palette inverted. */
+.calc-draw .profile-draw, .tool-draw .profile-draw {
+  --pd-navy: #4F6FD0; --pd-board: #CBD5E1; --pd-plate: #000; --pd-dim: #94A3B8;
+}
+
+/* =========================================================================
+   PAGE TRANSITIONS
+   Views used to swap instantly, which makes a single-page site feel like a
+   document rather than something built. A short rise and fade is enough —
+   long enough to register, short enough never to be in the way.
+   ========================================================================= */
+.page-view.active-view { animation: viewIn .26s cubic-bezier(.2,.7,.3,1) both; }
+@keyframes viewIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-view.active-view { animation: none; }
+}

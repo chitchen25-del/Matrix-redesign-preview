@@ -1371,11 +1371,17 @@ function renderMatrixMatches(depth, width, suggestedRange) {
   });
 
   if (!groups.length) {
+    const cdn = document.getElementById('calcDraw');
+    if (cdn) cdn.innerHTML = drawProfile(depth, width, 12, {});
     host.innerHTML = `<p class="match-none">Nothing on the standard charts sits at exactly
       this size. Call <a href="tel:+441624822960">+44 (0)1624 822960</a> — odd sizes are
       what we do.</p>`;
     return;
   }
+  const cd = document.getElementById('calcDraw');
+  if (cd) cd.innerHTML = drawProfile(groups[0].height, groups[0].width,
+                                     baseFromProfile(groups[0].profiles[0]), {});
+
   const shown = groups.slice(0, 5);
   host.innerHTML = shown.map(m => `
     <div class="match-row">
@@ -1433,6 +1439,64 @@ function requestSamples() {
     '&body=' + encodeURIComponent(body);
 }
 
+/* ---------------------------------------------------------------------
+   THE SIZE, DRAWN
+
+   The calculator returns numbers; this draws what those numbers are. Same
+   cross-section language as the fault diagrams — feathered outer edge up to a
+   plateau, vertical wall into the channel — scaled to the actual figures.
+
+   The vertical is exaggerated against the horizontal, as every matrix section
+   drawing in this trade is: a 0.50mm shoulder on a 12mm base drawn true would
+   be a flat line. The caption says so rather than leaving it implied.
+--------------------------------------------------------------------- */
+function drawProfile(depthMM, widthMM, baseMM, opts) {
+  opts = opts || {};
+  const W = 260, H = opts.compact ? 92 : 118;
+  const HX = 15;                         // units per mm across
+  const VY = 34;                         // units per mm up — deliberately not to scale
+  const plateY = H - (opts.compact ? 16 : 26);
+  const base = Math.min(baseMM * HX, W - 30);
+  const half = Math.max((widthMM * HX) / 2, 3);
+  const sh   = Math.max(depthMM * VY, 6);
+  const cx = W / 2, top = plateY - sh;
+  const lo = cx - base / 2, ro = cx + base / 2;
+  const taper = Math.min(base * 0.28, 34);
+
+  const boardY = top - 6;
+  const dip = Math.min(sh * 0.9, 16);
+
+  return `
+  <svg viewBox="0 0 ${W} ${H}" class="profile-draw" role="img"
+       aria-label="Cross-section: ${depthMM.toFixed(2)}mm deep, ${widthMM.toFixed(2)}mm channel">
+    <rect x="6" y="${plateY}" width="${W-12}" height="6" rx="2" fill="var(--pd-plate)"/>
+    <path d="M${lo} ${plateY} L${lo+taper} ${top} L${cx-half} ${top} L${cx-half} ${plateY} Z" fill="var(--pd-navy)"/>
+    <path d="M${ro} ${plateY} L${ro-taper} ${top} L${cx+half} ${top} L${cx+half} ${plateY} Z" fill="var(--pd-navy)"/>
+    <path d="M12 ${boardY} H${cx-half-3} Q${cx-half} ${boardY} ${cx-half+2} ${boardY+dip*0.5}
+             L${cx} ${boardY+dip} L${cx+half-2} ${boardY+dip*0.5}
+             Q${cx+half} ${boardY} ${cx+half+3} ${boardY} H${W-12}"
+          stroke="var(--pd-board)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="${cx-2}" y="4" width="4" height="${boardY+dip-4}" rx="1" fill="var(--pd-red)"/>
+
+    <line x1="${cx-half}" y1="${top-13}" x2="${cx+half}" y2="${top-13}"
+          stroke="var(--pd-dim)" stroke-width="1"/>
+    <text x="${cx}" y="${top-16}" text-anchor="middle" font-size="9"
+          fill="var(--pd-dim)" font-family="var(--font-mono)">${widthMM.toFixed(2)}</text>
+    <line x1="${ro+6}" y1="${top}" x2="${ro+6}" y2="${plateY}" stroke="var(--pd-dim)" stroke-width="1"/>
+    <text x="${ro+10}" y="${(top+plateY)/2+3}" font-size="9"
+          fill="var(--pd-dim)" font-family="var(--font-mono)">${depthMM.toFixed(2)}</text>
+    ${opts.compact ? '' : `<text x="${cx}" y="${H-6}" text-anchor="middle" font-size="8.5"
+       fill="var(--pd-dim)" font-family="var(--font-mono)">${baseMM}mm base · height exaggerated</text>`}
+  </svg>`;
+}
+
+/* The base the drawing should sit on, taken from the matching product's own
+   profile name rather than assumed. */
+function baseFromProfile(profile) {
+  const m = /(\d+)\s*mm/.exec(profile || '');
+  return m ? parseInt(m[1], 10) : 12;
+}
+
 function heroFind() {
   const cal = parseFloat(document.getElementById('heroCaliper').value) || 0;
   const rule = parseFloat(document.getElementById('heroRule').value) || 0;
@@ -1444,10 +1508,12 @@ function heroFind() {
   document.getElementById('heroDepth').textContent = depth.toFixed(2);
   document.getElementById('heroWidth').textContent = width.toFixed(2);
 
+  const draw = document.getElementById('heroDraw');
   const host = document.getElementById('heroMatch');
   const hits = buildMatrixIndex().filter(r =>
     Math.abs(r.height - depth) <= 0.06 && r.widths.some(w => Math.abs(w - width) <= 0.16));
   if (!hits.length) {
+    if (draw) draw.innerHTML = drawProfile(depth, width, 12, { compact: true });
     host.innerHTML = `<span class="tool-none">Not a standard size — call us, odd sizes are what we do.</span>`;
     return;
   }
@@ -1455,6 +1521,7 @@ function heroFind() {
   hits.sort((a, b) => Math.abs(a.height - depth) - Math.abs(b.height - depth));
   const m = hits[0];
   const w = m.widths.reduce((b, x) => Math.abs(x - width) < Math.abs(b - width) ? x : b, m.widths[0]);
+  if (draw) draw.innerHTML = drawProfile(m.height, w, baseFromProfile(m.profile), { compact: true });
   const others = new Set(hits.map(x => `${x.range}|${x.colour}`)).size - 1;
   host.innerHTML = `
     <span class="sw ${esc(m.cls || '')}" aria-hidden="true"></span>
