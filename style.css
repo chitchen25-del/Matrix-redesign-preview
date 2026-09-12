@@ -1061,3 +1061,23 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
 }
 .nav-scrim.open { opacity: 1; visibility: visible; }
 @media (min-width: 861px) { .nav-scrim { display: none; } }
+
+/* The four stage labels are laid out edge to edge with no gutter, so on a
+   phone "MANUFACTURING" runs straight into its neighbours — seen on an iPhone
+   as "RECEIVEDMANUFACTURING PACKING SHIPPED". Each cell keeps a little
+   breathing room and the type steps down, rather than the words touching. */
+@media (max-width: 560px) {
+  .stage-track li {
+    font-size: .58rem; letter-spacing: .02em; padding: 0 3px;
+    line-height: 1.25; hyphens: auto;
+  }
+  .stage-track .dot { width: 12px; height: 12px; margin-bottom: 5px; }
+  .stage-track li::before { top: 5px; }
+}
+
+/* The builder labels are uppercased, which was also shouting the quiet
+   "optional" hint tacked on the end of them. */
+.item-builder-grid label .opt {
+  text-transform: none; font-weight: 500; color: var(--text-dim);
+  font-size: .72rem; letter-spacing: 0;
+}

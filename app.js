@@ -830,10 +830,16 @@ function renderOrderCard(ord) {
             <td class="num"><strong>${money(orderTotal)}</strong></td></tr></tfoot>` : ''}
         </table>` : ''}
 
-      ${priced ? '' : `
-        <p class="price-pending">We will confirm your prices shortly — usually the same
-          working day. Nothing is priced until we have checked it, so this order shows
-          no figures yet.</p>`}
+      ${priced ? '' : (idx >= 2
+        /* An order already packed or shipped is not waiting on pricing in any
+           sense the customer would recognise — promising it "shortly" on an
+           order that left the building weeks ago reads as nonsense. Say what
+           is true instead: there are no figures here, and here is who to ask. */
+        ? `<p class="price-pending">No prices are shown for this order. If you need them,
+             message us below or call <a href="tel:+441624822960">+44 (0)1624 822960</a>.</p>`
+        : `<p class="price-pending">We will confirm your prices shortly — usually the same
+             working day. Nothing is priced until we have checked it, so this order shows
+             no figures yet.</p>`)}
 
       ${renderAck(ord.id)}
       ${renderThread(ord.id)}
