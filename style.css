@@ -1068,8 +1068,10 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
    breathing room and the type steps down, rather than the words touching. */
 @media (max-width: 560px) {
   .stage-track li {
-    font-size: .58rem; letter-spacing: .02em; padding: 0 3px;
-    line-height: 1.25; hyphens: auto;
+    /* No hyphens: "MANUFAC-TURING" split across two lines looked like a
+       rendering fault. The type steps down far enough for the longest label
+       to sit on one line instead. */
+    font-size: .52rem; letter-spacing: 0; padding: 0 2px; line-height: 1.3;
   }
   .stage-track .dot { width: 12px; height: 12px; margin-bottom: 5px; }
   .stage-track li::before { top: 5px; }
@@ -1081,3 +1083,53 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
   text-transform: none; font-weight: 500; color: var(--text-dim);
   font-size: .72rem; letter-spacing: 0;
 }
+
+/* The hub totals the line prices, which are net. The acknowledgement adds VAT
+   and shows a larger figure, so the two disagree unless this says why —
+   £115.00 here against £138.00 on the document is exactly the sort of thing
+   that generates a phone call. */
+.ex-vat {
+  display: block; font-weight: 500; font-size: .7rem;
+  color: var(--text-dim); text-transform: none; letter-spacing: 0;
+}
+
+/* Once an order is priced the line table carries four columns, and on a
+   narrow phone that pushes the line total off the edge and shreds the product
+   name into one word per row. Below 430px the unit price is dropped: the line
+   total is what a customer is checking, and the unit price is on the
+   acknowledgement if they want it. */
+/* The numeric columns take only the width their content needs, so the product
+   name gets the rest. */
+.line-items-preview-table td.num, .line-items-preview-table th.num { white-space: nowrap; }
+
+/* On a narrow phone the card is about 300px wide, and four columns put the
+   line total off the edge while the product name came out one word per row.
+   The unit price is dropped — the line total is what is being checked, and
+   the unit price is on the acknowledgement — and the remaining three columns
+   are given fixed shares rather than left to auto-layout, which kept
+   reserving width for the hidden column. */
+@media (max-width: 430px) {
+  .line-items-preview-table { font-size: .76rem; table-layout: fixed; }
+  .line-items-preview-table th, .line-items-preview-table td { padding: .6rem .45rem; }
+  /* width:0 as well as display:none — under fixed layout the hidden column
+     was still being allocated a share, which pushed the table 57px wider than
+     its own box. */
+  .line-items-preview-table th:nth-child(3),
+  .line-items-preview-table td:nth-child(3) { display: none; width: 0; padding: 0; }
+  .line-items-preview-table th:nth-child(1), .line-items-preview-table td:nth-child(1) { width: 54%; }
+  .line-items-preview-table th:nth-child(2), .line-items-preview-table td:nth-child(2) { width: 16%; }
+  .line-items-preview-table th:nth-child(4), .line-items-preview-table td:nth-child(4) { width: 30%; }
+}
+
+/* The order total sits below the table rather than in a tfoot. As a footer row
+   its colspan had to agree with however many columns were visible, and at
+   narrow widths — where the unit price column is hidden — the figure itself
+   was pushed outside the table's box and clipped. A row of its own cannot
+   disagree with anything. */
+.order-total-row {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 1rem; padding: .85rem .85rem 0;
+  border-top: 2px solid var(--border-medium); margin-top: -1px;
+  font-size: .88rem; font-weight: 800; color: var(--matrix-navy-dark);
+}
+.order-total-row strong { font-family: var(--font-mono); font-size: .95rem; }

@@ -826,9 +826,12 @@ function renderOrderCard(ord) {
                               <td class="num">${money((Number(li.unit_price)||0) * (Number(li.qty)||0))}</td>` : ''}
               </tr>`).join('')}
           </tbody>
-          ${priced ? `<tfoot><tr><td colspan="3">Order total</td>
-            <td class="num"><strong>${money(orderTotal)}</strong></td></tr></tfoot>` : ''}
-        </table>` : ''}
+        </table>
+        ${priced ? `
+          <div class="order-total-row">
+            <span>Order total <span class="ex-vat">excluding VAT</span></span>
+            <strong>${money(orderTotal)}</strong>
+          </div>` : ''}` : ''}
 
       ${priced ? '' : (idx >= 2
         /* An order already packed or shipped is not waiting on pricing in any
