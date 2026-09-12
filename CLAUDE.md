@@ -414,3 +414,17 @@ Matrix Sync now offers the carton choice to whoever confirms the order, which is
 where it belongs — the person picking it can see the stock and the order at the
 same time. So null from here is not a gap being tolerated, it is the handover
 point. Do not put the picker back.
+
+## Withdrawn messages
+
+`order_messages.withdrawn_at` is set by Matrix when it withdraws one of **its
+own** messages. Customer messages are never withdrawn and never deleted — that
+is the record of what they asked for.
+
+**A withdrawn message still appears in the thread, struck through, with when it
+was withdrawn.** Do not hide it. The customer has already read it, and a gap
+where it was leaves them wondering whether they imagined it. It is also not
+counted as unread, on the card or in the tab badge: it is no longer something
+they need to act on.
+
+Nothing on the website writes this column.

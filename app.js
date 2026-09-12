@@ -620,7 +620,7 @@ function renderUnreadBadge() {
   const el = document.getElementById('ordersUnread');
   if (!el) return;
   const n = Object.values(orderMessages).flat()
-    .filter(m => m.author_side === 'matrix' && !m.read_at).length;
+    .filter(m => m.author_side === 'matrix' && !m.read_at && !m.withdrawn_at).length;
   el.textContent = n ? String(n) : '';
   el.style.display = n ? '' : 'none';
 }
@@ -646,7 +646,7 @@ async function toggleThread(orderId) {
    cannot be back-dated or undone either. */
 async function markMatrixMessagesRead(orderId) {
   const unread = (orderMessages[orderId] || [])
-    .filter(m => m.author_side === 'matrix' && !m.read_at);
+    .filter(m => m.author_side === 'matrix' && !m.read_at && !m.withdrawn_at);
   if (!unread.length) return;
   try {
     await sb.rpc('mark_messages_read', { p_order_id: orderId });
@@ -703,7 +703,7 @@ async function fetchMyOrders() {
        round trip per order and would still need the whole set for the
        unread count. */
     const { data: msgs } = await sb.from('order_messages')
-      .select('id, order_id, body, author_side, author_name, created_at, read_at')
+      .select('id, order_id, body, author_side, author_name, created_at, read_at, withdrawn_at')
       .eq('deleted', false).order('created_at');
     orderMessages = {};
     (msgs || []).forEach(m => {
@@ -815,7 +815,7 @@ function renderOrderCard(ord) {
       </div>
 
       ${lines.length ? `
-        <table class="line-items-preview-table">
+        <table class="line-items-preview-table${priced ? ' priced' : ''}">
           <thead><tr><th>Product</th><th class="num">Quantity</th>
             ${priced ? '<th class="num">Unit</th><th class="num">Line</th>' : ''}</tr></thead>
           <tbody>
@@ -929,7 +929,7 @@ function downloadAck() {
 
 function renderThread(orderId) {
   const msgs = orderMessages[orderId] || [];
-  const unread = msgs.filter(m => m.author_side === 'matrix' && !m.read_at).length;
+  const unread = msgs.filter(m => m.author_side === 'matrix' && !m.read_at && !m.withdrawn_at).length;
   const open = openThreads.has(orderId);
 
   return `
@@ -944,12 +944,16 @@ function renderThread(orderId) {
       ${open ? `
         <div class="thread-body">
           ${msgs.length ? msgs.map(m => `
-            <div class="msg msg-${m.author_side === 'matrix' ? 'matrix' : 'customer'}">
+            <div class="msg msg-${m.author_side === 'matrix' ? 'matrix' : 'customer'}${
+                 m.withdrawn_at ? ' msg-withdrawn' : ''}">
               <div class="msg-meta">
                 <strong>${esc(m.author_name || (m.author_side === 'matrix' ? 'Matrix Engineering' : 'You'))}</strong>
                 <span>${fmtWhen(m.created_at)}</span>
               </div>
               <p>${esc(m.body)}</p>
+              ${m.withdrawn_at
+                ? `<span class="msg-withdrawn-note">Matrix withdrew this ${fmtWhen(m.withdrawn_at)}</span>`
+                : ''}
             </div>`).join('')
           : `<p class="thread-empty">Nothing yet. Anything you need to tell us about this
                order — a change, a query, a delivery note — start it here and it reaches

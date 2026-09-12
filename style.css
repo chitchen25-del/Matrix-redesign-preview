@@ -1109,16 +1109,20 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
    are given fixed shares rather than left to auto-layout, which kept
    reserving width for the hidden column. */
 @media (max-width: 430px) {
-  .line-items-preview-table { font-size: .76rem; table-layout: fixed; }
+  .line-items-preview-table { font-size: .76rem; }
   .line-items-preview-table th, .line-items-preview-table td { padding: .6rem .45rem; }
-  /* width:0 as well as display:none — under fixed layout the hidden column
-     was still being allocated a share, which pushed the table 57px wider than
-     its own box. */
-  .line-items-preview-table th:nth-child(3),
-  .line-items-preview-table td:nth-child(3) { display: none; width: 0; padding: 0; }
-  .line-items-preview-table th:nth-child(1), .line-items-preview-table td:nth-child(1) { width: 54%; }
-  .line-items-preview-table th:nth-child(2), .line-items-preview-table td:nth-child(2) { width: 16%; }
-  .line-items-preview-table th:nth-child(4), .line-items-preview-table td:nth-child(4) { width: 30%; }
+
+  /* Scoped to .priced. An unpriced order has two columns, not four, and these
+     fixed shares clipped the word "Quantity" clean off when applied to it. */
+  .line-items-preview-table.priced { table-layout: fixed; }
+  .line-items-preview-table.priced th:nth-child(3),
+  .line-items-preview-table.priced td:nth-child(3) { display: none; width: 0; padding: 0; }
+  .line-items-preview-table.priced th:nth-child(1),
+  .line-items-preview-table.priced td:nth-child(1) { width: 54%; }
+  .line-items-preview-table.priced th:nth-child(2),
+  .line-items-preview-table.priced td:nth-child(2) { width: 16%; }
+  .line-items-preview-table.priced th:nth-child(4),
+  .line-items-preview-table.priced td:nth-child(4) { width: 30%; }
 }
 
 /* The order total sits below the table rather than in a tfoot. As a footer row
@@ -1133,3 +1137,25 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
   font-size: .88rem; font-weight: 800; color: var(--matrix-navy-dark);
 }
 .order-total-row strong { font-family: var(--font-mono); font-size: .95rem; }
+
+/* A message Matrix has withdrawn stays in the thread, struck through. Hiding it
+   would be worse than leaving it: the customer has already read it, and a gap
+   where it was leaves them wondering whether they imagined it. Customer
+   messages are never withdrawn — that is the record of what they asked for. */
+.msg-withdrawn p {
+  text-decoration: line-through;
+  background: var(--bg-slate) !important;
+  color: var(--text-dim) !important;
+  opacity: .85;
+}
+.msg-withdrawn-note {
+  display: block; margin-top: .3rem;
+  font-size: .7rem; font-weight: 700; color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: .05em;
+}
+.msg-customer.msg-withdrawn .msg-withdrawn-note { text-align: right; }
+
+/* The acknowledgement carries its own viewport and scales itself below 760px,
+   so the frame is given the container's full width and left to do that rather
+   than being scrolled sideways. */
+.ack-frame { width: 100%; border: 1px solid var(--border-subtle); }
