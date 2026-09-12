@@ -1555,7 +1555,33 @@ function calculateMatrix() {
 /* ---------------------------------------------------------------------
    BOOT
 --------------------------------------------------------------------- */
+/* Floor clips play only while they are on screen. preload="none" keeps them
+   off the wire until then, so a visitor who never scrolls past the fold pays
+   nothing for them — and a paused video off screen is wasted battery on a
+   phone in a die shop. */
+function initFloorClips() {
+  /* The hero relies on the autoplay attribute alone, which browsers honour
+     inconsistently — iOS in particular wants an explicit call, and a silent
+     failure there is what left the hero as a flat navy block before. Asking
+     for it directly, and swallowing the rejection, is the reliable way. */
+  const hero = document.querySelector('.video-background-scaler video');
+  if (hero) { hero.muted = true; hero.play().catch(() => {}); }
+
+  const vids = [...document.querySelectorAll('.floor-video')];
+  if (!vids.length) return;
+  if (!('IntersectionObserver' in window)) { vids.forEach(v => v.play().catch(() => {})); return; }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      const v = e.target;
+      if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); }
+      else v.pause();
+    });
+  }, { threshold: 0.35 });
+  vids.forEach(v => io.observe(v));
+}
+
 window.addEventListener('DOMContentLoaded', async () => {
+  initFloorClips();
   // Someone following an invitation or a reset link is landing on the site for
   // a specific reason, so they go to the hub rather than the home page.
   navigateTo(ARRIVED_FROM_EMAIL ? 'portal'
