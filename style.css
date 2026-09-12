@@ -887,3 +887,131 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
 }
+
+/* =========================================================================
+   ORDER ACKNOWLEDGEMENT
+   The document Steve confirmed, shown as it was stored. Never called an
+   invoice — the subtitle says so in the dialog itself, not just in the docs.
+   ========================================================================= */
+.ack-row {
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  margin-top: 1.25rem; padding: .85rem 1rem;
+  background: var(--bg-light); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+.ack-text { display: grid; gap: .15rem; }
+.ack-text strong { font-size: .88rem; font-weight: 800; color: var(--matrix-navy-dark); }
+.ack-text span { font-size: .76rem; color: var(--text-dim); font-family: var(--font-mono); }
+.ack-row button { margin-left: auto; }
+
+.ack-modal { align-items: flex-start; }
+.ack-card {
+  background: #fff; border-radius: var(--radius-lg);
+  width: 100%; max-width: 860px; margin: 2rem auto;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  box-shadow: var(--shadow-hover);
+  display: flex; flex-direction: column; max-height: 90vh;
+}
+.ack-head { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1rem; }
+.ack-head h3 { font-size: 1.2rem; font-weight: 900; color: var(--matrix-navy-dark); }
+.ack-sub { font-size: .78rem; color: var(--text-muted); line-height: 1.5; margin-top: .2rem; }
+.ack-head button { margin-left: auto; flex: 0 0 auto; }
+.ack-frame {
+  flex: 1 1 auto; min-height: 45vh; width: 100%;
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+  background: #fff;
+}
+.ack-actions { display: flex; gap: .75rem; margin-top: 1rem; flex-wrap: wrap; }
+
+/* Secondary action on a white panel — btn-glass is built for dark backgrounds
+   and disappears here. */
+.btn-outline-navy {
+  background: #fff; color: var(--matrix-navy);
+  border: 1.5px solid var(--matrix-navy); cursor: pointer;
+  font-family: var(--font-main); font-size: .85rem; font-weight: 800;
+  padding: .7rem 1.4rem; border-radius: var(--radius-md);
+  transition: background .18s ease, color .18s ease;
+}
+.btn-outline-navy:hover { background: var(--matrix-navy); color: #fff; }
+
+/* =========================================================================
+   CLIENT GUIDE — a walkthrough page a salesperson can send a link to.
+   Numbered because it genuinely is a sequence, which is the only time a
+   numbered marker earns its place.
+   ========================================================================= */
+.guide-layout {
+  max-width: 760px; padding-top: clamp(2.5rem, 5vw, 4rem);
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.guide-step {
+  display: grid; grid-template-columns: 44px 1fr; gap: 1.25rem;
+  padding-bottom: 2.5rem; margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.guide-step:last-of-type { border-bottom: none; }
+@media (max-width: 560px) {
+  .guide-step { grid-template-columns: 34px 1fr; gap: .9rem; }
+}
+.guide-n {
+  width: 44px; height: 44px; display: grid; place-items: center;
+  background: var(--matrix-navy); color: #fff; border-radius: 50%;
+  font-family: var(--font-mono); font-size: 1rem; font-weight: 700;
+}
+@media (max-width: 560px) {
+  .guide-n { width: 34px; height: 34px; font-size: .85rem; }
+}
+.guide-step h2 {
+  font-size: clamp(1.2rem, 3vw, 1.45rem); font-weight: 900;
+  color: var(--matrix-navy-dark); margin-bottom: .7rem; line-height: 1.25;
+}
+.guide-step p {
+  font-size: .95rem; color: var(--text-muted); line-height: 1.7;
+  margin-bottom: .9rem;
+}
+.guide-step strong { color: var(--matrix-navy-dark); font-weight: 700; }
+.guide-step a { color: var(--matrix-navy); font-weight: 700; }
+
+.guide-list, .guide-stages { display: grid; gap: .6rem; margin: 0 0 1.1rem; }
+.guide-list { list-style: none; }
+.guide-list li {
+  position: relative; padding-left: 1.4rem;
+  font-size: .92rem; color: var(--text-muted); line-height: 1.6;
+}
+.guide-list li::before {
+  content: ""; position: absolute; left: 0; top: .6em;
+  width: 8px; height: 3px; border-radius: 2px; background: var(--matrix-red);
+}
+.guide-stages { list-style: none; counter-reset: gs; }
+.guide-stages li {
+  counter-increment: gs; position: relative; padding-left: 1.9rem;
+  font-size: .92rem; color: var(--text-muted); line-height: 1.6;
+}
+.guide-stages li::before {
+  content: counter(gs); position: absolute; left: 0; top: .05em;
+  width: 20px; height: 20px; display: grid; place-items: center;
+  background: var(--bg-slate); color: var(--matrix-navy);
+  border-radius: 50%; font-family: var(--font-mono);
+  font-size: .68rem; font-weight: 700;
+}
+
+/* The things people get wrong or get cross about — flagged, not buried. */
+.guide-aside {
+  background: var(--bg-light); border-left: 3px solid var(--matrix-red);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: .85rem 1rem; font-size: .88rem !important; margin-bottom: 0 !important;
+}
+
+.guide-close {
+  text-align: center; background: var(--bg-light);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
+  padding: clamp(1.75rem, 4vw, 2.5rem); margin-top: 1rem;
+}
+.guide-close h3 {
+  font-size: 1.3rem; font-weight: 900;
+  color: var(--matrix-navy-dark); margin-bottom: .6rem;
+}
+.guide-close p {
+  font-size: .92rem; color: var(--text-muted); line-height: 1.65;
+  max-width: 48ch; margin: 0 auto 1.5rem;
+}
+.guide-close a { color: var(--matrix-navy); font-weight: 700; }

@@ -135,6 +135,8 @@ const PAGE_META = {
     'Announcements and technical bulletins from Matrix Engineering.'],
   contact: ['Contact us',
     'Ballasalla, Isle of Man. Call +44 (0)1624 822960 or email sales@creasingmatrix.com for samples and enquiries.'],
+  'hub-guide': ['How ordering with us works',
+    'A walkthrough of the Matrix Engineering client hub: getting your login, placing an order, prices and acknowledgements, tracking it through the factory, and talking to us about it.'],
   portal: ['Client hub',
     'Account holders can place orders and follow them through manufacture, packing and shipping.'],
 };
@@ -589,6 +591,7 @@ function switchPortalTab(tab) {
    saying it has seen something — not this one.
 --------------------------------------------------------------------- */
 let orderMessages = {};                 // order_id -> messages
+let orderAcks = {};                     // order_id -> newest acknowledgement
 const openThreads = new Set();          // which threads are expanded
 
 function contactName() {
@@ -621,25 +624,17 @@ async function toggleThread(orderId) {
    side telling Dave his answer landed, and Matrix Sync shows "seen" against
    his message once it is set.
 
-   Note: this currently updates nothing. order_messages grants customers
-   SELECT and INSERT only; there is no customer UPDATE policy, so the request
-   is accepted and matches zero rows. The code is written the way it will need
-   to work and reports the shortfall once, rather than pretending. */
-let readReceiptWarned = false;
+   Deliberately an RPC, not an UPDATE. There is no customer UPDATE policy on
+   order_messages and there should not be: a row policy constrains which rows,
+   not which columns, so it would also have let a customer rewrite the body of
+   a message Matrix sent. The function stamps now() itself, so a receipt
+   cannot be back-dated or undone either. */
 async function markMatrixMessagesRead(orderId) {
   const unread = (orderMessages[orderId] || [])
     .filter(m => m.author_side === 'matrix' && !m.read_at);
   if (!unread.length) return;
   try {
-    const { data } = await sb.from('order_messages')
-      .update({ read_at: new Date().toISOString() })
-      .eq('order_id', orderId).eq('author_side', 'matrix').is('read_at', null)
-      .select('id');
-    if ((!data || !data.length) && !readReceiptWarned) {
-      readReceiptWarned = true;
-      console.warn('[hub] Read receipts are not reaching Matrix: order_messages has no ' +
-        'customer UPDATE policy, so marking messages read affects no rows.');
-    }
+    await sb.rpc('mark_messages_read', { p_order_id: orderId });
   } catch (e) { /* never block reading a thread on a receipt */ }
 }
 
@@ -700,6 +695,18 @@ async function fetchMyOrders() {
       (orderMessages[m.order_id] = orderMessages[m.order_id] || []).push(m);
     });
     renderUnreadBadge();
+
+    /* The acknowledgement Steve confirmed, not a fresh render of it. If a price
+       changes afterwards a new row is written, so the newest by created_at is
+       the current one and the older rows are the record of what was agreed
+       before. The html itself is only fetched when the customer opens it —
+       these are whole documents and there is no sense carrying them around for
+       orders nobody looks at. */
+    const { data: acks } = await sb.from('order_acknowledgements')
+      .select('id, order_id, total, currency, created_at, opened_at')
+      .eq('deleted', false).order('created_at', { ascending: false });
+    orderAcks = {};
+    (acks || []).forEach(a => { if (!orderAcks[a.order_id]) orderAcks[a.order_id] = a; });
 
     if (!orders || !orders.length) {
       // An empty screen is an invitation, not a dead end — say what to do and
@@ -813,6 +820,7 @@ function renderOrderCard(ord) {
           working day. Nothing is priced until we have checked it, so this order shows
           no figures yet.</p>`}
 
+      ${renderAck(ord.id)}
       ${renderThread(ord.id)}
     </article>`;
 }
@@ -822,6 +830,78 @@ function renderOrderCard(ord) {
    — so nothing is shown as a price until the order is confirmed. */
 const GBP = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' });
 function money(v) { return GBP.format(Number(v) || 0); }
+
+/* The acknowledgement is the document Steve confirmed. It is not an invoice —
+   it carries the work order number, nothing is payable against it, and Xero
+   issues the invoice on despatch. The link must never be labelled one. */
+function renderAck(orderId) {
+  const ack = orderAcks[orderId];
+  if (!ack) return '';
+  return `
+    <div class="ack-row">
+      <div class="ack-text">
+        <strong>Order acknowledgement</strong>
+        <span>Confirmed ${fmtWhen(ack.created_at)}${
+          ack.total != null ? ` · ${money(ack.total)}` : ''} · not an invoice</span>
+      </div>
+      <button type="button" class="btn-ghost-sm" onclick="openAck('${esc(orderId)}')">
+        View document
+      </button>
+    </div>`;
+}
+
+async function openAck(orderId) {
+  const frame = document.getElementById('ackFrame');
+  const modal = document.getElementById('ackModal');
+  document.getElementById('ackWo').textContent = orderId;
+  frame.removeAttribute('srcdoc');
+  modal.style.display = 'flex';
+
+  const { data, error } = await sb.from('order_acknowledgements')
+    .select('html').eq('order_id', orderId).eq('deleted', false)
+    .order('created_at', { ascending: false }).limit(1);
+
+  if (error || !data || !data.length) {
+    document.getElementById('ackError').textContent =
+      'That document could not be loaded. Please call us on +44 (0)1624 822960.';
+    return;
+  }
+  document.getElementById('ackError').textContent = '';
+  ackHtml = data[0].html;
+
+  /* Rendered inside a sandboxed iframe with no allow-scripts, so nothing in
+     the document can run. The html is built on the Matrix side from order
+     fields the customer supplied — their reference, their notes — and this
+     page has no way to know how carefully those were escaped. Sandboxing
+     makes that someone else's problem rather than ours. */
+  frame.srcdoc = ackHtml;
+
+  // Only once it is genuinely open. Matrix shows Dave which acknowledgements
+  // have sat unopened so he can ring those customers; firing this on page
+  // load would have him chasing nobody.
+  try { await sb.rpc('mark_acknowledgement_opened', { p_order_id: orderId }); }
+  catch (e) { /* the customer has still seen it; the nudge is not their problem */ }
+}
+
+let ackHtml = '';
+function closeAck() {
+  document.getElementById('ackModal').style.display = 'none';
+  document.getElementById('ackFrame').removeAttribute('srcdoc');
+  ackHtml = '';
+}
+function printAck() {
+  const w = document.getElementById('ackFrame').contentWindow;
+  if (w) { w.focus(); w.print(); }
+}
+function downloadAck() {
+  if (!ackHtml) return;
+  const wo = document.getElementById('ackWo').textContent;
+  const url = URL.createObjectURL(new Blob([ackHtml], { type: 'text/html' }));
+  const a = document.createElement('a');
+  a.href = url; a.download = `Matrix-acknowledgement-${wo}.html`;
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+}
 
 function renderThread(orderId) {
   const msgs = orderMessages[orderId] || [];
@@ -1220,6 +1300,7 @@ Object.assign(window, {
   switchAuthPane, handlePasswordReset, handleSetPassword,
   closeWelcome, replayWelcome,
   toggleThread, handlePostMessage,
+  openAck, closeAck, printAck, downloadAck,
   handleInviteClient, loadSalesClients,
   handlePublishNews, handleNewsPdfPick,
   handleRangeChange, handleAddLineItemToQueue,
