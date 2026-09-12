@@ -50,18 +50,56 @@ const ARRIVED_FROM_EMAIL = authTokenInUrl();
    and pt values as "2 / 3 pt" where it parses "2-3pt". Orders raised that
    way arrive as line items the factory system can't match to stock.
 --------------------------------------------------------------------- */
-const CATALOGUE = window.MATRIX_CATALOGUE || {};
-const BOX_AMOUNTS = [15, 18, 19.5, 20.25, 21, 24, 36, 60];
-const REEL_AMOUNTS = [30, 33, 36, 39, 45];
+/* The size list comes from the factory, and the description string comes with
+   it. The site used to hold its own copy of the catalogue and assemble the
+   description in the browser from range, size, rule and metres. Both are gone:
 
-// Line descriptions are built in the exact shape the factory system parses,
-// so a portal order behaves like one typed in-house.
-function buildLineDescription({ range, size, pt, unit, metres }) {
-  const bits = [range, size];
-  if (pt) bits.push(pt);
-  bits.push(`(${metres}m)`);
-  if (unit === 'Reel') bits.push('REEL');
-  return bits.join(' ');
+   - The list is portal_size_list, a view over the factory's own products,
+     active and orderable only. A hand-kept copy drifts, and the symptom is a
+     customer ordering something nobody makes.
+   - The description is sent back exactly as the view gave it. It is the string
+     the production system matches an order line on, so building it here would
+     mean the two versions diverging the first time a naming rule changed.
+
+   Nothing in this file constructs a product name any more. If you find
+   yourself about to, that is the bug. */
+let sizeList = [];        // rows from portal_size_list
+let sizeListLoaded = false;
+
+/* The public pages sell names the factory catalogue does not use. Both are
+   shown so a customer recognises the range and still sees the name that will
+   appear on their work order. Ranges not in this map show their catalogue
+   name as-is. */
+const RANGE_LABELS = {
+  'PX Plus': 'Phoenix+ (PX Plus)',
+  'Ultra SR': 'Ultra-SR',
+  'Exceed': 'Exceed Rubber',
+};
+function rangeLabel(family) { return RANGE_LABELS[family] || family; }
+
+async function loadSizeList() {
+  const note = document.getElementById('sizeListNote');
+  if (!sb) return;
+  const { data, error } = await sb
+    .from('portal_size_list')
+    .select('description, family, form, metres, thickness, gos, pt')
+    .order('family').order('description');
+
+  if (error || !data) {
+    sizeList = []; sizeListLoaded = false;
+    if (note) {
+      note.className = 'builder-note warn';
+      note.textContent = 'The size list could not be loaded, so ordering is unavailable. ' +
+        'Please call +44 (0)1624 822960 and we will take the order directly.';
+    }
+    return;
+  }
+  sizeList = data; sizeListLoaded = true;
+  if (note) {
+    note.className = 'builder-note';
+    note.textContent = `${data.length} sizes, live from the factory list.`;
+  }
+  populateRanges();
 }
 
 /* ---------------------------------------------------------------------
@@ -302,6 +340,7 @@ async function enterPortal() {
   document.getElementById('currentClientTitle').textContent = myCompany;
   document.getElementById('newOrderCustomer').value = myCompany;
   showPortalPanel('portalDashboard');
+  await loadSizeList();
   maybeWelcome();
 
   const due = new Date();
@@ -656,58 +695,53 @@ function renderOrderCard(ord) {
 --------------------------------------------------------------------- */
 function populateRanges() {
   const sel = document.getElementById('lineRange');
-  if (!sel) return;
-  sel.innerHTML = Object.keys(CATALOGUE)
-    .map(r => `<option value="${esc(r)}">${esc(r)}</option>`).join('');
+  if (!sel || !sizeListLoaded) return;
+  const families = [...new Set(sizeList.map(r => r.family))];
+  sel.innerHTML = families
+    .map(f => `<option value="${esc(f)}">${esc(rangeLabel(f))}</option>`).join('');
   handleRangeChange();
 }
 
 function handleRangeChange() {
-  const range = document.getElementById('lineRange').value;
+  const family = document.getElementById('lineRange').value;
+  const formSel = document.getElementById('lineUnitType');
   const sizeSel = document.getElementById('lineSizeSelect');
-  const sizes = CATALOGUE[range] || [];
-  sizeSel.innerHTML = sizes.map(s => `<option value="${esc(s)}">${esc(s)}</option>`).join('');
-  handleUnitTypeChange();
-}
 
-function handleUnitTypeChange() {
-  const range = document.getElementById('lineRange').value;
-  const unit = document.getElementById('lineUnitType').value;
-  const metres = document.getElementById('lineMeters');
-  const list = unit === 'Reel' ? REEL_AMOUNTS : BOX_AMOUNTS;
-  metres.innerHTML = list.map(m => `<option value="${m}">${m}m</option>`).join('');
-  metres.value = unit === 'Reel' ? 36 : 24;
+  // Only offer Box or Reel where that range actually has them. Exceed is
+  // ejection rubber and never comes on a reel; most ranges are box only.
+  const forms = [...new Set(sizeList.filter(r => r.family === family).map(r => r.form))];
+  const wanted = formSel.value;
+  formSel.innerHTML = forms.map(f => `<option value="${esc(f)}">${esc(f)}</option>`).join('');
+  if (forms.includes(wanted)) formSel.value = wanted;
+  formSel.disabled = forms.length < 2;
 
-  // Exceed is ejection rubber: it has no pt rating and is never supplied on
-  // a reel, so the fields that don't apply are disabled rather than left to
-  // be filled in wrongly.
-  const isRubber = range === 'Exceed Rubber';
-  const pt = document.getElementById('linePt');
-  pt.disabled = isRubber;
-  if (isRubber) pt.value = '';
-  document.getElementById('lineUnitType').disabled = isRubber;
-  if (isRubber) document.getElementById('lineUnitType').value = 'Box';
+  const form = formSel.value;
+  const rows = sizeList.filter(r => r.family === family && r.form === form);
+  sizeSel.innerHTML = rows
+    .map(r => `<option value="${esc(r.description)}">${esc(r.description)}</option>`).join('');
 }
 
 function handleAddLineItemToQueue() {
-  const range = document.getElementById('lineRange').value;
-  const size = document.getElementById('lineSizeSelect').value;
-  const pt = document.getElementById('linePt').disabled ? '' : document.getElementById('linePt').value;
-  const unit = document.getElementById('lineUnitType').value;
-  const metres = document.getElementById('lineMeters').value;
-  const qty = parseInt(document.getElementById('lineQty').value, 10);
   const note = document.getElementById('lineError');
+  const description = document.getElementById('lineSizeSelect').value;
+  const qty = parseInt(document.getElementById('lineQty').value, 10);
+  const customerRef = document.getElementById('lineCustomerRef').value.trim();
 
   note.textContent = '';
-  if (!size) { note.textContent = 'Choose a size before adding the line.'; return; }
-  if (!Number.isFinite(qty) || qty < 10) {
-    note.textContent = 'Minimum order is 10 per specification.'; return;
+  if (!sizeListLoaded) { note.textContent = 'The size list has not loaded yet.'; return; }
+  if (!description) { note.textContent = 'Choose a size before adding the line.'; return; }
+  if (!Number.isInteger(qty) || qty < 1) {
+    note.textContent = 'Enter a whole number of boxes, one or more.'; return;
   }
-  queuedLineItems.push({
-    description: buildLineDescription({ range, size, pt, unit, metres }), qty,
-  });
+
+  // description goes in untouched — it is the factory's string, not ours.
+  const line = { description, qty };
+  if (customerRef) line.customerRef = customerRef;
+  queuedLineItems.push(line);
+
   renderQueue();
   document.getElementById('lineQty').value = 10;
+  document.getElementById('lineCustomerRef').value = '';
 }
 
 function removeQueuedItem(i) { queuedLineItems.splice(i, 1); renderQueue(); }
@@ -741,25 +775,34 @@ async function handlePlaceNewOrder(e) {
   const btn = e.target.querySelector('button[type="submit"]');
   btn.disabled = true; btn.textContent = 'Sending…';
   try {
-    // The order id is generated by the database, not by the browser. The old
-    // random four-digit number would start colliding with itself after about
-    // a hundred orders, and didn't follow the factory's WO-0001 sequence.
-    const { data: newOrder, error: orderErr } = await sb.rpc('portal_place_order', {
-      p_reference: document.getElementById('newOrderRef').value.trim(),
-      p_due_date: document.getElementById('newOrderDueDate').value,
-      p_address: document.getElementById('newOrderAddress').value.trim(),
-      p_notes: document.getElementById('newOrderNotes').value.trim(),
-      p_lines: queuedLineItems,
+    /* place_portal_order does the work the site used to attempt itself: it
+       allocates the work order number under a lock, takes the customer from
+       the login rather than the page, forces stage and source, ignores any
+       price sent, and checks every line against the live catalogue before it
+       writes anything — so a bad line cannot leave half an order behind. */
+    const { data: workOrderNumber, error } = await sb.rpc('place_portal_order', {
+      p_reference: document.getElementById('newOrderRef').value.trim() || null,
+      p_due_date:  document.getElementById('newOrderDueDate').value || null,
+      p_box_type:  document.getElementById('newOrderBoxType').value || null,
+      p_notes:     document.getElementById('newOrderNotes').value.trim() || null,
+      p_address:   document.getElementById('newOrderAddress').value.trim() || null,
+      p_lines:     queuedLineItems,
     });
-    if (orderErr) throw orderErr;
+    if (error) throw error;
 
-    document.getElementById('confirmedWo').textContent = newOrder;
+    document.getElementById('confirmedWo').textContent = workOrderNumber;
     queuedLineItems = []; renderQueue();
     e.target.reset();
     document.getElementById('newOrderCustomer').value = myCompany;
     document.getElementById('orderConfirmationModal').style.display = 'flex';
   } catch (err) {
-    note.textContent = 'The order could not be sent. Please try again, or email sales@creasingmatrix.com.';
+    /* The function's own messages are written for the customer and say
+       something useful — which line, which product, what to do. Showing a
+       generic failure instead would throw that away. */
+    const msg = String((err && err.message) || '').trim();
+    note.textContent = msg
+      ? msg
+      : 'The order could not be sent. Please try again, or email sales@creasingmatrix.com.';
   } finally {
     btn.disabled = false; btn.textContent = 'Send order to Matrix Engineering';
   }
@@ -964,7 +1007,6 @@ window.addEventListener('DOMContentLoaded', async () => {
   // a specific reason, so they go to the hub rather than the home page.
   navigateTo(ARRIVED_FROM_EMAIL ? 'portal'
            : (window.location.hash.replace('#', '') || 'home'));
-  populateRanges();
   renderQueue();
   loadLiveNews();
 
@@ -1000,7 +1042,7 @@ Object.assign(window, {
   closeWelcome, replayWelcome,
   handleInviteClient, loadSalesClients,
   handlePublishNews, handleNewsPdfPick,
-  handleRangeChange, handleUnitTypeChange, handleAddLineItemToQueue,
+  handleRangeChange, handleAddLineItemToQueue,
   removeQueuedItem, handlePlaceNewOrder, closeOrderModal, handleEnquiry,
   loadAccounts, setAccountStatus, handleLinkAccount,
 });

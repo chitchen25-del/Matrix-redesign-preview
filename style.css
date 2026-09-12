@@ -792,3 +792,15 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
   border-top: 1px solid var(--border-subtle);
   font-size: .82rem; color: var(--text-dim);
 }
+
+/* Status line above the order builder: says where the size list came from, or
+   that it could not be loaded and ordering is unavailable. */
+.builder-note {
+  font-size: .8rem; color: var(--text-dim); font-weight: 600;
+  margin: -.35rem 0 1rem;
+}
+.builder-note.warn {
+  color: #92400e; background: #fef3c7; font-weight: 700;
+  padding: .6rem .8rem; border-radius: var(--radius-sm);
+  border-left: 3px solid #fcd34d;
+}
