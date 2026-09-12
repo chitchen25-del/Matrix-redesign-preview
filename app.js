@@ -1273,6 +1273,151 @@ function handleEnquiry(e) {
 /* ---------------------------------------------------------------------
    MATRIX CALCULATOR
 --------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------
+   THE SIZE CHARTS AS DATA
+
+   Read out of the charts already on the product pages rather than kept as a
+   second copy here. There is one source of truth for what we extrude, it is
+   the table a customer can see, and a map maintained alongside it would drift
+   the first time a size changed.
+
+   Colour is not a global ladder — Silver is 0.38, 0.55 and 1.20mm depending on
+   the profile, and four different colours sit at 0.38mm. So a colour only
+   means something alongside its range and profile, which is why every match is
+   reported with all three.
+--------------------------------------------------------------------- */
+const RANGE_NAMES = {
+  'view-phoenix-plus': 'Phoenix+',
+  'view-phoenix-xl': 'Phoenix XL',
+  'view-ultra-sr': 'Ultra-SR',
+};
+let matrixIndex = null;
+
+function buildMatrixIndex() {
+  if (matrixIndex) return matrixIndex;
+  matrixIndex = [];
+  Object.keys(RANGE_NAMES).forEach(viewId => {
+    const view = document.getElementById(viewId);
+    if (!view) return;
+    view.querySelectorAll('.chart-block').forEach(block => {
+      const profile = (block.querySelector('h4') || {}).textContent || '';
+      const heads = [...block.querySelectorAll('thead th')].map(t => t.textContent.trim().toLowerCase());
+      // Exceed is ejection rubber, not a creasing matrix — its charts are
+      // shaped differently and it has no business in a matrix size result.
+      if (!heads.length || heads[0] !== 'base colour') return;
+      block.querySelectorAll('tbody tr').forEach(tr => {
+        const tds = tr.querySelectorAll('td');
+        if (tds.length < 3) return;
+        const sw = tds[0].querySelector('.sw');
+        const colour = (tds[0].textContent || '').trim();
+        const height = parseFloat((tds[1].textContent || '').replace(/[^0-9.]/g, ''));
+        const widths = (tds[2].textContent || '').split(',')
+          .map(w => parseFloat(w.replace(/[^0-9.]/g, ''))).filter(w => !isNaN(w));
+        if (isNaN(height) || !widths.length) return;
+        matrixIndex.push({
+          range: RANGE_NAMES[viewId], profile, colour,
+          cls: sw ? [...sw.classList].find(c => c.startsWith('c-')) : null,
+          height, widths,
+        });
+      });
+    });
+  });
+  return matrixIndex;
+}
+
+/* Everything we extrude that fits the calculated size, nearest width first.
+   A customer does not want one suggestion, they want to know what is on the
+   shelf at that size and what it is called. */
+function renderMatrixMatches(depth, width, suggestedRange) {
+  const host = document.getElementById('calcMatches');
+  if (!host) return;
+  const rows = buildMatrixIndex();
+
+  const hits = [];
+  rows.forEach(r => {
+    if (Math.abs(r.height - depth) > 0.06) return;
+    let best = null;
+    r.widths.forEach(w => {
+      const d = Math.abs(w - width);
+      if (d <= 0.16 && (!best || d < best.d)) best = { w, d };
+    });
+    if (best) hits.push({ ...r, width: best.w, delta: best.d });
+  });
+  // The suggested range leads. Listing a Phoenix XL match above a Phoenix+ one
+  // when the tool has just recommended Phoenix+ reads as the tool contradicting
+  // itself, even though both are true.
+  const rank = r => (suggestedRange && r.range === suggestedRange ? 0 : 1);
+  hits.sort((a, b) => rank(a) - rank(b) || a.delta - b.delta || a.range.localeCompare(b.range));
+
+  /* One colour at one size turns up on several profiles, so listing every row
+     gave six lines that read as the same answer repeated. Grouped by what the
+     customer is actually choosing between — the colour and the size — with the
+     profiles it comes on named alongside. */
+  const groups = [];
+  const byKey = {};
+  hits.forEach(m => {
+    const key = `${m.range}|${m.colour}|${m.height}|${m.width}`;
+    if (!byKey[key]) { byKey[key] = { ...m, profiles: [] }; groups.push(byKey[key]); }
+    byKey[key].profiles.push(m.profile);
+  });
+
+  if (!groups.length) {
+    host.innerHTML = `<p class="match-none">Nothing on the standard charts sits at exactly
+      this size. Call <a href="tel:+441624822960">+44 (0)1624 822960</a> — odd sizes are
+      what we do.</p>`;
+    return;
+  }
+  const shown = groups.slice(0, 5);
+  host.innerHTML = shown.map(m => `
+    <div class="match-row">
+      <span class="sw ${esc(m.cls || '')}" aria-hidden="true"></span>
+      <span class="match-colour">${esc(m.colour)}</span>
+      <span class="match-size mono">${m.height.toFixed(2)} × ${m.width.toFixed(2)}mm</span>
+      <span class="match-where">${esc(m.range)} · ${esc(m.profiles.join(', '))}</span>
+    </div>`).join('') +
+    (groups.length > shown.length
+      ? `<p class="match-more">and ${groups.length - shown.length} more at this size</p>` : '');
+}
+
+/* ---------------------------------------------------------------------
+   HERO SIZE FINDER
+
+   The short version of the tool on the Technical page, using the same charts
+   and the same arithmetic. It exists because the question a die-maker arrives
+   with is "what do I need for this board", and answering it in the first
+   screenful is worth more than a claim about precision.
+--------------------------------------------------------------------- */
+function heroFind() {
+  const cal = parseFloat(document.getElementById('heroCaliper').value) || 0;
+  const rule = parseFloat(document.getElementById('heroRule').value) || 0;
+  const round = n => (Math.round(n * 20) / 20).toFixed(2);
+  const depth = parseFloat(round(cal * 0.9));
+  const width = parseFloat(round(cal * 1.5 + rule));
+
+  document.getElementById('heroCaliperVal').textContent = `${cal.toFixed(2)} mm`;
+  document.getElementById('heroDepth').textContent = depth.toFixed(2);
+  document.getElementById('heroWidth').textContent = width.toFixed(2);
+
+  const host = document.getElementById('heroMatch');
+  const hits = buildMatrixIndex().filter(r =>
+    Math.abs(r.height - depth) <= 0.06 && r.widths.some(w => Math.abs(w - width) <= 0.16));
+  if (!hits.length) {
+    host.innerHTML = `<span class="tool-none">Not a standard size — call us, odd sizes are what we do.</span>`;
+    return;
+  }
+  // Nearest on height first, so the closest real product leads.
+  hits.sort((a, b) => Math.abs(a.height - depth) - Math.abs(b.height - depth));
+  const m = hits[0];
+  const w = m.widths.reduce((b, x) => Math.abs(x - width) < Math.abs(b - width) ? x : b, m.widths[0]);
+  const others = new Set(hits.map(x => `${x.range}|${x.colour}`)).size - 1;
+  host.innerHTML = `
+    <span class="sw ${esc(m.cls || '')}" aria-hidden="true"></span>
+    <span class="tool-colour">${esc(m.colour)}</span>
+    <span class="tool-size mono">${m.height.toFixed(2)} × ${w.toFixed(2)}mm</span>
+    <span class="tool-range">${esc(m.range)}</span>
+    ${others > 0 ? `<span class="tool-others">+${others} other${others === 1 ? '' : 's'}</span>` : ''}`;
+}
+
 function calculateMatrix() {
   const caliper = parseFloat(document.getElementById('boardCaliper').value) || 0;
   const rule = parseFloat(document.getElementById('creasingRule').value) || 0;
@@ -1287,6 +1432,11 @@ function calculateMatrix() {
     board === 'recycled' ? 'Ultra-SR (polyester base)'
     : (caliper > 0.8 || board === 'solid') ? 'Phoenix XL (wide base)'
     : 'Phoenix+ (polymer base)';
+
+  const suggested = board === 'recycled' ? 'Ultra-SR'
+    : (caliper > 0.8 || board === 'solid') ? 'Phoenix XL' : 'Phoenix+';
+  renderMatrixMatches(parseFloat(round(caliper * 0.9)),
+                      parseFloat(round(caliper * 1.5 + rule)), suggested);
 }
 
 /* ---------------------------------------------------------------------
@@ -1299,6 +1449,12 @@ window.addEventListener('DOMContentLoaded', async () => {
            : (window.location.hash.replace('#', '') || 'home'));
   renderQueue();
   loadLiveNews();
+
+  ['heroCaliper', 'heroRule'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener(id === 'heroCaliper' ? 'input' : 'change', heroFind);
+  });
+  heroFind();
 
   ['boardCaliper', 'creasingRule', 'boardType'].forEach(id => {
     const el = document.getElementById(id);

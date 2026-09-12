@@ -139,16 +139,53 @@
     </div>
     <div class="hero-video-overlay"></div>
     <div class="container hero-rel">
-      <div class="hero-centered-content">
-        <div class="hero-badge-pill"><span class="dot"></span>Extruding on the Isle of Man since 2009</div>
-        <h1 class="hero-h1">Creasing matrix built for high-speed converting</h1>
-        <p class="hero-p">We design our own profiles, cut our own tooling and extrude every strip in our own facility — so the crease you specify is the crease you get, box after box.</p>
-        <div class="hero-actions">
-          <button class="btn-solid-red" onclick="navigateTo('products')">See the range</button>
-          <button class="btn-glass" onclick="navigateTo('portal')">Client hub</button>
-          <button class="btn-glass ghost" onclick="navigateTo('technical')">Sizing calculator</button>
+      <div class="hero-split">
+        <div class="hero-copy">
+          <div class="hero-badge-pill"><span class="dot"></span>Extruding on the Isle of Man since 2009</div>
+          <h1 class="hero-h1">What size matrix do you need?</h1>
+          <p class="hero-p">Tell us the board and the rule and we will tell you what to trial —
+            worked out from the same size charts our factory extrudes to.</p>
+          <div class="hero-actions">
+            <button class="btn-solid-red" onclick="navigateTo('products')">See the range</button>
+            <button class="btn-glass" onclick="navigateTo('portal')">Client hub</button>
+          </div>
+        </div>
+
+        <!-- A readout, not a calculator. The trade measures with digital
+             calipers and reads machine displays; this borrows that language
+             rather than a pocket calculator's. -->
+        <div class="hero-tool" role="group" aria-label="Matrix size finder">
+          <div class="tool-head"><span class="tool-dot"></span>Matrix size finder</div>
+
+          <div class="tool-field">
+            <label for="heroCaliper">Board caliper <span class="mono" id="heroCaliperVal">0.45 mm</span></label>
+            <input type="range" id="heroCaliper" min="0.20" max="1.60" step="0.05" value="0.45">
+          </div>
+
+          <div class="tool-field">
+            <label for="heroRule">Creasing rule</label>
+            <select id="heroRule">
+              <option value="0.71">2pt — standard carton</option>
+              <option value="1.05">3pt — heavy carton</option>
+              <option value="1.42">4pt — corrugated</option>
+              <option value="2.13">6pt — heavy flute</option>
+            </select>
+          </div>
+
+          <div class="tool-readout">
+            <div><span class="ro-num mono" id="heroDepth">0.40</span><span class="ro-lbl">Depth mm</span></div>
+            <div class="ro-x" aria-hidden="true">×</div>
+            <div><span class="ro-num mono" id="heroWidth">1.40</span><span class="ro-lbl">Width mm</span></div>
+          </div>
+
+          <div class="tool-match" id="heroMatch"></div>
+
+          <button type="button" class="tool-more" onclick="navigateTo('technical')">
+            Full charts and the six-step fitting guide →
+          </button>
         </div>
       </div>
+    </div>
     </div>
   </section>
 
@@ -331,7 +368,7 @@
 <tr><td><div class="sw-cell"><span class="sw c-silver" aria-hidden="true"></span><strong>Silver</strong></div></td><td><strong>0.55 mm</strong></td><td>0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1, 2.3</td></tr>
 <tr><td><div class="sw-cell"><span class="sw c-yellow" aria-hidden="true"></span><strong>Yellow</strong></div></td><td><strong>0.60 mm</strong></td><td>1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5</td></tr>
 <tr><td><div class="sw-cell"><span class="sw c-mauve" aria-hidden="true"></span><strong>Mauve</strong></div></td><td><strong>0.65 mm</strong></td><td>1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5</td></tr>
-<tr><td><div class="sw-cell"><span class="sw c-orange" aria-hidden="true"></span><strong>Orange</strong></div></td><td><strong>0.60 mm</strong></td><td>1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5</td></tr></tbody></table></div><div class="box-yield-badge">28 strips × 750mm — 21 metres per box</div></section><section class="chart-block"><h4>10mm standard centre</h4><div class="tech-diagram-box"><svg width="260" height="52" viewBox="0 0 260 52" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Profile cross-section"><polygon points="10,40 32,16 104,16 104,40" fill="#182B6B"/><polygon points="156,40 156,16 228,16 250,40" fill="#182B6B"/>
+<tr><td><div class="sw-cell"><span class="sw c-orange" aria-hidden="true"></span><strong>Orange</strong></div></td><td><strong>0.70 mm</strong></td><td>1.5, 1.6, 1.7, 1.9, 2.1, 2.3, 2.5</td></tr></tbody></table></div><div class="box-yield-badge">28 strips × 750mm — 21 metres per box</div></section><section class="chart-block"><h4>10mm standard centre</h4><div class="tech-diagram-box"><svg width="260" height="52" viewBox="0 0 260 52" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Profile cross-section"><polygon points="10,40 32,16 104,16 104,40" fill="#182B6B"/><polygon points="156,40 156,16 228,16 250,40" fill="#182B6B"/>
   <line x1="104" y1="9" x2="156" y2="9" stroke="#0f172a" stroke-width="1.2"/>
   <line x1="104" y1="6" x2="104" y2="12" stroke="#0f172a" stroke-width="1.2"/>
   <line x1="156" y1="6" x2="156" y2="12" stroke="#0f172a" stroke-width="1.2"/>
@@ -599,6 +636,11 @@
           <strong>Suggested range</strong>
           <div id="resProduct">Phoenix+ (polymer base)</div>
           <div class="formula">Depth ≈ caliper · Width = (caliper × 1.5) + rule</div>
+        </div>
+
+        <div class="calc-matches">
+          <strong>Matrix we make at this size</strong>
+          <div id="calcMatches"></div>
         </div>
       </div>
     </div>

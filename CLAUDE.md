@@ -389,17 +389,21 @@ If an order acknowledgement is ever surfaced here, it carries the work order
 number and nothing is payable against it. It must not be called an invoice —
 Xero issues those on despatch.
 
-## Open, on the public pages
+## The colour ladder
 
-**The Phoenix+ 7mm off-centre chart lists Orange at 0.60 mm.** Every other chart
-on the site has Orange at 0.70 mm — 7mm mini centre, 10mm standard, 12mm. Since
-the charts are colour-coded by height, one colour at two heights is something a
-customer orders wrong from.
+Colour is **not** a global mapping to height. Silver is 0.38, 0.55 and 1.20mm
+depending on the profile, and four different colours sit at 0.38mm. A colour
+only means something alongside its range and profile, which is why the sizing
+calculator reports all three together and never a colour on its own.
 
-The database cannot settle it: `products` records colours only for Ultra SR and
-Profile Tape, and holds none at all for PX Plus. So this needs the paper charts,
-and it has deliberately been left as-is rather than guessed at — changing a
-published technical figure on a hunch is worse than flagging it.
+The one rule that does hold across the charts: **Orange is 0.70mm everywhere,
+except in Ultra-SR where it is 0.90mm.** The Phoenix+ 7mm off-centre chart had
+it at 0.60mm — corrected on 12 September on Chris's instruction, checked against
+the paper charts.
+
+The calculator reads the charts out of the page itself rather than keeping its
+own copy of the sizes. If a size changes, change the table; nothing else needs
+touching, and the two cannot drift apart.
 
 ## Carton type is not the customer's to choose
 

@@ -1264,3 +1264,118 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
    gap and the headline read as one long word. Now around -0.015em, with the
    word gap given a fraction back, and text-wrap:balance so a compound like
    "high-speed" is less likely to be split across two lines. */
+
+/* Everything we extrude at the calculated size. Presented as a readout rather
+   than a list of links: the colour chip, the exact size, and which range and
+   profile it belongs to — because a colour on its own is ambiguous across
+   ranges and only means something with its profile attached. */
+.calc-matches { border-top: 1px solid rgba(255,255,255,.14); padding-top: 1.1rem; margin-top: 1.1rem; }
+.calc-matches > strong {
+  display: block; font-size: .7rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .12em; color: #94a3b8; margin-bottom: .75rem;
+}
+.match-row {
+  display: grid; grid-template-columns: 46px minmax(58px,auto) auto 1fr;
+  align-items: center; gap: .6rem;
+  padding: .5rem 0; border-bottom: 1px solid rgba(255,255,255,.07);
+}
+.match-row:last-of-type { border-bottom: none; }
+.match-colour { font-size: .82rem; font-weight: 700; color: #fff; }
+.match-size { font-size: .8rem; color: #cbd5e1; white-space: nowrap; }
+.match-where { font-size: .72rem; color: #94a3b8; text-align: right; }
+.match-more, .match-none {
+  font-size: .76rem; color: #94a3b8; line-height: 1.55; margin-top: .6rem;
+}
+.match-none a { color: #fff; font-weight: 700; }
+@media (max-width: 560px) {
+  .match-row { grid-template-columns: 34px 1fr auto; row-gap: .15rem; }
+  .match-row .sw { width: 34px; }
+  .match-where { grid-column: 2 / -1; text-align: left; }
+}
+
+/* =========================================================================
+   HERO SIZE FINDER
+   The hero answers the question people arrive with rather than making a
+   claim. Styled as an instrument — the trade reads digital calipers and
+   machine displays, so mono figures on a dark panel, not a pocket calculator.
+   ========================================================================= */
+.hero-split {
+  display: grid; grid-template-columns: 1.05fr .95fr;
+  gap: clamp(2rem, 5vw, 4rem); align-items: center;
+  text-align: left; width: 100%;
+}
+@media (max-width: 920px) {
+  .hero-split { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+  .hero-copy .hero-actions { justify-content: center; }
+  .hero-copy .hero-badge-pill { margin-left: auto; margin-right: auto; }
+}
+.hero-copy .hero-p { max-width: 42ch; }
+@media (max-width: 920px) { .hero-copy .hero-p { margin-left: auto; margin-right: auto; } }
+
+.hero-tool {
+  background: rgba(10, 17, 41, .82);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  box-shadow: 0 24px 60px -20px rgba(0,0,0,.7);
+  text-align: left;
+}
+.tool-head {
+  display: flex; align-items: center; gap: .5rem;
+  font-size: .68rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .14em; color: #94a3b8; margin-bottom: 1.1rem;
+}
+.tool-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--matrix-green);
+  box-shadow: 0 0 0 3px rgba(16,185,129,.2);
+}
+
+.tool-field { margin-bottom: 1rem; }
+.tool-field label {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: .78rem; font-weight: 700; color: #cbd5e1; margin-bottom: .4rem;
+}
+.tool-field label .mono { color: #fff; font-size: .82rem; }
+.tool-field select {
+  width: 100%; font-family: var(--font-main); font-size: .85rem; font-weight: 600;
+  padding: .6rem .7rem; border-radius: var(--radius-sm);
+  background: rgba(255,255,255,.06); color: #fff;
+  border: 1px solid rgba(255,255,255,.16);
+}
+.tool-field select option { color: #0f172a; }
+.tool-field input[type="range"] { width: 100%; accent-color: var(--matrix-red); }
+
+.tool-readout {
+  display: flex; align-items: center; justify-content: center; gap: 1rem;
+  background: rgba(0,0,0,.35); border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--radius-md); padding: .9rem 1rem; margin: 1.1rem 0 .85rem;
+}
+.tool-readout > div { display: flex; flex-direction: column; align-items: center; }
+.ro-num { font-size: clamp(1.6rem, 4vw, 2.1rem); font-weight: 700; color: #fff; line-height: 1; }
+.ro-lbl {
+  font-size: .62rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .1em; color: #94a3b8; margin-top: .35rem;
+}
+.ro-x { font-size: 1.1rem; color: #64748b; }
+
+.tool-match {
+  display: flex; align-items: center; gap: .55rem; flex-wrap: wrap;
+  padding: .6rem .7rem; border-radius: var(--radius-sm);
+  background: rgba(255,255,255,.05); margin-bottom: .9rem; min-height: 40px;
+}
+.tool-colour { font-size: .82rem; font-weight: 800; color: #fff; }
+.tool-size { font-size: .78rem; color: #cbd5e1; }
+.tool-range { font-size: .72rem; color: #94a3b8; }
+.tool-others {
+  margin-left: auto; font-size: .68rem; font-weight: 700; color: #94a3b8;
+  background: rgba(255,255,255,.07); border-radius: 999px; padding: .15rem .5rem;
+}
+.tool-none { font-size: .78rem; color: #cbd5e1; line-height: 1.5; }
+
+.tool-more {
+  width: 100%; background: none; border: none; cursor: pointer;
+  font-family: var(--font-main); font-size: .76rem; font-weight: 700;
+  color: #94a3b8; text-align: left; padding: 0;
+}
+.tool-more:hover { color: #fff; }
