@@ -166,15 +166,30 @@ function applyPageMeta(pageId) {
 const menuToggle = document.getElementById('menuToggle');
 const siteNav = document.getElementById('siteNav');
 
+const navScrim = document.getElementById('navScrim');
+
 menuToggle.addEventListener('click', () => {
   const open = menuToggle.classList.toggle('open');
   siteNav.classList.toggle('mobile-active');
+  if (navScrim) navScrim.classList.toggle('open', open);
   menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
 });
 
-function navigateTo(pageId) {
+// Tapping the scrim, or pressing Escape, closes the menu — the same job the
+// toggle does, so it is written once and called from both.
+function closeMobileNav() {
   menuToggle.classList.remove('open');
   siteNav.classList.remove('mobile-active');
+  if (navScrim) navScrim.classList.remove('open');
+  menuToggle.setAttribute('aria-expanded', 'false');
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && siteNav.classList.contains('mobile-active')) closeMobileNav();
+});
+
+function navigateTo(pageId) {
+  closeMobileNav();
   document.querySelectorAll('.page-view').forEach(v => v.classList.remove('active-view'));
   const target = document.getElementById(`view-${pageId}`);
   // An unknown id falls back to home, so the metadata has to fall back with it
@@ -1299,7 +1314,7 @@ Object.assign(window, {
   handlePortalLogin, handlePortalLogout, switchPortalTab,
   switchAuthPane, handlePasswordReset, handleSetPassword,
   closeWelcome, replayWelcome,
-  toggleThread, handlePostMessage,
+  toggleThread, handlePostMessage, closeMobileNav,
   openAck, closeAck, printAck, downloadAck,
   handleInviteClient, loadSalesClients,
   handlePublishNews, handleNewsPdfPick,

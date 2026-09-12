@@ -114,6 +114,8 @@
       </svg>
     </a>
     <button class="mobile-menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="siteNav"><span></span><span></span><span></span></button>
+    <button class="nav-scrim" id="navScrim" aria-label="Close menu" tabindex="-1"
+            onclick="closeMobileNav()"></button>
     <nav class="site-nav" id="siteNav" aria-label="Main">
       <button class="nav-btn active" id="nav-home" onclick="navigateTo('home')">Home</button>
       <button class="nav-btn" id="nav-about" onclick="navigateTo('about')">About</button>
@@ -182,8 +184,12 @@
 
   <div class="container section-pad">
     <div class="about-lead-card">
+      <div class="about-lead-text">
       <h3>Over 60 years of combined experience</h3>
       <p>Our production lines were designed and built in house on the Isle of Man, pairing specialist extrusion equipment with materials we specify ourselves. We're proud of the British manufacturing behind it, and of supplying converters across the globe direct from the factory.</p>
+      </div>
+      <img src="IMG_0342.png" alt="Ultra-SR creasing matrix profile, extruded on the Isle of Man"
+           class="about-lead-img" loading="lazy">
     </div>
 
     <div class="section-head"><span class="section-eyebrow">The team</span><h2 class="section-title">Who you'll deal with</h2></div>
@@ -191,21 +197,21 @@
     <div class="team-grid">
       <div class="team-card">
         <div class="team-header">
-          <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0391.png" alt="Stephen Kelly" class="team-avatar" loading="lazy">
+          <img src="IMG_0391.png" alt="Stephen Kelly" class="team-avatar" loading="lazy">
           <div class="team-titles"><h4>Stephen Kelly</h4><div class="role">Owner and director</div></div>
         </div>
         <p class="team-bio">Stephen founded Matrix Engineering in July 2009, having seen a gap for creasing matrix with tighter tolerances and longer run life. He set up the Isle of Man facility to build exactly that.</p>
       </div>
       <div class="team-card">
         <div class="team-header">
-          <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0387.png" alt="Dave Filson" class="team-avatar" loading="lazy">
+          <img src="IMG_0387.png" alt="Dave Filson" class="team-avatar" loading="lazy">
           <div class="team-titles"><h4>Dave Filson</h4><div class="role">Sales manager</div></div>
         </div>
         <p class="team-bio">Dave works directly with die-makers and converters to get specifications right first time, cut makeready cost and keep deliveries predictable. If you ring us, you'll usually get Dave.</p>
       </div>
       <div class="team-card">
         <div class="team-header">
-          <img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0388.png" alt="Chris Hitchen" class="team-avatar" loading="lazy">
+          <img src="IMG_0388.png" alt="Chris Hitchen" class="team-avatar" loading="lazy">
           <div class="team-titles"><h4>Chris Hitchen</h4><div class="role">Production manager</div></div>
         </div>
         <p class="team-bio">Chris came from process engineering roles with global manufacturers and specialises in polymer and rubber extrusion. He runs the floor and the quality standards every profile is held to.</p>
@@ -228,7 +234,7 @@
   <div class="container products-layout">
     <div class="prod-grid-large">
       <article class="prod-item-card" onclick="navigateTo('phoenix-plus')">
-        <div class="prod-img-box"><span class="prod-tag-float">Polymer base</span><img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0341.png" alt="Phoenix+ creasing matrix" loading="lazy"></div>
+        <div class="prod-img-box"><span class="prod-tag-float">Polymer base</span><img src="IMG_0341.png" alt="Phoenix+ creasing matrix" loading="lazy"></div>
         <div class="prod-content-box">
           <div><h3>Phoenix+</h3><p>Our standard synthetic matrix for folding carton, on 7mm, 10mm and 12mm bases. The one most customers start with.</p></div>
           <div>
@@ -239,7 +245,7 @@
       </article>
 
       <article class="prod-item-card" onclick="navigateTo('ultra-sr')">
-        <div class="prod-img-box"><span class="prod-tag-float">Polyester base</span><img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0342.png" alt="Ultra-SR creasing matrix" loading="lazy"></div>
+        <div class="prod-img-box"><span class="prod-tag-float">Polyester base</span><img src="IMG_0342.png" alt="Ultra-SR creasing matrix" loading="lazy"></div>
         <div class="prod-content-box">
           <div><h3>Ultra-SR</h3><p>A direct swap for steel-based matrix on abrasive recycled board, at the same thickness — without the rust or the perforation marks.</p></div>
           <div>
@@ -250,7 +256,7 @@
       </article>
 
       <article class="prod-item-card" onclick="navigateTo('exceed-rubber')">
-        <div class="prod-img-box dark"><span class="prod-tag-float red">Ejection profile</span><img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0340.png" alt="Exceed ejection rubber" loading="lazy"></div>
+        <div class="prod-img-box dark"><span class="prod-tag-float red">Ejection profile</span><img src="IMG_0340.png" alt="Exceed ejection rubber" loading="lazy"></div>
         <div class="prod-content-box">
           <div><h3>Exceed Rubber</h3><p>Ejection rubber that holds its profile past 1.6 million impressions instead of going hard and losing rebound.</p></div>
           <div>
@@ -261,7 +267,7 @@
       </article>
 
       <article class="prod-item-card" onclick="navigateTo('phoenix-xl')">
-        <div class="prod-img-box"><span class="prod-tag-float">Wide base</span><img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0345.png" alt="Phoenix XL creasing matrix" loading="lazy"></div>
+        <div class="prod-img-box"><span class="prod-tag-float">Wide base</span><img src="IMG_0345.png" alt="Phoenix XL creasing matrix" loading="lazy"></div>
         <div class="prod-content-box">
           <div><h3>Phoenix XL</h3><p>A 12mm or 15mm base for heavy solid board and micro-flute, where a narrower footprint would shift under pressure.</p></div>
           <div>
@@ -285,7 +291,7 @@
   </div>
   <div class="container detail-layout">
     <div class="detail-grid-top">
-      <div class="detail-gallery-main"><img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0341.png" alt="Phoenix+" loading="lazy"></div>
+      <div class="detail-gallery-main"><img src="IMG_0341.png" alt="Phoenix+" loading="lazy"></div>
       <div class="detail-info-pane">
         <h1>Our standard matrix, and the one most presses run</h1>
         <p>Phoenix+ is where our polymer and adhesive work ends up. It is built for long, high-speed runs on folding carton, and it is the range we hold most sizes of on the shelf.</p><p>Available on 7mm mini, 7mm off-centre, 10mm standard and 12mm bases, in centre and double crease.</p>
@@ -376,7 +382,7 @@
   </div>
   <div class="container detail-layout">
     <div class="detail-grid-top">
-      <div class="detail-gallery-main"><img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0345.png" alt="Phoenix XL" loading="lazy"></div>
+      <div class="detail-gallery-main"><img src="IMG_0345.png" alt="Phoenix XL" loading="lazy"></div>
       <div class="detail-info-pane">
         <h1>A wider footprint for board that fights back</h1>
         <p>On heavy solid board and micro-flute, a narrow base can shift under pressure. Phoenix XL puts the same polymer on a 12mm or 15mm flange so it stays where you put it.</p>
@@ -426,7 +432,7 @@
   </div>
   <div class="container detail-layout">
     <div class="detail-grid-top">
-      <div class="detail-gallery-main"><img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0342.png" alt="Ultra-SR" loading="lazy"></div>
+      <div class="detail-gallery-main"><img src="IMG_0342.png" alt="Ultra-SR" loading="lazy"></div>
       <div class="detail-info-pane">
         <h1>A steel replacement that cannot rust</h1>
         <p>Ultra-SR is a high-impact polyester base at the same thickness as steel matrix, so it drops straight into a steel specification. On abrasive recycled board it holds crease depth without rusting or leaving perforation marks.</p><p class="inline-note">An allowance of 0.20 should be considered, as with any steel-based product.</p>
@@ -507,7 +513,7 @@
   </div>
   <div class="container detail-layout">
     <div class="detail-grid-top">
-      <div class="detail-gallery-main dark-hero"><img src="https://raw.githubusercontent.com/chitchen25-del/Matrix-redesign-preview/main/IMG_0340.png" alt="Exceed Rubber" loading="lazy"></div>
+      <div class="detail-gallery-main dark-hero"><img src="IMG_0340.png" alt="Exceed Rubber" loading="lazy"></div>
       <div class="detail-info-pane">
         <h1>Still the same profile at 1.6 million impressions</h1>
         <p>Ejection rubber that holds its shape rather than degrading and losing rebound. That means shorter makeready and noticeably less angel hair.</p><p>We have commissioned a second rubber extrusion line at Balthane to keep up with demand, with further ejection profiles to follow.</p>
@@ -613,7 +619,7 @@
       <h3>Full technical guide</h3>
       <p>Every colour-coded sizing chart for Phoenix+, Phoenix XL, Ultra-SR and Exceed Rubber, plus accessories, in one printable document.</p>
       <div class="brochure-actions">
-        <a href="MatrixTechnicalBrochure.pdf" download class="btn-solid-red">Download the PDF</a>
+        <a href="Matrix-Technical-Brochure.pdf" download class="btn-solid-red">Download the PDF</a>
         <a href="brochure.html" class="btn-glass ghost">View in the browser</a>
       </div>
     </div>
