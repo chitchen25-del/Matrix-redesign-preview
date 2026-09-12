@@ -1063,7 +1063,10 @@ async function handlePlaceNewOrder(e) {
     const { data: workOrderNumber, error } = await sb.rpc('place_portal_order', {
       p_reference: document.getElementById('newOrderRef').value.trim() || null,
       p_due_date:  document.getElementById('newOrderDueDate').value || null,
-      p_box_type:  document.getElementById('newOrderBoxType').value || null,
+      /* Not the customer's to choose. A product ships in its own carton unless
+         a salesman has agreed otherwise, and production changes it their side
+         if so — so this is always sent empty rather than guessed at here. */
+      p_box_type:  null,
       p_notes:     document.getElementById('newOrderNotes').value.trim() || null,
       p_address:   document.getElementById('newOrderAddress').value.trim() || null,
       p_lines:     queuedLineItems,
