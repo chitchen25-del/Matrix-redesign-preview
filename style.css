@@ -1464,3 +1464,17 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
 }
 .track-demo div { font-size: .82rem; color: var(--text-muted); line-height: 1.5; }
 .track-demo li:not(.td-done):not(.td-now) strong { color: var(--text-dim); }
+
+/* A real video element instead of a YouTube iframe: no player chrome to leak
+   through, no third-party request, and object-fit does the cropping that the
+   iframe needed a 16:9 calculation for. */
+.video-background-scaler video {
+  position: absolute; top: 50%; left: 50%;
+  width: 100%; height: 100%; transform: translate(-50%, -50%);
+  object-fit: cover; object-position: center;
+  pointer-events: none; border: none;
+  filter: saturate(1.15) contrast(1.05);
+}
+
+/* The about card now carries two paragraphs rather than one. */
+.about-lead-text p + p { margin-top: .9rem; }

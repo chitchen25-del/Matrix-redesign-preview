@@ -134,8 +134,16 @@
 <div id="main">
 <main id="view-home" class="page-view active-view">
   <section class="hero-main hero-video-wrap">
+    <!-- Self-hosted, so there is no player UI to leak through. A YouTube embed
+         shows its own tap-to-play overlay whenever autoplay is blocked — on
+         iOS Low Power Mode, for instance — and nothing outside the iframe can
+         suppress it. If hero.mp4 is absent the poster shows, and if that is
+         absent too the navy behind it does; the hero never looks broken. -->
     <div class="video-background-scaler">
-      <iframe src="https://www.youtube-nocookie.com/embed/0_iwVZknyQ4?autoplay=1&mute=1&loop=1&playlist=0_iwVZknyQ4&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1" allow="autoplay; encrypted-media" tabindex="-1" aria-hidden="true" title=""></iframe>
+      <video autoplay muted loop playsinline preload="metadata"
+             poster="hero-poster.jpg" tabindex="-1" aria-hidden="true">
+        <source src="hero.mp4" type="video/mp4">
+      </video>
     </div>
     <div class="hero-video-overlay"></div>
     <div class="container hero-rel">
@@ -223,8 +231,8 @@
     <div class="container">
       <div class="section-head last">
         <span class="section-eyebrow">Who we are</span>
-        <h2 class="section-title">Built on precision, run by people who make the stuff</h2>
-        <p class="section-desc">Matrix Engineering is an independent manufacturer supplying creasing matrix and ejection rubber to folding carton converters and die-makers worldwide.</p>
+        <h2 class="section-title">We started this because we were the ones being let down</h2>
+        <p class="section-desc">Matrix Engineering makes creasing matrix and ejection rubber on the Isle of Man, and supplies folding carton converters and die-makers worldwide.</p>
       </div>
     </div>
   </div>
@@ -232,8 +240,14 @@
   <div class="container section-pad">
     <div class="about-lead-card">
       <div class="about-lead-text">
-      <h3>Over 60 years of combined experience</h3>
-      <p>Our production lines were designed and built in house on the Isle of Man, pairing specialist extrusion equipment with materials we specify ourselves. We're proud of the British manufacturing behind it, and of supplying converters across the globe direct from the factory.</p>
+      <h3>We were the customer first</h3>
+      <p>Before 2009 we spent years in this trade on the other side of the counter — running
+         matrix that lifted, crushed, or left residue on the plate, and being told that was
+         normal. It was not normal. It was just what was available.</p>
+      <p>So we built the production line ourselves, on the Isle of Man, and specified the
+         polymer and the adhesive ourselves rather than taking what a supplier offered.
+         Everything that leaves here is extruded by us. Nothing is bought in and relabelled,
+         which means every tolerance is ours to hold and ours to answer for.</p>
       </div>
       <img src="IMG_0342.png" alt="Ultra-SR creasing matrix profile, extruded on the Isle of Man"
            class="about-lead-img" loading="lazy">
@@ -273,7 +287,9 @@
       <div class="section-head last">
         <span class="section-eyebrow">The range</span>
         <h2 class="section-title">Creasing matrix and ejection profiles</h2>
-        <p class="section-desc">Four ranges, each built for a different board and a different press. If you're not sure which fits, the sizing calculator will point you at one.</p>
+        <p class="section-desc">Four ranges. Not forty. Each one exists because a job needed it and
+        nothing on the market did it properly — and each one is extruded by us, on our own line,
+        to a profile we drew. If you are not sure which fits, the size finder will point you at one.</p>
       </div>
     </div>
   </div>
