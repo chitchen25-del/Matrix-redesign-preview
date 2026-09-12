@@ -1159,3 +1159,27 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
    so the frame is given the container's full width and left to do that rather
    than being scrolled sideways. */
 .ack-frame { width: 100%; border: 1px solid var(--border-subtle); }
+
+/* =========================================================================
+   READABILITY AND BALANCE — structural, from reviewing every page at 1280px
+   ========================================================================= */
+
+/* The contact panel is a flex column with space-between, sitting in a grid
+   row that stretches it to match the taller form beside it. The result was a
+   150px hole in the middle of the card. Each column now takes its own height,
+   so the spacing is the panel's own rather than the form's. */
+.contact-grid-wrap { align-items: start; }
+
+/* Body copy in the accessory cards ran the full width of the container —
+   about 140 characters a line, which is roughly twice a comfortable measure.
+   The tables below them still use the whole width, where wide is useful. */
+.acc-detail-card > p,
+.acc-detail-card .acc-header-flex + p { max-width: 68ch; }
+
+/* The accessory cards are grid items, and a grid item's default min-width:auto
+   means it will not shrink below its widest content. The size tables inside
+   carry min-width:480px, so on a phone the card grew to 554px and took the
+   whole page sideways with it — the container's own overflow-x:auto never got
+   a chance. min-width:0 lets the card shrink and the table scroll inside it,
+   which is what was intended. */
+.acc-detail-card { min-width: 0; }
