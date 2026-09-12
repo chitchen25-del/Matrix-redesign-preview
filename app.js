@@ -127,6 +127,8 @@ const PAGE_META = {
     'Polyester-base matrix on 100 micron Mylar film, colour coded by thickness, for recycled and abrasive boards.'],
   'exceed-rubber': ['Exceed ejection rubber',
     'Micro-cellular ejection rubber in 7.00mm and 7.25mm profiles, supplied in 24m and 60m boxes.'],
+  faults: ['What goes wrong, and why',
+    'Creasing faults and their causes: cracking on the fold, bursting on the press, matrix lifting or crushing, off-centre creases, corner splitting, angel hair and hardened ejection rubber.'],
   technical: ['Technical guidance',
     'Matrix sizing for board caliper and rule thickness, fitting guidance, and the full printable technical brochure.'],
   accessories: ['Accessories',
@@ -720,8 +722,15 @@ async function fetchMyOrders() {
     const { data: acks } = await sb.from('order_acknowledgements')
       .select('id, order_id, total, currency, created_at, opened_at')
       .eq('deleted', false).order('created_at', { ascending: false });
+    /* A person confirmed this order, and saying who is the most literal form of
+       "made by people". orders.confirmed_by already holds it; the hub simply
+       never showed it. */
+    const byWho = {};
+    (orders || []).forEach(o => { if (o.confirmed_by) byWho[o.id] = o.confirmed_by; });
     orderAcks = {};
-    (acks || []).forEach(a => { if (!orderAcks[a.order_id]) orderAcks[a.order_id] = a; });
+    (acks || []).forEach(a => {
+      if (!orderAcks[a.order_id]) orderAcks[a.order_id] = { ...a, confirmed_by: byWho[a.order_id] };
+    });
 
     if (!orders || !orders.length) {
       // An empty screen is an invitation, not a dead end — say what to do and
@@ -865,8 +874,8 @@ function renderAck(orderId) {
     <div class="ack-row">
       <div class="ack-text">
         <strong>Order acknowledgement</strong>
-        <span>Confirmed ${fmtWhen(ack.created_at)}${
-          ack.total != null ? ` · ${money(ack.total)}` : ''} · not an invoice</span>
+        <span>${ack.confirmed_by ? `Confirmed by ${esc(ack.confirmed_by)}, ` : 'Confirmed '}${
+          fmtWhen(ack.created_at)}${ack.total != null ? ` · ${money(ack.total)}` : ''} · not an invoice</span>
       </div>
       <button type="button" class="btn-ghost-sm" onclick="openAck('${esc(orderId)}')">
         View document
@@ -1387,6 +1396,43 @@ function renderMatrixMatches(depth, width, suggestedRange) {
    with is "what do I need for this board", and answering it in the first
    screenful is worth more than a claim about precision.
 --------------------------------------------------------------------- */
+/* Everyone offers free samples. The difference here is that the finder already
+   knows the board, the rule and the sizes that fit — so the request arrives
+   specified, rather than as "please send me some matrix". */
+function requestSamples() {
+  const cal = parseFloat(document.getElementById('heroCaliper').value) || 0;
+  const ruleSel = document.getElementById('heroRule');
+  const rule = ruleSel.options[ruleSel.selectedIndex].textContent.trim();
+  const depth = document.getElementById('heroDepth').textContent;
+  const width = document.getElementById('heroWidth').textContent;
+
+  const hits = buildMatrixIndex().filter(r =>
+    Math.abs(r.height - parseFloat(depth)) <= 0.06 &&
+    r.widths.some(w => Math.abs(w - parseFloat(width)) <= 0.16));
+  const seen = new Set();
+  const lines = hits.filter(m => {
+    const k = `${m.range}|${m.colour}|${m.height}`;
+    if (seen.has(k)) return false; seen.add(k); return true;
+  }).slice(0, 6).map(m => {
+    const w = m.widths.reduce((b, x) =>
+      Math.abs(x - parseFloat(width)) < Math.abs(b - parseFloat(width)) ? x : b, m.widths[0]);
+    return `  ${m.range} — ${m.colour} ${m.height.toFixed(2)} x ${w.toFixed(2)}mm (${m.profile})`;
+  });
+
+  const body =
+    `Please send samples to trial.\n\n` +
+    `Board caliper: ${cal.toFixed(2)} mm\n` +
+    `Creasing rule: ${rule}\n` +
+    `Starting size: ${depth} x ${width} mm\n\n` +
+    (lines.length ? `Sizes from your finder:\n${lines.join('\n')}\n\n`
+                  : `Nothing on the standard charts matched this size.\n\n`) +
+    `Company:\nContact:\nDelivery address:\n`;
+
+  window.location.href = 'mailto:sales@creasingmatrix.com?subject=' +
+    encodeURIComponent(`Sample request — ${depth} x ${width}mm`) +
+    '&body=' + encodeURIComponent(body);
+}
+
 function heroFind() {
   const cal = parseFloat(document.getElementById('heroCaliper').value) || 0;
   const rule = parseFloat(document.getElementById('heroRule').value) || 0;
@@ -1485,7 +1531,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 Object.assign(window, {
   handlePortalLogin, handlePortalLogout, switchPortalTab,
   switchAuthPane, handlePasswordReset, handleSetPassword,
-  closeWelcome, replayWelcome,
+  closeWelcome, replayWelcome, requestSamples,
   toggleThread, handlePostMessage, closeMobileNav,
   openAck, closeAck, printAck, downloadAck,
   handleInviteClient, loadSalesClients,

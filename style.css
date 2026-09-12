@@ -1478,3 +1478,47 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
 
 /* The about card now carries two paragraphs rather than one. */
 .about-lead-text p + p { margin-top: .9rem; }
+
+/* =========================================================================
+   TROUBLESHOOTING — what goes wrong, and why
+   Laid out as a reference someone reads at a press with a problem, not as
+   marketing: symptom first, cause second, what to change third.
+   ========================================================================= */
+.faults-layout {
+  max-width: 780px;
+  padding-top: clamp(2.5rem, 5vw, 4rem); padding-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.fault-card {
+  border-left: 3px solid var(--matrix-red);
+  padding: 0 0 0 clamp(1rem, 3vw, 1.75rem);
+  margin-bottom: clamp(2.25rem, 5vw, 3rem);
+}
+.fault-card h2 {
+  font-size: clamp(1.15rem, 3vw, 1.4rem); font-weight: 800;
+  color: var(--matrix-navy-dark); line-height: 1.25; margin-bottom: .4rem;
+}
+.fault-symptom {
+  font-size: .95rem; color: var(--text-body); font-weight: 600;
+  line-height: 1.6; margin-bottom: 1.1rem;
+}
+.fault-card h3 {
+  font-size: .72rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .11em; color: var(--matrix-navy); margin-bottom: .45rem;
+}
+.fault-card > p {
+  font-size: .92rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.25rem;
+}
+.fault-fixes { list-style: none; display: grid; gap: .6rem; margin: 0; }
+.fault-fixes li {
+  position: relative; padding-left: 1.5rem;
+  font-size: .9rem; color: var(--text-muted); line-height: 1.6;
+}
+.fault-fixes li::before {
+  content: ""; position: absolute; left: 0; top: .62em;
+  width: 9px; height: 3px; border-radius: 2px; background: var(--matrix-navy);
+}
+
+/* The finder's own call to action: the sizes are already worked out, so the
+   sample request goes out specified rather than as a blank enquiry. */
+.tool-actions { display: grid; gap: .55rem; }
+.tool-sample { width: 100%; font-size: .85rem; padding: .7rem 1rem; }

@@ -188,9 +188,14 @@
 
           <div class="tool-match" id="heroMatch"></div>
 
-          <button type="button" class="tool-more" onclick="navigateTo('technical')">
-            Full charts and the six-step fitting guide →
-          </button>
+          <div class="tool-actions">
+            <button type="button" class="btn-solid-red tool-sample" onclick="requestSamples()">
+              Send me these to trial
+            </button>
+            <button type="button" class="tool-more" onclick="navigateTo('technical')">
+              Full charts and the fitting guide →
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -231,7 +236,7 @@
     <div class="container">
       <div class="section-head last">
         <span class="section-eyebrow">Who we are</span>
-        <h2 class="section-title">We started this because we were the ones being let down</h2>
+        <h2 class="section-title">We spent years being told the matrix wasn't good enough</h2>
         <p class="section-desc">Matrix Engineering makes creasing matrix and ejection rubber on the Isle of Man, and supplies folding carton converters and die-makers worldwide.</p>
       </div>
     </div>
@@ -240,14 +245,18 @@
   <div class="container section-pad">
     <div class="about-lead-card">
       <div class="about-lead-text">
-      <h3>We were the customer first</h3>
-      <p>Before 2009 we spent years in this trade on the other side of the counter — running
-         matrix that lifted, crushed, or left residue on the plate, and being told that was
-         normal. It was not normal. It was just what was available.</p>
-      <p>So we built the production line ourselves, on the Isle of Man, and specified the
-         polymer and the adhesive ourselves rather than taking what a supplier offered.
-         Everything that leaves here is extruded by us. Nothing is bought in and relabelled,
-         which means every tolerance is ours to hold and ours to answer for.</p>
+      <h3>The complaints came to us</h3>
+      <p>Before 2009 we supplied creasing matrix to this industry, which meant we were the
+         ones who took the call when it lifted, when it crushed, when it left residue on the
+         plate. Converters and die-makers told us plainly, year after year, that it was not
+         good enough.</p>
+      <p>They were right. And we knew exactly why, because we knew what was going into it.
+         Hearing the same faults from the same trade for long enough leaves you with a very
+         clear specification for what a matrix ought to be.</p>
+      <p>So in 2009 we built the line ourselves, on the Isle of Man, and specified the polymer
+         and the adhesive ourselves rather than accepting what a supplier offered. Everything
+         that leaves here is extruded by us. Nothing is bought in and relabelled, which means
+         every tolerance is ours to hold and ours to answer for.</p>
       </div>
       <img src="IMG_0342.png" alt="Ultra-SR creasing matrix profile, extruded on the Isle of Man"
            class="about-lead-img" loading="lazy">
@@ -287,9 +296,10 @@
       <div class="section-head last">
         <span class="section-eyebrow">The range</span>
         <h2 class="section-title">Creasing matrix and ejection profiles</h2>
-        <p class="section-desc">Four ranges. Not forty. Each one exists because a job needed it and
-        nothing on the market did it properly — and each one is extruded by us, on our own line,
-        to a profile we drew. If you are not sure which fits, the size finder will point you at one.</p>
+        <p class="section-desc">Four ranges. Not forty. Each one answers a complaint we spent years
+        listening to before we made anything ourselves — and each one is extruded by us, on our
+        own line, to a profile we drew. If you are not sure which fits, the size finder will
+        point you at one.</p>
       </div>
     </div>
   </div>
@@ -974,6 +984,113 @@
   </div>
 </main>
 
+
+<main id="view-faults" class="page-view">
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-eyebrow">Troubleshooting</span>
+      <h1>What goes wrong, and why</h1>
+      <p>We spent years taking the calls when creasing went wrong, before we made anything
+         ourselves. This is what we learned. Some of it points at the matrix — including at
+         ours — and most of it does not. We would rather tell you either way than sell you
+         something that will not fix it.</p>
+    </div>
+  </section>
+
+  <div class="container faults-layout">
+    
+    <article class="fault-card">
+      <h2>Crease cracks when it is folded</h2>
+      <p class="fault-symptom">The crease looks clean coming off the press and splits on the folder-gluer.</p>
+      <h3>What is usually behind it</h3>
+      <p>The board has not delaminated properly. Creasing works by breaking the bond between the inner plies so the fibres can move; if that has not happened, the top liner is asked to stretch over a fold it cannot take. Usually the channel is too wide, or the crease rule is sitting too low to drive the board far enough into it.</p>
+      <h3>What to try</h3>
+      <ul class="fault-fixes"><li>Drop to the next channel width down — a narrower channel breaks the plies up more evenly.</li><li>Check the rule height before touching pressure. A low rule is the more common culprit.</li><li>Check the grain. Creases running across the grain crack far more readily than with it.</li><li>Board below about 8% moisture will crack whatever you do. Worth a check before blaming the tooling.</li></ul>
+    </article>
+
+    <article class="fault-card">
+      <h2>The crease bursts on the press</h2>
+      <p class="fault-symptom">Fibres split along the crease as it is cut, not later.</p>
+      <h3>What is usually behind it</h3>
+      <p>The opposite problem: too much force for the fibre to carry. Either the channel is too narrow for the caliper, the rule is too high, or the press is simply running heavier than the job needs. It shows up worst where creases sit close together, because the board is being pulled from both sides at once.</p>
+      <h3>What to try</h3>
+      <ul class="fault-fixes"><li>Go one channel width up, or take the rule height down — but not both at once, or you lose the crease altogether.</li><li>On tightly spaced creases, reducing rule height by 0.1–0.2mm is usually enough.</li><li>Come back down on impression. Burst creases are more often pressure than tooling.</li></ul>
+    </article>
+
+    <article class="fault-card">
+      <h2>The matrix lifts off the plate</h2>
+      <p class="fault-symptom">It moves during the run, or comes away with the sheet.</p>
+      <h3>What is usually behind it</h3>
+      <p>Nearly always the surface, not the adhesive. Anything left on the plate from the last job — residue, oil off a cloth, dust — and the tape is sticking to that rather than to steel. A plate that has never been degreased is the usual story.</p>
+      <h3>What to try</h3>
+      <ul class="fault-fixes"><li>Degrease and dry the plate properly before laying anything down. It is the single biggest cause.</li><li>Press the full length down, not just the ends; the middle is what lifts first.</li><li>If it keeps happening on a clean plate, tell us. That is our problem, not yours, and we want to know.</li></ul>
+    </article>
+
+    <article class="fault-card">
+      <h2>Residue left behind at changeover</h2>
+      <p class="fault-symptom">The matrix comes up but the adhesive stays on the plate.</p>
+      <h3>What is usually behind it</h3>
+      <p>The adhesive has been formulated to hold rather than to release, which is a choice the manufacturer made and you are living with. It is the fault we hear about most, and it is the one we designed Phoenix+ around: high shear under pressure, clean lift at changeover.</p>
+      <h3>What to try</h3>
+      <ul class="fault-fixes"><li>If you are scraping plates after every job, the matrix is wrong. Ask us for samples and run them side by side.</li><li>Lift from one end at a steady angle rather than picking at the middle.</li></ul>
+    </article>
+
+    <article class="fault-card">
+      <h2>The matrix crushes or loses its profile</h2>
+      <p class="fault-symptom">Creases go shallow part-way through the run and the shoulders spread.</p>
+      <h3>What is usually behind it</h3>
+      <p>The base is too narrow for the load it is carrying. On heavy solid board and micro-flute a standard footprint will move under the platen, and once the shoulders spread the channel is no longer the width you specified.</p>
+      <h3>What to try</h3>
+      <ul class="fault-fixes"><li>Move to a wider base — that is what Phoenix XL exists for.</li><li>Check the plate underneath. A pitted or worn plate concentrates load and will crush anything.</li><li>If it is crushing on a sound plate at sensible pressure, the material is not good enough. Ours should not.</li></ul>
+    </article>
+
+    <article class="fault-card">
+      <h2>The crease is off-centre</h2>
+      <p class="fault-symptom">One shoulder is deeper than the other, and the carton folds skew.</p>
+      <h3>What is usually behind it</h3>
+      <p>The rule and the matrix channel are not aligned. It happens most often after the chase or the cutting plate has been pulled out and put back, and it is worth checking every single time rather than once a week.</p>
+      <h3>What to try</h3>
+      <ul class="fault-fixes"><li>Re-check alignment after any chase or plate movement.</li><li>An off-centre profile is a deliberate product, not a symptom — if the job needs one, use one.</li><li>Even where the spine does not split, skewed folds change the finished carton size and cause trouble down the line at cartoning.</li></ul>
+    </article>
+
+    <article class="fault-card">
+      <h2>Splitting at the corners of a crease</h2>
+      <p class="fault-symptom">The crease is sound along its length and fails where it meets another.</p>
+      <h3>What is usually behind it</h3>
+      <p>The matrix has been cut square and butted up to its neighbour, so the two ends fight each other at the junction and there is nowhere for the fibre to go.</p>
+      <h3>What to try</h3>
+      <ul class="fault-fixes"><li>Chamfer the ends at 45° when you trim to length. It takes seconds and it is the fix.</li><li>Cut with a proper matrix cutter. A clean end sits flat; a crushed one does not.</li></ul>
+    </article>
+
+    <article class="fault-card">
+      <h2>Angel hair and dusting</h2>
+      <p class="fault-symptom">Fine fibres around the cut edge, all over the sheet and into the machine.</p>
+      <h3>What is usually behind it</h3>
+      <p>A dull rule is the first suspect: a sharp blade lets the board fracture, a worn one pins and tears it. After that, a worn cutting plate, too much impression, and ejection rubber that has gone hard and is letting the waste burst apart rather than pushing it cleanly.</p>
+      <h3>What to try</h3>
+      <ul class="fault-fixes"><li>Change the rule before anything else, and check the plate for pitting.</li><li>Press a fingernail into your ejection rubber. If it does not spring back, it is done — and that is the rubber's fault, not the board's.</li><li>Recycled board has shorter fibres and will always dust more. It is not necessarily a fault.</li></ul>
+    </article>
+
+    <article class="fault-card">
+      <h2>Ejection rubber goes hard</h2>
+      <p class="fault-symptom">It worked when it went on and now it does not push the waste out.</p>
+      <h3>What is usually behind it</h3>
+      <p>Most rubber degrades — heat, UV and time harden it, the rebound goes, and make-ready creeps up as the operator compensates with pressure. Exceed holds its profile past 1.6 million impressions rather than going off in the rack.</p>
+      <h3>What to try</h3>
+      <ul class="fault-fixes"><li>If you are replacing rubber on a schedule rather than on wear, you are buying the wrong rubber.</li><li>Hard rubber and angel hair usually arrive together. Fix the rubber and watch the dusting.</li></ul>
+    </article>
+
+    <div class="guide-close">
+      <h3>Still not right?</h3>
+      <p>Ring <a href="tel:+441624822960">+44 (0)1624 822960</a> and describe what you are seeing.
+         There is someone on the other end who has stood at a press with the same problem, and
+         if the answer is that our matrix is not the right one for the job, that is what you
+         will be told.</p>
+      <button class="btn-solid-red" onclick="navigateTo('technical')">Work out a starting size</button>
+    </div>
+  </div>
+</main>
+
 <main id="view-portal" class="page-view">
   <div class="page-hero">
     <div class="container">
@@ -1373,6 +1490,7 @@
           <li><button onclick="navigateTo('accessories')">Accessories</button></li>
           <li><button onclick="navigateTo('news')">News</button></li>
           <li><button onclick="navigateTo('portal')">Client hub</button></li>
+          <li><button onclick="navigateTo('faults')">What goes wrong, and why</button></li>
           <li><button onclick="navigateTo('hub-guide')">How ordering works</button></li>
           <li><button onclick="navigateTo('contact')">Contact</button></li>
         </ul>
