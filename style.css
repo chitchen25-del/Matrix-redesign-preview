@@ -71,11 +71,11 @@
    ========================================================================= */
 
 :root {
-  --matrix-navy: #182B6B;
-  --matrix-navy-dark: #0d173b;
-  --matrix-navy-light: #253a8a;
-  --matrix-red: #FF2E17;
-  --matrix-red-dark: #d6200c;
+  --matrix-navy: #203080;
+  --matrix-navy-dark: #111A45;
+  --matrix-navy-light: #2E40A0;
+  --matrix-red: #E84028;
+  --matrix-red-dark: #C32D15;
   --matrix-green: #10b981;
   --matrix-green-dark: #059669;
   --matrix-grey-dark: #4A4A4A;
@@ -429,7 +429,7 @@ td.num, th.num { text-align: right; }
   border: 1px solid rgba(0,0,0,.12); box-shadow: 0 1px 3px rgba(0,0,0,.08); vertical-align: -1px; }
 .size-table td.pt { color: var(--matrix-red); font-weight: 700; white-space: nowrap; }
 .c-pink{background:#F472B6}.c-blue{background:#2563EB}.c-white{background:#fff;border-color:#CBD5E1}
-.c-red{background:#FF2E17}.c-silver{background:#E2E8F0}.c-yellow{background:#EAB308}
+.c-red{background:#E84028}.c-silver{background:#E2E8F0}.c-yellow{background:#EAB308}
 .c-orange{background:#F97316}.c-mauve{background:#8B5CF6}.c-green{background:#10B981}
 .c-sky{background:#38BDF8}.c-grey{background:#94A3B8}.c-lime{background:#84CC16}
 .c-buff{background:#FDE047}.c-violet{background:#7C3AED}.c-rose{background:#FB7185}
@@ -1556,8 +1556,8 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
    ========================================================================= */
 .fault-figs {
   display: grid; grid-template-columns: 1fr 1fr; gap: .85rem; margin-bottom: 1.35rem;
-  --mx-navy: #182B6B; --mx-red: #FF2E17; --mx-board: #94A3B8;
-  --mx-plate: #0D173B; --mx-dim: #64748B;
+  --mx-navy: #203080; --mx-red: #E84028; --mx-board: #94A3B8;
+  --mx-plate: #111A45; --mx-dim: #64748B;
 }
 .fault-figs figure {
   margin: 0; padding: .6rem .6rem .2rem; position: relative;
@@ -1648,7 +1648,7 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
    ========================================================================= */
 .profile-draw {
   width: 100%; height: auto; display: block;
-  --pd-navy: #2E4A9E; --pd-red: #FF2E17; --pd-board: #94A3B8;
+  --pd-navy: #2E4A9E; --pd-red: #E84028; --pd-board: #94A3B8;
   --pd-plate: #060B1E; --pd-dim: #94A3B8;
 }
 .tool-draw {
