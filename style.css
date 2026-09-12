@@ -1522,3 +1522,120 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
    sample request goes out specified rather than as a blank enquiry. */
 .tool-actions { display: grid; gap: .55rem; }
 .tool-sample { width: 100%; font-size: .85rem; padding: .7rem 1rem; }
+
+/* The troubleshooting page is the most useful thing on the site for somebody
+   with a problem, so it gets a real invitation at the top of Technical rather
+   than a line in the footer. */
+.faults-promo {
+  width: 100%; display: flex; align-items: center; gap: 1.25rem; text-align: left;
+  background: var(--matrix-navy-dark); color: #fff; cursor: pointer;
+  border: none; border-left: 4px solid var(--matrix-red);
+  border-radius: var(--radius-lg); padding: clamp(1.25rem, 3vw, 1.75rem);
+  margin-bottom: clamp(1.75rem, 4vw, 2.5rem);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.faults-promo:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+.fp-eyebrow {
+  display: block; font-size: .68rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .14em; color: var(--matrix-red); margin-bottom: .35rem;
+}
+.faults-promo strong {
+  display: block; font-family: var(--font-main);
+  font-size: clamp(1.05rem, 2.6vw, 1.3rem); font-weight: 800; margin-bottom: .45rem;
+}
+.fp-body { display: block; font-size: .88rem; color: #94a3b8; line-height: 1.6; max-width: 62ch; }
+.fp-go { margin-left: auto; font-size: 1.5rem; color: var(--matrix-red); flex: 0 0 auto; }
+@media (max-width: 560px) { .fp-go { display: none; } }
+
+/* =========================================================================
+   FAULT DRAWINGS
+   The same cross-section language as the profile diagrams on the product
+   pages — navy matrix, red rule, grey board, dark plate. Every fault here is
+   a geometry, and a die-maker reads the wrong one beside the right one faster
+   than any paragraph.
+   ========================================================================= */
+.fault-figs {
+  display: grid; grid-template-columns: 1fr 1fr; gap: .85rem; margin-bottom: 1.35rem;
+  --mx-navy: #182B6B; --mx-red: #FF2E17; --mx-board: #94A3B8;
+  --mx-plate: #0D173B; --mx-dim: #64748B;
+}
+.fault-figs figure {
+  margin: 0; padding: .6rem .6rem .2rem; position: relative;
+  background: var(--bg-light); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+.fig-wrong { border-color: #FECACA; background: #FEF2F2; }
+.fig-right { border-color: #BBF7D0; background: #F0FDF4; }
+.fig-tag {
+  position: absolute; top: .5rem; right: .6rem;
+  font-size: .6rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em;
+}
+.fig-wrong .fig-tag { color: #B91C1C; }
+.fig-right .fig-tag { color: #15803D; }
+.fault-svg { width: 100%; height: auto; display: block; }
+@media (max-width: 420px) { .fault-figs { gap: .5rem; } .fig-tag { font-size: .55rem; } }
+
+/* =========================================================================
+   THE PROFILE AS A MARK
+   The matrix cross-section is the one shape nobody else in this trade owns,
+   and until now it appeared once per range beside a size chart. Used as the
+   section rule and the list marker it becomes what people recognise us by —
+   spent quietly and repeatedly rather than loudly in one place.
+   ========================================================================= */
+
+/* A section divider drawn as the profile: two shoulders and a channel, with
+   the rule of the line running through them. */
+.profile-rule {
+  border: 0; height: 22px; margin: clamp(2.5rem, 5vw, 3.5rem) 0;
+  background:
+    /* left shoulder */
+    linear-gradient(var(--matrix-navy), var(--matrix-navy)) left  center / calc(50% - 26px) 9px no-repeat,
+    /* right shoulder */
+    linear-gradient(var(--matrix-navy), var(--matrix-navy)) right center / calc(50% - 26px) 9px no-repeat,
+    /* the channel floor between them */
+    linear-gradient(var(--border-subtle), var(--border-subtle)) center bottom 0 / 52px 3px no-repeat;
+  position: relative;
+}
+.profile-rule::before,
+.profile-rule::after {
+  content: ""; position: absolute; top: 0; width: 5px; height: 22px;
+  background: var(--matrix-navy); border-radius: 1px;
+}
+.profile-rule::before { left: calc(50% - 26px); }
+.profile-rule::after  { right: calc(50% - 26px); }
+
+/* List markers drawn as the channel in section rather than a disc or a dash. */
+.hub-benefits li .hub-tick,
+.guide-list li::before,
+.fault-fixes li::before,
+.welcome-points li::before {
+  border-radius: 1px;
+}
+
+/* The wall chart. A brochure goes in a drawer; a fault chart with our name on
+   it stays on the die shop wall for years, which is the cheapest and longest
+   lasting advertising there is. */
+.wallchart {
+  display: flex; align-items: center; gap: 1.25rem; text-decoration: none;
+  background: var(--bg-light); border: 1px solid var(--border-subtle);
+  border-left: 4px solid var(--matrix-red);
+  border-radius: var(--radius-lg); padding: clamp(1.25rem, 3vw, 1.65rem);
+  margin-bottom: clamp(1.75rem, 4vw, 2.5rem);
+  transition: background .18s ease, border-color .18s ease;
+}
+.wallchart:hover { background: #fff; border-color: var(--matrix-navy); border-left-color: var(--matrix-red); }
+.wc-eyebrow {
+  display: block; font-size: .68rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .13em; color: var(--matrix-red); margin-bottom: .3rem;
+}
+.wallchart strong {
+  display: block; font-size: clamp(1rem, 2.4vw, 1.2rem); font-weight: 800;
+  color: var(--matrix-navy-dark); margin-bottom: .4rem;
+}
+.wc-body { display: block; font-size: .87rem; color: var(--text-muted); line-height: 1.6; max-width: 58ch; }
+.wc-badge {
+  margin-left: auto; flex: 0 0 auto; background: var(--matrix-navy); color: #fff;
+  font-family: var(--font-mono); font-size: .68rem; font-weight: 700;
+  padding: .45rem .7rem; border-radius: var(--radius-sm); white-space: nowrap;
+}
+@media (max-width: 560px) { .wallchart { flex-wrap: wrap; } .wc-badge { margin-left: 0; } }
