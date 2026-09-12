@@ -72,7 +72,7 @@ across files in a way that breaks if only one is uploaded.
 | `app.js` | Routing, the sizing calculator, news, and the Supabase-backed client hub |
 
 Also present: `brochure.html` (self-contained printable A4 technical guide, its own
-inline CSS, no shared code with the above), `MatrixTechnicalBrochure.pdf`, the
+inline CSS, no shared code with the above), `Matrix-Technical-Brochure.pdf`, the
 product/team photos, and `favicon.svg` / `apple-touch-icon.png` / `og-image.png`.
 The share image and icons are generated assets — regenerate them rather than
 hand-editing, and keep `og-image.png` at 1200x630 or link previews crop badly.
@@ -400,3 +400,17 @@ The database cannot settle it: `products` records colours only for Ultra SR and
 Profile Tape, and holds none at all for PX Plus. So this needs the paper charts,
 and it has deliberately been left as-is rather than guessed at — changing a
 published technical figure on a hunch is worse than flagging it.
+
+## Carton type is not the customer's to choose
+
+`place_portal_order` accepts `p_box_type`, and the hub always sends it **null**.
+A product ships in its own carton unless a salesman has agreed otherwise, and
+production changes the carton on their side when that happens. The order form
+had a picker for it; it was removed on 12 September because it invited a
+customer to make a decision that is not theirs and that we would have had to
+overrule.
+
+Matrix Sync now offers the carton choice to whoever confirms the order, which is
+where it belongs — the person picking it can see the stock and the order at the
+same time. So null from here is not a gap being tolerated, it is the handover
+point. Do not put the picker back.
