@@ -1013,11 +1013,18 @@
       </div>
 
       <div class="portal-tabs-nav" role="tablist">
-        <button class="portal-tab-btn active-tab" id="tabBtnActive" onclick="switchPortalTab('active')">Your orders</button>
+        <button class="portal-tab-btn active-tab" id="tabBtnActive" onclick="switchPortalTab('active')">Your orders <span class="tab-unread" id="ordersUnread" style="display:none"></span></button>
         <button class="portal-tab-btn" id="tabBtnNew" onclick="switchPortalTab('new')">Place an order</button>
       </div>
 
-      <div id="tabContentActive"><div id="activeOrdersList"></div></div>
+      <div id="tabContentActive">
+        <div id="activeOrdersList"></div>
+        <p class="orders-foot">Once an order is with us it belongs to the factory, so it
+          cannot be changed or cancelled here — send a message on the order or call
+          <a href="tel:+441624822960">+44 (0)1624 822960</a> and we will sort it.
+          What you see is the stage and the despatch date; anything further about how it
+          is being made is on our side of the fence.</p>
+      </div>
 
       <div id="tabContentNew" style="display:none">
         <div class="new-order-panel">

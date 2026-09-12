@@ -804,3 +804,86 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
   padding: .6rem .8rem; border-radius: var(--radius-sm);
   border-left: 3px solid #fcd34d;
 }
+
+/* =========================================================================
+   ORDER MESSAGES — the customer's end of a thread Matrix answers in its own
+   system. Kept visually quiet: it sits inside an order card, not beside it.
+   ========================================================================= */
+.tab-unread {
+  display: inline-grid; place-items: center; min-width: 19px; height: 19px;
+  padding: 0 5px; margin-left: .35rem; border-radius: 999px;
+  background: var(--matrix-red); color: #fff;
+  font-family: var(--font-mono); font-size: .68rem; font-weight: 700;
+}
+
+.thread-block { border-top: 1px solid var(--border-subtle); margin-top: 1.25rem; }
+.thread-toggle {
+  width: 100%; display: flex; align-items: center; gap: .6rem;
+  background: none; border: none; cursor: pointer;
+  padding: .9rem 0 .6rem; text-align: left;
+  font-family: var(--font-main); font-size: .85rem; font-weight: 800;
+  color: var(--matrix-navy);
+}
+.thread-toggle:hover { color: var(--matrix-red); }
+.thread-unread {
+  background: var(--matrix-red); color: #fff; border-radius: 999px;
+  padding: .1rem .5rem; font-size: .68rem; font-weight: 700;
+  font-family: var(--font-mono);
+}
+.thread-chev { margin-left: auto; font-size: 1.1rem; color: var(--text-dim); }
+
+.thread-body { padding-bottom: .5rem; }
+.thread-empty {
+  font-size: .85rem; color: var(--text-muted); line-height: 1.55;
+  background: var(--bg-light); border-radius: var(--radius-sm);
+  padding: .85rem 1rem; margin-bottom: 1rem;
+}
+
+.msg { margin-bottom: .85rem; max-width: 85%; }
+.msg-meta {
+  display: flex; gap: .5rem; align-items: baseline;
+  font-size: .72rem; margin-bottom: .2rem;
+}
+.msg-meta strong { font-weight: 800; color: var(--matrix-navy-dark); }
+.msg-meta span { color: var(--text-dim); font-family: var(--font-mono); font-size: .68rem; }
+.msg p {
+  font-size: .88rem; line-height: 1.55; padding: .65rem .9rem;
+  border-radius: var(--radius-md); white-space: pre-wrap;
+}
+/* Matrix on the left in navy, the customer on the right in grey — so a glance
+   tells you who said what without reading the name. */
+.msg-matrix p { background: var(--matrix-navy); color: #fff; border-top-left-radius: 4px; }
+.msg-customer { margin-left: auto; }
+.msg-customer p {
+  background: var(--bg-slate); color: var(--text-body);
+  border-top-right-radius: 4px;
+}
+.msg-customer .msg-meta { justify-content: flex-end; }
+
+.thread-form { display: grid; gap: .6rem; margin-top: 1rem; }
+.thread-form textarea {
+  width: 100%; font-family: var(--font-main); font-size: .88rem;
+  padding: .7rem .9rem; border: 1px solid var(--border-medium);
+  border-radius: var(--radius-md); resize: vertical;
+}
+.thread-form button { justify-self: start; }
+
+.price-pending {
+  font-size: .82rem; color: #92400e; background: #fef3c7;
+  border-left: 3px solid #fcd34d; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: .65rem .85rem; margin-top: .5rem; line-height: 1.55;
+}
+.line-items-preview-table tfoot td {
+  border-top: 2px solid var(--border-medium); font-weight: 800;
+  color: var(--matrix-navy-dark); padding-top: .6rem;
+}
+.orders-foot {
+  font-size: .8rem; color: var(--text-dim); line-height: 1.6;
+  margin-top: 1.5rem; padding-top: 1.25rem;
+  border-top: 1px solid var(--border-subtle);
+}
+.orders-foot a { color: var(--matrix-navy); font-weight: 700; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}

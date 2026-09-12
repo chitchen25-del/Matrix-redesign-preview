@@ -579,6 +579,103 @@ function switchPortalTab(tab) {
   if (active) fetchMyOrders();
 }
 
+/* ---------------------------------------------------------------------
+   MESSAGES — the customer's half of the thread
+
+   Matrix reads and replies in Matrix Sync. This end is deliberately thin:
+   the policies decide what a customer may do, and none of it is re-checked
+   here. A customer reads and writes only on their own orders, author_side is
+   forced to 'customer' by the insert policy, and read_at is the other side
+   saying it has seen something — not this one.
+--------------------------------------------------------------------- */
+let orderMessages = {};                 // order_id -> messages
+const openThreads = new Set();          // which threads are expanded
+
+function contactName() {
+  const u = (session && session.user) || {};
+  const meta = u.user_metadata || {};
+  if (meta.contact_name) return `${meta.contact_name} at ${myCompany}`;
+  return myCompany;
+}
+
+function renderUnreadBadge() {
+  const el = document.getElementById('ordersUnread');
+  if (!el) return;
+  const n = Object.values(orderMessages).flat()
+    .filter(m => m.author_side === 'matrix' && !m.read_at).length;
+  el.textContent = n ? String(n) : '';
+  el.style.display = n ? '' : 'none';
+}
+
+async function toggleThread(orderId) {
+  if (openThreads.has(orderId)) {
+    openThreads.delete(orderId);
+  } else {
+    openThreads.add(orderId);
+    await markMatrixMessagesRead(orderId);
+  }
+  await refreshOrders();
+}
+
+/* Marks Matrix's messages read, never the customer's own — the flag is this
+   side telling Dave his answer landed, and Matrix Sync shows "seen" against
+   his message once it is set.
+
+   Note: this currently updates nothing. order_messages grants customers
+   SELECT and INSERT only; there is no customer UPDATE policy, so the request
+   is accepted and matches zero rows. The code is written the way it will need
+   to work and reports the shortfall once, rather than pretending. */
+let readReceiptWarned = false;
+async function markMatrixMessagesRead(orderId) {
+  const unread = (orderMessages[orderId] || [])
+    .filter(m => m.author_side === 'matrix' && !m.read_at);
+  if (!unread.length) return;
+  try {
+    const { data } = await sb.from('order_messages')
+      .update({ read_at: new Date().toISOString() })
+      .eq('order_id', orderId).eq('author_side', 'matrix').is('read_at', null)
+      .select('id');
+    if ((!data || !data.length) && !readReceiptWarned) {
+      readReceiptWarned = true;
+      console.warn('[hub] Read receipts are not reaching Matrix: order_messages has no ' +
+        'customer UPDATE policy, so marking messages read affects no rows.');
+    }
+  } catch (e) { /* never block reading a thread on a receipt */ }
+}
+
+async function handlePostMessage(e, orderId) {
+  e.preventDefault();
+  const box = document.getElementById(`msg-${orderId}`);
+  const err = document.getElementById(`msgErr-${orderId}`);
+  const body = box.value.trim();
+  err.textContent = '';
+  if (!body) { err.textContent = 'Write something first.'; return; }
+
+  const btn = e.target.querySelector('button[type="submit"]');
+  btn.disabled = true; btn.textContent = 'Sending…';
+  try {
+    const { error } = await sb.from('order_messages').insert({
+      id: 'msg-' + crypto.randomUUID(),
+      order_id: orderId,
+      body,
+      author_side: 'customer',
+      author_name: contactName(),
+    });
+    if (error) throw error;
+    box.value = '';
+    await refreshOrders();
+  } catch (ex) {
+    err.textContent = 'That message could not be sent. Please try again, or call us on ' +
+      '+44 (0)1624 822960.';
+  } finally {
+    btn.disabled = false; btn.textContent = 'Send';
+  }
+}
+
+// Re-reads orders and messages together, so a thread and its unread count
+// never disagree.
+async function refreshOrders() { await fetchMyOrders(); }
+
 async function fetchMyOrders() {
   const list = document.getElementById('activeOrdersList');
   list.innerHTML = `<div class="loading-note">Loading your orders…</div>`;
@@ -589,6 +686,20 @@ async function fetchMyOrders() {
       .select('*, line_items(*)').eq('deleted', false)
       .order('order_date', { ascending: false });
     if (error) throw error;
+
+    /* Every message this customer is allowed to see, in one request. RLS
+       scopes it to their own orders, so no filter is sent from here — same
+       reasoning as the orders query above. Fetching per card would be one
+       round trip per order and would still need the whole set for the
+       unread count. */
+    const { data: msgs } = await sb.from('order_messages')
+      .select('id, order_id, body, author_side, author_name, created_at, read_at')
+      .eq('deleted', false).order('created_at');
+    orderMessages = {};
+    (msgs || []).forEach(m => {
+      (orderMessages[m.order_id] = orderMessages[m.order_id] || []).push(m);
+    });
+    renderUnreadBadge();
 
     if (!orders || !orders.length) {
       // An empty screen is an invitation, not a dead end — say what to do and
@@ -650,6 +761,9 @@ function renderOrderCard(ord) {
   const known = idx >= 0;
   const lines = ord.line_items || [];
   const items = lines.reduce((t, li) => t + (Number(li.qty) || 0), 0);
+  const priced = !!ord.confirmed_at;
+  const orderTotal = lines.reduce(
+    (t, li) => t + (Number(li.unit_price) || 0) * (Number(li.qty) || 0), 0);
 
   return `
     <article class="factory-order-card">
@@ -675,19 +789,84 @@ function renderOrderCard(ord) {
       <div class="order-meta-row">
         <div><span>Ordered</span><strong>${esc(ord.order_date || '—')}</strong></div>
         <div><span>Requested for</span><strong>${esc(ord.due_date || 'Standard lead time')}</strong></div>
-        <div><span>Contents</span><strong>${lines.length} lines · ${items} items</strong></div>
+        <div><span>Contents</span><strong>${lines.length} line${lines.length === 1 ? '' : 's'} · ${items} item${items === 1 ? '' : 's'}</strong></div>
       </div>
 
       ${lines.length ? `
         <table class="line-items-preview-table">
-          <thead><tr><th>Product</th><th class="num">Quantity</th></tr></thead>
+          <thead><tr><th>Product</th><th class="num">Quantity</th>
+            ${priced ? '<th class="num">Unit</th><th class="num">Line</th>' : ''}</tr></thead>
           <tbody>
             ${lines.map(li => `
               <tr><td>${esc(li.description || 'Matrix profile')}</td>
-                  <td class="num">${Number(li.qty) || 0}</td></tr>`).join('')}
+                  <td class="num">${Number(li.qty) || 0}</td>
+                  ${priced ? `<td class="num">${money(li.unit_price)}</td>
+                              <td class="num">${money((Number(li.unit_price)||0) * (Number(li.qty)||0))}</td>` : ''}
+              </tr>`).join('')}
           </tbody>
+          ${priced ? `<tfoot><tr><td colspan="3">Order total</td>
+            <td class="num"><strong>${money(orderTotal)}</strong></td></tr></tfoot>` : ''}
         </table>` : ''}
+
+      ${priced ? '' : `
+        <p class="price-pending">We will confirm your prices shortly — usually the same
+          working day. Nothing is priced until we have checked it, so this order shows
+          no figures yet.</p>`}
+
+      ${renderThread(ord.id)}
     </article>`;
+}
+
+/* Prices are the factory's. A hub order lands with every unit_price at 0 and
+   confirmed_at null until Steve prices it, and a zero on screen reads as free
+   — so nothing is shown as a price until the order is confirmed. */
+const GBP = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' });
+function money(v) { return GBP.format(Number(v) || 0); }
+
+function renderThread(orderId) {
+  const msgs = orderMessages[orderId] || [];
+  const unread = msgs.filter(m => m.author_side === 'matrix' && !m.read_at).length;
+  const open = openThreads.has(orderId);
+
+  return `
+    <div class="thread-block${open ? ' open' : ''}">
+      <button type="button" class="thread-toggle" onclick="toggleThread('${esc(orderId)}')"
+              aria-expanded="${open}">
+        <span>Messages about this order${msgs.length ? ` (${msgs.length})` : ''}</span>
+        ${unread ? `<span class="thread-unread">${unread} new</span>` : ''}
+        <span class="thread-chev" aria-hidden="true">${open ? '−' : '+'}</span>
+      </button>
+
+      ${open ? `
+        <div class="thread-body">
+          ${msgs.length ? msgs.map(m => `
+            <div class="msg msg-${m.author_side === 'matrix' ? 'matrix' : 'customer'}">
+              <div class="msg-meta">
+                <strong>${esc(m.author_name || (m.author_side === 'matrix' ? 'Matrix Engineering' : 'You'))}</strong>
+                <span>${fmtWhen(m.created_at)}</span>
+              </div>
+              <p>${esc(m.body)}</p>
+            </div>`).join('')
+          : `<p class="thread-empty">Nothing yet. Anything you need to tell us about this
+               order — a change, a query, a delivery note — start it here and it reaches
+               the people handling it.</p>`}
+
+          <form class="thread-form" onsubmit="handlePostMessage(event, '${esc(orderId)}')">
+            <label class="sr-only" for="msg-${esc(orderId)}">Your message</label>
+            <textarea id="msg-${esc(orderId)}" rows="2" required
+                      placeholder="Type your message…"></textarea>
+            <p class="form-error" id="msgErr-${esc(orderId)}" role="alert"></p>
+            <button type="submit" class="btn-solid-navy">Send</button>
+          </form>
+        </div>` : ''}
+    </div>`;
+}
+
+function fmtWhen(iso) {
+  if (!iso) return '';
+  const d = new Date(iso);
+  return isNaN(d) ? '' : d.toLocaleString('en-GB',
+    { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
 }
 
 /* ---------------------------------------------------------------------
@@ -1040,6 +1219,7 @@ Object.assign(window, {
   handlePortalLogin, handlePortalLogout, switchPortalTab,
   switchAuthPane, handlePasswordReset, handleSetPassword,
   closeWelcome, replayWelcome,
+  toggleThread, handlePostMessage,
   handleInviteClient, loadSalesClients,
   handlePublishNews, handleNewsPdfPick,
   handleRangeChange, handleAddLineItemToQueue,
