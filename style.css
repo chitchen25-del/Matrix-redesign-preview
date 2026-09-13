@@ -1945,3 +1945,71 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
     padding-right: clamp(1.75rem, 4.5vw, 3.5rem);
   }
 }
+
+/* =========================================================================
+   PRODUCTS — EDITORIAL ROWS
+   Four bordered cards, each with a bordered image box inside it, was the last
+   piece of card soup on the site. These are full-width rows that alternate
+   side to side, separated by a rule rather than boxed, in the same language
+   as the range list on the home page.
+   ========================================================================= */
+.prod-rows { border-top: 1px solid var(--border-medium); }
+.prod-row {
+  display: grid; grid-template-columns: 1.05fr 1fr;
+  gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center;
+  padding: clamp(2rem, 4vw, 3.25rem) 0;
+  border-bottom: 1px solid var(--border-subtle);
+  cursor: pointer; transition: background .2s ease;
+}
+.prod-row:hover { background: var(--bg-light); }
+/* alternate which side the profile sits on, so the page does not march */
+.prod-row:nth-child(even) .pr-media { order: 2; }
+
+.pr-media { position: relative; }
+.pr-media img {
+  width: 100%; height: clamp(190px, 24vw, 280px);
+  /* The source renders are letterboxed with black bars top and bottom, so
+     contain would show them. cover crops to the product band in the middle. */
+  object-fit: cover; object-position: center 52%; display: block;
+  border-radius: var(--radius-md);
+  transition: transform .5s cubic-bezier(.25,1,.5,1);
+}
+.prod-row:hover .pr-media img { transform: scale(1.03); }
+.pr-tag {
+  position: absolute; top: 0; left: 0;
+  font-family: var(--font-mono); font-size: .66rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em;
+  color: var(--matrix-navy); background: var(--bg-light);
+  padding: .3rem .6rem; border-radius: var(--radius-sm);
+}
+
+.pr-num {
+  font-family: var(--font-mono); font-size: .78rem; font-weight: 700;
+  color: var(--matrix-red-text); display: block; margin-bottom: .5rem;
+}
+.pr-body h3 {
+  font-size: clamp(1.5rem, 3.4vw, 2.3rem); font-weight: 800; line-height: 1.08;
+  letter-spacing: -0.02em; color: var(--matrix-navy-dark); margin-bottom: .55rem;
+}
+.pr-body > p {
+  font-size: .96rem; color: var(--text-muted); line-height: 1.7;
+  max-width: 46ch; margin-bottom: 1.1rem;
+}
+.pr-specs { display: grid; gap: .4rem; margin-bottom: 1.1rem; max-width: 34rem; }
+.pr-spec {
+  display: flex; justify-content: space-between; gap: 1rem;
+  padding-bottom: .4rem; border-bottom: 1px solid var(--border-subtle);
+  font-size: .86rem;
+}
+.pr-spec span { color: var(--text-dim); }
+.pr-spec strong { color: var(--matrix-navy-dark); font-weight: 700; text-align: right; }
+.pr-go {
+  font-size: .88rem; font-weight: 800; color: var(--matrix-navy);
+  border-bottom: 2px solid var(--matrix-red); padding-bottom: .15rem;
+}
+.prod-row:hover .pr-go { color: var(--matrix-red-text); }
+
+@media (max-width: 760px) {
+  .prod-row { grid-template-columns: 1fr; gap: 1.25rem; }
+  .prod-row:nth-child(even) .pr-media { order: 0; }
+}
