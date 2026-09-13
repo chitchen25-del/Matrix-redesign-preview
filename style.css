@@ -1701,3 +1701,196 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
 .floor-wide .floor-video { height: clamp(220px, 34vw, 380px); }
 .floor-wide figcaption { text-align: center; margin-top: .7rem; }
 @media (max-width: 820px) { .floor-video { height: 200px; } }
+
+/* =========================================================================
+   HOME — REDESIGN
+   The old page was one template layout repeated: pale band, centred eyebrow,
+   centred heading, three bordered cards. Safe, and safe is what reads as
+   template software. This works the other way — asymmetric, left aligned,
+   separated by space and colour blocks rather than borders and drop shadows,
+   with a violent jump between display and body size.
+   ========================================================================= */
+
+/* --- hero: taller, and the headline given room to be a headline --- */
+.hero-main.hero-video-wrap { min-height: min(92vh, 860px); }
+.hero-h1 {
+  font-size: clamp(2.6rem, 6.4vw, 5.2rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+.hero-copy .hero-p { font-size: clamp(1rem, 1.5vw, 1.2rem); max-width: 34ch; }
+@media (max-width: 920px) { .hero-main.hero-video-wrap { min-height: 780px; } }
+
+/* --- the statement: one idea, at size, on navy --- */
+.statement {
+  background: var(--matrix-navy-dark); color: #fff;
+  padding: clamp(4rem, 9vw, 8rem) 0;
+}
+.statement-lead {
+  font-size: clamp(1.9rem, 5vw, 4rem);
+  font-weight: 800; line-height: 1.05; letter-spacing: -0.025em;
+  max-width: 18ch; margin-bottom: clamp(2rem, 4vw, 3rem);
+  text-wrap: balance;
+}
+.statement-lead em { font-style: normal; color: var(--matrix-red-on-dark); }
+.statement-body {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  max-width: 900px; margin-left: auto;
+}
+.statement-body p { color: #b6c0d4; line-height: 1.75; font-size: .98rem; }
+@media (max-width: 720px) {
+  .statement-body { grid-template-columns: 1fr; margin-left: 0; }
+  .statement-lead { max-width: none; }
+}
+.link-arrow {
+  grid-column: 1 / -1; justify-self: start;
+  background: none; border: none; cursor: pointer; padding: 0;
+  font-family: var(--font-main); font-size: .92rem; font-weight: 800; color: #fff;
+  border-bottom: 2px solid var(--matrix-red); padding-bottom: .2rem;
+}
+.link-arrow::after { content: " →"; }
+.link-arrow:hover { color: var(--matrix-red-on-dark); }
+
+/* --- the ranges: a list, not four boxes --- */
+.ranges { padding: clamp(4rem, 9vw, 8rem) 0; }
+.ranges-head {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 4vw, 4rem); align-items: end;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.ranges-head h2 {
+  font-size: clamp(2.1rem, 5.4vw, 4rem); font-weight: 800; line-height: 0.98;
+  letter-spacing: -0.028em; color: var(--matrix-navy-dark);
+}
+.ranges-head p { color: var(--text-muted); line-height: 1.75; font-size: 1rem; max-width: 44ch; }
+@media (max-width: 760px) { .ranges-head { grid-template-columns: 1fr; } }
+
+.range-list { list-style: none; border-top: 1px solid var(--border-medium); }
+.range-list li {
+  display: grid; grid-template-columns: auto 1fr auto auto;
+  gap: clamp(1rem, 3vw, 2.5rem); align-items: baseline;
+  padding: clamp(1.5rem, 3vw, 2.25rem) 0;
+  border-bottom: 1px solid var(--border-subtle);
+  cursor: pointer; transition: background .2s ease, padding .2s ease;
+}
+.range-list li:hover { background: var(--bg-light); padding-left: 1rem; padding-right: 1rem; }
+.rn {
+  font-family: var(--font-mono); font-size: .8rem; font-weight: 700;
+  color: var(--matrix-red-text); align-self: start; padding-top: .45rem;
+}
+.rl-body h3 {
+  font-size: clamp(1.4rem, 3.2vw, 2.2rem); font-weight: 800; line-height: 1.1;
+  letter-spacing: -0.02em; color: var(--matrix-navy-dark); margin-bottom: .45rem;
+}
+.rl-body p { color: var(--text-muted); line-height: 1.7; font-size: .95rem; max-width: 52ch; }
+.rl-meta {
+  font-family: var(--font-mono); font-size: .76rem; color: var(--text-dim);
+  white-space: nowrap; align-self: start; padding-top: .7rem;
+}
+.rl-go { font-size: 1.3rem; color: var(--matrix-red); align-self: start; padding-top: .35rem; }
+@media (max-width: 760px) {
+  .range-list li { grid-template-columns: auto 1fr; }
+  .rl-meta, .rl-go { grid-column: 2; padding-top: .5rem; }
+  .rl-go { display: none; }
+}
+
+/* --- footage, full width. It is the only real proof on the page. --- */
+.bleed-clip { position: relative; background: var(--matrix-navy-dark); }
+.bleed-clip .floor-video {
+  width: 100%; height: clamp(300px, 52vh, 560px); object-fit: cover;
+  display: block; border: none; border-radius: 0; opacity: .78;
+}
+.bleed-caption {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: clamp(1.5rem, 4vw, 3rem) 0;
+  background: linear-gradient(transparent, rgba(13,20,50,.92));
+}
+.bleed-caption p {
+  color: #fff; font-size: clamp(1.05rem, 2.4vw, 1.6rem);
+  font-weight: 700; line-height: 1.35; letter-spacing: -0.015em; max-width: 30ch;
+}
+.bleed-caption em { font-style: normal; color: var(--matrix-red-on-dark); }
+
+/* --- the track strip loses its card and gains air --- */
+.track-strip { background: #fff; border-bottom: none; padding: clamp(4rem, 9vw, 8rem) 0; }
+.track-strip .section-title { font-size: clamp(2rem, 4.6vw, 3.2rem); line-height: 1.02; }
+.track-demo { border: none; box-shadow: none; background: var(--bg-light); }
+
+/* =========================================================================
+   THE REDESIGN, ROLLED ACROSS EVERY PAGE
+   The three fixes from the home page review, then the same moves applied
+   site-wide: dark page openings, left alignment, display-scale headings, and
+   space and rules instead of bordered cards.
+   ========================================================================= */
+
+/* --- 1. the three fixes --- */
+.statement-body { margin-top: -0.5rem; }
+.statement-lead { margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem); }
+.ranges-head { align-items: baseline; }
+.ranges-head p { padding-bottom: .35rem; }
+/* the interesting part of that clip is the tool and the vice, not the wheel */
+.bleed-clip .floor-video { object-position: center 62%; }
+
+/* --- 2. every page opens dark --- */
+.page-hero {
+  background: var(--matrix-navy-dark);
+  border-bottom: none;
+  padding: clamp(3rem, 7vw, 6rem) 0 clamp(2.75rem, 6vw, 5rem);
+  position: relative; overflow: hidden;
+}
+/* a whisper of the profile geometry, so the band is not a flat slab */
+.page-hero::after {
+  content: ""; position: absolute; right: -4%; bottom: -60%;
+  width: 46%; height: 200%;
+  background: linear-gradient(105deg, transparent 48%, rgba(255,255,255,.035) 48%);
+  pointer-events: none;
+}
+/* Wide enough for a long headline to wrap two or three times rather than one
+   word per line; text-wrap:balance evens out what is left. */
+.page-hero .section-head { text-align: left; max-width: min(900px, 78%); margin: 0; }
+@media (max-width: 820px) { .page-hero .section-head { max-width: none; } }
+.page-hero .section-head .section-desc { max-width: 52ch; }
+.page-hero .section-eyebrow { color: var(--matrix-red-on-dark); }
+.page-hero .section-title, .page-hero h1 {
+  color: #fff;
+  font-size: clamp(2.2rem, 5.6vw, 4.2rem);
+  line-height: 0.99; letter-spacing: -0.028em;
+  margin-bottom: 0.9rem;
+}
+.page-hero .section-desc, .page-hero p { color: #b6c0d4; font-size: clamp(1rem, 1.6vw, 1.15rem); line-height: 1.65; }
+.page-hero a { color: #fff; }
+
+/* --- 3. left alignment and display scale in the body of every page --- */
+.section-head { text-align: left; max-width: 62ch; margin: 0 0 clamp(2rem, 4vw, 3rem); }
+.section-title {
+  font-size: clamp(1.9rem, 4.4vw, 3rem);
+  line-height: 1.04; letter-spacing: -0.025em;
+}
+
+/* --- 4. cards lose their borders and shadows; space does the separating --- */
+.team-card {
+  background: transparent; border: none; box-shadow: none; padding: 0;
+  border-top: 2px solid var(--matrix-navy); padding-top: 1.5rem;
+}
+.team-card:hover { transform: none; box-shadow: none; border-color: var(--matrix-red); }
+.acc-detail-card {
+  background: transparent; border: none; box-shadow: none;
+  border-top: 1px solid var(--border-medium);
+  border-radius: 0; padding: clamp(2rem, 4vw, 3rem) 0 0;
+}
+.about-lead-card {
+  background: transparent; border: none; border-radius: 0;
+  padding: 0; margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+.guide-close {
+  background: var(--matrix-navy-dark); border: none; color: #fff;
+  border-radius: var(--radius-lg);
+}
+.guide-close h3 { color: #fff; }
+.guide-close p { color: #b6c0d4; }
+.guide-close a { color: #fff; }
+
+/* A top rule on a card that still carries a radius renders as a curved line at
+   each end. Squaring these off is what makes the rule read as a rule. */
+.team-card, .acc-detail-card { border-radius: 0; }

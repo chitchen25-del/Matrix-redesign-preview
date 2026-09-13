@@ -124,12 +124,8 @@
 
 <div id="main">
 <main id="view-home" class="page-view active-view">
+
   <section class="hero-main hero-video-wrap">
-    <!-- Self-hosted, so there is no player UI to leak through. A YouTube embed
-         shows its own tap-to-play overlay whenever autoplay is blocked — on
-         iOS Low Power Mode, for instance — and nothing outside the iframe can
-         suppress it. If hero.mp4 is absent the poster shows, and if that is
-         absent too the navy behind it does; the hero never looks broken. -->
     <div class="video-background-scaler">
       <video autoplay muted loop playsinline preload="metadata"
              poster="hero-poster.jpg" tabindex="-1" aria-hidden="true">
@@ -137,20 +133,21 @@
       </video>
     </div>
     <div class="hero-video-overlay"></div>
+
     <div class="container hero-rel">
       <div class="hero-split">
         <div class="hero-copy">
           <div class="hero-badge-pill"><span class="dot"></span>Extruding on the Isle of Man since 2009</div>
-          <h1 class="hero-h1">What size matrix do you need?</h1>
-          <p class="hero-p">Tell us the board and the rule and we will tell you what to trial —
-            worked out from the same size charts our factory extrudes to.</p>
+          <h1 class="hero-h1">What size matrix<br>do you need?</h1>
+          <p class="hero-p">Tell us the board and the rule. We will tell you what to trial, and
+            show you every size we extrude that fits it.</p>
           <div class="hero-actions">
             <button class="btn-solid-red" onclick="navigateTo('products')">See the range</button>
-            <button class="btn-glass" onclick="navigateTo('portal')">Client hub</button>
+            <button class="btn-glass" onclick="navigateTo('faults')">What goes wrong, and why</button>
           </div>
         </div>
 
-        <!-- A readout, not a calculator. The trade measures with digital
+<!-- A readout, not a calculator. The trade measures with digital
              calipers and reads machine displays; this borrows that language
              rather than a pocket calculator's. -->
         <div class="hero-tool" role="group" aria-label="Matrix size finder">
@@ -187,8 +184,90 @@
             <button type="button" class="tool-more" onclick="navigateTo('technical')">
               Full charts and the fitting guide →
             </button>
+          </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The argument, stated once, at size. No card, no border. -->
+  <section class="statement">
+    <div class="container">
+      <p class="statement-lead">We spent years being told the matrix
+        <em>wasn't good enough</em>.</p>
+      <div class="statement-body">
+        <p>Before 2009 we supplied creasing matrix to this industry, which meant we were the ones
+           who took the call when it lifted, when it crushed, when it left residue on the plate.</p>
+        <p>They were right. So we built the line ourselves and specified the polymer and the
+           adhesive ourselves. Everything that leaves here is extruded by us.</p>
+        <button class="link-arrow" onclick="navigateTo('about')">How Matrix started</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- The ranges as an editorial list rather than four boxes. -->
+  <section class="ranges">
+    <div class="container">
+      <div class="ranges-head">
+        <h2>Four ranges.<br>Not forty.</h2>
+        <p>Each one answers a complaint we spent years listening to. Each one is extruded by us,
+           on our own line, to a profile we drew.</p>
+      </div>
+
+      <ol class="range-list">
+        <li onclick="navigateTo('phoenix-plus')">
+          <span class="rn">01</span>
+          <div class="rl-body">
+            <h3>Phoenix+</h3>
+            <p>Polymer base, for folding carton. The range most presses run, and the one we hold
+               most sizes of on the shelf.</p>
           </div>
-        </div>
+          <span class="rl-meta">7, 10 and 12mm bases</span>
+          <span class="rl-go" aria-hidden="true">→</span>
+        </li>
+        <li onclick="navigateTo('phoenix-xl')">
+          <span class="rn">02</span>
+          <div class="rl-body">
+            <h3>Phoenix XL</h3>
+            <p>A wider base for heavy solid board and micro-flute, where a standard footprint
+               shifts under the platen.</p>
+          </div>
+          <span class="rl-meta">12 and 15mm bases</span>
+          <span class="rl-go" aria-hidden="true">→</span>
+        </li>
+        <li onclick="navigateTo('ultra-sr')">
+          <span class="rn">03</span>
+          <div class="rl-body">
+            <h3>Ultra-SR</h3>
+            <p>Polyester base on 100 micron film. A direct swap for steel on abrasive recycled
+               board, without the rust or the perforation marks.</p>
+          </div>
+          <span class="rl-meta">Steel replacement</span>
+          <span class="rl-go" aria-hidden="true">→</span>
+        </li>
+        <li onclick="navigateTo('exceed-rubber')">
+          <span class="rn">04</span>
+          <div class="rl-body">
+            <h3>Exceed Rubber</h3>
+            <p>Micro-cellular ejection rubber that holds its profile past 1.6 million impressions
+               rather than going hard in the rack.</p>
+          </div>
+          <span class="rl-meta">7.00 and 7.25mm</span>
+          <span class="rl-go" aria-hidden="true">→</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Footage, edge to edge. It has earned the whole width. -->
+  <section class="bleed-clip">
+    <video class="floor-video" muted loop playsinline preload="none"
+           poster="floor-machine.jpg" aria-label="Tooling being cut in the workshop">
+      <source src="floor-machine.mp4" type="video/mp4">
+    </video>
+    <div class="bleed-caption">
+      <div class="container">
+        <p>Tooling cut here. Profiles drawn here. Strip extruded here.<br>
+           <em>Nothing is bought in and relabelled.</em></p>
       </div>
     </div>
   </section>
@@ -201,10 +280,9 @@
           <h2 class="section-title">Watch your order being made</h2>
           <p>Account holders order from the size list our factory extrudes to, and the order
              lands on the same production system the shop floor works from — under the work
-             order number we use internally. No inbox, no re-keying, no wondering.</p>
+             order number we use internally.</p>
           <p class="track-note">Prices are confirmed and the acknowledgement appears in your
-             account. Anything to ask about a job goes on the order itself, so it reaches the
-             people making it.</p>
+             account. Anything to ask about a job goes on the order itself.</p>
           <button class="btn-solid-navy" onclick="navigateTo('hub-guide')">How ordering works</button>
         </div>
 
@@ -221,6 +299,7 @@
       </div>
     </div>
   </section>
+
 </main>
 
 <main id="view-about" class="page-view">
