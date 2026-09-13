@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redirecting — Matrix Engineering</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+<script>
+/* GitHub Pages serves this file for any path it does not recognise.
+   The new site is one document with fragment routing, and a fragment never
+   reaches a server — so an old indexed URL like /products cannot be redirected
+   server-side. This page reads the path it was asked for and sends the visitor
+   to the matching section instead.
+
+   Add to the map below rather than changing the fallback: anything unmatched
+   should land on the home page, never on a guess. */
+(function () {
+  var MAP = {
+    'products': 'products', 'product': 'products', 'our-products': 'products',
+    'range': 'products', 'creasing-matrix': 'products', 'matrix': 'products',
+    'phoenix': 'phoenix-plus', 'phoenix-plus': 'phoenix-plus', 'phoenixplus': 'phoenix-plus',
+    'phoenix-xl': 'phoenix-xl', 'phoenixxl': 'phoenix-xl',
+    'ultra-sr': 'ultra-sr', 'ultrasr': 'ultra-sr', 'ultra': 'ultra-sr',
+    'exceed': 'exceed-rubber', 'exceed-rubber': 'exceed-rubber',
+    'rubber': 'exceed-rubber', 'ejection-rubber': 'exceed-rubber',
+    'technical': 'technical', 'tech': 'technical', 'calculator': 'technical',
+    'matrix-calculator': 'technical', 'sizing': 'technical', 'sizes': 'technical',
+    'downloads': 'technical', 'brochure': 'technical',
+    'accessories': 'accessories', 'shim': 'accessories', 'tape': 'accessories',
+    'about': 'about', 'about-us': 'about', 'our-story': 'about', 'team': 'about',
+    'news': 'news', 'blog': 'news', 'post': 'news',
+    'contact': 'contact', 'contact-us': 'contact', 'enquiry': 'contact',
+    'samples': 'contact', 'request-samples': 'contact', 'quote': 'contact',
+    'faults': 'faults', 'troubleshooting': 'faults', 'problems': 'faults',
+    'portal': 'portal', 'client-hub': 'portal', 'login': 'portal', 'account': 'portal'
+  };
+
+  var path = window.location.pathname
+    .replace(/^\/+|\/+$/g, '')      // strip slashes
+    .replace(/\.(html?|php|aspx?)$/i, '')  // strip old extensions
+    .toLowerCase();
+
+  // A repository-page preview sits under a project path; drop that first.
+  path = path.replace(/^matrix-redesign-preview\/?/, '');
+
+  /* Try the whole path, then the last segment, then the first — so an old
+     post at /news/whatever still lands on the news page rather than home. */
+  var parts = path.split('/').filter(Boolean);
+  var target = MAP[path] || MAP[parts[parts.length - 1]] || MAP[parts[0]] || '';
+
+  window.location.replace('/' + (target ? '#' + target : ''));
+})();
+</script>
+</head>
+<body>
+  <main class="page-view active-view">
+    <section class="page-hero">
+      <div class="container">
+        <span class="section-eyebrow">Page moved</span>
+        <h1 class="section-title">That page has a new home</h1>
+        <p class="section-desc">Our site has been rebuilt and this address has changed.
+          You should be moved automatically — if not, the links below will get you there.</p>
+        <p style="margin-top:1.5rem">
+          <a class="btn-solid-red" href="/">Home</a>
+          <a class="btn-glass ghost" href="/#products" style="margin-left:.5rem">Products</a>
+          <a class="btn-glass ghost" href="/#technical" style="margin-left:.5rem">Technical</a>
+          <a class="btn-glass ghost" href="/#contact" style="margin-left:.5rem">Contact</a>
+        </p>
+        <p class="section-desc" style="margin-top:2rem">
+          Or call <a href="tel:+441624822960">+44 (0)1624 822960</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
