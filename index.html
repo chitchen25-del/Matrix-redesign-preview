@@ -79,6 +79,8 @@
 <body>
 <a href="#main" class="skip-link">Skip to content</a>
 
+<button class="nav-scrim" id="navScrim" aria-label="Close menu" tabindex="-1"
+            onclick="closeMobileNav()"></button>
 <div class="top-bar">
   <div class="container top-bar-inner">
     <div class="heritage-badges">
@@ -106,8 +108,6 @@
       </svg>
     </a>
     <button class="mobile-menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="siteNav"><span></span><span></span><span></span></button>
-    <button class="nav-scrim" id="navScrim" aria-label="Close menu" tabindex="-1"
-            onclick="closeMobileNav()"></button>
     <nav class="site-nav" id="siteNav" aria-label="Main">
       <button class="nav-btn active" id="nav-home" onclick="navigateTo('home')">Home</button>
       <button class="nav-btn" id="nav-about" onclick="navigateTo('about')">About</button>
