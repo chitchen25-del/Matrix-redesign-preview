@@ -1894,3 +1894,15 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
 /* A top rule on a card that still carries a radius renders as a curved line at
    each end. Squaring these off is what makes the rule read as a rule. */
 .team-card, .acc-detail-card { border-radius: 0; }
+
+/* The page heroes carry display-scale type on a plain navy band, and the
+   gutter that reads as generous around body copy reads as cramped around a
+   4.2rem headline. Extra inset — but only below the point where the container
+   stops touching the viewport, because above that its own centring margin is
+   already doing the job and the two would compound. */
+@media (max-width: 1320px) {
+  .page-hero > .container {
+    padding-left: clamp(1.75rem, 4.5vw, 3.5rem);
+    padding-right: clamp(1.75rem, 4.5vw, 3.5rem);
+  }
+}
