@@ -1457,14 +1457,27 @@ function drawProfile(depthMM, widthMM, baseMM, opts) {
   const VY = 34;                         // units per mm up — deliberately not to scale
   const plateY = H - (opts.compact ? 16 : 26);
   const base = Math.min(baseMM * HX, W - 30);
-  const half = Math.max((widthMM * HX) / 2, 3);
   const sh   = Math.max(depthMM * VY, 6);
   const cx = W / 2, top = plateY - sh;
+
+  /* A shoulder is a wedge: a feathered edge running up to a flat plateau. It
+     is never a triangle. On a wide channel over a narrow base the shoulder
+     gets thin, and a taper set as a share of the base would swallow the whole
+     of it — which is how a 3.00mm channel on a 7mm base came out as two
+     spikes. The channel is held back from the edges so a shoulder always
+     exists, and the taper is capped at part of that shoulder so a plateau
+     always survives. */
+  const maxHalf = base * 0.34;
+  const half = Math.min(Math.max((widthMM * HX) / 2, 3), maxHalf);
   const lo = cx - base / 2, ro = cx + base / 2;
-  const taper = Math.min(base * 0.28, 34);
+  const shoulderW = base / 2 - half;
+  const taper = Math.max(Math.min(base * 0.28, shoulderW * 0.55, 34), 4);
 
   const boardY = top - 6;
   const dip = Math.min(sh * 0.9, 16);
+  /* The depth dimension sits outside the shoulder, but on a wide base that put
+     it past the edge of the viewBox and the figure was cut in half. */
+  const dimX = Math.min(ro + 6, W - 34);
 
   return `
   <svg viewBox="0 0 ${W} ${H}" class="profile-draw" role="img"
@@ -1482,8 +1495,8 @@ function drawProfile(depthMM, widthMM, baseMM, opts) {
           stroke="var(--pd-dim)" stroke-width="1"/>
     <text x="${cx}" y="${top-16}" text-anchor="middle" font-size="9"
           fill="var(--pd-dim)" font-family="var(--font-mono)">${widthMM.toFixed(2)}</text>
-    <line x1="${ro+6}" y1="${top}" x2="${ro+6}" y2="${plateY}" stroke="var(--pd-dim)" stroke-width="1"/>
-    <text x="${ro+10}" y="${(top+plateY)/2+3}" font-size="9"
+    <line x1="${dimX}" y1="${top}" x2="${dimX}" y2="${plateY}" stroke="var(--pd-dim)" stroke-width="1"/>
+    <text x="${dimX+4}" y="${(top+plateY)/2+3}" font-size="9"
           fill="var(--pd-dim)" font-family="var(--font-mono)">${depthMM.toFixed(2)}</text>
     ${opts.compact ? '' : `<text x="${cx}" y="${H-6}" text-anchor="middle" font-size="8.5"
        fill="var(--pd-dim)" font-family="var(--font-mono)">${baseMM}mm base · height exaggerated</text>`}
