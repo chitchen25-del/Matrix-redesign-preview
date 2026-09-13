@@ -1906,3 +1906,42 @@ ol.guide-step-grid { list-style: none; counter-reset: step; }
     padding-right: clamp(1.75rem, 4.5vw, 3.5rem);
   }
 }
+
+/* =========================================================================
+   THE GUTTER, RESTORED
+   .container sets `padding: 0 1.5rem`, but every layout modifier used a
+   padding shorthand — `padding: 3.5rem 0 5rem` and the like — which resets the
+   horizontal value to zero. The body copy on every page was therefore running
+   hard against the edge of the screen while the hero above it was inset.
+
+   These restore the gutter and match the hero's inset exactly, so a headline
+   and the text beneath it share a left edge.
+   ========================================================================= */
+.container.section-pad,
+.container.acc-layout,
+.container.contact-layout,
+.container.detail-layout,
+.container.news-layout,
+.container.products-layout,
+.container.technical-layout,
+.container.faults-layout,
+.container.guide-layout,
+.container.portal-layout {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (max-width: 1320px) {
+  .container.section-pad,
+  .container.acc-layout,
+  .container.contact-layout,
+  .container.detail-layout,
+  .container.news-layout,
+  .container.products-layout,
+  .container.technical-layout,
+  .container.faults-layout,
+  .container.guide-layout,
+  .container.portal-layout {
+    padding-left: clamp(1.75rem, 4.5vw, 3.5rem);
+    padding-right: clamp(1.75rem, 4.5vw, 3.5rem);
+  }
+}
